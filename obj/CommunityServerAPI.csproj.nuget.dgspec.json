@@ -1,20 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj": {}
+    "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj": {}
   },
   "projects": {
-    "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj": {
+    "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
         "projectName": "CommunityServerAPI",
-        "projectPath": "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
-        "packagesPath": "C:\\Users\\Oki\\.nuget\\packages\\",
-        "outputPath": "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\obj\\",
+        "projectPath": "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
+        "packagesPath": "C:\\Users\\Mujahid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Users\\Mujahid\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Oki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mujahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mujahid\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

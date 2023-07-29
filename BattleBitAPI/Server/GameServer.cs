@@ -336,6 +336,10 @@ namespace BattleBitAPI.Server
         {
             MessageToPlayer(player.SteamID, msg);
         }
+        public void SetServerFPS(int fps)
+        {
+            ExecuteCommand("set fps " + fps);
+        }
 
         // ---- Closing ----
         private void mClose(string reason)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pUUV0vYUBKisP9wHLyg+4LLgPpJ6nV59j98jNphsryg3WNDca7+wrgNUZlRnXogF4/FlbIby2tBboJ+SQRQCGA==",
+  "dgSpecHash": "nO4rCo2GPhOwx2ZoXXHKvuwTcvMeCIdUNi/2LGo05sx56roC2fm5BufwPRHYtgzNty8vYg5i+cqvpklDsmX0NA==",
   "success": true,
-  "projectFilePath": "C:\\BattleBit\\BattleBitRemastered\\Servers\\CommunityServerAPI\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
+  "projectFilePath": "C:\\Users\\Mujahid\\source\\repos\\BattleBit-Community-Server-API\\CommunityServerAPI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
