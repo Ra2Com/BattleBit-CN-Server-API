@@ -259,7 +259,6 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("say " + msg);
         }
-
         public void StopServer()
         {
             ExecuteCommand("stop");
@@ -340,9 +339,42 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("set fps " + fps);
         }
+        public void AddBot(int amount)
+        {
+            ExecuteCommand("join bot " + amount);
+        }
+		public void AddBotATeam(int amount)
+		{
+			ExecuteCommand("join bot a " + amount);
+		}
+		public void AddBotBTeam(int amount)
+		{
+			ExecuteCommand("join bot b " + amount);
+		}
+        public void RemoveBot() 
+        {
+            ExecuteCommand("remove bot");
+        }
+        public void SetBulletSpeed(float speed)
+        {
+            ExecuteCommand("set bullet speed " +  speed);
+        }
+		/// <summary>
+		/// changes the scale of the server
+		/// </summary>
+		/// 
+		/// <remarks>
+		/// [8vs8/16vs16/32vs32/64vs64/127vs127] (Starts new round if server is waiting for players)
+		/// </remarks>
+		/// 
+		/// <param name="scaleValue"></param>
+		public void ChangeScale(string scaleValue)
+        {
+            ExecuteCommand("scale " + scaleValue);
+		}
 
-        // ---- Closing ----
-        private void mClose(string reason)
+		// ---- Closing ----
+		private void mClose(string reason)
         {
             if (this.IsConnected)
             {
