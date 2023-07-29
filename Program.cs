@@ -13,9 +13,21 @@ class Program
         listener.OnPlayerTypedMessage += OnPlayerChat;
         listener.OnGameServerConnected += OnGameServerConnected;
         listener.OnGameServerConnecting += OnGameServerConnecting;
+        listener.OnPlayerConnected += OnPlayerConnected;
         listener.Start(12345);//Port
         Thread.Sleep(-1);
     }
+
+    private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
+
+	private static async Task OnPlayerConnected(MyPlayer player)
+	{
+        premiumPlayers.TryGetValue(player, out var isPremium);
+        player.isPremium = isPremium;
+
+        if (!isPremium)
+            player.Kick("Not a premium player. pay $2 bux");
+	}
 
 	private static async Task<bool> OnGameServerConnecting(IPAddress address)
 	{
@@ -23,13 +35,12 @@ class Program
         return true;
 	}
 
-	private static Task OnPlayerChat(MyPlayer player, ChatChannel channel, string msg)
+	private static async Task OnPlayerChat(MyPlayer player, ChatChannel channel, string msg)
 	{
         if (player.Name == "muj_2498") 
         {
             if (!string.IsNullOrEmpty(msg))
             {
-                return Task.CompletedTask;
             }
 			else if (msg.StartsWith("scale help"))
 			{
@@ -40,7 +51,6 @@ class Program
                 player.GameServer.ChangeScale(msg.Remove(0, 5));
             }
         }
-        return Task.CompletedTask;
 	}
 
 	private static async Task OnGameServerConnected(GameServer server)
@@ -50,4 +60,5 @@ class Program
 }
 class MyPlayer : Player
 {
+    public bool isPremium { get; set; }
 }
