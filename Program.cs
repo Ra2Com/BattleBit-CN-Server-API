@@ -76,5 +76,6 @@ class Program
 public class MyPlayer : Player
 {
     public bool isPremium { get; set; }
+	public Dictionary<MyPlayer, Maps> votedMaps { get; set; }
     public PlayerStats Stats { get; set; }
 }
