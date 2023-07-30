@@ -129,7 +129,7 @@ namespace CommunityServerAPI.Muj.Common
 				{ "azagor", Maps.Azagor },
 				{ "tensatown", Maps.TensaTown },
 				{ "lonovo", Maps.Lonovo }
-        };
+			};
 
 			if (stringToEnumMap.TryGetValue(lowercaseInput, out Maps matchedMap))
 			{
@@ -152,7 +152,7 @@ namespace CommunityServerAPI.Muj.Common
 			{
 				{ "day", MapDayNight.Day },
 				{ "night", MapDayNight.Night },
-		};
+			};
 
 			if (stringToEnumMap.TryGetValue(lowercaseInput, out MapDayNight matchedDayNight))
 			{
@@ -162,6 +162,11 @@ namespace CommunityServerAPI.Muj.Common
 			return MapDayNight.Day;
 		}
 
+		/// <summary>
+		/// gets the map with the highest ammount of votes
+		/// </summary>
+		/// <param name="VoteMapList"></param>
+		/// <returns>MapInfo</returns>
 		public static MapInfo GetMapInfoWithHighestOccurrences(Dictionary<MyPlayer, MapInfo> VoteMapList)
 		{
 			var groupedMapInfos = VoteMapList.GroupBy(kv => kv.Value).Select(group => new { MapInfo = group.Key, Occurrences = group.Count() });
