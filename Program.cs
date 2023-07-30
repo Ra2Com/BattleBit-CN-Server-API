@@ -11,13 +11,14 @@ class Program
 {
     private static ServerCommandProcessor serverCommandProcessor = null;
 	private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
+	private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
 	public static Dictionary<MyPlayer, MapInfo> VoteMapList = new Dictionary<MyPlayer, MapInfo>();
 	public static bool IsAcrossServerChatOn = false;
 
 	static void Main(string[] args)
     {
 		Task.Run(() => { 
-			Timer timer = new(MujExtentions.SetConsoleTitleAsTime, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+			Timer timer = new(MujUtils.SetConsoleTitleAsTime, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
 		}); 
 		var listener = new ServerListener<MyPlayer>();
         listener.OnPlayerTypedMessage += OnPlayerChat;
@@ -25,6 +26,7 @@ class Program
         listener.OnGameServerConnecting += OnGameServerConnecting;
         listener.OnPlayerConnected += OnPlayerConnected;
 		listener.OnPlayerSpawning += OnPlayerSpawning;
+		listener.OnGetPlayerStats += OnGetPlayerStats;
 		//listener.OnMatchEnding += OnMatchEnding;
 		listener.Start(12345);//Port
 
@@ -34,16 +36,26 @@ class Program
 		Thread.Sleep(-1);
     }
 
+
 	//callback hooks
-	private static Task<PlayerStats> OnGetPlayerStats(ulong steamid)
+	private static Task<PlayerStats> OnGetPlayerStats(ulong steamid, PlayerStats stats)
 	{
-        PlayerStats stats = new PlayerStats();
-        stats.Roles = Roles.Admin | Roles.Moderator | Roles.Special;
+		if (steamid == 76561198347766467)
+		{
+			Roles roles = Roles.Admin | Roles.Moderator;
+			stats.Roles = roles;
+			thePoliceMods.Add(steamid, roles);
+			return Task.FromResult(stats);
+		}
 		return Task.FromResult(stats);
 	}
 
+
 	private static async Task OnPlayerConnected(MyPlayer player)
 	{
+		thePoliceMods.TryGetValue(player.SteamID, out var roles);
+		player.stats.Roles = roles;
+
         premiumPlayers.TryGetValue(player, out var isPremium);
         player.isPremium = isPremium;
 
@@ -62,7 +74,7 @@ class Program
 	{
         if (msg.StartsWith("!"))
 		{
-			MujExtentions.HandleChatCommand(player, channel, msg);
+			MujUtils.HandleChatCommand(player, channel, msg);
 			await Console.Out.WriteLineAsync(msg);
 			// will check if they already voted
 			if (!VoteMapList.ContainsKey(player))
@@ -91,14 +103,14 @@ class Program
 	{
         await Console.Out.WriteLineAsync($"{server} just connected");
 
-        Timer timer = new(MujExtentions.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
+        Timer timer = new(MujUtils.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
 
 	}
 
 	private static async Task OnMatchEnding(GameServer server)
 	{
-		MapInfo MostVotedMap = MujExtentions.GetMapInfoWithHighestOccurrences(VoteMapList);
-		var (totalMapCount, maxMapCount) = MujExtentions.GetOccurances(VoteMapList);
+		MapInfo MostVotedMap = MujUtils.GetMapInfoWithHighestOccurrences(VoteMapList);
+		var (totalMapCount, maxMapCount) = MujUtils.GetOccurances(VoteMapList);
 
 		//server.UILogOnServer($"{MostVotedMap} has been voted the most. {maxMapCount}/{totalMapCount}", 10f);
 
@@ -177,8 +189,7 @@ public class MyPlayer : Player
 {
     public bool isPremium { get; set; }
 	public MapInfo votedMap { get; set; }
-    public PlayerStats Stats { get; set; }
-
+	public PlayerStats stats { get; set; }
 
 	public MyPlayer(ulong steamID)
 	{
