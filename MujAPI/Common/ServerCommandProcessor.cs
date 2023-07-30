@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 
-namespace CommunityServerAPI.Muj.Common
+namespace MujAPI
 {
 	public class ServerCommandProcessor
     {
@@ -68,6 +68,11 @@ namespace CommunityServerAPI.Muj.Common
                         case "shutdownapi":
                             ShutdownAPI();
                             break;
+
+                        case "test":
+                            
+                            break;
+
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Unknown command. Type 'help' for available commands.\n");

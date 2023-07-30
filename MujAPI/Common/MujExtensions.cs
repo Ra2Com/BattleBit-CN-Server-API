@@ -2,7 +2,7 @@
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 
-namespace CommunityServerAPI.Muj.Common
+namespace MujAPI
 {
 	public class MujExtentions
 	{
@@ -95,6 +95,11 @@ namespace CommunityServerAPI.Muj.Common
 			}
 		}
 
+
+		/// <summary>
+		/// motd
+		/// </summary>
+		/// <param name="state"></param>
 		public static async void SendMessageEveryFiveMinutes(object state)
 		{
 			GameServer server = (GameServer)state;

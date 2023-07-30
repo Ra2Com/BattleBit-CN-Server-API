@@ -2,7 +2,7 @@
 using BattleBitAPI.Common;
 using BattleBitAPI.Common.Enums;
 using BattleBitAPI.Server;
-using CommunityServerAPI.Muj.Common;
+using MujAPI;
 using System.Net;
 
 class Program
@@ -11,7 +11,6 @@ class Program
     private static ServerCommandProcessor serverCommandProcessor = null;
 	private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
 	public static Dictionary<MyPlayer, MapInfo> VoteMapList = new Dictionary<MyPlayer, MapInfo>();
-	private static MujExtentions MujExtentions = new MujExtentions();
 
 	static void Main(string[] args)
     {
