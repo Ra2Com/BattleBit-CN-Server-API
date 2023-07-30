@@ -63,6 +63,7 @@ class Program
 		{
 			MujExtentions.HandleChatCommand(player, msg);
 		}
+		await Console.Out.WriteLineAsync(msg);
 	}
 
 	private static async Task OnGameServerConnected(GameServer server)
