@@ -196,7 +196,7 @@ namespace BattleBitAPI.Server
 
         // --- Private --- 
         private TcpListener mSocket;
-        private Dictionary<ulong, GameServer> mActiveConnections;
+        public Dictionary<ulong, GameServer> mActiveConnections;
 
         // --- Construction --- 
         public ServerListener()
