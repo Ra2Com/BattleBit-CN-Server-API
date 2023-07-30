@@ -5,5 +5,6 @@
 		None = 0,
 		Azagor = 1,
 		TensaTown = 2,
+		Lonovo = 3,
 	}
 }

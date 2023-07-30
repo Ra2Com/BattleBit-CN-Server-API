@@ -10,7 +10,7 @@ class Program
 
     private static ServerCommandProcessor serverCommandProcessor = null;
 	private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
-	public static Dictionary<MyPlayer, Maps> VoteMapList = new Dictionary<MyPlayer, Maps>();
+	public static Dictionary<MyPlayer, MapInfo> VoteMapList = new Dictionary<MyPlayer, MapInfo>();
 	private static MujExtentions MujExtentions = new MujExtentions();
 
 	static void Main(string[] args)
@@ -25,9 +25,29 @@ class Program
         listener.OnGameServerConnecting += OnGameServerConnecting;
         listener.OnPlayerConnected += OnPlayerConnected;
         listener.OnGetPlayerStats += OnGetPlayerStats;
+		//listener.OnMatchEnding += OnMatchEnding;
 		listener.Start(12345);//Port
 
-        serverCommandProcessor = new ServerCommandProcessor(listener);
+		Random random = new Random();
+
+		Console.WriteLine("Skip Map Vote:");
+		for (int i = 0; i <= 20; i++)
+		{
+			ulong steamID = (ulong)random.NextInt64();
+			MyPlayer player = new MyPlayer(steamID);
+			MapInfo mapInfo = new MapInfo((Maps)random.Next(1, 4), (MapDayNight)random.Next(0, 2));
+
+			Console.WriteLine($"	MapInfo {mapInfo} voted by {player.SteamID}");
+
+			VoteMapList.Add(player, mapInfo);
+		}
+
+		var (totalOccurrencesCount, maxOccurrencesCount) = MujExtentions.GetOccurances(VoteMapList);
+		MapInfo MostVotedMap = MujExtentions.GetMapInfoWithHighestOccurrences(VoteMapList);
+		Console.WriteLine($"Total Maps Occurrences Count: {totalOccurrencesCount}");
+		Console.WriteLine($"Max Map Occurrences Count: {maxOccurrencesCount} Which is {MostVotedMap}");
+
+		serverCommandProcessor = new ServerCommandProcessor(listener);
 		Task.Run(() => serverCommandProcessor.Start()); //start server command processor
 
 		Thread.Sleep(-1);
@@ -59,9 +79,19 @@ class Program
 
 	private static async Task OnPlayerChat(MyPlayer player, ChatChannel channel, string msg)
 	{
-        if (player.Stats.Roles.HasFlag(Roles.Admin) && msg.StartsWith("!"))
+        if (msg.StartsWith("!"))
 		{
 			MujExtentions.HandleChatCommand(player, msg);
+
+			// will check if they already voted
+			if (!VoteMapList.ContainsKey(player))
+			{
+				VoteMapList.Add(player, player.votedMap);
+			}
+			else
+			{
+				player.GameServer.MessageToPlayer(player, "Already Voted Cannot Vote Again");
+			}
 		}
 		await Console.Out.WriteLineAsync(msg);
 	}
@@ -73,10 +103,54 @@ class Program
         Timer timer = new(MujExtentions.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
 
 	}
+
+	private static async Task OnMatchEnding(GameServer server)
+	{
+		MapInfo MostVotedMap = MujExtentions.GetMapInfoWithHighestOccurrences(VoteMapList);
+		var (totalMapCount, maxMapCount) = MujExtentions.GetOccurances(VoteMapList);
+
+		//server.UILogOnServer($"{MostVotedMap} has been voted the most. {maxMapCount}/{totalMapCount}", 10f);
+
+		Console.WriteLine($"{MostVotedMap}, {maxMapCount}, {totalMapCount}");
+
+		//server.NextMap(MostVotedMap);
+
+	}
+
 }
+
+// map info for map voting
+public class MapInfo
+{
+	public Maps Map { get; set; }
+	public MapDayNight DayNight { get; set; }
+
+	public MapInfo(Maps map, MapDayNight dayNight)
+	{
+		Map = map;
+		DayNight = dayNight;
+	}
+
+	public MapInfo()
+	{
+	}
+
+	public override string ToString()
+	{
+		return this.Map.ToString() + " : " + this.DayNight.ToString();
+	}
+}
+
 public class MyPlayer : Player
 {
     public bool isPremium { get; set; }
-	public Dictionary<MyPlayer, Maps> votedMaps { get; set; }
+	public MapInfo votedMap { get; set; }
     public PlayerStats Stats { get; set; }
+
+
+	public MyPlayer(ulong steamID)
+	{
+		SteamID = steamID;
+	}
+
 }

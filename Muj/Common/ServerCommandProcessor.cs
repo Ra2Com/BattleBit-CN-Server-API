@@ -1,5 +1,6 @@
 ﻿using BattleBitAPI.Server;
 using System.Net;
+using System.Text;
 
 namespace CommunityServerAPI.Muj.Common
 {
@@ -60,6 +61,13 @@ namespace CommunityServerAPI.Muj.Common
                             ListAllServers();
                             break;
 
+                        case "explain":
+                            ExplainServer(args);
+                            break;
+
+                        case "shutdownapi":
+                            ShutdownAPI();
+                            break;
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Unknown command. Type 'help' for available commands.\n");
@@ -70,19 +78,101 @@ namespace CommunityServerAPI.Muj.Common
             }
         }
 
-        public static void PrintHelp()
+        /// <summary>
+        /// used to print the help message to the console
+        /// </summary>
+		public static void PrintHelp()
         {
             Console.WriteLine("The following commands are available:");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(
-                " shutdown <all | portnumber> - shutdown all servers or specific server\n" +
-                " say <message> - send a message to all servers\n" +
-                " listallservers - lists all the servers connected to the api\n" +
-                " clear - clears the console\n"
-                );
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine(" shutdown <all | portnumber> - shutdown all servers or specific server");
+            sb.AppendLine(" say <all | portnumber> <message> - send a message to all servers or specific server");
+			sb.AppendLine(" listallservers - lists all the servers connected to the api");
+			sb.AppendLine(" explain <serverport> - shows a description of that server");
+			sb.AppendLine(" clear - clears the console");
+			sb.AppendLine(" shutdownapi - shuts down the api");
+
+			Console.WriteLine(sb);
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// used to shutdown the api
+        /// </summary>
+		private void ShutdownAPI()
+		{
+            Console.ForegroundColor= ConsoleColor.Red;
+            Console.WriteLine("Listener is being closed");
+            listener.Stop();
+
+            Console.WriteLine("Closing program");
+            Console.ResetColor();
+            Environment.Exit(0);
+		}
+
+        /// <summary>
+        /// used to explain a certain server based on its portnumber
+        /// </summary>
+        /// <param name="args"></param>
+		private void ExplainServer(string[] args)
+		{
+			if (args.Length == 1)
+			{
+                if (int.TryParse(args[0], out int PortNumber))
+                {
+
+					if (PortNumber < IPEndPoint.MinPort || PortNumber > IPEndPoint.MaxPort)
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine("Invalid port number\n");
+						Console.ResetColor();
+						return;
+					}
+
+					if (listener.mActiveConnections.Count == 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("No Servers Found :(\n");
+                        Console.ResetColor();
+                        return;
+                    }
+                    else
+                    {
+                        foreach (GameServer gameServer in listener.mActiveConnections.Values)
+                        {
+                            if (PortNumber == gameServer.GamePort)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                StringBuilder stringBuilder = new StringBuilder();
+
+                                stringBuilder.AppendLine($" Basic Server Info:{gameServer}");
+                                stringBuilder.AppendLine($" Current Map:{gameServer.Map}");
+                                stringBuilder.AppendLine($" Current MapDayNight:{gameServer.DayNight}");
+                                stringBuilder.AppendLine($" Current GameMode:{gameServer.Gamemode}");
+                                stringBuilder.AppendLine($" Current Players:{gameServer.CurrentPlayers}");
+                                stringBuilder.AppendLine($" Current Players In Queue:{gameServer.InQueuePlayers}");
+                                Console.WriteLine(stringBuilder);
+                                Console.ResetColor();
+                                return;
+                            }
+                        }
+                    }
+                }
+			}
+			else
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Invalid usage. Type 'explain <portnumber>' to get a description of a server.\n");
+				Console.ResetColor();
+                return;
+			}
+		}
+
+        /// <summary>
+        /// prints a list of all the connected servers
+        /// </summary>
         public void ListAllServers()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -103,9 +193,13 @@ namespace CommunityServerAPI.Muj.Common
             }
         }
 
+        /// <summary>
+        /// shuts down servers
+        /// </summary>
+        /// <param name="args"></param>
         public void ShutdownServers(string[] args)
         {
-            if (args.Length > 0)
+            if (args.Length == 1)
             {
                 string whichServers = args[0];
 
@@ -132,6 +226,10 @@ namespace CommunityServerAPI.Muj.Common
             }
         }
 
+        /// <summary>
+        /// shuts down a server based on its port
+        /// </summary>
+        /// <param name="portNumber"></param>
         public void ShutdownServersByPort(int portNumber)
         {
             if (portNumber < IPEndPoint.MinPort || portNumber > IPEndPoint.MaxPort)
@@ -165,6 +263,9 @@ namespace CommunityServerAPI.Muj.Common
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// shuts down all servers
+        /// </summary>
         public void ShutdownAllServers()
         {
             if (listener.mActiveConnections.Count == 0)
@@ -187,19 +288,52 @@ namespace CommunityServerAPI.Muj.Common
             }
         }
 
+        /// <summary>
+        /// sends a message to all the servers
+        /// </summary>
+        /// <param name="args"></param>
         public void SayToServers(string[] args)
         {
-            if (args.Length > 0)
+            if (args.Length >= 2)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                string message = string.Join(" ", args);
-                Console.WriteLine("Message Sent to servers: " + message + "\n");
-                foreach (GameServer gameServer in listener.mActiveConnections.Values)
+
+				string whichServers = args[0];
+				Console.ForegroundColor = ConsoleColor.Green;
+                string message = string.Join(" ", args, 1, args.Length - 1);
+
+                if (whichServers == "all")
                 {
-                    if (gameServer == null) continue;
-                    gameServer.SayToChat(message);
+					foreach (GameServer gameServer in listener.mActiveConnections.Values)
+					{
+						if (gameServer == null) continue;
+						gameServer.SayToChat(message);
+					}
+					Console.WriteLine("Message Sent to servers: " + message + "\n");
+					Console.ResetColor();
+				}
+                else if (int.TryParse(whichServers, out int PortNumber))
+                {
+					if (PortNumber < IPEndPoint.MinPort || PortNumber > IPEndPoint.MaxPort)
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine("Invalid port number\n");
+						Console.ResetColor();
+						return;
+					}
+
+                    GameServer chosenGameServer = null;
+					foreach (GameServer gameServer in listener.mActiveConnections.Values)
+                    {
+                        if (gameServer.GamePort == PortNumber)
+                        {
+                            chosenGameServer = gameServer;
+                            gameServer.SayToChat(message);
+                        }
+                    }
+                    Console.WriteLine($"Message Sent to server: {chosenGameServer} \n");
+				    Console.ResetColor();
                 }
-                Console.ResetColor();
+                
             }
             else
             {

@@ -372,9 +372,11 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("scale " + scaleValue);
 		}
-        public ulong FindSteamIdByName(string steamname)
+        public ulong FindSteamIdByName(string steamname, GameServer server)
         {
-            return ulong.MaxValue;
+            var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamname);
+
+            return keyValuePair.Key;
         }
 
 		// ---- Closing ----
