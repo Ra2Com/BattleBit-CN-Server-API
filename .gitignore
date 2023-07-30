@@ -1,5 +1,4 @@
 
 .vs/CommunityServerAPI/v17/.suo
-
-obj
-bin
+.bin
+.obj

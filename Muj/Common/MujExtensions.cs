@@ -1,4 +1,5 @@
-﻿using BattleBitAPI.Server;
+﻿using BattleBitAPI.Common.Enums;
+using BattleBitAPI.Server;
 
 namespace CommunityServerAPI.Muj.Common
 {
@@ -20,6 +21,26 @@ namespace CommunityServerAPI.Muj.Common
 						player.GameServer.Kill(player.GameServer.FindSteamIdByName(args[0]));
 						break;
 					case "votemap":
+						if (args.Length < 2) 
+						{
+							player.GameServer.MessageToPlayer(player, "Please Specify Which Map you want to use");
+						}
+						else
+						{
+							Maps matchedMap = GetMappedEnum(args[0]);
+							if (matchedMap == Maps.None)
+							{
+								player.GameServer.MessageToPlayer(player, "Not a valid map");
+								break;
+							}
+							if (!player.votedMaps.ContainsKey(player))
+							{
+								player.votedMaps.Add(player, matchedMap);
+								break;
+							}
+							break;
+						}
+						break;
 
 					default:
 						player.GameServer.MessageToPlayer(player, "Invalid Usage of commands");
@@ -46,6 +67,24 @@ namespace CommunityServerAPI.Muj.Common
 		public static void SetConsoleTitleAsTime(object state)
 		{
 			Console.Title = DateTime.UtcNow.ToString();
+		}
+
+		public static Maps GetMappedEnum(string input)
+		{
+			string lowercaseInput = input.ToLower();
+
+			var stringToEnumMap = new Dictionary<string, Maps>
+			{
+				{ "azagor", Maps.Azagor },
+				{ "tensatown", Maps.TensaTown },
+        };
+
+			if (stringToEnumMap.TryGetValue(lowercaseInput, out Maps matchedMap))
+			{
+				return matchedMap;
+			}
+
+			return Maps.None;
 		}
 	}
 }
