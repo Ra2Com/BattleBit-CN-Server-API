@@ -1,6 +1,7 @@
 ﻿using BattleBitAPI.Server;
 using System.Net;
 using System.Text;
+using System.Linq;
 
 namespace MujAPI
 {
@@ -8,6 +9,7 @@ namespace MujAPI
     {
 
         private readonly ServerListener<MyPlayer> listener;
+        private readonly object lockObject = new object();
 
         /// <summary>
         /// this process user console input and checks for commands
@@ -39,7 +41,11 @@ namespace MujAPI
                     string command = commandParts[0];
                     string[] args = commandParts.Skip(1).ToArray();
 
-                    switch (command)
+                    // remove multiple spaces like say  all      hello world
+					string commandString = string.Join(" ", args).Trim();
+					args = commandString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+					switch (command)
                     {
                         case "clear":
                             Console.Clear();
@@ -57,15 +63,15 @@ namespace MujAPI
                             SayToServers(args);
                             break;
 
-                        case "listallservers":
+                        case "listall":
                             ListAllServers();
                             break;
 
-                        case "explain":
-                            ExplainServer(args);
+                        case "desc":
+                            DescribeServer(args);
                             break;
 
-                        case "shutdownapi":
+						case "stopapi":
                             ShutdownAPI();
                             break;
 
@@ -83,29 +89,36 @@ namespace MujAPI
             }
         }
 
-        /// <summary>
-        /// used to print the help message to the console
-        /// </summary>
+		/// <summary>
+		/// used to print the help message to the console
+		/// </summary>
 		public static void PrintHelp()
-        {
-            Console.WriteLine("The following commands are available:");
-            Console.ForegroundColor = ConsoleColor.Green;
-            StringBuilder sb = new StringBuilder();
+		{
+			Console.WriteLine("The following commands are available:");
+			Console.ForegroundColor = ConsoleColor.Green;
 
-            sb.AppendLine(" shutdown <all | portnumber> - shutdown all servers or specific server");
-            sb.AppendLine(" say <all | portnumber> <message> - send a message to all servers or specific server");
-			sb.AppendLine(" listallservers - lists all the servers connected to the api");
-			sb.AppendLine(" explain <serverport> - shows a description of that server");
-			sb.AppendLine(" clear - clears the console");
-			sb.AppendLine(" shutdownapi - shuts down the api");
+			var commands = new[]
+			{
+                ("shutdown <all|portnumber>", "shutdown all servers or specific server"),
+                ("say <all|portnumber> <message>", "send a message to all servers or specific server"),
+                ("listall", "lists all the servers connected to the api"),
+                ("desc <serverport>", "shows a description of that server"),
+                ("clear", "clears the console"),
+                ("stopapi", "shuts down the api")
+            };
 
-			Console.WriteLine(sb);
-            Console.ResetColor();
-        }
+			foreach (var (command, description) in commands)
+			{
+				Console.WriteLine($" {command,-32} - {description}");
+			}
 
-        /// <summary>
-        /// used to shutdown the api
-        /// </summary>
+            Console.WriteLine();
+			Console.ResetColor();
+		}
+
+		/// <summary>
+		/// used to shutdown the api
+		/// </summary>
 		private void ShutdownAPI()
 		{
             Console.ForegroundColor= ConsoleColor.Red;
@@ -121,57 +134,72 @@ namespace MujAPI
         /// used to explain a certain server based on its portnumber
         /// </summary>
         /// <param name="args"></param>
-		private void ExplainServer(string[] args)
+		private void DescribeServer(string[] args)
 		{
-			if (args.Length == 1)
+			switch (args.Length)
 			{
-                if (int.TryParse(args[0], out int PortNumber))
-                {
-
-					if (PortNumber < IPEndPoint.MinPort || PortNumber > IPEndPoint.MaxPort)
+                //check first argument
+				case 1:
 					{
-						Console.ForegroundColor = ConsoleColor.Red;
-						Console.WriteLine("Invalid port number\n");
-						Console.ResetColor();
-						return;
+						if (!int.TryParse(args[0], out int PortNumber) || PortNumber == 0)
+						{
+							Console.ForegroundColor = ConsoleColor.Red;
+							Console.WriteLine("Invalid usage. Type 'desc <portnumber>' to get a description of a server.\n" +
+								"To get a list of your servers type 'listall'.\n");
+							Console.ResetColor();
+							break;
+						}
+						else
+						{
+
+							switch (PortNumber)
+							{
+                                // validate port min/max
+								case < IPEndPoint.MinPort:
+								case > IPEndPoint.MaxPort:
+									Console.ForegroundColor = ConsoleColor.Red;
+									Console.WriteLine("Invalid port number\n");
+									Console.ResetColor();
+									return;
+							}
+
+							switch (listener.mActiveConnections.Count)
+							{
+                                // if there are no game servers connected
+								case 0:
+									Console.ForegroundColor = ConsoleColor.Red;
+									Console.WriteLine("No Servers Found :(\n");
+									Console.ResetColor();
+									return;
+								default:
+									{
+										foreach (var gameServer in listener.mActiveConnections.Values
+                                            .Where(gameServer => PortNumber == gameServer.GamePort))
+										{
+											Console.ForegroundColor = ConsoleColor.Green;
+											StringBuilder stringBuilder = new StringBuilder();
+											stringBuilder.AppendLine($" Basic Server Info:{gameServer}");
+											stringBuilder.AppendLine($" Current Map:{gameServer.Map}");
+											stringBuilder.AppendLine($" Current MapDayNight:{gameServer.DayNight}");
+											stringBuilder.AppendLine($" Current GameMode:{gameServer.Gamemode}");
+											stringBuilder.AppendLine($" Current Players:{gameServer.CurrentPlayers}");
+											stringBuilder.AppendLine($" Current Players In Queue:{gameServer.InQueuePlayers}");
+											Console.WriteLine(stringBuilder);
+											Console.ResetColor();
+											return;
+										}
+										break;
+									}
+							}
+						}
+						break;
 					}
-
-					if (listener.mActiveConnections.Count == 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("No Servers Found :(\n");
-                        Console.ResetColor();
-                        return;
-                    }
-                    else
-                    {
-                        foreach (GameServer gameServer in listener.mActiveConnections.Values)
-                        {
-                            if (PortNumber == gameServer.GamePort)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                StringBuilder stringBuilder = new StringBuilder();
-
-                                stringBuilder.AppendLine($" Basic Server Info:{gameServer}");
-                                stringBuilder.AppendLine($" Current Map:{gameServer.Map}");
-                                stringBuilder.AppendLine($" Current MapDayNight:{gameServer.DayNight}");
-                                stringBuilder.AppendLine($" Current GameMode:{gameServer.Gamemode}");
-                                stringBuilder.AppendLine($" Current Players:{gameServer.CurrentPlayers}");
-                                stringBuilder.AppendLine($" Current Players In Queue:{gameServer.InQueuePlayers}");
-                                Console.WriteLine(stringBuilder);
-                                Console.ResetColor();
-                                return;
-                            }
-                        }
-                    }
-                }
-			}
-			else
-			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine("Invalid usage. Type 'explain <portnumber>' to get a description of a server.\n");
-				Console.ResetColor();
-                return;
+				default:
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine("Invalid usage. Type 'desc <portnumber>' to get a description of a server.\n" +
+						"To get a list of your servers type 'listall'.\n");
+					Console.ResetColor();
+					return;
 			}
 		}
 
@@ -180,23 +208,26 @@ namespace MujAPI
         /// </summary>
         public void ListAllServers()
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            if (listener.mActiveConnections.Count == 0)
-            {
-                Console.WriteLine("No Servers Found :(\n");
-                Console.ResetColor();
-                return;
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                foreach (GameServer gameServer in listener.mActiveConnections.Values)
-                {
-                    Console.WriteLine(gameServer);
-                }
-                Console.ResetColor();
-            }
-        }
+			Console.ForegroundColor = ConsoleColor.Red;
+			switch (listener.mActiveConnections.Count)
+			{
+                // if theres no game servers connected
+				case 0:
+					Console.WriteLine("No Servers Found :(\n");
+					Console.ResetColor();
+					return;
+				default:
+					{
+						Console.ForegroundColor = ConsoleColor.Green;
+						foreach (var gameServer in listener.mActiveConnections.Values)
+						{
+							Console.WriteLine(gameServer);
+						}
+						Console.ResetColor();
+						break;
+					}
+			}
+		}
 
         /// <summary>
         /// shuts down servers
@@ -219,15 +250,17 @@ namespace MujAPI
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid usage. Type 'shutdown all' to shutdown all servers or 'shutdown <portnumber>' to shutdown a specific server.\n");
+                    Console.WriteLine("Invalid usage. Type 'shutdown all' to shutdown all servers or 'shutdown <portnumber>' to shutdown a specific server.\n" +
+						"Use 'listall' to get all the servers\n");
                     Console.ResetColor();
                 }
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid usage. Type 'shutdown all' to shutdown all servers or 'shutdown <portnumber>' to shutdown a specific server.\n");
-                Console.ResetColor();
+				Console.WriteLine("Invalid usage. Type 'shutdown all' to shutdown all servers or 'shutdown <portnumber>' to shutdown a specific server.\n" +
+					"Use 'listall' to get all the servers\n");
+				Console.ResetColor();
             }
         }
 
@@ -294,58 +327,111 @@ namespace MujAPI
         }
 
         /// <summary>
-        /// sends a message to all the servers
+        /// sends a message to all or a specific server(s)
         /// </summary>
         /// <param name="args"></param>
         public void SayToServers(string[] args)
         {
-            if (args.Length >= 2)
-            {
-
-				string whichServers = args[0];
-				Console.ForegroundColor = ConsoleColor.Green;
-                string message = string.Join(" ", args, 1, args.Length - 1);
-
-                if (whichServers == "all")
-                {
-					foreach (GameServer gameServer in listener.mActiveConnections.Values)
+			switch (args.Length)
+			{
+                // more than or equal to 2 args
+				case >= 2:
 					{
-						if (gameServer == null) continue;
-						gameServer.SayToChat(message);
+						string whichServers = args.Length >= 1 ? args[0].Trim() : string.Empty;
+						Console.ForegroundColor = ConsoleColor.Green;
+						string message = string.Join(" ", args, 1, args.Length - 1);
+
+						switch (whichServers)
+						{
+                            // second argument segment all or port
+							case "all":
+								{
+									foreach (GameServer gameServer in listener.mActiveConnections.Values)
+									{
+										if (gameServer == null) continue;
+										gameServer.SayToChat(message);
+									}
+									Console.WriteLine("Message Sent to servers: " + message + "\n");
+									Console.ResetColor();
+									break;
+								}
+
+							default:
+								if (!int.TryParse(whichServers, out int PortNumber))
+								{
+									break;
+								}
+								switch (PortNumber)
+								{
+                                    // check if port passes min and max checks
+									case < IPEndPoint.MinPort:
+									case > IPEndPoint.MaxPort:
+										Console.ForegroundColor = ConsoleColor.Red;
+										Console.WriteLine("Invalid port number\n");
+										Console.ResetColor();
+										return;
+								}
+
+								//look for server with port number
+								GameServer ChosenServer = listener.mActiveConnections
+									.FirstOrDefault(server => server.Value.GamePort == PortNumber).Value;
+								switch (ChosenServer)
+								{
+									case null:
+										Console.ForegroundColor = ConsoleColor.Red;
+										Console.WriteLine($"Could not find server with port:{PortNumber}\n");
+										break;
+									default:
+										Console.ForegroundColor = ConsoleColor.Green;
+										Console.WriteLine($"Message Sent to server: {ChosenServer} \n");
+										break;
+								}
+								Console.ResetColor();
+								break;
+						}
+						break;
 					}
-					Console.WriteLine("Message Sent to servers: " + message + "\n");
+				default:
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine("Invalid usage. Type 'say <all|portnumber> <message>' to send a message.\n");
 					Console.ResetColor();
-				}
-                else if (int.TryParse(whichServers, out int PortNumber))
-                {
-					if (PortNumber < IPEndPoint.MinPort || PortNumber > IPEndPoint.MaxPort)
-					{
-						Console.ForegroundColor = ConsoleColor.Red;
-						Console.WriteLine("Invalid port number\n");
-						Console.ResetColor();
-						return;
-					}
+					break;
+			}
+		}
 
-                    GameServer chosenGameServer = null;
-					foreach (GameServer gameServer in listener.mActiveConnections.Values)
+
+		/// <summary>
+		/// sends a message to all servers used for already filled in "say" <customtext>
+		/// </summary>
+		/// <param name="args"></param>
+		public void SendChatMessageToAllServers(string[] args)
+		{
+            lock (lockObject)
+            {
+                if (args.Length >= 2)
+                {
+                    string whichServers = args[0];
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    string message = string.Join(" ", args, 1, args.Length - 1);
+
+                    if (whichServers == "all")
                     {
-                        if (gameServer.GamePort == PortNumber)
+                        foreach (GameServer gameServer in listener.mActiveConnections.Values)
                         {
-                            chosenGameServer = gameServer;
+                            if (gameServer == null) continue;
                             gameServer.SayToChat(message);
                         }
+                        Console.WriteLine("Message Sent to servers: " + message + "\n");
+                        Console.ResetColor();
                     }
-                    Console.WriteLine($"Message Sent to server: {chosenGameServer} \n");
-				    Console.ResetColor();
+                    else
+                    {
+                        Console.WriteLine("An Error with cross server chat occured");
+						Console.ResetColor();
+						return;
+                    }
                 }
-                
             }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid usage. Type 'say <message>' to send a message.\n");
-                Console.ResetColor();
-            }
-        }
-    }
+		}
+	}
 }

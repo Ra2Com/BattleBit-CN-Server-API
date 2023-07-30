@@ -11,13 +11,13 @@ class Program
     private static ServerCommandProcessor serverCommandProcessor = null;
 	private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
 	public static Dictionary<MyPlayer, MapInfo> VoteMapList = new Dictionary<MyPlayer, MapInfo>();
+	public static bool IsAcrossServerChatOn = false;
 
 	static void Main(string[] args)
     {
 		Task.Run(() => { 
-			Timer timer = new(MujExtentions.SetConsoleTitleAsTime, null, TimeSpan.Zero, TimeSpan.FromSeconds(2));
+			Timer timer = new(MujExtentions.SetConsoleTitleAsTime, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
 		}); 
-		Console.WriteLine("   ___     ___     ___              ___      ___    ___   \r\n  | _ )   | _ )   | _ \\     o O O  /   \\    | _ \\  |_ _|  \r\n  | _ \\   | _ \\   |   /    o       | - |    |  _/   | |   \r\n  |___/   |___/   |_|_\\   TS__[O]  |_|_|   _|_|_   |___|  \r\n_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"| {======|_|\"\"\"\"\"|_| \"\"\" |_|\"\"\"\"\"| \r\n\"`-0-0-'\"`-0-0-'\"`-0-0-'./o--000'\"`-0-0-'\"`-0-0-'\"`-0-0-' \r\n");
 		var listener = new ServerListener<MyPlayer>();
         listener.OnPlayerTypedMessage += OnPlayerChat;
         listener.OnGameServerConnected += OnGameServerConnected;
@@ -26,25 +26,6 @@ class Program
         listener.OnGetPlayerStats += OnGetPlayerStats;
 		//listener.OnMatchEnding += OnMatchEnding;
 		listener.Start(12345);//Port
-
-		Random random = new Random();
-
-		Console.WriteLine("Skip Map Vote:");
-		for (int i = 0; i <= 20; i++)
-		{
-			ulong steamID = (ulong)random.NextInt64();
-			MyPlayer player = new MyPlayer(steamID);
-			MapInfo mapInfo = new MapInfo((Maps)random.Next(1, 4), (MapDayNight)random.Next(0, 2));
-
-			Console.WriteLine($"	MapInfo {mapInfo} voted by {player.SteamID}");
-
-			VoteMapList.Add(player, mapInfo);
-		}
-
-		var (totalOccurrencesCount, maxOccurrencesCount) = MujExtentions.GetOccurances(VoteMapList);
-		MapInfo MostVotedMap = MujExtentions.GetMapInfoWithHighestOccurrences(VoteMapList);
-		Console.WriteLine($"Total Maps Occurrences Count: {totalOccurrencesCount}");
-		Console.WriteLine($"Max Map Occurrences Count: {maxOccurrencesCount} Which is {MostVotedMap}");
 
 		serverCommandProcessor = new ServerCommandProcessor(listener);
 		Task.Run(() => serverCommandProcessor.Start()); //start server command processor
@@ -80,19 +61,29 @@ class Program
 	{
         if (msg.StartsWith("!"))
 		{
-			MujExtentions.HandleChatCommand(player, msg);
-
+			MujExtentions.HandleChatCommand(player, channel, msg);
+			await Console.Out.WriteLineAsync(msg);
 			// will check if they already voted
 			if (!VoteMapList.ContainsKey(player))
 			{
 				VoteMapList.Add(player, player.votedMap);
+				return;
 			}
 			else
 			{
 				player.GameServer.MessageToPlayer(player, "Already Voted Cannot Vote Again");
+				return;
 			}
 		}
-		await Console.Out.WriteLineAsync(msg);
+		else if (IsAcrossServerChatOn && channel.HasFlag(ChatChannel.AllChat))
+		{
+			string[] ChatMessage = new string[2];
+			ChatMessage[0] = "all";
+			ChatMessage[1] = $"GLOBAL: {player.Name} : {msg}";
+			
+			serverCommandProcessor.SendChatMessageToAllServers(ChatMessage);
+		}
+
 	}
 
 	private static async Task OnGameServerConnected(GameServer server)

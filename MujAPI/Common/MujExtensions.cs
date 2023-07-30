@@ -9,7 +9,12 @@ namespace MujAPI
 		public static bool IsVoteSkipAnnounced = false;
 		public static bool IsMapVoteTrollFlagOn = false;
 
-		public static void HandleChatCommand(MyPlayer player, string msg)
+		/// <summary>
+		/// used to handle command in game chat
+		/// </summary>
+		/// <param name="player"></param>
+		/// <param name="msg"></param>
+		public static void HandleChatCommand(MyPlayer player, ChatChannel channel , string msg)
 		{
 			string[] commandParts = msg.Trim().ToLower().Split(" ");
 			if (commandParts.Length > 0)
