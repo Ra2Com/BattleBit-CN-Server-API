@@ -372,6 +372,10 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("scale " + scaleValue);
 		}
+        public ulong FindSteamIdByName(string steamname)
+        {
+            return ulong.MaxValue;
+        }
 
 		// ---- Closing ----
 		private void mClose(string reason)
