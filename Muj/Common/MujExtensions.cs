@@ -7,6 +7,7 @@ namespace CommunityServerAPI.Muj.Common
 	public class MujExtentions
 	{
 		public static bool IsVoteSkipAnnounced = false;
+		public static bool IsMapVoteTrollFlagOn = false;
 
 		public static void HandleChatCommand(MyPlayer player, string msg)
 		{
@@ -47,6 +48,13 @@ namespace CommunityServerAPI.Muj.Common
 							break;
 						}
 					case "skipmap":
+						if (args.Length == 1)
+						{
+							if (args[0] == "trollflagon")
+							{
+								IsMapVoteTrollFlagOn = !IsMapVoteTrollFlagOn;
+							}
+						}
 						if (args.Length == 2) 
 						{
 							player.GameServer.MessageToPlayer(player, "this is used to skip the current map Usage: !skipmap <mapname> <day/night>");
@@ -66,7 +74,7 @@ namespace CommunityServerAPI.Muj.Common
 								player.GameServer.MessageToPlayer(player, "Not a valid map");
 								break;
 							}
-							if (MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
+							if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
 							{
 								player.Kick("smh ╭∩╮(-_-)╭∩╮");
 								break;
