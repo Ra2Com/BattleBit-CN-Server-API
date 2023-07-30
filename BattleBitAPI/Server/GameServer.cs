@@ -342,7 +342,6 @@ namespace BattleBitAPI.Server
         {
             MessageToPlayer(player.SteamID, msg);
         }
-<<<<<<< HEAD
         public void SetServerFPS(int fps)
         {
             ExecuteCommand("set fps " + fps);
@@ -383,8 +382,9 @@ namespace BattleBitAPI.Server
         public ulong FindSteamIdByName(string steamname, GameServer server)
         {
             var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamname);
-=======
-        public void SetRoleTo(ulong steamID, GameRole role)
+			return keyValuePair.Key;
+		}
+		public void SetRoleTo(ulong steamID, GameRole role)
         {
             ExecuteCommand("setrole " + steamID + " " + role);
         }
@@ -392,10 +392,7 @@ namespace BattleBitAPI.Server
         {
             SetRoleTo(player.SteamID, role);
         }
->>>>>>> 6200ad380a4c6cc4f104284f3217ba046fd36a7d
 
-            return keyValuePair.Key;
-        }
 
 		// ---- Closing ----
 		private void mClose(string reason)

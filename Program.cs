@@ -1,18 +1,14 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
-<<<<<<< HEAD
 using MujAPI;
 using System.Net;
-=======
 using BattleBitAPI.Storage;
 using System.Numerics;
->>>>>>> 6200ad380a4c6cc4f104284f3217ba046fd36a7d
+using BattleBitAPI.Common.Enums;
 
 class Program
 {
-
-<<<<<<< HEAD
     private static ServerCommandProcessor serverCommandProcessor = null;
 	private static Dictionary<MyPlayer, bool> premiumPlayers = new Dictionary<MyPlayer, bool>();
 	public static Dictionary<MyPlayer, MapInfo> VoteMapList = new Dictionary<MyPlayer, MapInfo>();
@@ -28,7 +24,7 @@ class Program
         listener.OnGameServerConnected += OnGameServerConnected;
         listener.OnGameServerConnecting += OnGameServerConnecting;
         listener.OnPlayerConnected += OnPlayerConnected;
-        listener.OnGetPlayerStats += OnGetPlayerStats;
+		listener.OnPlayerSpawning += OnPlayerSpawning;
 		//listener.OnMatchEnding += OnMatchEnding;
 		listener.Start(12345);//Port
 
@@ -112,20 +108,6 @@ class Program
 
 	}
 
-=======
-    static DiskStorage playerStats;
-    static void Main(string[] args)
-    {
-        playerStats = new DiskStorage("Players\\");
-        var listener = new ServerListener<MyPlayer>();
-        listener.OnGetPlayerStats += OnGetPlayerStats;
-        listener.OnPlayerSpawning += OnPlayerSpawning;
-        listener.Start(29294);//Port
-
-        Thread.Sleep(-1);
-    }
-
-
 
     private static async Task<PlayerSpawnRequest> OnPlayerSpawning(MyPlayer player, PlayerSpawnRequest request)
     {
@@ -167,22 +149,11 @@ class Program
 
         return request;
     }
-
-
-
-
-    private async static Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
-    {
-        officialStats.Progress.Rank = 200;
-        return officialStats;
-    }
->>>>>>> 6200ad380a4c6cc4f104284f3217ba046fd36a7d
 }
 
 // map info for map voting
 public class MapInfo
 {
-<<<<<<< HEAD
 	public Maps Map { get; set; }
 	public MapDayNight DayNight { get; set; }
 
@@ -213,9 +184,4 @@ public class MyPlayer : Player
 	{
 		SteamID = steamID;
 	}
-
-=======
-    public int Cash;
-    public bool InJail = false;
->>>>>>> 6200ad380a4c6cc4f104284f3217ba046fd36a7d
 }
