@@ -14,6 +14,7 @@ namespace MujAPI
 		public bool isPremium { get; set; }
 		public MapInfo votedMap { get; set; }
 		public PlayerStats stats { get; set; }
+		public bool trollFlagController { get; set; }
 
 		public MujPlayer(ulong steamID)
 		{
