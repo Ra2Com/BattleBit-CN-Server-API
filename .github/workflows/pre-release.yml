@@ -11,14 +11,9 @@ on:
 jobs:
   pre-release:
     name: "Pre Release"
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: windows-latest
 
-    steps:
-      # ...
-      
+    steps:      
       - uses: actions/checkout@v3
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
