@@ -40,12 +40,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set Git Identity
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
       - name: Bump Version and Create Release
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "version=$(git describe --tags $(git rev-list --tags --max-count=1))"
-          version=$(($version + 1))
+          version=$(git describe --tags $(git rev-list --tags --max-count=1))
+          version=$((version + 1))
           git tag -a "v$version-alpha" -m "Pre-Release v$version-alpha"
           git push origin --tags
