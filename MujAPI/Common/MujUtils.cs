@@ -90,7 +90,7 @@ namespace MujAPI
 							else
 							{
 								MapInfo MapInfo = new() { Map = MatchedMap, DayNight = MatchedMapDayNight};
-								player.votedMap = MapInfo;
+								player.VotedMap = MapInfo;
 								break;
 							}
 						}

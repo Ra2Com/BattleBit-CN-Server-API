@@ -11,10 +11,10 @@ namespace MujAPI
 	public class MujPlayer : Player
 	{
 
-		public bool isPremium { get; set; }
-		public MapInfo votedMap { get; set; }
-		public PlayerStats stats { get; set; }
-		public bool trollFlagController { get; set; }
+		public bool IsPremium { get; set; }
+		public MapInfo VotedMap { get; set; }
+		public PlayerStats Stats { get; set; }
+		public bool TrollFlagController { get; set; }
 
 		public MujPlayer(ulong steamID)
 		{

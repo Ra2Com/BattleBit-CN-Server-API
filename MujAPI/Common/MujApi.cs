@@ -85,10 +85,10 @@ namespace MujAPI
 		private static async Task OnPlayerConnected(MujPlayer player)
 		{
 			thePoliceMods.TryGetValue(player.SteamID, out var roles);
-			player.stats.Roles = roles;
+			player.Stats.Roles = roles;
 
 			premiumPlayers.TryGetValue(player, out var isPremium);
-			player.isPremium = isPremium;
+			player.IsPremium = isPremium;
 
 
 			if (!isPremium)
@@ -110,7 +110,7 @@ namespace MujAPI
 				// will check if they already voted
 				if (!VoteMapList.ContainsKey(player))
 				{
-					VoteMapList.Add(player, player.votedMap);
+					VoteMapList.Add(player, player.VotedMap);
 					return;
 				}
 				else
