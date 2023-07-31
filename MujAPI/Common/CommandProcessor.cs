@@ -15,7 +15,7 @@ namespace MujAPI
 
 
         private readonly ServerListener<MujPlayer> listener;
-        private readonly object lockObject = new object();
+        private readonly object lockObject = new();
 
         /// <summary>
         /// this process user console input and checks for commands
@@ -95,17 +95,17 @@ namespace MujAPI
             }
         }
 
-		private async void TestGameServerConn()
+		private static async void TestGameServerConn()
 		{
-            TcpClient tcpClient1 = new TcpClient();
-            GameServer.mInternalResources mInternalResources1 = new GameServer.mInternalResources();
-            GameServer server1 = new GameServer(tcpClient1, mInternalResources1, null, IPAddress.Loopback,
+            TcpClient tcpClient1 = new();
+            GameServer.mInternalResources mInternalResources1 = new();
+            GameServer server1 = new(tcpClient1, mInternalResources1, null, IPAddress.Loopback,
                 30000, true, "EU#1", "CONQ", "azagor", BattleBitAPI.Common.MapSize._127vs127,
                 BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
-			TcpClient tcpClient2 = new TcpClient();
-			GameServer.mInternalResources mInternalResources2 = new GameServer.mInternalResources();
-			GameServer server2 = new GameServer(tcpClient2, mInternalResources2, null, IPAddress.Parse("23.54.67.87"),
+			TcpClient tcpClient2 = new();
+			GameServer.mInternalResources mInternalResources2 = new();
+			GameServer server2 = new(tcpClient2, mInternalResources2, null, IPAddress.Parse("23.54.67.87"),
 				30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
@@ -186,7 +186,7 @@ namespace MujAPI
 										foreach (var gameServer in listener.mActiveConnections.Values
                                             .Where(gameServer => PortNumber == gameServer.GamePort))
 										{
-											StringBuilder stringBuilder = new StringBuilder();
+											StringBuilder stringBuilder = new();
 											stringBuilder.AppendLine($" Basic Server Info:{gameServer}");
 											stringBuilder.AppendLine($" Current Map:{gameServer.Map}");
 											stringBuilder.AppendLine($" Current MapDayNight:{gameServer.DayNight}");
