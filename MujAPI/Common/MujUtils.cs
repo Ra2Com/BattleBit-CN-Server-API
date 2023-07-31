@@ -4,7 +4,7 @@ using BattleBitAPI.Server;
 
 namespace MujAPI
 {
-	public class MujExtentions
+	public class MujUtils
 	{
 		public static bool IsVoteSkipAnnounced = false;
 		public static bool IsMapVoteTrollFlagOn = false;
@@ -40,7 +40,7 @@ namespace MujAPI
 							player.GameServer.MessageToPlayer(player, "Usage !kill <playername>");
 							break;
 						}
-						if (!player.Stats.Roles.HasFlag(Roles.Admin | Roles.Moderator))
+						if (!player.Role.HasFlag(Roles.Moderator))
 						{
 							player.GameServer.MessageToPlayer(player, "Ur Not an admin");
 							break;
@@ -119,7 +119,10 @@ namespace MujAPI
 				"Use <b><color=green>!votekick [personnamehere]</b></color> to vote kick!");
 		}
 
-		//console title task
+		/// <summary>
+		/// displays the current time on the console title
+		/// </summary>
+		/// <param name="state"></param>
 		public static void SetConsoleTitleAsTime(object state)
 		{
 			Console.Title = DateTime.UtcNow.ToString();

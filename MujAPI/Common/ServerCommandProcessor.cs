@@ -413,7 +413,6 @@ namespace MujAPI
                     // remove multiple spaces like say  all      hello world
 					string commandString = string.Join(" ", args).Trim();
 					args = commandString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
                     string whichServers = args[0];
                     Console.ForegroundColor = ConsoleColor.Green;
                     string message = string.Join(" ", args, 1, args.Length - 1);
