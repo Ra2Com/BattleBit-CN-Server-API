@@ -106,7 +106,7 @@ namespace MujAPI
 			TcpClient tcpClient2 = new TcpClient();
 			GameServer.mInternalResources mInternalResources2 = new GameServer.mInternalResources();
 			GameServer server2 = new GameServer(tcpClient2, mInternalResources2, null, IPAddress.Parse("23.54.67.87"),
-				30022, true, "EU#2", "CONQ", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
+				30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
 		}
