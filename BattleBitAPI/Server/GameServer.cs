@@ -94,7 +94,7 @@ namespace BattleBitAPI.Server
             this.mLastPackageReceived = Extentions.TickCount;
             this.mLastPackageSent = Extentions.TickCount;
 
-            this.ServerHash = (ulong)(port << 32) | iP.ToUInt();
+			this.ServerHash = (ulong)(port << 32) | iP.ToUInt();
         }
 
         // ---- Tick ----

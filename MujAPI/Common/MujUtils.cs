@@ -6,6 +6,9 @@ namespace MujAPI
 {
 	public class MujUtils
 	{
+		//logger
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandProcessor));
+
 		public static bool IsVoteSkipAnnounced = false;
 		public static bool IsMapVoteTrollFlagOn = false;
 
@@ -14,7 +17,7 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="player"></param>
 		/// <param name="msg"></param>
-		public static void HandleChatCommand(MyPlayer player, ChatChannel channel , string msg)
+		public static void HandleChatCommand(MujPlayer player, ChatChannel channel , string msg)
 		{
 			string[] commandParts = msg.Trim().ToLower().Split(" ");
 			if (commandParts.Length > 0)
@@ -100,7 +103,6 @@ namespace MujAPI
 			}
 		}
 
-
 		/// <summary>
 		/// motd
 		/// </summary>
@@ -111,7 +113,7 @@ namespace MujAPI
 
 			if (server == null)
 			{
-				await Console.Out.WriteLineAsync("uh oh");
+				log.Info("uh oh");
 			}
 
 			server.SayToChat(
@@ -180,7 +182,7 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="VoteMapList"></param>
 		/// <returns>MapInfo</returns>
-		public static MapInfo GetMapInfoWithHighestOccurrences(Dictionary<MyPlayer, MapInfo> VoteMapList)
+		public static MapInfo GetMapInfoWithHighestOccurrences(Dictionary<MujPlayer, MapInfo> VoteMapList)
 		{
 			var groupedMapInfos = VoteMapList.GroupBy(kv => kv.Value).Select(group => new { MapInfo = group.Key, Occurrences = group.Count() });
 
@@ -195,7 +197,7 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="VoteMapList"></param>
 		/// <returns>totalOccurances, maxOccurrences</returns>
-		public static (int TotalOccurances, int MaxOccurances) GetOccurances(Dictionary<MyPlayer, MapInfo> VoteMapList)
+		public static (int TotalOccurances, int MaxOccurances) GetOccurances(Dictionary<MujPlayer, MapInfo> VoteMapList)
 		{
 			var groupedMapInfos= VoteMapList.GroupBy(kv => kv.Value).Select(group => new { Occurrences = group.Count() });
 
