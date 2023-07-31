@@ -64,7 +64,7 @@ class Program
 	{
         if (msg.StartsWith("!"))
 		{
-			MujExtentions.HandleChatCommand(player, channel, msg);
+			MujUtils.HandleChatCommand(player, channel, msg);
 			await Console.Out.WriteLineAsync(msg);
 			// will check if they already voted
 			if (!VoteMapList.ContainsKey(player))
@@ -93,14 +93,14 @@ class Program
 	{
         await Console.Out.WriteLineAsync($"{server} just connected");
 
-        Timer timer = new(MujExtentions.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
+        Timer timer = new(MujUtils.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
 
 	}
 
 	private static async Task OnMatchEnding(GameServer server)
 	{
-		MapInfo MostVotedMap = MujExtentions.GetMapInfoWithHighestOccurrences(VoteMapList);
-		var (totalMapCount, maxMapCount) = MujExtentions.GetOccurances(VoteMapList);
+		MapInfo MostVotedMap = MujUtils.GetMapInfoWithHighestOccurrences(VoteMapList);
+		var (totalMapCount, maxMapCount) = MujUtils.GetOccurances(VoteMapList);
 
 		//server.UILogOnServer($"{MostVotedMap} has been voted the most. {maxMapCount}/{totalMapCount}", 10f);
 
