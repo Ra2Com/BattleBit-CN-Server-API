@@ -196,10 +196,10 @@ namespace BattleBitAPI.Server
 
         // --- Private --- 
         private TcpListener mSocket;
-        public Dictionary<ulong, GameServer> mActiveConnections;
+        public Dictionary<ulong, GameServer> mActiveConnections; //punlic so that i can access the gameservers.
 
-        // --- Construction --- 
-        public ServerListener()
+		// --- Construction --- 
+		public ServerListener()
         {
             this.mActiveConnections = new Dictionary<ulong, GameServer>(16);
         }

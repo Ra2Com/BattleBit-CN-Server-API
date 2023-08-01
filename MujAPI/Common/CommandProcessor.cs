@@ -5,6 +5,7 @@ using System.Linq;
 using log4net.Config;
 using System.Net.Sockets;
 using BattleBitAPI;
+using System.Reflection;
 
 namespace MujAPI
 {
@@ -84,7 +85,8 @@ namespace MujAPI
                             ShutdownAPI();
                             break;
 
-                        case "test":
+                        case "addservertest":
+                            TestGameServerConn();
                             break;
 
                         default:
@@ -95,7 +97,7 @@ namespace MujAPI
             }
         }
 
-		private static async void TestGameServerConn()
+		private async void TestGameServerConn()
 		{
             TcpClient tcpClient1 = new();
             GameServer.mInternalResources mInternalResources1 = new();
@@ -105,9 +107,14 @@ namespace MujAPI
 
 			TcpClient tcpClient2 = new();
 			GameServer.mInternalResources mInternalResources2 = new();
-			GameServer server2 = new(tcpClient2, mInternalResources2, null, IPAddress.Parse("23.54.67.87"),
+			GameServer server2 = new(tcpClient2, mInternalResources2, null, IPAddress.Loopback,
 				30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
+
+			listener.mActiveConnections.Add(server1.ServerHash, server1);
+			listener.mActiveConnections.Add(server2.ServerHash, server2);
+
+
 
 		}
 
@@ -187,13 +194,13 @@ namespace MujAPI
                                             .Where(gameServer => PortNumber == gameServer.GamePort))
 										{
 											StringBuilder stringBuilder = new();
-											stringBuilder.AppendLine($" Basic Server Info:{gameServer}");
-											stringBuilder.AppendLine($" Current Map:{gameServer.Map}");
-											stringBuilder.AppendLine($" Current MapDayNight:{gameServer.DayNight}");
-											stringBuilder.AppendLine($" Current GameMode:{gameServer.Gamemode}");
-											stringBuilder.AppendLine($" Current Players:{gameServer.CurrentPlayers}");
-											stringBuilder.AppendLine($" Current Players In Queue:{gameServer.InQueuePlayers}");
-											log.Info(stringBuilder);
+											stringBuilder.AppendLine($" Server Info:{gameServer}");
+											stringBuilder.AppendLine($" Map:{gameServer.Map}");
+											stringBuilder.AppendLine($" MapDayNight:{gameServer.DayNight}");
+											stringBuilder.AppendLine($" GameMode:{gameServer.Gamemode}");
+											stringBuilder.AppendLine($" Players:{gameServer.CurrentPlayers}");
+											stringBuilder.AppendLine($" Players In Queue:{gameServer.InQueuePlayers}");
+											Console.WriteLine(stringBuilder);
 											return;
 										}
 										break;
