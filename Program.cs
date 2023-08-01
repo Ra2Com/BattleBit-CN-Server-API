@@ -1,6 +1,7 @@
 ﻿using MujAPI;
 using log4net;
 using log4net.Config;
+using CommunityServerAPI.MujAPI;
 
 class Program
 {
