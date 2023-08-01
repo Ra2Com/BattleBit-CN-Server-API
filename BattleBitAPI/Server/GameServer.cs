@@ -100,15 +100,10 @@ namespace BattleBitAPI.Server
 
             this.mLastPackageReceived = Extentions.TickCount;
             this.mLastPackageSent = Extentions.TickCount;
-
-<<<<<<< HEAD
-			this.ServerHash = ((ulong)port << 32) | iP.ToUInt();
-=======
             this.ServerHash = ((ulong)port << 32) | (ulong)iP.ToUInt();
             this.Settings = new ServerSettings(resources);
             this.MapRotation = new MapRotation(resources);
             this.GamemodeRotation = new GamemodeRotation(resources);
->>>>>>> ec935486deb92a1ce00e871e2b766d2d7340b826
         }
 
         // ---- Tick ----
