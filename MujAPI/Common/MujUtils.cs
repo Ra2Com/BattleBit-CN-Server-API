@@ -11,33 +11,39 @@ namespace MujAPI
 
 		//lowercase names to enums
 		public static Dictionary<string, Maps> stringToEnumMap = new Dictionary<string, Maps>
-			{
-				{ "azagor", Maps.Azagor },
-				{ "basra", Maps.Basra },
-				{ "construction", Maps.Contruction },
-				{ "district", Maps.District },
-				{ "dustydew", Maps.DustyDew },
-				{ "equardovo", Maps.Equardovo },
-				{ "frugis", Maps.Frugis },
-				{ "isle", Maps.Isle },
-				{ "lonovo", Maps.Lonovo },
-				{ "multuislands", Maps.MultuIslands },
-				{ "namak", Maps.Namak },
-				{ "oildunes", Maps.OilDunes },
-				{ "river", Maps.River },
-				{ "salhan", Maps.Salhan },
-				{ "sandysunset", Maps.SandySunset },
-				{ "tensatown", Maps.TensaTown },
-				{ "valley", Maps.Valley },
-				{ "wakistan", Maps.Wakistan },
-				{ "wineparadise", Maps.WineParadise },
-				{ "voxelland", Maps.VoxelLand },
-			};
+		{
+			{ "azagor", Maps.Azagor },
+			{ "basra", Maps.Basra },
+			{ "construction", Maps.Contruction },
+			{ "district", Maps.District },
+			{ "dustydew", Maps.DustyDew },
+			{ "equardovo", Maps.Equardovo },
+			{ "frugis", Maps.Frugis },
+			{ "isle", Maps.Isle },
+			{ "lonovo", Maps.Lonovo },
+			{ "multuislands", Maps.MultuIslands },
+			{ "namak", Maps.Namak },
+			{ "oildunes", Maps.OilDunes },
+			{ "river", Maps.River },
+			{ "salhan", Maps.Salhan },
+			{ "sandysunset", Maps.SandySunset },
+			{ "tensatown", Maps.TensaTown },
+			{ "valley", Maps.Valley },
+			{ "wakistan", Maps.Wakistan },
+			{ "wineparadise", Maps.WineParadise },
+			{ "voxelland", Maps.VoxelLand },
+		};
 		public static Dictionary<string, MapDayNight> stringToEnumDayNight = new Dictionary<string, MapDayNight>
-			{
-				{ "day", MapDayNight.Day },
-				{ "night", MapDayNight.Night },
-			};
+		{
+			{ "day", MapDayNight.Day },
+			{ "night", MapDayNight.Night },
+		};
+
+		public static Func<string, bool> GetServerIdentifier = (name) =>
+		{
+			string pattern = @"^[A-Z]{2}#\d+$";
+			return System.Text.RegularExpressions.Regex.IsMatch(name, pattern);
+		};
 
 
 		/// <summary>

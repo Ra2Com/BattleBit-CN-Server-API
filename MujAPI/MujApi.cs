@@ -1,8 +1,10 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using MujAPI.Commands;
+using System.Linq;
 using System.Net;
-
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace MujAPI
 {
@@ -12,6 +14,7 @@ namespace MujAPI
         private static Dictionary<MujPlayer, bool> premiumPlayers = new Dictionary<MujPlayer, bool>();
         private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
         public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
+        public static Dictionary<string, GameServer> GameServerIdentifiers = new Dictionary<string, GameServer>();
 
         //logger
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Program));
@@ -33,8 +36,10 @@ namespace MujAPI
 
             //TestUserVotes(listener);
 
-            serverCommandProcessor = new CommandProcessor(listener);
+			serverCommandProcessor = new CommandProcessor(listener);
             Task.Run(() => serverCommandProcessor.Start()); //start server command processor
+
+
 
         }
 
@@ -96,7 +101,7 @@ namespace MujAPI
 
         private static async Task<bool> OnGameServerConnecting(IPAddress address)
         {
-            log.Info(address.ToString() + " is attempting to connect");
+			log.Info(address.ToString() + " is attempting to connect");
             return true;
         }
 
@@ -120,9 +125,11 @@ namespace MujAPI
             }
             else if (IsAcrossServerChatOn && channel.HasFlag(ChatChannel.AllChat)) //experimental fr fr
             {
+                string ServerIdentifier = GameServerIdentifiers.FirstOrDefault(kvp => kvp.Value == player.GameServer).Key;
+
                 string[] ChatMessage = new string[2];
                 ChatMessage[0] = "all";
-                ChatMessage[1] = $"GLOBAL: {player.Name} : {msg}";
+                ChatMessage[1] = $"({ServerIdentifier}) {player.Name} : {msg}";
 
                 serverCommandProcessor.SendChatMessageToAllServers(ChatMessage);
             }
@@ -131,7 +138,12 @@ namespace MujAPI
 
         private static async Task OnGameServerConnected(GameServer server)
         {
-            log.Info($"{server} just connected");
+			var ServerRegex = new Regex(@"[A-Z]{2}#\d+");
+			string ServerIdentifier = ServerRegex.Match(server.ServerName).Value;
+
+            GameServerIdentifiers.Add(ServerIdentifier, server);
+
+			log.Info($"{server} just connected");
 
             Timer timer = new(MujUtils.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
 
