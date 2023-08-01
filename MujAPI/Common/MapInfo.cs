@@ -1,5 +1,4 @@
 ﻿using BattleBitAPI.Common;
-using BattleBitAPI.Common.Enums;
 
 namespace BattleBitAPI.Common
 {

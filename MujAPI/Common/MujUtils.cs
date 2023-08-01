@@ -1,107 +1,44 @@
-﻿using BattleBitAPI.Common.Enums;
-using BattleBitAPI.Common;
+﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using MujAPI.Commands;
 
 namespace MujAPI
 {
-	public class MujUtils
+    public class MujUtils : ChatCommands
 	{
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandProcessor));
 
-		public static bool IsVoteSkipAnnounced = false;
-		public static bool IsMapVoteTrollFlagOn = false;
-
-		/// <summary>
-		/// used to handle command in game chat
-		/// </summary>
-		/// <param name="player"></param>
-		/// <param name="msg"></param>
-		public static void HandleChatCommand(MujPlayer player, ChatChannel channel , string msg)
-		{
-			string[] commandParts = msg.Trim().ToLower().Split(" ");
-			if (commandParts.Length > 0)
+		//lowercase names to enums
+		public static Dictionary<string, Maps> stringToEnumMap = new Dictionary<string, Maps>
 			{
-				string command = commandParts[0].Substring(1);
-				string[] args = commandParts.Skip(1).ToArray();
-				switch (command)
-				{
-					case "votekick":
-						if (args.Length == 1)
-						{
-							player.GameServer.MessageToPlayer(player, "Usage: !votekick <playername>");
-							break;
-						}
-						else
-						{ 
-							player.GameServer.Kick(player.GameServer.FindSteamIdByName(args[0], player.GameServer), "votekicked!");
-							break;
-						}
-					case "kill":
-						if (args.Length == 1)
-						{
-							player.GameServer.MessageToPlayer(player, "Usage !kill <playername>");
-							break;
-						}
-						if (!player.Role.HasFlag(Roles.Moderator))
-						{
-							player.GameServer.MessageToPlayer(player, "Ur Not an admin");
-							break;
-						}
-						else
-						{
-							ulong steamid = player.GameServer.FindSteamIdByName((string)args[0], player.GameServer);
-							player.GameServer.Kill(steamid);
-							player.GameServer.AnnounceShort($"<color=red>{args[0]}</color> Has been Smited!!");
-							break;
-						}
-					case "skipmap":
-						if (args.Length == 1)
-						{
-							if (args[0] == "trollflagon")
-							{
-								IsMapVoteTrollFlagOn = !IsMapVoteTrollFlagOn;
-							}
-						}
-						if (args.Length == 2) 
-						{
-							player.GameServer.MessageToPlayer(player, "this is used to skip the current map Usage: !skipmap <mapname> <day/night>");
-							break;
-						}
-						if (!IsVoteSkipAnnounced)
-						{
-							player.GameServer.AnnounceLong("A Skip Map Vote Has been initiated");
-							IsVoteSkipAnnounced = true;
-						}
-						else
-						{
-							Maps MatchedMap = GetMapsEnum(args[0]);
-							MapDayNight MatchedMapDayNight = GetDayNightEnum(args[1]);
-							if (MatchedMap == Maps.None)
-							{
-								player.GameServer.MessageToPlayer(player, "Not a valid map");
-								break;
-							}
-							if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
-							{
-								player.Kick("smh ╭∩╮(-_-)╭∩╮");
-								break;
-							}
-							else
-							{
-								MapInfo MapInfo = new() { Map = MatchedMap, DayNight = MatchedMapDayNight};
-								player.VotedMap = MapInfo;
-								break;
-							}
-						}
-						break;
+				{ "azagor", Maps.Azagor },
+				{ "basra", Maps.Basra },
+				{ "construction", Maps.Contruction },
+				{ "district", Maps.District },
+				{ "dustydew", Maps.DustyDew },
+				{ "equardovo", Maps.Equardovo },
+				{ "frugis", Maps.Frugis },
+				{ "isle", Maps.Isle },
+				{ "lonovo", Maps.Lonovo },
+				{ "multuislands", Maps.MultuIslands },
+				{ "namak", Maps.Namak },
+				{ "oildunes", Maps.OilDunes },
+				{ "river", Maps.River },
+				{ "salhan", Maps.Salhan },
+				{ "sandysunset", Maps.SandySunset },
+				{ "tensatown", Maps.TensaTown },
+				{ "valley", Maps.Valley },
+				{ "wakistan", Maps.Wakistan },
+				{ "wineparadise", Maps.WineParadise },
+				{ "voxelland", Maps.VoxelLand },
+			};
+		public static Dictionary<string, MapDayNight> stringToEnumDayNight = new Dictionary<string, MapDayNight>
+			{
+				{ "day", MapDayNight.Day },
+				{ "night", MapDayNight.Night },
+			};
 
-					default:
-						player.GameServer.MessageToPlayer(player, "Invalid Usage of commands");
-						break;
-				}
-			}
-		}
 
 		/// <summary>
 		/// motd
@@ -135,16 +72,9 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="input"></param>
 		/// <returns></returns>
-		public static Maps GetMapsEnum(string input)
+		public static Maps GetMapsEnumFromMapString(string input)
 		{
 			string lowercaseInput = input.ToLower();
-
-			var stringToEnumMap = new Dictionary<string, Maps>
-			{
-				{ "azagor", Maps.Azagor },
-				{ "tensatown", Maps.TensaTown },
-				{ "lonovo", Maps.Lonovo }
-			};
 
 			if (stringToEnumMap.TryGetValue(lowercaseInput, out Maps matchedMap))
 			{
@@ -159,17 +89,11 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="input"></param>
 		/// <returns></returns>
-		public static MapDayNight GetDayNightEnum(string input)
+		public static MapDayNight GetDayNightEnumFromString(string input)
 		{
 			string lowercaseInput = input.ToLower();
 
-			var stringToEnumMap = new Dictionary<string, MapDayNight>
-			{
-				{ "day", MapDayNight.Day },
-				{ "night", MapDayNight.Night },
-			};
-
-			if (stringToEnumMap.TryGetValue(lowercaseInput, out MapDayNight matchedDayNight))
+			if (stringToEnumDayNight.TryGetValue(lowercaseInput, out MapDayNight matchedDayNight))
 			{
 				return matchedDayNight;
 			}

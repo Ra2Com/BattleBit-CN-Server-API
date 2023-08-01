@@ -1,11 +1,8 @@
 ﻿using BattleBitAPI.Server;
 using System.Net;
 using System.Text;
-using System.Linq;
 using log4net.Config;
 using System.Net.Sockets;
-using BattleBitAPI;
-using System.Reflection;
 
 namespace MujAPI
 {
@@ -60,35 +57,30 @@ namespace MujAPI
                         case "clear":
                             Console.Clear();
                             break;
-
                         case "help":
                             PrintHelp();
                             break;
-
                         case "shutdown":
                             ShutdownServers(args);
                             break;
-
                         case "say":
                             SayToServers(args);
                             break;
-
                         case "listall":
                             ListAllServers();
                             break;
-
                         case "desc":
                             DescribeServer(args);
                             break;
-
 						case "stopapi":
                             ShutdownAPI();
                             break;
-
                         case "addservertest":
                             TestGameServerConn();
                             break;
-
+                        case "crosschat":
+                            EnableCrossServerChat();
+                            break;
                         default:
                             log.Error("Unknown command. Type 'help' for available commands.\n");
                             break;
@@ -96,6 +88,13 @@ namespace MujAPI
                 }
             }
         }
+
+		private void EnableCrossServerChat()
+		{
+            MujApi.IsAcrossServerChatOn = !MujApi.IsAcrossServerChatOn;
+            var state = MujApi.IsAcrossServerChatOn ? "Enabled" : "Disabled";
+			log.Info($"Cross Server Chat {state}");
+		}
 
 		private async void TestGameServerConn()
 		{
@@ -132,7 +131,8 @@ namespace MujAPI
                 ("listall", "lists all the servers connected to the api"),
                 ("desc <serverport>", "shows a description of that server"),
                 ("clear", "clears the console"),
-                ("stopapi", "shuts down the api")
+                ("stopapi", "shuts down the api"),
+                ("crosschat", "Toggle Cross Server Chat")
             };
 
 			foreach (var (command, description) in commands)
