@@ -227,7 +227,7 @@ namespace MujAPI.Commands
 			var GameServer = Player.GameServer;
 
 			//helper method for removing and adding to dictionary
-			void RemoveOrAddToBullyList(MujPlayer victim, string[] args)
+			void RemoveOrAddToBullyList(MujPlayer victim)
 			{
 				ulong VictimSteamId = victim.SteamID;
 				if (MujApi.BullyList.ContainsKey(VictimSteamId))
@@ -261,7 +261,7 @@ namespace MujAPI.Commands
 						Player.Message("Victim could not be found");
 						return;
 					}
-					RemoveOrAddToBullyList(Victim, args);
+					RemoveOrAddToBullyList(Victim);
 				}
 				else
 				{
@@ -273,7 +273,7 @@ namespace MujAPI.Commands
 						return;
 					}
 					MujPlayer Victim = GameServer.FindPlayerBySteamId(victimSteamID, GameServer);
-					RemoveOrAddToBullyList(Victim, args);
+					RemoveOrAddToBullyList(Victim);
 				}
 			}
 			else
