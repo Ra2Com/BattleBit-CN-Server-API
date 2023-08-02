@@ -14,7 +14,7 @@ namespace MujAPI
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ChatCommandHandler));
 
 
-		private Dictionary<string, Action<string[], object[]>> commands = new Dictionary<string, Action<string[], object[]>>();
+		private Dictionary<string, Action<string[], object[]>> commands { get; set; }
 
 		public ChatCommandHandler()
 		{
@@ -45,7 +45,7 @@ namespace MujAPI
 			string[] commandParts = input.Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
 			// this is just used to remove the color tags from the server names.
-			// i use AA#12 so two capital letters a # and then any amount of numbers
+			// i use UK#1 so two capital letters a hashtag and then any amount of numbers
 			var ServerRegex = new Regex(@"[A-Z]{2}#\d+");
 			string ServerIdentifier = ServerRegex.Match(player.GameServer.ServerName).Value;
 

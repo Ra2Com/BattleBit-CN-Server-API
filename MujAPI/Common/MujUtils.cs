@@ -3,6 +3,7 @@ using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using MujAPI.Commands;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MujAPI
 {
@@ -45,10 +46,13 @@ namespace MujAPI
 		/// used to make colour tags for server identifiers. maybe could be used for colourful text 🤔.
 		/// </summary>
 		/// <returns></returns>
-		public static string GetRandomColor()
+		public static async Task<string> GetRandomColorAsync()
 		{
-			var random = new Random();
-			return string.Format("#{0:X6}", random.Next(0x1000000));
+			return await Task.Run(() =>
+			{
+				var random = new Random();
+				return string.Format("#{0:X6}", random.Next(0x1000000));
+			});
 		}
 
 		public static string GetServerIdentifier(GameServer server) 
@@ -152,6 +156,16 @@ namespace MujAPI
 			int maxOccurrences = groupedMapInfos.Max(group => group.Occurrences);
 
 			return (totalOccurances, maxOccurrences);
+		}
+
+		public static async Task<string> GetColoredIdentifierAsync(string serverName)
+		{
+			var ServerNameRegex = new Regex(@"[A-Z]{2}#\d+");
+
+			string ServerIdentifier = ServerNameRegex.Match(serverName).Value;
+			string RandomColour = await MujUtils.GetRandomColorAsync();
+
+			return $"<color={RandomColour}>{ServerIdentifier}</color>";
 		}
 
 	}

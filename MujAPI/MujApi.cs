@@ -25,7 +25,7 @@ namespace MujAPI
 
 		//flags
 		public static bool IsAcrossServerChatOn = false;
-		public static ServerListener<MujPlayer> listener = new ServerListener<MujPlayer>();
+		public static ServerListener<MujPlayer> listener = new();
 
 		public static void Start()
 		{
@@ -119,10 +119,10 @@ namespace MujAPI
 		{
 			if (msg.StartsWith("!"))
 			{
-				string command = msg.TrimStart('!');
+				string command = msg[1..];
 
 				object[] optionalObjects = new object[] { player, channel };
-				commandHandler.ExecuteCommand(command, optionalObjects);
+				await Task.Run(() => commandHandler.ExecuteCommand(command, optionalObjects));
 			}
 			else if (IsAcrossServerChatOn && channel.HasFlag(ChatChannel.AllChat)) //experimental fr fr
 			{
@@ -132,18 +132,14 @@ namespace MujAPI
 				ChatMessage[0] = "all";
 				ChatMessage[1] = $"({ServerIdentifier}) {player.Name} : {msg}";
 
-				serverCommandProcessor.SendChatMessageToAllServers(ChatMessage);
+				await Task.Run(() => serverCommandProcessor.SendChatMessageToAllServers(ChatMessage));
 			}
-
 		}
 
 		public static async Task OnGameServerConnected(GameServer server)
 		{
-			var ServerRegex = new Regex(@"[A-Z]{2}#\d+");
-			string ServerIdentifier = ServerRegex.Match(server.ServerName).Value;
-			string randomColor = MujUtils.GetRandomColor();
 
-			string ColouredIdentifier = $"<color={randomColor}>{ServerIdentifier}</color>";
+			string ColouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);
 
 			GameServerIdentifiers.Add(ColouredIdentifier, server);
 
@@ -167,41 +163,22 @@ namespace MujAPI
 		private static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
 		{
 			if (request.Loadout.PrimaryWeapon.Tool == Weapons.M4A1)
-			{
-				//Don't allow M4A1
 				request.Loadout.PrimaryWeapon.Tool = null;
-			}
+
 			else if (request.Loadout.PrimaryWeapon.Tool.WeaponType == WeaponType.SniperRifle)
-			{
-				//Force 6x if weapon is sniper.
 				request.Loadout.PrimaryWeapon.MainSight = Attachments._6xScope;
-			}
 
-			//Override pistol with deagle
 			request.Loadout.SecondaryWeapon.Tool = Weapons.DesertEagle;
-
-			//Force everyone to use RPG
 			request.Loadout.LightGadget = Gadgets.Rpg7HeatExplosive;
 
-			//Don't allow C4s
 			if (request.Loadout.HeavyGadget == Gadgets.C4)
 				request.Loadout.HeavyGadget = null;
 
-			//Spawn player 2 meter above than the original position.
 			request.SpawnPosition.Y += 2f;
-
-			//Remove spawn protection
 			request.SpawnProtection = 0f;
-
-			//Remove chest armor
 			request.Wearings.Chest = null;
-
-			//Give extra 10 more magazines on primary
 			request.Loadout.PrimaryExtraMagazines += 10;
-
-			//Give extra 5 more throwables 
 			request.Loadout.ThrowableExtra += 5;
-
 			return request;
 		}
 
