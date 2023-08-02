@@ -8,6 +8,9 @@ Battle bit server api with custom extentions and methods
 	* [ ] `Send Errors - Database`
 	* [ ] `Send Errors - Discord Bot`
   * [ ] `Discord Bot` - integrate discord bot
+	* [ ] `Start Server`
+	* [ ] `Issue Commands`
+	* [ ] `Take Actions` - could be used if you have something scanning chat for profanity or OnPlayerReported
   * [ ] `Handle Environment Variables`
   * [x] `ChatCommandHandler`
 	* [x] `AddCommand` - ("command", Callback)
