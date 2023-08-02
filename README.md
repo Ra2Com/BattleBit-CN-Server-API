@@ -16,9 +16,9 @@ Battle bit server api with custom extentions and methods
 	* [x] `help command` - show a list of available commands for api server
   * [ ] `DataBase` Integration
 	* [ ] save stats
-	* [ ] get stats
 	* [ ] save match data
 	* [ ] save logs
+	* [ ] get stats
 	* [ ] get mappool
 	* [ ] get gamemodepool
 	* [ ] get weapon bans
