@@ -19,6 +19,7 @@ namespace MujAPI
 		public MujPlayer(ulong steamID)
 		{
 			SteamID = steamID;
+
 		}
 	}
 

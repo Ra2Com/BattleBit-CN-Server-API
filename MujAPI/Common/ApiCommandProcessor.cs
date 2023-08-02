@@ -3,13 +3,14 @@ using System.Net;
 using System.Text;
 using log4net.Config;
 using System.Net.Sockets;
+using System.Reflection;
 
 namespace MujAPI
 {
-	public class CommandProcessor
+	public class ApiCommandProcessor
 	{
 		//logger
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandProcessor));
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandProcessor));
 
 
 		private readonly ServerListener<MujPlayer> listener;
@@ -22,7 +23,7 @@ namespace MujAPI
 		/// <c>(MujPlayer)</c> class needs to be public <br/>
 		/// </remarks>
 		/// <param name="listener">the api listener</param>
-		public CommandProcessor(ServerListener<MujPlayer> listener)
+		public ApiCommandProcessor(ServerListener<MujPlayer> listener)
 		{
 			this.listener = listener;
 		}
@@ -72,11 +73,17 @@ namespace MujAPI
 						case "desc":
 							DescribeServer(args);
 							break;
-						case "stopapi":
+						case "exit":
 							ShutdownAPI();
 							break;
 						case "addservertest":
 							TestGameServerConn();
+							break;
+						case "addtestplayers":
+							AddTestPlayers(args);
+							break;
+						case "listplayers":
+							ListAllPlayers();
 							break;
 						case "crosschat":
 							EnableCrossServerChat();
@@ -89,6 +96,88 @@ namespace MujAPI
 			}
 		}
 
+		private void AddTestPlayers(string[] args)
+		{
+			int TotalPlayersAdded = 0;
+			switch (args.Length)
+			{
+				case 1:
+					{
+						if (!int.TryParse(args[0], out int NumberOfPlayers) || NumberOfPlayers == 254 * 16)
+						{
+							log.Error("Too Many Players\n");
+							break;
+						}
+						else
+						{
+							int CurrentPlayerCount;
+							int MaxPlayerCount;
+							int ServerIndex = 0;
+
+							foreach (var server in listener.mActiveConnections.Values)
+							{
+
+								PropertyInfo currentPlayerProperty = server.GetType().GetProperty("CurrentPlayers", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+								if (currentPlayerProperty != null)
+								{
+									CurrentPlayerCount = server.CurrentPlayers;
+									MaxPlayerCount = server.MaxPlayers;
+
+									int AvailableSlots = MaxPlayerCount - CurrentPlayerCount;
+
+									int PlayersToAdd = Math.Min(NumberOfPlayers - TotalPlayersAdded, AvailableSlots);
+
+									currentPlayerProperty.SetValue(server, CurrentPlayerCount += PlayersToAdd);
+
+									TotalPlayersAdded += PlayersToAdd;
+
+									if (TotalPlayersAdded >= NumberOfPlayers)
+										break;
+								}
+								else
+								{
+									log.Error("couldnt get CurrentPlayers");
+									break;
+								}
+							}
+						}
+					}
+					break;
+				default:
+					log.Error("Invalid Usage");
+					break;
+			}
+		}
+
+
+		/// <summary>
+		/// lists all the players connected to each servers
+		/// </summary>
+		private void ListAllPlayers()
+		{
+			if (listener.mActiveConnections.Count == 0)
+			{
+				log.Error("no servers");
+				return;
+			}
+
+			foreach (var server in listener.mActiveConnections.Values)
+			{
+				var allplayers = server.GetAllPlayers();
+				foreach (var player in allplayers)
+				{
+					if (player != null)
+					{
+						log.Info(player);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// toggleable flag that toggles cross server chat
+		/// </summary>
 		private void EnableCrossServerChat()
 		{
 			MujApi.IsAcrossServerChatOn = !MujApi.IsAcrossServerChatOn;
@@ -98,21 +187,69 @@ namespace MujAPI
 
 		private async void TestGameServerConn()
 		{
+			//creates server 1
 			TcpClient tcpClient1 = new();
 			GameServer.mInternalResources mInternalResources1 = new();
 			GameServer server1 = new(tcpClient1, mInternalResources1, null, IPAddress.Loopback,
 				30000, true, "EU#1", "CONQ", "azagor", BattleBitAPI.Common.MapSize._127vs127,
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
+			//creates server 2
 			TcpClient tcpClient2 = new();
 			GameServer.mInternalResources mInternalResources2 = new();
 			GameServer server2 = new(tcpClient2, mInternalResources2, null, IPAddress.Loopback,
 				30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
+			//adds the servers to the mActiveConnections list
 			listener.mActiveConnections.Add(server1.ServerHash, server1);
 			listener.mActiveConnections.Add(server2.ServerHash, server2);
 
+			// makes the ongameserverconnected run
+			await MujApi.OnGameServerConnected(server1);
+			await MujApi.OnGameServerConnected(server2);
+
+
+			//creates first player and gives admin and mod
+			MujPlayer mujPlayer1 = new(ulong.Parse("783264326438"));
+			mujPlayer1.Name = "Muj";
+			mujPlayer1.GameServer = server1;
+			mujPlayer1.Stats = new BattleBitAPI.Common.PlayerStats
+			{
+				Roles = BattleBitAPI.Common.Roles.Admin | BattleBitAPI.Common.Roles.Moderator
+			};
+			log.Info(mujPlayer1);
+
+			//creates second player
+			MujPlayer mujPlayer2 = new(ulong.Parse("324983274987"));
+			mujPlayer2.Name = "Test";
+			mujPlayer2.GameServer = server1;
+			log.Info(mujPlayer2);
+
+			//adds the players to the internal resources
+			mInternalResources1.AddPlayer(mujPlayer1);
+			mInternalResources1.AddPlayer(mujPlayer2);
+
+			// tests each command
+			var commands = new[] 
+			{ 
+				("!votekick"),
+				("!votekick Test"),
+				("!kill"),
+				("!kill Test"),
+				("!skipmap"),
+				("!skipmap mapnames"),
+				("!skipmap trollflagon"),
+				("!skipmap azagor"),
+				("!skipmap azagor day"),
+				("!skipmap lonovo night"),
+			};
+
+			foreach (var command in commands)
+			{
+				// simulates a chat event
+				await MujApi.OnPlayerChat(mujPlayer1, BattleBitAPI.Common.ChatChannel.AllChat, command);
+			}
 
 
 		}
@@ -131,7 +268,7 @@ namespace MujAPI
 				("listall", "lists all the servers connected to the api"),
 				("desc <serverport>", "shows a description of that server"),
 				("clear", "clears the console"),
-				("stopapi", "shuts down the api"),
+				("exit", "shuts down the api"),
 				("crosschat", "Toggle Cross Server Chat")
 			};
 
@@ -190,6 +327,7 @@ namespace MujAPI
 									return;
 								default:
 									{
+										// write description of chosen server
 										foreach (var gameServer in listener.mActiveConnections.Values
 											.Where(gameServer => PortNumber == gameServer.GamePort))
 										{
@@ -200,7 +338,7 @@ namespace MujAPI
 											stringBuilder.AppendLine($" GameMode:{gameServer.Gamemode}");
 											stringBuilder.AppendLine($" Players:{gameServer.CurrentPlayers}");
 											stringBuilder.AppendLine($" Players In Queue:{gameServer.InQueuePlayers}");
-											Console.WriteLine(stringBuilder);
+											log.Info(stringBuilder);
 											return;
 										}
 										break;

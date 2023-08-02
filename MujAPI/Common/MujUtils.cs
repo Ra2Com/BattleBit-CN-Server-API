@@ -1,13 +1,15 @@
-﻿using BattleBitAPI.Common;
+﻿using BattleBitAPI;
+using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using MujAPI.Commands;
+using System.Text;
 
 namespace MujAPI
 {
 	public class MujUtils : ChatCommands
 	{
 		//logger
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandProcessor));
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandProcessor));
 
 		//lowercase names to enums
 		public static Dictionary<string, Maps> stringToEnumMap = new Dictionary<string, Maps>
@@ -39,12 +41,20 @@ namespace MujAPI
 			{ "night", MapDayNight.Night },
 		};
 
-		public static Func<string, bool> GetServerIdentifier = (name) =>
+		/// <summary>
+		/// used to make colour tags for server identifiers. maybe could be used for colourful text 🤔.
+		/// </summary>
+		/// <returns></returns>
+		public static string GetRandomColor()
 		{
-			string pattern = @"^[A-Z]{2}#\d+$";
-			return System.Text.RegularExpressions.Regex.IsMatch(name, pattern);
-		};
+			var random = new Random();
+			return string.Format("#{0:X6}", random.Next(0x1000000));
+		}
 
+		public static string GetServerIdentifier(GameServer server) 
+		{
+			return MujApi.GameServerIdentifiers.FirstOrDefault(kvp => kvp.Value == server).Key;
+		}
 
 		/// <summary>
 		/// motd
@@ -67,10 +77,16 @@ namespace MujAPI
 		/// <summary>
 		/// displays the current time on the console title
 		/// </summary>
-		/// <param name="state"></param>
-		public static void SetConsoleTitleAsTime(object state)
+		/// <param name="listener"></param>
+		public static void SetConsoleTitleAsTime(ServerListener<MujPlayer> listener)
 		{
-			Console.Title = DateTime.UtcNow.ToString();
+			StringBuilder sb = new();
+
+			int totalPlayers = listener.mActiveConnections.Values.Sum(server => server.CurrentPlayers);
+
+			sb.Append($"{DateTime.UtcNow} | {listener.mActiveConnections.Count} Servers Connected | Total Players Connected: {totalPlayers}");
+
+			Console.Title = sb.ToString();
 		}
 
 		/// <summary>

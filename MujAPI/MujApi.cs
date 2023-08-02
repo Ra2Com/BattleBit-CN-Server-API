@@ -1,5 +1,6 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using log4net.Config;
 using MujAPI.Commands;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,7 @@ namespace MujAPI
 {
 	public class MujApi
 	{
-		private static CommandProcessor serverCommandProcessor;
+		private static ApiCommandProcessor serverCommandProcessor;
 		private static Dictionary<MujPlayer, bool> premiumPlayers = new Dictionary<MujPlayer, bool>();
 		private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
 		public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
@@ -24,10 +25,13 @@ namespace MujAPI
 
 		//flags
 		public static bool IsAcrossServerChatOn = false;
+		public static ServerListener<MujPlayer> listener = new ServerListener<MujPlayer>();
 
 		public static void Start()
 		{
-			var listener = new ServerListener<MujPlayer>();
+			XmlConfigurator.Configure();
+			log.Info("Logger Started");
+
 			listener.OnPlayerTypedMessage += OnPlayerChat;
 			listener.OnGameServerConnected += OnGameServerConnected;
 			listener.OnGameServerConnecting += OnGameServerConnecting;
@@ -36,17 +40,16 @@ namespace MujAPI
 			listener.OnGetPlayerStats += OnGetPlayerStats;
 			//listener.OnMatchEnding += OnMatchEnding;
 			listener.Start(29294);//Port
+			log.Info("Listener started");
 
 			//register commands
 			ChatCommands.RegisterMyCommands(commandHandler);
+			log.Info("ChatCommands Registered");
 
-
-			//TestUserVotes(listener);
-
-			serverCommandProcessor = new CommandProcessor(listener);
-			Task.Run(() => serverCommandProcessor.Start()); //start server command processor
-
-
+			//command processor for api
+			serverCommandProcessor = new ApiCommandProcessor(listener);
+			Task.Run(() => serverCommandProcessor.Start());
+			log.Info("ApiCommands Listening");
 
 		}
 
@@ -112,16 +115,14 @@ namespace MujAPI
 			return true;
 		}
 
-		private static async Task OnPlayerChat(MujPlayer player, ChatChannel channel, string msg)
+		public static async Task OnPlayerChat(MujPlayer player, ChatChannel channel, string msg)
 		{
 			if (msg.StartsWith("!"))
 			{
+				string command = msg.TrimStart('!');
 
 				object[] optionalObjects = new object[] { player, channel };
-
-				commandHandler.ExecuteCommand(msg, optionalObjects);
-				log.Info(msg);
-
+				commandHandler.ExecuteCommand(command, optionalObjects);
 			}
 			else if (IsAcrossServerChatOn && channel.HasFlag(ChatChannel.AllChat)) //experimental fr fr
 			{
@@ -136,12 +137,15 @@ namespace MujAPI
 
 		}
 
-		private static async Task OnGameServerConnected(GameServer server)
+		public static async Task OnGameServerConnected(GameServer server)
 		{
 			var ServerRegex = new Regex(@"[A-Z]{2}#\d+");
 			string ServerIdentifier = ServerRegex.Match(server.ServerName).Value;
+			string randomColor = MujUtils.GetRandomColor();
 
-			GameServerIdentifiers.Add(ServerIdentifier, server);
+			string ColouredIdentifier = $"<color={randomColor}>{ServerIdentifier}</color>";
+
+			GameServerIdentifiers.Add(ColouredIdentifier, server);
 
 			log.Info($"{server} just connected");
 

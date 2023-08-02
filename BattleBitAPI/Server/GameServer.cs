@@ -6,11 +6,16 @@ using BattleBitAPI.Common;
 using BattleBitAPI.Common.Extentions;
 using BattleBitAPI.Networking;
 using CommunityServerAPI.BattleBitAPI;
+using MujAPI;
 
 namespace BattleBitAPI.Server
 {
 	public class GameServer : IDisposable
 	{
+		//logger
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(GameServer));
+
+
 		// ---- Public Variables ---- 
 		public TcpClient Socket { get; private set; }
 
@@ -294,6 +299,7 @@ namespace BattleBitAPI.Server
 		}
 		public void AnnounceShort(string msg)
 		{
+			log.Debug($"Announcement Short for {this.ServerName}: {msg}");
 			ExecuteCommand("an " + msg);
 		}
 		public void AnnounceLong(string msg)
@@ -302,6 +308,7 @@ namespace BattleBitAPI.Server
 		}
 		public void UILogOnServer(string msg, float messageLifetime)
 		{
+			log.Debug($"UILog Message for {this.ServerName}: {msg}, LifeTime ({messageLifetime} seconds)");
 			ExecuteCommand("serverlog " + msg + " " + messageLifetime);
 		}
 		public void ForceStartGame()
@@ -390,8 +397,11 @@ namespace BattleBitAPI.Server
 		}
 		public void MessageToPlayer(Player player, string msg)
 		{
+			log.Debug($"message to ({this.ServerName})({player}): {msg}");
 			MessageToPlayer(player.SteamID, msg);
 		}
+
+		//muj
 		public void SetServerFPS(int fps)
 		{
 			ExecuteCommand("set fps " + fps);
@@ -416,15 +426,6 @@ namespace BattleBitAPI.Server
 		{
 			ExecuteCommand("set bullet speed " + speed);
 		}
-		/// <summary>
-		/// changes the scale of the server
-		/// </summary>
-		/// 
-		/// <remarks>
-		/// [8vs8/16vs16/32vs32/64vs64/127vs127] (Starts new round if server is waiting for players)
-		/// </remarks>
-		/// 
-		/// <param name="scaleValue"></param>
 		public void ChangeScale(string scaleValue)
 		{
 			ExecuteCommand("scale " + scaleValue);
@@ -434,6 +435,8 @@ namespace BattleBitAPI.Server
 			var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamname);
 			return keyValuePair.Key;
 		}
+		//
+
 		public void SetRoleTo(ulong steamID, GameRole role)
 		{
 			ExecuteCommand("setrole " + steamID + " " + role);

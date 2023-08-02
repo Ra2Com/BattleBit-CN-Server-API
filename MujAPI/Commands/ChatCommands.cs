@@ -11,7 +11,7 @@ namespace MujAPI.Commands
 
 		public static bool IsVoteMapSkipAnnounced = false;
 		public static bool IsMapVoteTrollFlagOn = false;
-		public static int TotalVoteKicksNeeded = 0;
+		public static int TotalVoteKicksNeeded = 20;
 		public static Dictionary<ulong, int> SteamIDKickVotes = new Dictionary<ulong, int>();
 
 
@@ -31,25 +31,45 @@ namespace MujAPI.Commands
 			{
 				var player = (MujPlayer)optionalObjects[0];
 				var GameServer = player.GameServer;
-
-
 				ulong targetPlayerSteamId = GameServer.FindSteamIdByName(args[0], GameServer);
-				if (!SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
-					SteamIDKickVotes[targetPlayerSteamId] = 1; //set to 1 if it doesnt exist
-				if (SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
+
+				//helper function to handle votes
+				void HandleVotes(int votes)
 				{
-					SteamIDKickVotes[targetPlayerSteamId] += 1; // increment the value of the target player
-					SteamIDKickVotes.TryGetValue(targetPlayerSteamId, out int value); //get the votes of the target player
-					player.Message($"Vote To Kick {args[0]} Registered. Total Votes: {value}/{TotalVoteKicksNeeded}");
-					GameServer.UILogOnServer($"Need {TotalVoteKicksNeeded - value} to kick {args[0]}", 5f);
-					if (value == 1)
-						GameServer.AnnounceShort($"A Vote Kick on {args[0]} has been initiated. Needs {TotalVoteKicksNeeded} Votes to kick");
-					if (value >= 20)
+					// sends message to player and a uilog on the server
+					player.Message($"Vote To Kick Player:({args[0]}) Registered. Total Votes: {votes}/{TotalVoteKicksNeeded}");
+					GameServer.UILogOnServer($"Need ({TotalVoteKicksNeeded - votes}) to kick player:({args[0]})", 5f);
+					
+					//if there is 1 vote then an announcement is made
+					if (votes == 1)
+					{
+						GameServer.AnnounceShort($"A Vote Kick on Player:({args[0]}) has been initiated. Needs {TotalVoteKicksNeeded} Votes to kick");
+						return;
+					}
+
+					//if there are 20 or more votes then that player is kicked
+					if (votes >= 20)
 					{
 						GameServer.Kick(targetPlayerSteamId, "Vote Kicked");
-						GameServer.UILogOnServer($"{args[0]} Has Been Kicked", 5f);
+						GameServer.UILogOnServer($"({args[0]}) Has Been Kicked", 5f);
 						SteamIDKickVotes.Remove(targetPlayerSteamId);
 					}
+				}
+
+				if (!SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
+				{
+					//set to 1 if it doesnt exist
+					SteamIDKickVotes[targetPlayerSteamId] = 1;
+					SteamIDKickVotes.TryGetValue(targetPlayerSteamId, out int value); //get the votes of the target player
+					HandleVotes(value);
+					return;
+				}
+				if (SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
+				{
+					// increment the value of the target player
+					SteamIDKickVotes[targetPlayerSteamId] += 1; 
+					SteamIDKickVotes.TryGetValue(targetPlayerSteamId, out int value); //get the votes of the target player
+					HandleVotes(value);
 				}
 			}
 			else
@@ -65,12 +85,13 @@ namespace MujAPI.Commands
 			var player = (MujPlayer)optionalObjects[0];
 			var GameServer = player.GameServer;
 
-			if (!player.Stats.Roles.HasFlag(Roles.Moderator))
+			//checks if player is mod or admin
+			if (!player.Stats.Roles.HasFlag(Roles.Moderator | Roles.Admin))
 			{
 				player.Message("Ur Not an admin");
 				return;
 			}
-
+			//if trusted player is passed then kill command is issued 
 			if (args.Length == 1)
 			{
 				ulong steamid = GameServer.FindSteamIdByName(args[0], GameServer);
@@ -90,11 +111,14 @@ namespace MujAPI.Commands
 			var player = (MujPlayer)optionalObjects[0];
 			var GameServer = player.GameServer;
 
+			// looks for 1 argument
 			if (args.Length == 1)
 			{
+				// flag that can only be enabled by admin or mod
 				if (args[0] == "trollflagon" && player.Stats.Roles.HasFlag(Roles.Moderator | Roles.Admin))
 					IsMapVoteTrollFlagOn = !IsMapVoteTrollFlagOn;
 
+				// returns a list of the maps available to vote
 				if (args[0] == "mapnames")
 				{
 					StringBuilder sb = new StringBuilder();
@@ -111,15 +135,19 @@ namespace MujAPI.Commands
 					return;
 				}
 			}
+
+			//looks for 2 arguments
 			if (args.Length == 2)
 			{
 				Maps MatchedMap = MujUtils.GetMapsEnumFromMapString(args[0]);
 				MapDayNight MatchedMapDayNight = MujUtils.GetDayNightEnumFromString(args[1]);
+				// sends error message to user if they dont input a valid map name
 				if (MatchedMap == Maps.None)
 				{
 					player.Message("Not a valid map. Type !skipmap mapnames to get a list of the maps");
 					return;
 				}
+				// kicks the player for choosing lonovo night
 				if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
 				{
 					player.Kick("smh ╭∩╮(-_-)╭∩╮");
@@ -129,7 +157,7 @@ namespace MujAPI.Commands
 				{
 					MapInfo MapInfo = new() { Map = MatchedMap, DayNight = MatchedMapDayNight };
 					player.VotedMap = MapInfo;
-
+					//adds the user to a votemaplist
 					if (!MujApi.VoteMapList.ContainsKey(player))
 					{
 						MujApi.VoteMapList.Add(player, MapInfo);
@@ -142,11 +170,12 @@ namespace MujAPI.Commands
 					}
 				}
 			}
-			if (!IsVoteMapSkipAnnounced)
-			{
-				GameServer.AnnounceLong("A Skip Map Vote Has been initiated");
-				IsVoteMapSkipAnnounced = true;
-			}
+			//if (!IsVoteMapSkipAnnounced)
+			//{
+			//	//accounces to the game a map skip has been initiated
+			//	GameServer.AnnounceLong("A Skip Map Vote Has been initiated");
+			//	IsVoteMapSkipAnnounced = true;
+			//}
 			else
 			{
 				player.Message("this is used to skip the current map Usage: !skipmap <mapname> <day/night>");
