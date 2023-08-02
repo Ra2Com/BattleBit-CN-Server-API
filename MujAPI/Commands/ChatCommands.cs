@@ -68,7 +68,7 @@ namespace MujAPI.Commands
 							ulong targetPlayerSteamId = player.GameServer.FindSteamIdByName(args[0], player.GameServer);
 							if (!SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
 								SteamIDKickVotes[targetPlayerSteamId] = 1; //set to 1 if it doesnt exist
-							else
+							if (SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
 							{
 								SteamIDKickVotes[targetPlayerSteamId] += 1; // increment the value of the target player
 								SteamIDKickVotes.TryGetValue(targetPlayerSteamId, out int value); //get the votes of the target player
