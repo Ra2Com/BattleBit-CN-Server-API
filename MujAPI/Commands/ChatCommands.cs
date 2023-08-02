@@ -1,13 +1,15 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
-using MujAPI;
-using System.Numerics;
+using BattleBitAPI.Server;
 using System.Text;
 
 namespace MujAPI.Commands
 {
 	public class ChatCommands
 	{
+		//logger
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ChatCommands));
+
 
 		public static bool IsVoteMapSkipAnnounced = false;
 		public static bool IsMapVoteTrollFlagOn = false;
@@ -21,12 +23,14 @@ namespace MujAPI.Commands
 			commandHandler.AddCommand("votekick", ChatCommands.VoteKickCommand);
 			commandHandler.AddCommand("kill", ChatCommands.KillCommand);
 			commandHandler.AddCommand("skipmap", ChatCommands.SkipMapCommand);
+			commandHandler.AddCommand("bully", ChatCommands.BullyUserCommand);
 		}
 
 
 		// !votekick Callback
 		public static void VoteKickCommand(string[] args, object[] optionalObjects)
 		{
+			log.Info($"VoteKick Issued by {(MujPlayer)optionalObjects[0]}");
 			if (args.Length == 1)
 			{
 				var player = (MujPlayer)optionalObjects[0];
@@ -51,6 +55,7 @@ namespace MujAPI.Commands
 					if (votes >= 20)
 					{
 						GameServer.Kick(targetPlayerSteamId, "Vote Kicked");
+						log.Info($"{targetPlayerSteamId} has been kicked from {GameServer}");
 						GameServer.UILogOnServer($"({args[0]}) Has Been Kicked", 5f);
 						SteamIDKickVotes.Remove(targetPlayerSteamId);
 					}
@@ -85,17 +90,42 @@ namespace MujAPI.Commands
 			var player = (MujPlayer)optionalObjects[0];
 			var GameServer = player.GameServer;
 
+			if (args.Length == 0)
+				log.Info($"VoteKick Issued by {player}");
+			else
+				log.Info($"VoteKick Issued by {player}: args:{args[0]}");
+
 			//checks if player is mod or admin
 			if (!player.Stats.Roles.HasFlag(Roles.Moderator | Roles.Admin))
 			{
-				player.Message("Ur Not an admin");
+				player.Message("Can only be ran by admin or mod");
 				return;
 			}
 			//if trusted player is passed then kill command is issued 
 			if (args.Length == 1)
 			{
-				ulong steamid = GameServer.FindSteamIdByName(args[0], GameServer);
-				GameServer.Kill(steamid);
+				if (ulong.TryParse(args[0], out ulong SteamId))
+				{
+					MujPlayer Victim = GameServer.FindPlayerBySteamId(SteamId, GameServer);
+					if (Victim == null)
+					{
+						player.Message("Player could not be found");
+						return;
+					}
+					GameServer.Kill(SteamId);
+				}
+				else
+				{
+					// their steamid by name
+					ulong victimSteamID = GameServer.FindSteamIdByName(args[0], GameServer);
+					if (victimSteamID == 0)
+					{
+						player.Message("Player could not be found");
+						return;
+					}
+					GameServer.Kill(victimSteamID);
+				}
+				log.Info($"{SteamId} killed");
 				GameServer.AnnounceShort($"<color=red>{args[0]}</color> Has been Smited!!");
 				return;
 			}
@@ -116,7 +146,12 @@ namespace MujAPI.Commands
 			{
 				// flag that can only be enabled by admin or mod
 				if (args[0] == "trollflagon" && player.Stats.Roles.HasFlag(Roles.Moderator | Roles.Admin))
+				{
 					IsMapVoteTrollFlagOn = !IsMapVoteTrollFlagOn;
+					string enabled = IsMapVoteTrollFlagOn ? "Enabled" : "Disabled";
+					player.Message($"Lonovo Night Troll Flag {enabled}");
+					return;
+				}
 
 				// returns a list of the maps available to vote
 				if (args[0] == "mapnames")
@@ -150,7 +185,9 @@ namespace MujAPI.Commands
 				// kicks the player for choosing lonovo night
 				if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
 				{
-					player.Kick("smh ╭∩╮(-_-)╭∩╮");
+					string reason = "smh ╭∩╮(-_-)╭∩╮";
+					player.Kick(reason);
+					log.Info($"{player} kicked from {GameServer} | Reason: {reason}");
 					return;
 				}
 				else
@@ -172,7 +209,7 @@ namespace MujAPI.Commands
 			}
 			//if (!IsVoteMapSkipAnnounced)
 			//{
-			//	//accounces to the game a map skip has been initiated
+			//	//announces to the game a map skip has been initiated
 			//	GameServer.AnnounceLong("A Skip Map Vote Has been initiated");
 			//	IsVoteMapSkipAnnounced = true;
 			//}
@@ -181,6 +218,66 @@ namespace MujAPI.Commands
 				player.Message("this is used to skip the current map Usage: !skipmap <mapname> <day/night>");
 				return;
 			}
+		}
+
+		// !bully Callback
+		public static void BullyUserCommand(string[] args, object[] optionalObjects)
+		{
+			var Player = (MujPlayer)optionalObjects[0];
+			var GameServer = Player.GameServer;
+
+			//helper method for removing and adding to dictionary
+			void RemoveOrAddToBullyList(MujPlayer victim, string[] args)
+			{
+				ulong VictimSteamId = victim.SteamID;
+				if (MujApi.BullyList.ContainsKey(VictimSteamId))
+					MujApi.BullyList.Remove(VictimSteamId);
+				else
+					MujApi.BullyList[VictimSteamId] = victim;
+				Player.Message($"Player targeted");
+			}
+
+			// permission check
+			if (!Player.Stats.Roles.HasFlag(Roles.Admin | Roles.Moderator))
+			{
+				Player.Message("Can only be ran by admin or mod");
+				return;
+			}
+			
+			//check if only 1 argument
+			if (args.Length == 1) 
+			{
+				if (args[0] == "help")
+				{
+					Player.Message($"<color=red>bullying a user can be toggled by typing their name or steamid again</color>");
+					return;
+				}
+				if (ulong.TryParse(args[0], out ulong steamid))
+				{
+					//find the player
+					MujPlayer Victim =  GameServer.FindPlayerBySteamId(steamid, GameServer);
+					if (Victim == null)
+					{
+						Player.Message("Victim could not be found");
+						return;
+					}
+					RemoveOrAddToBullyList(Victim, args);
+				}
+				else
+				{
+					// their steamid
+					ulong victimSteamID = GameServer.FindSteamIdByName(args[0], GameServer);
+					if (victimSteamID == 0)
+					{
+						Player.Message("Victim could not be found");
+						return;
+					}
+					MujPlayer Victim = GameServer.FindPlayerBySteamId(victimSteamID, GameServer);
+					RemoveOrAddToBullyList(Victim, args);
+				}
+			}
+			else
+				Player.Message("Usage: !bully <steamid|username>");
 		}
 	}
 }

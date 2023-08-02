@@ -13,6 +13,7 @@ namespace MujAPI
 		private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
 		public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
 		public static Dictionary<string, GameServer> GameServerIdentifiers = new Dictionary<string, GameServer>();
+		public static Dictionary<ulong, MujPlayer> BullyList = new Dictionary<ulong, MujPlayer>();
 
 		//chat command handler
 		private static ChatCommandHandler commandHandler = new ChatCommandHandler();
@@ -159,6 +160,16 @@ namespace MujAPI
 
 		private static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
 		{
+			if (BullyList.ContainsKey(player.SteamID)) 
+			{
+				player.GameServer.Kill(player);
+				player.TimesBullied++;
+
+				string spelling = player.TimesBullied == 1 ? "Time" : "Times";
+				player.GameServer.SayToChat($"{player.Name} has been bullied {player.TimesBullied} {spelling}");
+				return request;
+			}
+
 			if (request.Loadout.PrimaryWeapon.Tool == Weapons.M4A1)
 				request.Loadout.PrimaryWeapon.Tool = null;
 

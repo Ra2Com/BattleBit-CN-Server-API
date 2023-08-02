@@ -10,6 +10,7 @@ namespace MujAPI
 		public MapInfo VotedMap { get; set; }
 		public PlayerStats Stats { get; set; }
 		public bool TrollFlagController { get; set; }
+		public int TimesBullied { get; set; }
 
 		public MujPlayer(ulong steamID)
 		{

@@ -299,7 +299,7 @@ namespace BattleBitAPI.Server
 		}
 		public void AnnounceShort(string msg)
 		{
-			log.Debug($"Announcement Short for {this.ServerName}: {msg}");
+			log.Info($"Announcement Short for {this.ServerName}: {msg}");
 			ExecuteCommand("an " + msg);
 		}
 		public void AnnounceLong(string msg)
@@ -308,7 +308,7 @@ namespace BattleBitAPI.Server
 		}
 		public void UILogOnServer(string msg, float messageLifetime)
 		{
-			log.Debug($"UILog Message for {this.ServerName}: {msg}, LifeTime ({messageLifetime} seconds)");
+			log.Info($"UILog Message for {this.ServerName}: {msg}, LifeTime ({messageLifetime} seconds)");
 			ExecuteCommand("serverlog " + msg + " " + messageLifetime);
 		}
 		public void ForceStartGame()
@@ -397,7 +397,7 @@ namespace BattleBitAPI.Server
 		}
 		public void MessageToPlayer(Player player, string msg)
 		{
-			log.Debug($"message to ({this.ServerName})({player}): {msg}");
+			log.Info($"message to ({this.ServerName})({player}): {msg}");
 			MessageToPlayer(player.SteamID, msg);
 		}
 
@@ -434,6 +434,11 @@ namespace BattleBitAPI.Server
 		{
 			var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamname);
 			return keyValuePair.Key;
+		}
+		public MujPlayer FindPlayerBySteamId(ulong steamid, GameServer server)
+		{
+			var player = server.mInternal.Players.FirstOrDefault(player => player.Key == steamid).Value;
+			return (MujPlayer)player;
 		}
 		//
 

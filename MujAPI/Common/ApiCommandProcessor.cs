@@ -172,7 +172,7 @@ namespace MujAPI
 				{
 					if (player != null)
 					{
-						log.Info(player);
+						log.Info($"{player} : {server.ServerName}");
 					}
 				}
 			}
@@ -188,6 +188,9 @@ namespace MujAPI
 			log.Info($"Cross Server Chat {state}");
 		}
 
+		/// <summary>
+		/// used to test game server objects
+		/// </summary>
 		private async void TestGameServerConn()
 		{
 			//creates server 1
@@ -246,6 +249,9 @@ namespace MujAPI
 				("!skipmap azagor"),
 				("!skipmap azagor day"),
 				("!skipmap lonovo night"),
+				("!bully nouser"),
+				("!bully 2376438746"),
+				("!bully help")
 			};
 
 			foreach (var command in commands)
@@ -253,6 +259,8 @@ namespace MujAPI
 				// simulates a chat event
 				await MujApi.OnPlayerChat(mujPlayer1, BattleBitAPI.Common.ChatChannel.AllChat, command);
 			}
+
+			await MujApi.OnPlayerChat(mujPlayer2, BattleBitAPI.Common.ChatChannel.AllChat, "!votekick Test");
 
 
 		}
@@ -269,10 +277,13 @@ namespace MujAPI
 				("shutdown <all|portnumber>", "shutdown all servers or specific server"),
 				("say <all|portnumber> <message>", "send a message to all servers or specific server"),
 				("listall", "lists all the servers connected to the api"),
+				("listplayers", "lists every player connected to each gameserver that connected to this api"),
 				("desc <serverport>", "shows a description of that server"),
 				("clear", "clears the console"),
 				("exit", "shuts down the api"),
-				("crosschat", "Toggle Cross Server Chat")
+				("crosschat", "Toggle Cross Server Chat"),
+				("addservertest", "DONOTUSE - used to test gameserver objects being added to server"),
+				("addtestplayers","DONOTUSE - used to add test players to gameserver objects")
 			};
 
 			foreach (var (command, description) in commands)
