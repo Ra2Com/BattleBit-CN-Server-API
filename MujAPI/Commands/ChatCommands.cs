@@ -1,4 +1,5 @@
-﻿using BattleBitAPI.Common;
+﻿using BattleBitAPI;
+using BattleBitAPI.Common;
 using MujAPI;
 using System.Text;
 
@@ -12,6 +13,40 @@ namespace MujAPI.Commands
 		public static bool IsMapVoteTrollFlagOn = false;
         public static int TotalVoteKicksNeeded = 0;
         public static Dictionary<ulong, int> SteamIDKickVotes = new Dictionary<ulong, int>();
+
+		// !votekick Callback
+		public static void VoteKickCommand(string[] args, object[] optionalObjects)
+		{
+			if (args.Length == 1)
+			{
+				var player = (MujPlayer)optionalObjects[0];
+				var GameServer = player.GameServer;
+
+
+				ulong targetPlayerSteamId = GameServer.FindSteamIdByName(args[0], GameServer);
+				if (!SteamIDKickVotes.ContainsKey(targetPlayerSteamId))
+					SteamIDKickVotes[targetPlayerSteamId] = 1; //set to 1 if it doesnt exist
+				else
+				{
+					SteamIDKickVotes[targetPlayerSteamId] += 1; // increment the value of the target player
+					SteamIDKickVotes.TryGetValue(targetPlayerSteamId, out int value); //get the votes of the target player
+					player.Message($"Vote To Kick {args[0]} Registered. Total Votes: {value}/{TotalVoteKicksNeeded}");
+					GameServer.UILogOnServer($"Need {TotalVoteKicksNeeded - value} to kick {args[0]}", 5f);
+					if (value == 1)
+						GameServer.AnnounceShort($"A Vote Kick on {args[0]} has been initiated. Needs {TotalVoteKicksNeeded} Votes to kick");
+					if (value >= 20)
+					{
+						GameServer.Kick(targetPlayerSteamId, "Vote Kicked");
+						GameServer.UILogOnServer($"{args[0]} Has Been Kicked", 5f);
+						SteamIDKickVotes.Remove(targetPlayerSteamId);
+					}
+				}
+			}
+		
+		// !kill Callback
+		// !skipmap Callback
+		
+
 
 		/// <summary>
 		/// used to handle command in game chat
@@ -57,7 +92,7 @@ namespace MujAPI.Commands
                             break;
                         }
                     case "kill":
-                        if (!player.Stats.Roles.HasFlag(Roles.Moderator))
+						if (!player.Stats.Roles.HasFlag(Roles.Moderator))
                         {
                             player.Message("Ur Not an admin");
                             break;
