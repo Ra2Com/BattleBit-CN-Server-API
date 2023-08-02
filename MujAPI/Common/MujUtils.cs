@@ -4,7 +4,7 @@ using MujAPI.Commands;
 
 namespace MujAPI
 {
-    public class MujUtils : ChatCommands
+	public class MujUtils : ChatCommands
 	{
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CommandProcessor));
@@ -129,7 +129,7 @@ namespace MujAPI
 		/// <returns>totalOccurances, maxOccurrences</returns>
 		public static (int TotalOccurances, int MaxOccurances) GetOccurances(Dictionary<MujPlayer, MapInfo> VoteMapList)
 		{
-			var groupedMapInfos= VoteMapList.GroupBy(kv => kv.Value).Select(group => new { Occurrences = group.Count() });
+			var groupedMapInfos = VoteMapList.GroupBy(kv => kv.Value).Select(group => new { Occurrences = group.Count() });
 
 			int totalOccurances = groupedMapInfos.Sum(group => group.Occurrences);
 
