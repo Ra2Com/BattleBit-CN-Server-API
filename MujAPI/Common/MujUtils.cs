@@ -6,10 +6,10 @@ using System.Text;
 
 namespace MujAPI
 {
-	public class MujUtils : ChatCommands
+	public class MujUtils
 	{
 		//logger
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandProcessor));
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MujUtils));
 
 		//lowercase names to enums
 		public static Dictionary<string, Maps> stringToEnumMap = new Dictionary<string, Maps>

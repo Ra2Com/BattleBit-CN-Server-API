@@ -96,6 +96,10 @@ namespace MujAPI
 			}
 		}
 
+		/// <summary>
+		/// adds tests players to servers
+		/// </summary>
+		/// <param name="args"></param>
 		private void AddTestPlayers(string[] args)
 		{
 			int TotalPlayersAdded = 0;
@@ -149,7 +153,6 @@ namespace MujAPI
 					break;
 			}
 		}
-
 
 		/// <summary>
 		/// lists all the players connected to each servers
