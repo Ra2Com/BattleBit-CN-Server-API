@@ -37,8 +37,11 @@ Battle bit server api with custom extentions and methods
   * [x] `GameModePool`
 	* [x] Update GamePool using chat command
   * [ ] `WeaponBan`
-	* [ ] ability to update weapon ban using chat command
+	* [x] ability to update weapon ban using chat command
 	* [ ] set class ban in db
   * [ ] `ClassBan`
-	* [ ] ability to update class ban using chat command
+	* [x] ability to update class ban using chat command
+	* [ ] set class ban in db
+  * [ ] `GadgetBan`
+	* [x] ability to update class ban using chat command
 	* [ ] set class ban in db

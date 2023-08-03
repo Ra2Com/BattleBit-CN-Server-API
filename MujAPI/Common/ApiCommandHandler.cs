@@ -4,6 +4,7 @@ using System.Text;
 using log4net.Config;
 using System.Net.Sockets;
 using System.Reflection;
+using BattleBitAPI.Common;
 
 namespace MujAPI
 {
@@ -239,30 +240,33 @@ namespace MujAPI
 			// tests each command
 			var commands = new[] 
 			{ 
-				("!votekick"),
-				("!votekick Test"),
-				("!kill"),
-				("!kill Test"),
-				("!skipmap"),
-				("!skipmap mapnames"),
-				("!skipmap trollflagon"),
-				("!skipmap azagor"),
-				("!skipmap azagor day"),
-				("!skipmap lonovo night"),
-				("!bully nouser"),
-				("!bully 2376438746"),
-				("!bully help"),
-				("!update"),
-				("!update map"),
-				("!update gamemode"),
-				("!update map dustydew"), //add
-				("!update map dustydew"), //remove
-				("!update map tensatown"),
-				("!update map valley"),
-				("!update map wakistanasdghasjhdg"),
-				("!update gamemode dom"),
-				("!update gamemode dom"),
-				("!update gamemode domination"),
+				//("!votekick"),
+				//("!votekick Test"),
+				//("!kill"),
+				//("!kill Test"),
+				//("!skipmap"),
+				//("!skipmap mapnames"),
+				//("!skipmap trollflagon"),
+				//("!skipmap azagor"),
+				//("!skipmap azagor day"),
+				//("!skipmap lonovo night"),
+				//("!bully nouser"),
+				//("!bully 2376438746"),
+				//("!bully help"),
+				//("!update"),
+				//("!update map"),
+				//("!update gamemode"),
+				//("!update map dustydew"), //add
+				//("!update map dustydew"), //remove
+				//("!update map tensatown"),
+				//("!update map valley"),
+				//("!update map wakistanasdghasjhdg"),
+				//("!update gamemode dom"),
+				//("!update gamemode dom"),
+				//("!update gamemode domination"),
+				("!gamerule banweapon m4a1"),
+				("!gamerule banweapon mp9"),
+				("!gamerule unbanweapon m4a1")
 			};
 
 			foreach (var command in commands)
@@ -273,10 +277,6 @@ namespace MujAPI
 
 			await MujApi.OnPlayerChat(mujPlayer2, BattleBitAPI.Common.ChatChannel.AllChat, "!votekick Test");
 
-			foreach (var maps in mujPlayer1.GameServer.MapRotation.GetMapRotation())
-			{
-				log.Info(maps);
-			}
 		}
 
 		/// <summary>

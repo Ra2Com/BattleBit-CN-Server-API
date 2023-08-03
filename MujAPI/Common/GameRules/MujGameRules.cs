@@ -214,7 +214,7 @@ namespace MujAPI.Common.GameRules
 			}
 		}
 
-		//wearings bans
+		//wearings bans - TODO: needs work
 		public class WearingsBans
 		{
 			private Dictionary<PlayerWearings, bool> mWearingsBans;

@@ -22,7 +22,7 @@ namespace MujAPI
 		private static ChatCommandHandler commandHandler = new ChatCommandHandler();
 
 
-		private static MujGameRules Rules = new MujGameRules();
+		public static MujGameRules Rules = new MujGameRules();
 
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Program));
@@ -154,7 +154,7 @@ namespace MujAPI
 
 			log.Info($"{server} just connected");
 
-			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
 
 		}
 
@@ -170,7 +170,7 @@ namespace MujAPI
 		}
 
 
-		private static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
+		public static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
 		{
 			if (BullyList.ContainsKey(player.SteamID)) 
 			{
@@ -188,7 +188,7 @@ namespace MujAPI
 			Gadget LightGadget = request.Loadout.LightGadget;
 			PlayerWearings Wearings = request.Wearings;
 
-
+			// TODO: make sure that this worked
 			if (Rules.weaponBans.IsBanned(WeaponPrimary)){
 				WeaponPrimary = null;
 				player.Message($"{WeaponPrimary} is banned");

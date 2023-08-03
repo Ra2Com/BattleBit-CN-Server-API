@@ -26,6 +26,137 @@ namespace MujAPI.Commands
 			commandHandler.AddCommand("skipmap", ChatCommands.SkipMapCommand);
 			commandHandler.AddCommand("bully", ChatCommands.BullyUserCommand);
 			commandHandler.AddCommand("update", ChatCommands.UpdateMapOrGameModeRotation);
+			commandHandler.AddCommand("gamerule", ChatCommands.GameRuleCommand);
+		}
+
+		//gamerule Callback
+		private static void GameRuleCommand(string[] args, object[] optionalObjects)
+		{
+			var Player = (MujPlayer)optionalObjects[0];
+			var Gameserver = Player.GameServer;
+
+			log.Info($"Update Issued by {(MujPlayer)optionalObjects[0]}");
+			if (args.Length == 0)
+			{
+				Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|weaponname|gadgetname>");
+				return;
+			}
+			if (args.Length == 2)
+			{
+				log.Debug(args[1].ToUpper());
+				switch (args[0])
+				{
+					case "banweapon":
+						if (Weapons.TryFind(args[1].ToUpper(), out Weapon weapon))
+						{
+							if (MujApi.Rules.weaponBans.BanWeapon(weapon))
+							{
+								Player.Message($"{weapon.Name} Has been banned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{weapon.Name} is already on ban list");
+								break;
+							}
+						}
+						else
+						{
+							Player.Message("Could not find weapon");
+							break;
+						}
+					case "unbanweapon":
+						if (Weapons.TryFind(args[1].ToUpper(), out Weapon unbanweapon))
+						{
+							if (MujApi.Rules.weaponBans.UnBanWeapon(unbanweapon))
+							{
+								Player.Message($"{unbanweapon.Name} Has been unbanned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{unbanweapon.Name} is not on ban list");
+								break;
+							}
+						}
+						else
+						{
+							Player.Message("Could not find weapon");
+							break;
+						}
+					case "bangadget":
+						if (Gadgets.TryFind(args[1], out Gadget bangadget))
+						{
+							if (MujApi.Rules.gadgetBans.BanGadget(bangadget))
+							{
+								Player.Message($"{bangadget.Name} has been banned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{bangadget.Name} is already on ban list");
+								break;
+							}
+						}
+						else
+						{
+							Player.Message("Could not find gadget");
+							break;
+						}
+					case "unbangadget":
+						if (Gadgets.TryFind(args[1], out Gadget unbangadget))
+						{
+							if (MujApi.Rules.gadgetBans.UnBanGadget(unbangadget))
+							{
+								Player.Message($"{unbangadget.Name} has been unbanned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{unbangadget.Name} is not in banlist");
+								break;
+							}
+						}
+						else
+						{
+							Player.Message("Could not find gadget");
+							break;
+						}
+					case "banclass":
+						if (Enum.TryParse<GameRole>(args[1], true, out GameRole bangamerole))
+						{
+							MujApi.Rules.classBans.BanClass(bangamerole);
+							Player.Message($"{bangamerole} has been banned");
+							break;
+						}
+						else
+						{
+							Player.Message($"Could not find class");
+							break;
+						}
+					case "unbanclass":
+						if (Enum.TryParse<GameRole>(args[1], true, out GameRole gameRole))
+						{
+							MujApi.Rules.classBans.UnBanClass(gameRole);
+							Player.Message($"{gameRole} has been banned");
+							break;
+						}
+						else
+						{
+							Player.Message($"Could not find class");
+							break;
+						}
+					default:
+						Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|weaponname|gadgetname>");
+						break;
+				}
+				return;
+			}
+			else
+			{
+				Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|weaponname|gadgetname>");
+				return;
+			}
 		}
 
 		// !update Callback
@@ -81,7 +212,8 @@ namespace MujAPI.Commands
 			else 
 			{
 				Player.Message("Usage: !update <map|gamemode> <mapname|gamemodename>.");
-				return; }
+				return; 
+			}
 		}
 
 		// !votekick Callback
