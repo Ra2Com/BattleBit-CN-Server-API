@@ -46,7 +46,7 @@ Battle bit server api with custom extentions and methods
 	* [x] ability to update class ban using chat command
 	* [ ] set class ban in db
   * [x] `Match` class used for tracking match statistics
-	* [x] AddTeamKill
+        * [x] AddTeamKill
         * [x] RemoveTeamKill
         * [x] AddSquadKill
         * [x] RemoveSquadKill
