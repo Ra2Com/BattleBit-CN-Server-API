@@ -13,10 +13,6 @@ namespace BattleBitAPI.Common
 			DayNight = dayNight;
 		}
 
-		public MapInfo()
-		{
-		}
-
 		public override string ToString()
 		{
 			return this.Map.ToString() + " : " + this.DayNight.ToString();
