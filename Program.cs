@@ -1,4 +1,5 @@
-﻿using MujAPI;
+﻿using CommunityServerAPI.MujAPI.Common.Utils;
+using MujAPI;
 
 class Program
 {

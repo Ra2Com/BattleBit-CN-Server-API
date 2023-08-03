@@ -1,11 +1,12 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using CommunityServerAPI.MujAPI.Common.Utils;
 using MujAPI.Common;
 using System.Text;
 
 namespace MujAPI.Commands
 {
-	public class ChatCommands
+    public class ChatCommands
 	{
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ChatCommands));
@@ -214,7 +215,7 @@ namespace MujAPI.Commands
 				{
 					StringBuilder sb = new StringBuilder();
 					int count = 0;
-					foreach (var mapName in MujUtils.stringToEnumMap.Keys)
+					foreach (var mapName in MujUtils.GetMaps())
 					{
 						if (count > 0 && count % 5 == 0)
 							sb.Append(Environment.NewLine);
@@ -230,16 +231,16 @@ namespace MujAPI.Commands
 			//looks for 2 arguments
 			if (args.Length == 2)
 			{
-				GameMaps MatchedMap = MujUtils.GetMapsEnumFromMapString(args[0]);
+				Maps MatchedMap = MujUtils.GetMapFromString(args[0]);
 				MapDayNight MatchedMapDayNight = MujUtils.GetDayNightEnumFromString(args[1]);
 				// sends error message to user if they dont input a valid map name
-				if (MatchedMap == GameMaps.None)
+				if (MatchedMap == Maps.None)
 				{
 					player.Message("Not a valid map. Type !skipmap mapnames to get a list of the maps");
 					return;
 				}
 				// kicks the player for choosing lonovo night
-				if (IsMapVoteTrollFlagOn && MatchedMap == GameMaps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
+				if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
 				{
 					string reason = "smh ╭∩╮(-_-)╭∩╮";
 					player.Kick(reason);

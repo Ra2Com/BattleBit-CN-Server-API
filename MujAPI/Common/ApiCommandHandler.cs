@@ -7,10 +7,10 @@ using System.Reflection;
 
 namespace MujAPI
 {
-	public class ApiCommandProcessor
+	public class ApiCommandHandler
 	{
 		//logger
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandProcessor));
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandHandler));
 
 
 		private readonly ServerListener<MujPlayer> listener;
@@ -23,7 +23,7 @@ namespace MujAPI
 		/// <c>(MujPlayer)</c> class needs to be public <br/>
 		/// </remarks>
 		/// <param name="listener">the api listener</param>
-		public ApiCommandProcessor(ServerListener<MujPlayer> listener)
+		public ApiCommandHandler(ServerListener<MujPlayer> listener)
 		{
 			this.listener = listener;
 		}

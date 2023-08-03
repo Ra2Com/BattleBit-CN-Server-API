@@ -1,6 +1,6 @@
-﻿namespace MujAPI
+﻿namespace MujAPI.Common
 {
-    public enum GameMaps : byte
+    public enum Maps : byte
     {
         None = 0,
 

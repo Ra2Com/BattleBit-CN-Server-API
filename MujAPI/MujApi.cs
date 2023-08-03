@@ -1,15 +1,17 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using CommunityServerAPI.MujAPI.Common.Utils;
 using log4net.Config;
 using MujAPI.Commands;
 using MujAPI.Common;
+using MujAPI.Common.GameRules;
 using System.Net;
 
 namespace MujAPI
 {
-	public class MujApi
+    public class MujApi
 	{
-		private static ApiCommandProcessor serverCommandProcessor;
+		private static ApiCommandHandler serverCommandProcessor;
 		private static Dictionary<MujPlayer, bool> premiumPlayers = new Dictionary<MujPlayer, bool>();
 		private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
 		public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
@@ -18,6 +20,9 @@ namespace MujAPI
 
 		//chat command handler
 		private static ChatCommandHandler commandHandler = new ChatCommandHandler();
+
+
+		private static MujGameRules Rules = new MujGameRules();
 
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Program));
@@ -47,7 +52,7 @@ namespace MujAPI
 			log.Info("ChatCommands Registered");
 
 			//command processor for api
-			serverCommandProcessor = new ApiCommandProcessor(listener);
+			serverCommandProcessor = new ApiCommandHandler(listener);
 			Task.Run(() => serverCommandProcessor.Start());
 			log.Info("ApiCommands Listening");
 
@@ -63,7 +68,7 @@ namespace MujAPI
 			for (int i = 0; i < 20; i++)
 			{
 				ulong steamdid = (ulong)rnd.NextInt64(min, max);
-				VoteMapList.Add(new MujPlayer(steamdid), new MapInfo((GameMaps)rnd.Next(1, 4), (MapDayNight)rnd.Next(0, 2)));
+				VoteMapList.Add(new MujPlayer(steamdid), new MapInfo((Maps)rnd.Next(1, 4), (MapDayNight)rnd.Next(0, 2)));
 			}
 
 			foreach (var keyValuePair in VoteMapList)
@@ -86,6 +91,7 @@ namespace MujAPI
 		//callback hooks
 		private static Task<PlayerStats> OnGetPlayerStats(ulong steamid, PlayerStats stats)
 		{
+			// TODO: 
 			if (steamid == 76561198347766467)
 			{
 				Roles roles = Roles.Admin | Roles.Moderator;
@@ -148,10 +154,11 @@ namespace MujAPI
 
 			log.Info($"{server} just connected");
 
-			Timer timer = new(MujUtils.SendMOTD, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
 		}
 
+		// match ending
 		private static async Task OnMatchEnding(GameServer server)
 		{
 			MapInfo MostVotedMap = MujUtils.GetMapInfoWithHighestOccurrences(VoteMapList);
@@ -175,23 +182,38 @@ namespace MujAPI
 				return request;
 			}
 
-			if (request.Loadout.PrimaryWeapon.Tool == Weapons.M4A1)
-				request.Loadout.PrimaryWeapon.Tool = null;
+			Weapon WeaponPrimary = request.Loadout.PrimaryWeapon.Tool;
+			Weapon WeaponSecondary = request.Loadout.SecondaryWeapon.Tool;
+			Gadget HeavyGadget = request.Loadout.HeavyGadget;
+			Gadget LightGadget = request.Loadout.LightGadget;
+			PlayerWearings Wearings = request.Wearings;
 
-			else if (request.Loadout.PrimaryWeapon.Tool.WeaponType == WeaponType.SniperRifle)
-				request.Loadout.PrimaryWeapon.MainSight = Attachments._6xScope;
 
-			request.Loadout.SecondaryWeapon.Tool = Weapons.DesertEagle;
-			request.Loadout.LightGadget = Gadgets.Rpg7HeatExplosive;
+			if (Rules.weaponBans.IsBanned(WeaponPrimary)){
+				WeaponPrimary = null;
+				player.Message($"{WeaponPrimary} is banned");
+			}
+			if (Rules.weaponBans.IsBanned(WeaponSecondary))
+			{
+				WeaponSecondary = null;
+				player.Message($"{WeaponSecondary} is banned");
+			}
+			if (Rules.gadgetBans.IsBanned(HeavyGadget))
+			{
+				HeavyGadget = null;
+				player.Message($"{HeavyGadget} is banned");
+			}
+			if (Rules.gadgetBans.IsBanned(LightGadget))
+			{
+				LightGadget = null;
+				player.Message($"{LightGadget} is banned");
+			}
+			if (Rules.wearingsBans.IsBanned(Wearings))
+			{
+				// TODO: have it check what clothing was banned and then make that item null
+			}
 
-			if (request.Loadout.HeavyGadget == Gadgets.C4)
-				request.Loadout.HeavyGadget = null;
 
-			request.SpawnPosition.Y += 2f;
-			request.SpawnProtection = 0f;
-			request.Wearings.Chest = null;
-			request.Loadout.PrimaryExtraMagazines += 10;
-			request.Loadout.ThrowableExtra += 5;
 			return request;
 		}
 

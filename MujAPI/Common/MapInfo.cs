@@ -4,10 +4,10 @@ namespace MujAPI.Common
 {
 	public class MapInfo
 	{
-		public GameMaps Map { get; set; }
+		public Maps Map { get; set; }
 		public MapDayNight DayNight { get; set; }
 
-		public MapInfo(GameMaps map, MapDayNight dayNight)
+		public MapInfo(Maps map, MapDayNight dayNight)
 		{
 			Map = map;
 			DayNight = dayNight;
