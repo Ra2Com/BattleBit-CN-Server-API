@@ -1,44 +1,77 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using MujAPI.Common;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace MujAPI
 {
-	public class MujUtils
+    public class MujUtils
 	{
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MujUtils));
 
+		private static Random random = new Random();
+
 		//lowercase names to enums
-		public static Dictionary<string, Maps> stringToEnumMap = new Dictionary<string, Maps>
+		public static Dictionary<string, MujAPI.GameMaps> stringToEnumMap = new Dictionary<string, MujAPI.GameMaps>
 		{
-			{ "azagor", Maps.Azagor },
-			{ "basra", Maps.Basra },
-			{ "construction", Maps.Contruction },
-			{ "district", Maps.District },
-			{ "dustydew", Maps.DustyDew },
-			{ "equardovo", Maps.Equardovo },
-			{ "frugis", Maps.Frugis },
-			{ "isle", Maps.Isle },
-			{ "lonovo", Maps.Lonovo },
-			{ "multuislands", Maps.MultuIslands },
-			{ "namak", Maps.Namak },
-			{ "oildunes", Maps.OilDunes },
-			{ "river", Maps.River },
-			{ "salhan", Maps.Salhan },
-			{ "sandysunset", Maps.SandySunset },
-			{ "tensatown", Maps.TensaTown },
-			{ "valley", Maps.Valley },
-			{ "wakistan", Maps.Wakistan },
-			{ "wineparadise", Maps.WineParadise },
-			{ "voxelland", Maps.VoxelLand },
+			{ "azagor", GameMaps.Azagor },
+			{ "basra", GameMaps.Basra },
+			{ "construction", GameMaps.Contruction },
+			{ "district", GameMaps.District },
+			{ "dustydew", GameMaps.DustyDew },
+			{ "equardovo", GameMaps.Equardovo },
+			{ "frugis", GameMaps.Frugis },
+			{ "isle", GameMaps.Isle },
+			{ "lonovo", GameMaps.Lonovo },
+			{ "multuislands", GameMaps.MultuIslands },
+			{ "namak", GameMaps.Namak },
+			{ "oildunes", GameMaps.OilDunes },
+			{ "river", GameMaps.River },
+			{ "salhan", GameMaps.Salhan },
+			{ "sandysunset", GameMaps.SandySunset },
+			{ "tensatown", GameMaps.TensaTown },
+			{ "valley", GameMaps.Valley },
+			{ "wakistan", GameMaps.Wakistan },
+			{ "wineparadise", GameMaps.WineParadise },
+			{ "voxelland", GameMaps.VoxelLand },
+		};
+		public static Dictionary<string, GameMode> stringToEnumGameMode = new Dictionary<string, GameMode>
+		{
+			{ "tdm", GameMode.TDM },
+			{ "aas", GameMode.AAS },
+			{ "rush", GameMode.RUSH },
+			{ "conquest", GameMode.CONQ },
+			{ "domination", GameMode.DOMI },
+			{ "elimination", GameMode.ELI },
+			{ "infconq", GameMode.INFCONQ },
+			{ "frontline", GameMode.FRONTLINE },
+			{ "gungameffa", GameMode.GunGameFFA },
+			{ "ffa", GameMode.FFA },
+			{ "gungameteam", GameMode.GunGameTeam },
+			{ "suiciderush", GameMode.SuicideRush },
+			{ "catchgame", GameMode.CatchGame },
+			{ "infected", GameMode.Infected },
+			{ "cashrun", GameMode.CashRun },
+			{ "voxelfortify", GameMode.VoxelFortify },
+			{ "voxeltrench", GameMode.VoxelTrench },
+			{ "ctf", GameMode.CTF },
 		};
 		public static Dictionary<string, MapDayNight> stringToEnumDayNight = new Dictionary<string, MapDayNight>
 		{
 			{ "day", MapDayNight.Day },
 			{ "night", MapDayNight.Night },
 		};
+		public static List<string> RandomMOTD = new()
+		{
+			"Use <b><color=green>!votemap [mapnamehere]</b></color> to vote for maps!",
+			"Use <b><color=green>!votekick [personnamehere]</b></color> to vote kick!",
+			"Snipers Are banned on this server",
+			"Dont forget to favourite this server!!",
+		};
+
+
 
 		/// <summary>
 		/// used to make colour tags for server identifiers. maybe could be used for colourful text 🤔.
@@ -53,16 +86,21 @@ namespace MujAPI
 			});
 		}
 
+		/// <summary>
+		/// used to get the identifier of the server in paters XX#1++. <br/>1++ meaning infinite amount of numbers
+		/// </summary>
+		/// <param name="server"></param>
+		/// <returns></returns>
 		public static string GetServerIdentifier(GameServer server) 
 		{
 			return MujApi.GameServerIdentifiers.FirstOrDefault(kvp => kvp.Value == server).Key;
 		}
 
 		/// <summary>
-		/// motd
+		/// motd - used for tips etc in chat
 		/// </summary>
 		/// <param name="state"></param>
-		public static async void SendMessageEveryFiveMinutes(object state)
+		public static async void SendMOTD(object state)
 		{
 			GameServer server = (GameServer)state;
 
@@ -71,22 +109,25 @@ namespace MujAPI
 				log.Info("uh oh");
 			}
 
-			server.SayToChat(
-				"Use <b><color=green>!votemap [mapnamehere]</b></color> to vote for maps!\n" +
-				"Use <b><color=green>!votekick [personnamehere]</b></color> to vote kick!");
+
+			int randomIndex = random.Next(0, RandomMOTD.Count);
+
+			string randomMOTD = RandomMOTD[randomIndex];
+
+			server.SayToChat(randomMOTD);
 		}
 
 		/// <summary>
 		/// displays the current time on the console title
 		/// </summary>
 		/// <param name="listener"></param>
-		public static void SetConsoleTitleAsTime(ServerListener<MujPlayer> listener)
+		public static void SetConsoleTitle(ServerListener<MujPlayer> listener)
 		{
 			StringBuilder sb = new();
 
-			int totalPlayers = listener.mActiveConnections.Values.Sum(server => server.CurrentPlayers);
+			int totalPlayers = listener.GetGameServers().Sum(server => server.CurrentPlayers);
 
-			sb.Append($"{DateTime.UtcNow} | {listener.mActiveConnections.Count} Servers Connected | Total Players Connected: {totalPlayers}");
+			sb.Append($"{DateTime.UtcNow} | {listener.GetGameServers().Length} Servers Connected | Total Players Connected: {totalPlayers}");
 
 			Console.Title = sb.ToString();
 		}
@@ -96,16 +137,16 @@ namespace MujAPI
 		/// </summary>
 		/// <param name="input"></param>
 		/// <returns></returns>
-		public static Maps GetMapsEnumFromMapString(string input)
+		public static GameMaps GetMapsEnumFromMapString(string input)
 		{
 			string lowercaseInput = input.ToLower();
 
-			if (stringToEnumMap.TryGetValue(lowercaseInput, out Maps matchedMap))
+			if (stringToEnumMap.TryGetValue(lowercaseInput, out GameMaps matchedMap))
 			{
 				return matchedMap;
 			}
 
-			return Maps.None;
+			return GameMaps.None;
 		}
 
 		/// <summary>
@@ -123,6 +164,34 @@ namespace MujAPI
 			}
 
 			return MapDayNight.Day;
+		}
+
+		/// <summary>
+		/// checks if the string of the map name exists as a enum
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public static bool IsExistInMaps(string input)
+		{
+			string lowercaseInput = input.ToLower();
+
+			if(stringToEnumMap.ContainsKey(input))
+				return true;
+			return false;
+		}
+
+		/// <summary>
+		/// check if a string of a gamemode name exists as a enum
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns></returns>
+		public static bool IsExistInGameModes(string input)
+		{
+			string lowercaseInput = input.ToLower();
+
+			if (stringToEnumGameMode.ContainsKey(input))
+				return true;
+			return false;
 		}
 
 		/// <summary>
@@ -156,6 +225,11 @@ namespace MujAPI
 			return (totalOccurances, maxOccurrences);
 		}
 
+		/// <summary>
+		/// used to create colored tags for cross server chat
+		/// </summary>
+		/// <param name="serverName"></param>
+		/// <returns></returns>
 		public static async Task<string> GetColoredIdentifierAsync(string serverName)
 		{
 			var ServerNameRegex = new Regex(@"[A-Z]{2}#\d+");

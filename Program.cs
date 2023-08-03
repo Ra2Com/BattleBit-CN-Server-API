@@ -10,7 +10,7 @@ class Program
 		{
 			Timer timer = new Timer(state => 
 			{
-				MujUtils.SetConsoleTitleAsTime(MujApi.listener);
+				MujUtils.SetConsoleTitle(MujApi.listener);
 			}, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
 			timerDoneEvent.WaitOne();
 		});

@@ -2,6 +2,7 @@
 using BattleBitAPI.Server;
 using log4net.Config;
 using MujAPI.Commands;
+using MujAPI.Common;
 using System.Net;
 
 namespace MujAPI
@@ -25,6 +26,7 @@ namespace MujAPI
 		public static bool IsAcrossServerChatOn = false;
 		public static ServerListener<MujPlayer> listener = new();
 
+		// start the api
 		public static void Start()
 		{
 			XmlConfigurator.Configure();
@@ -51,6 +53,7 @@ namespace MujAPI
 
 		}
 
+		//for testing map voting
 		private static void TestUserVotes(ServerListener<MujPlayer> listener)
 		{
 			Random rnd = new Random();
@@ -60,7 +63,7 @@ namespace MujAPI
 			for (int i = 0; i < 20; i++)
 			{
 				ulong steamdid = (ulong)rnd.NextInt64(min, max);
-				VoteMapList.Add(new MujPlayer(steamdid), new MapInfo((Maps)rnd.Next(1, 4), (MapDayNight)rnd.Next(0, 2)));
+				VoteMapList.Add(new MujPlayer(steamdid), new MapInfo((GameMaps)rnd.Next(1, 4), (MapDayNight)rnd.Next(0, 2)));
 			}
 
 			foreach (var keyValuePair in VoteMapList)
@@ -93,7 +96,7 @@ namespace MujAPI
 			return Task.FromResult(stats);
 		}
 
-
+		// TODO: get player stats from database
 		private static async Task OnPlayerConnected(MujPlayer player)
 		{
 			thePoliceMods.TryGetValue(player.SteamID, out var roles);
@@ -113,6 +116,7 @@ namespace MujAPI
 			return true;
 		}
 
+		// player chat event
 		public static async Task OnPlayerChat(MujPlayer player, ChatChannel channel, string msg)
 		{
 			if (msg.StartsWith("!"))
@@ -134,6 +138,7 @@ namespace MujAPI
 			}
 		}
 
+		// when a gameserver connects to the api
 		public static async Task OnGameServerConnected(GameServer server)
 		{
 
@@ -143,7 +148,7 @@ namespace MujAPI
 
 			log.Info($"{server} just connected");
 
-			Timer timer = new(MujUtils.SendMessageEveryFiveMinutes, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
+			Timer timer = new(MujUtils.SendMOTD, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
 		}
 

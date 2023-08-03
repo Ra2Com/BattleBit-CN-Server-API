@@ -299,7 +299,7 @@ namespace BattleBitAPI.Server
 		}
 		public void AnnounceShort(string msg)
 		{
-			log.Info($"Announcement Short for {this.ServerName}: {msg}");
+			log.Info($"AnnouncementShort({this}): {msg}");
 			ExecuteCommand("an " + msg);
 		}
 		public void AnnounceLong(string msg)
@@ -308,7 +308,7 @@ namespace BattleBitAPI.Server
 		}
 		public void UILogOnServer(string msg, float messageLifetime)
 		{
-			log.Info($"UILog Message for {this.ServerName}: {msg}, LifeTime ({messageLifetime} seconds)");
+			log.Info($"UILogMessage({this}): {msg}, LifeTime ({messageLifetime} seconds)");
 			ExecuteCommand("serverlog " + msg + " " + messageLifetime);
 		}
 		public void ForceStartGame()
@@ -321,6 +321,7 @@ namespace BattleBitAPI.Server
 		}
 		public void SayToChat(string msg)
 		{
+			log.Info($"SayToChat({this}): {msg}");
 			ExecuteCommand("say " + msg);
 		}
 		public void StopServer()
@@ -397,7 +398,7 @@ namespace BattleBitAPI.Server
 		}
 		public void MessageToPlayer(Player player, string msg)
 		{
-			log.Info($"message to ({this.ServerName})({player}): {msg}");
+			log.Info($"MessageToPlayer({this})({player}): {msg}");
 			MessageToPlayer(player.SteamID, msg);
 		}
 

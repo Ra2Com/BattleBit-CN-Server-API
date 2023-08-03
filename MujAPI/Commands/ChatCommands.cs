@@ -1,6 +1,6 @@
-﻿using BattleBitAPI;
-using BattleBitAPI.Common;
+﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using MujAPI.Common;
 using System.Text;
 
 namespace MujAPI.Commands
@@ -24,8 +24,64 @@ namespace MujAPI.Commands
 			commandHandler.AddCommand("kill", ChatCommands.KillCommand);
 			commandHandler.AddCommand("skipmap", ChatCommands.SkipMapCommand);
 			commandHandler.AddCommand("bully", ChatCommands.BullyUserCommand);
+			commandHandler.AddCommand("update", ChatCommands.UpdateMapOrGameModeRotation);
 		}
 
+		// !update Callback
+		private static void UpdateMapOrGameModeRotation(string[] args, object[] optionalObjects)
+		{
+			var Player = (MujPlayer)optionalObjects[0];
+			var GameServer = Player.GameServer;
+
+			log.Info($"Update Issued by {(MujPlayer)optionalObjects[0]}");
+			if (args.Length == 0)
+			{
+				Player.Message("Usage: !update <map|gamemode> <mapname|gamemodename>.");
+				return;
+			}
+			else if (args[0] == "map" && args.Length == 2)
+			{
+				if (!MujUtils.IsExistInMaps(args[1]))
+				{
+					Player.Message("That map doesnt exist");
+					return;
+				}
+				if (GameServer.MapRotation.AddToRotation(args[1]))
+				{
+					Player.Message($"{args[1]} Added To Rotation");
+					return;
+				}
+				else
+				{
+					GameServer.MapRotation.RemoveFromRotation(args[1]);
+					Player.Message($"{args[1]} Removed From Rotation");
+					return;
+				}
+			}
+			else if (args[0] == "gamemode" && args.Length == 2)
+			{
+				if (!MujUtils.IsExistInGameModes(args[1]))
+				{
+					Player.Message("That gamemode doesnt exist");
+					return;
+				}
+				if (GameServer.GamemodeRotation.AddToRotation(args[1]))
+				{
+					Player.Message($"{args[1]} Added To Rotation");
+					return;
+				}
+				else
+				{
+					GameServer.GamemodeRotation.RemoveFromRotation(args[1]);
+					Player.Message($"{args[1]} Removed From Rotation");
+					return;
+				}
+			}
+			else 
+			{
+				Player.Message("Usage: !update <map|gamemode> <mapname|gamemodename>.");
+				return; }
+		}
 
 		// !votekick Callback
 		public static void VoteKickCommand(string[] args, object[] optionalObjects)
@@ -174,16 +230,16 @@ namespace MujAPI.Commands
 			//looks for 2 arguments
 			if (args.Length == 2)
 			{
-				Maps MatchedMap = MujUtils.GetMapsEnumFromMapString(args[0]);
+				GameMaps MatchedMap = MujUtils.GetMapsEnumFromMapString(args[0]);
 				MapDayNight MatchedMapDayNight = MujUtils.GetDayNightEnumFromString(args[1]);
 				// sends error message to user if they dont input a valid map name
-				if (MatchedMap == Maps.None)
+				if (MatchedMap == GameMaps.None)
 				{
 					player.Message("Not a valid map. Type !skipmap mapnames to get a list of the maps");
 					return;
 				}
 				// kicks the player for choosing lonovo night
-				if (IsMapVoteTrollFlagOn && MatchedMap == Maps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
+				if (IsMapVoteTrollFlagOn && MatchedMap == GameMaps.Lonovo && MatchedMapDayNight == MapDayNight.Night)
 				{
 					string reason = "smh ╭∩╮(-_-)╭∩╮";
 					player.Kick(reason);
@@ -192,12 +248,12 @@ namespace MujAPI.Commands
 				}
 				else
 				{
-					MapInfo MapInfo = new() { Map = MatchedMap, DayNight = MatchedMapDayNight };
-					player.VotedMap = MapInfo;
+					MapInfo mapInfo = new() { Map = MatchedMap, DayNight = MatchedMapDayNight };
+					player.VotedMap = mapInfo;
 					//adds the user to a votemaplist
 					if (!MujApi.VoteMapList.ContainsKey(player))
 					{
-						MujApi.VoteMapList.Add(player, MapInfo);
+						MujApi.VoteMapList.Add(player, mapInfo);
 						return;
 					}
 					else

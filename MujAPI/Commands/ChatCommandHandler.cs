@@ -48,9 +48,7 @@ namespace MujAPI
 			StringBuilder sb = new();
 			sb.Append($"Command Issued by ({ServerIdentifier}) {player}:{chatChannel.ToString()}: ");
 			foreach ( var commandPart in commandParts )
-			{
 				sb.Append($" [{commandPart}]");
-			}
 
 
 			if (commandParts.Length == 0)
@@ -64,8 +62,8 @@ namespace MujAPI
 
 			if (commands.TryGetValue(commandName, out Action<string[], object[]> callback))
 			{
-				callback(args, optionalObjects); // call the call back
 				log.Debug( sb.ToString() );
+				callback(args, optionalObjects); // call the call back
 			}
 			else
 			{

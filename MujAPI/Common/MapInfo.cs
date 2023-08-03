@@ -1,13 +1,13 @@
 ﻿using BattleBitAPI.Common;
 
-namespace BattleBitAPI.Common
+namespace MujAPI.Common
 {
 	public class MapInfo
 	{
-		public Maps Map { get; set; }
+		public GameMaps Map { get; set; }
 		public MapDayNight DayNight { get; set; }
 
-		public MapInfo(Maps map, MapDayNight dayNight)
+		public MapInfo(GameMaps map, MapDayNight dayNight)
 		{
 			Map = map;
 			DayNight = dayNight;
@@ -15,7 +15,6 @@ namespace BattleBitAPI.Common
 
 		public MapInfo()
 		{
-			
 		}
 
 		public override string ToString()

@@ -1,9 +1,9 @@
 ﻿namespace BattleBitAPI.Common
 {
-	public class Map : IEquatable<string>, IEquatable<Map>
+	public class GameMaps : IEquatable<string>, IEquatable<GameMaps>
 	{
 		public string Name { get; private set; }
-		public Map(string name)
+		public GameMaps(string name)
 		{
 			Name = name;
 		}
@@ -18,14 +18,14 @@
 				return false;
 			return this.Name.Equals(other);
 		}
-		public bool Equals(Map other)
+		public bool Equals(GameMaps other)
 		{
 			if (other == null)
 				return false;
 			return this.Name.Equals(other.Name);
 		}
 
-		public static bool operator ==(string left, Map right)
+		public static bool operator ==(string left, GameMaps right)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -35,7 +35,7 @@
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator !=(string left, Map right)
+		public static bool operator !=(string left, GameMaps right)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -45,7 +45,7 @@
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator ==(Map right, string left)
+		public static bool operator ==(GameMaps right, string left)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -55,7 +55,7 @@
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator !=(Map right, string left)
+		public static bool operator !=(GameMaps right, string left)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);

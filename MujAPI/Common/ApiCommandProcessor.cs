@@ -118,7 +118,7 @@ namespace MujAPI
 							int MaxPlayerCount;
 							int ServerIndex = 0;
 
-							foreach (var server in listener.mActiveConnections.Values)
+							foreach (var server in listener.GetGameServers())
 							{
 
 								PropertyInfo currentPlayerProperty = server.GetType().GetProperty("CurrentPlayers", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
@@ -159,13 +159,13 @@ namespace MujAPI
 		/// </summary>
 		private void ListAllPlayers()
 		{
-			if (listener.mActiveConnections.Count == 0)
+			if (listener.GetGameServers().Length == 0)
 			{
 				log.Error("no servers");
 				return;
 			}
 
-			foreach (var server in listener.mActiveConnections.Values)
+			foreach (var server in listener.GetGameServers())
 			{
 				var allplayers = server.GetAllPlayers();
 				foreach (var player in allplayers)
@@ -208,8 +208,8 @@ namespace MujAPI
 				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
 			//adds the servers to the mActiveConnections list
-			listener.mActiveConnections.Add(server1.ServerHash, server1);
-			listener.mActiveConnections.Add(server2.ServerHash, server2);
+			listener.AddGameServer(server1);
+			listener.AddGameServer(server2);
 
 			// makes the ongameserverconnected run
 			await MujApi.OnGameServerConnected(server1);
@@ -251,7 +251,18 @@ namespace MujAPI
 				("!skipmap lonovo night"),
 				("!bully nouser"),
 				("!bully 2376438746"),
-				("!bully help")
+				("!bully help"),
+				("!update"),
+				("!update map"),
+				("!update gamemode"),
+				("!update map dustydew"), //add
+				("!update map dustydew"), //remove
+				("!update map tensatown"),
+				("!update map valley"),
+				("!update map wakistanasdghasjhdg"),
+				("!update gamemode dom"),
+				("!update gamemode dom"),
+				("!update gamemode domination"),
 			};
 
 			foreach (var command in commands)
@@ -262,7 +273,10 @@ namespace MujAPI
 
 			await MujApi.OnPlayerChat(mujPlayer2, BattleBitAPI.Common.ChatChannel.AllChat, "!votekick Test");
 
-
+			foreach (var maps in mujPlayer1.GameServer.MapRotation.GetMapRotation())
+			{
+				log.Info(maps);
+			}
 		}
 
 		/// <summary>
@@ -333,7 +347,7 @@ namespace MujAPI
 									return;
 							}
 
-							switch (listener.mActiveConnections.Count)
+							switch (listener.GetGameServers().Length)
 							{
 								// if there are no game servers connected
 								case 0:
@@ -342,7 +356,7 @@ namespace MujAPI
 								default:
 									{
 										// write description of chosen server
-										foreach (var gameServer in listener.mActiveConnections.Values
+										foreach (var gameServer in listener.GetGameServers()
 											.Where(gameServer => PortNumber == gameServer.GamePort))
 										{
 											StringBuilder stringBuilder = new();
@@ -373,7 +387,7 @@ namespace MujAPI
 		/// </summary>
 		public void ListAllServers()
 		{
-			switch (listener.mActiveConnections.Count)
+			switch (listener.GetGameServers().Length)
 			{
 				// if theres no game servers connected
 				case 0:
@@ -381,7 +395,7 @@ namespace MujAPI
 					return;
 				default:
 					{
-						foreach (var gameServer in listener.mActiveConnections.Values)
+						foreach (var gameServer in listener.GetGameServers())
 						{
 							log.Info(gameServer);
 						}
@@ -434,7 +448,7 @@ namespace MujAPI
 			}
 
 			bool foundServer = false;
-			foreach (GameServer gameServer in listener.mActiveConnections.Values)
+			foreach (GameServer gameServer in listener.GetGameServers())
 			{
 				if (gameServer.GamePort == portNumber)
 				{
@@ -459,14 +473,14 @@ namespace MujAPI
 		/// </summary>
 		public void ShutdownAllServers()
 		{
-			if (listener.mActiveConnections.Count == 0)
+			if (listener.GetGameServers().Length == 0)
 			{
 				log.Error("No Servers Found :(\n");
 				return;
 			}
 			else
 			{
-				foreach (GameServer gameServer in listener.mActiveConnections.Values)
+				foreach (GameServer gameServer in listener.GetGameServers())
 				{
 					log.Info(gameServer + " is shutting down");
 					gameServer.StopServer();
@@ -494,7 +508,7 @@ namespace MujAPI
 							// second argument segment all or port
 							case "all":
 								{
-									foreach (GameServer gameServer in listener.mActiveConnections.Values)
+									foreach (GameServer gameServer in listener.GetGameServers())
 									{
 										if (gameServer == null) continue;
 										gameServer.SayToChat(message);
@@ -518,15 +532,16 @@ namespace MujAPI
 								}
 
 								//look for server with port number
-								GameServer ChosenServer = listener.mActiveConnections
-									.FirstOrDefault(server => server.Value.GamePort == PortNumber).Value;
+								GameServer ChosenServer = listener.GetGameServers()
+									.FirstOrDefault(server => server.GamePort == PortNumber);
 								switch (ChosenServer)
 								{
 									case null:
 										log.Error($"Could not find server with port:{PortNumber}\n");
 										break;
 									default:
-										log.Info($"Message Sent to server: {ChosenServer} \n");
+										ChosenServer.SayToChat(message);
+										log.Info($"({message}) Sent to server: {ChosenServer} \n");
 										break;
 								}
 								Console.ResetColor();
@@ -559,7 +574,7 @@ namespace MujAPI
 
 					if (whichServers == "all")
 					{
-						foreach (GameServer gameServer in listener.mActiveConnections.Values)
+						foreach (GameServer gameServer in listener.GetGameServers())
 						{
 							if (gameServer == null) continue;
 							gameServer.SayToChat(message);

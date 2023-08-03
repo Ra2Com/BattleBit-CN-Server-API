@@ -32,10 +32,10 @@ Battle bit server api with custom extentions and methods
 	* [ ] get class bans
 	* [ ] get premium members
 	* [ ] get flags for cross, trollmode etc
-  * [ ] `MapPool`
-	* [ ] Update MapPool
-  * [ ] `GameModePool`
-	* [ ] Update GamePool
+  * [x] `MapPool`
+	* [x] Update MapPool using chat commands
+  * [x] `GameModePool`
+	* [x] Update GamePool using chat command
   * [ ] `WeaponBan`
 	* [ ] ability to update weapon ban using chat command
 	* [ ] set class ban in db
