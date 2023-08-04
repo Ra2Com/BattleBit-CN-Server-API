@@ -34,7 +34,13 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gameRole"></param>
 			public bool BanClass(GameRole gameRole)
 			{
-				return true;
+				if (!mClassBans.Contains(gameRole))
+				{
+					mClassBans.Add(gameRole);
+					return true;
+				}
+				else
+					return false;
 			}
 
 			/// <summary>
@@ -43,8 +49,13 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gameRole"></param>
 			public bool UnBanClass(GameRole gameRole)
 			{
-				this.mClassBans.Remove(gameRole);
-				return true;
+				if (mClassBans.Contains(gameRole))
+				{
+					this.mClassBans.Remove(gameRole);
+					return true;
+				}
+				else
+					return false;
 			}
 
 			/// <summary>
@@ -89,6 +100,7 @@ namespace MujAPI.Common.GameRules
 			{
 				if (!mWeaponBans.Contains(weapon))
 				{
+					mWeaponBans.Add(weapon);
 					return true;
 				}
 				else
@@ -162,6 +174,7 @@ namespace MujAPI.Common.GameRules
 			{
 				if (!mGadgetBans.Contains(gadget))
 				{
+					mGadgetBans.Add(gadget);
 					return true;
 				}
 				else
@@ -234,6 +247,7 @@ namespace MujAPI.Common.GameRules
 			{
 				if (!mWearingsBans.Contains(playerWearings))
 				{
+					mWearingsBans.Add(playerWearings);
 					return true;
 				}
 				else

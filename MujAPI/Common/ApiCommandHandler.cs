@@ -37,9 +37,6 @@ namespace MujAPI
 		/// </remarks>
 		public void Start()
 		{
-
-			XmlConfigurator.Configure();
-
 			while (true)
 			{
 				string line = Console.ReadLine();
@@ -53,6 +50,8 @@ namespace MujAPI
 					// remove multiple spaces like say  all      hello world
 					string commandString = string.Join(" ", args).Trim();
 					args = commandString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+					log.Info($"Issued command {command}");
 
 					switch (command)
 					{
@@ -239,31 +238,32 @@ namespace MujAPI
 
 			// tests each command
 			var commands = new[] 
-			{ 
-				//("!votekick"),
-				//("!votekick Test"),
-				//("!kill"),
-				//("!kill Test"),
-				//("!skipmap"),
-				//("!skipmap mapnames"),
-				//("!skipmap trollflagon"),
-				//("!skipmap azagor"),
-				//("!skipmap azagor day"),
-				//("!skipmap lonovo night"),
-				//("!bully nouser"),
-				//("!bully 2376438746"),
-				//("!bully help"),
-				//("!update"),
-				//("!update map"),
-				//("!update gamemode"),
-				//("!update map dustydew"), //add
-				//("!update map dustydew"), //remove
-				//("!update map tensatown"),
-				//("!update map valley"),
-				//("!update map wakistanasdghasjhdg"),
-				//("!update gamemode dom"),
-				//("!update gamemode dom"),
-				//("!update gamemode domination"),
+			{
+				("!testcommand"),
+				("!votekick"),
+				("!votekick Test"),
+				("!kill"),
+				("!kill Test"),
+				("!skipmap"),
+				("!skipmap mapnames"),
+				("!skipmap trollflagon"),
+				("!skipmap azagor"),
+				("!skipmap azagor day"),
+				("!skipmap lonovo night"),
+				("!bully nouser"),
+				("!bully 2376438746"),
+				("!bully help"),
+				("!update"),
+				("!update map"),
+				("!update gamemode"),
+				("!update map dustydew"), //add
+				("!update map dustydew"), //remove
+				("!update map tensatown"),
+				("!update map valley"),
+				("!update map wakistanasdghasjhdg"),
+				("!update gamemode dom"),
+				("!update gamemode dom"),
+				("!update gamemode domination"),
 				("!gamerule banweapon m4a1"),
 				("!gamerule banweapon mp9"),
 				("!gamerule unbanweapon m4a1"),
@@ -276,6 +276,7 @@ namespace MujAPI
 			foreach (var command in commands)
 			{
 				// simulates a chat event
+				await Task.Delay(1000);
 				await MujApi.OnPlayerChat(mujPlayer1, BattleBitAPI.Common.ChatChannel.AllChat, command);
 			}
 
@@ -288,7 +289,7 @@ namespace MujAPI
 		/// </summary>
 		public static void PrintHelp()
 		{
-			Console.WriteLine("The following commands are available:");
+			log.Info("The following commands are available:");
 
 			var commands = new[]
 			{
@@ -306,7 +307,7 @@ namespace MujAPI
 
 			foreach (var (command, description) in commands)
 			{
-				Console.WriteLine($" {command,-32} - {description}");
+				log.Info($" {command,-32} - {description}");
 			}
 		}
 

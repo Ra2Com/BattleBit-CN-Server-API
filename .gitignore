@@ -6,3 +6,4 @@ _ReSharper.*
 bin
 obj
 packages
+MujApi/Common/Database/

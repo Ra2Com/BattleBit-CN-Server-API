@@ -25,7 +25,7 @@ namespace MujAPI
 		public static MujGameRules Rules = new MujGameRules();
 
 		//logger
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Program));
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MujApi));
 
 		//flags
 		public static bool IsAcrossServerChatOn = false;
@@ -34,7 +34,6 @@ namespace MujAPI
 		// start the api
 		public static void Start()
 		{
-			XmlConfigurator.Configure();
 			log.Info("Logger Started");
 
 			listener.OnPlayerTypedMessage += OnPlayerChat;
@@ -188,7 +187,7 @@ namespace MujAPI
 			Gadget LightGadget = request.Loadout.LightGadget;
 			PlayerWearings Wearings = request.Wearings;
 
-			// TODO: make sure that this worked
+			// TODO: make sure that this works
 			if (Rules.weaponBans.IsBanned(WeaponPrimary)){
 				player.Message($"{WeaponPrimary} is banned");
 				WeaponPrimary = null;

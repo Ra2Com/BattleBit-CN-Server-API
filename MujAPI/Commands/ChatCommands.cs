@@ -140,11 +140,18 @@ namespace MujAPI.Commands
 							break;
 						}
 					case "banclass":
-						if (Enum.TryParse<GameRole>(args[1], true, out GameRole bangamerole))
+						if (Enum.TryParse<GameRole>(args[1], true, out GameRole BanGameRole))
 						{
-							MujApi.Rules.classBans.BanClass(bangamerole);
-							Player.Message($"{bangamerole} has been banned");
-							break;
+							if (MujApi.Rules.classBans.BanClass(BanGameRole))
+							{
+								Player.Message($"{BanGameRole} has been banned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{BanGameRole} is already banned");
+								break;
+							}
 						}
 						else
 						{
@@ -154,9 +161,16 @@ namespace MujAPI.Commands
 					case "unbanclass":
 						if (Enum.TryParse<GameRole>(args[1], true, out GameRole gameRole))
 						{
-							MujApi.Rules.classBans.UnBanClass(gameRole);
-							Player.Message($"{gameRole} has been banned");
-							break;
+							if (MujApi.Rules.classBans.UnBanClass(gameRole))
+							{
+								Player.Message($"{gameRole} has been unbanned");
+								break;
+							}
+							else
+							{
+								Player.Message($"{gameRole} is already unbanned");
+								break;
+							}
 						}
 						else
 						{
@@ -305,7 +319,7 @@ namespace MujAPI.Commands
 			if (args.Length == 0)
 				log.Info($"VoteKick Issued by {player}");
 			else
-				log.Info($"VoteKick Issued by {player}: args:{args[0]}");
+				log.Info($"VoteKick Issued by {player}: args: {args[0]}");
 
 			//checks if player is mod or admin
 			if (!player.Stats.Roles.HasFlag(Roles.Moderator | Roles.Admin))
