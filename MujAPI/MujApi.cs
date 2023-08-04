@@ -34,7 +34,7 @@ namespace MujAPI
 		// start the api
 		public static void Start()
 		{
-			log.Info("Logger Started");
+			log.Info($"Logger Started");
 
 			listener.OnPlayerTypedMessage += OnPlayerChat;
 			listener.OnGameServerConnected += OnGameServerConnected;

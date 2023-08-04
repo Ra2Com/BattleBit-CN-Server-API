@@ -7,6 +7,7 @@ Battle bit server api with custom extentions and methods
 
   * [ ] `Logging`
 	* [x] `Basic Logging`
+	* [x] `Log Files`
     * [ ] `Send Logs - DataBase`
 	* [ ] `Send Logs - Discord Bot`
 	* [ ] `Send Errors - Database`
@@ -15,7 +16,7 @@ Battle bit server api with custom extentions and methods
 	* [ ] `Start Server`
 	* [ ] `Issue Commands`
 	* [ ] `Take Actions` - could be used if you have something scanning chat for profanity or OnPlayerReported
-  * [ ] `Handle Environment Variables`
+  * [x] `Handle Environment Variables`
   * [x] `ChatCommandHandler`
 	* [x] `AddCommand` - ("command", Callback)
 	* [x] `ExecuteCommand` - used to execute the call back
