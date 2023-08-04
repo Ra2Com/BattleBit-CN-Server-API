@@ -38,16 +38,24 @@ namespace MujAPI.Commands
 			log.Info($"Update Issued by {(MujPlayer)optionalObjects[0]}");
 			if (args.Length == 0)
 			{
-				Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|weaponname|gadgetname>");
+				Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|<weaponname|all>|<gadgetname>");
 				return;
 			}
-			if (args.Length == 2)
+			if (args.Length == 2 || args[0].Contains("wearings"))
 			{
-				log.Debug(args[1].ToUpper());
 				switch (args[0])
 				{
 					case "banweapon":
-						if (Weapons.TryFind(args[1].ToUpper(), out Weapon weapon))
+						if (args[1] == "all")
+						{
+							foreach (var allWeapon in Weapons.GetAllWeapons().Values)
+							{
+								MujApi.Rules.weaponBans.BanWeapon(allWeapon);
+							}
+							Player.Message($"All Weapons Banned o_0!!");
+							break;
+						}
+						else if (Weapons.TryFind(args[1].ToUpper(), out Weapon weapon))
 						{
 							if (MujApi.Rules.weaponBans.BanWeapon(weapon))
 							{
@@ -66,7 +74,16 @@ namespace MujAPI.Commands
 							break;
 						}
 					case "unbanweapon":
-						if (Weapons.TryFind(args[1].ToUpper(), out Weapon unbanweapon))
+						if (args[1] == "all")
+						{
+							foreach (var allWeapon in Weapons.GetAllWeapons().Values)
+							{
+								MujApi.Rules.weaponBans.UnBanWeapon(allWeapon);
+							}
+							Player.Message($"All Weapons Banned o_0!!");
+							break;
+						}
+						else if (Weapons.TryFind(args[1].ToUpper(), out Weapon unbanweapon))
 						{
 							if (MujApi.Rules.weaponBans.UnBanWeapon(unbanweapon))
 							{
@@ -146,6 +163,12 @@ namespace MujAPI.Commands
 							Player.Message($"Could not find class");
 							break;
 						}
+					case "banwearings":
+						Player.Message("Not Implemented");
+						break;
+					case "unbanwearings":
+						Player.Message("Not Implemented");
+						break;
 					default:
 						Player.Message($"Usage: !gamerule <banweapon|unbanweapon|bangadget|unbangadget|banclass|unbanclass> \n<classname|weaponname|gadgetname>");
 						break;

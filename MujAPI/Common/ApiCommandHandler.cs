@@ -266,7 +266,11 @@ namespace MujAPI
 				//("!update gamemode domination"),
 				("!gamerule banweapon m4a1"),
 				("!gamerule banweapon mp9"),
-				("!gamerule unbanweapon m4a1")
+				("!gamerule unbanweapon m4a1"),
+				("!gamerule unbanweapon"),
+				("!gamerule"),
+				("!gamerule banwearings"),
+				("!gamerule unbanwearings"),
 			};
 
 			foreach (var command in commands)

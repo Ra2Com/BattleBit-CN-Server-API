@@ -211,7 +211,7 @@ namespace MujAPI.Common.GameRules
 			}
 		}
 
-		//wearings bans - TODO: needs work
+		//wearings bans
 		public class WearingsBans
 		{
 			private HashSet<PlayerWearings> mWearingsBans;

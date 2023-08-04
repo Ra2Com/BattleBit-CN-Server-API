@@ -60,6 +60,11 @@ namespace BattleBitAPI.Common
 			return mWeapons.TryGetValue(name, out item);
 		}
 
+		public static Dictionary<string, Weapon> GetAllWeapons()
+		{
+			return mWeapons;
+		}
+
 		// ----- Init ----- 
 		static Weapons()
 		{
