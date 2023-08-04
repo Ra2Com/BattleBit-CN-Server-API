@@ -20,11 +20,11 @@ namespace MujAPI.Common.GameRules
 		//class bans
 		public class ClassBans
 		{
-			private Dictionary<GameRole, bool> mClassBans;
+			private HashSet<GameRole> mClassBans;
 
 			public ClassBans()
 			{
-				this.mClassBans = new Dictionary<GameRole, bool>();
+				this.mClassBans = new HashSet<GameRole>();
 			}
 
 
@@ -34,7 +34,6 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gameRole"></param>
 			public bool BanClass(GameRole gameRole)
 			{
-				this.mClassBans[gameRole] = true;
 				return true;
 			}
 
@@ -44,7 +43,7 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gameRole"></param>
 			public bool UnBanClass(GameRole gameRole)
 			{
-				this.mClassBans[gameRole] &= false;
+				this.mClassBans.Remove(gameRole);
 				return true;
 			}
 
@@ -54,13 +53,13 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gameRole"></param>
 			public bool IsBanned(GameRole gameRole)
 			{
-				return this.mClassBans[gameRole];
+				return this.mClassBans.Contains(gameRole);
 			}
 
 			/// <summary>
 			/// returns a dictionary of the the class bans
 			/// </summary>
-			public Dictionary<GameRole, bool> GetClassBans()
+			public HashSet<GameRole> GetClassBans()
 			{
 				return this.mClassBans;
 			}
@@ -70,11 +69,11 @@ namespace MujAPI.Common.GameRules
 		//weapon bans
 		public class WeaponBans
 		{
-			private Dictionary<Weapon, bool> mWeaponBans;
+			private HashSet<Weapon> mWeaponBans;
 
 			public WeaponBans()
 			{
-				this.mWeaponBans = new Dictionary<Weapon, bool>();
+				this.mWeaponBans = new HashSet<Weapon>();
 			}
 
 			/// <summary>
@@ -88,9 +87,8 @@ namespace MujAPI.Common.GameRules
 			/// <param name="weaponName"></param>
 			public bool BanWeapon(Weapon weapon)
 			{
-				if (!mWeaponBans.ContainsKey(weapon))
+				if (!mWeaponBans.Contains(weapon))
 				{
-					mWeaponBans[weapon] = true;
 					return true;
 				}
 				else
@@ -108,7 +106,7 @@ namespace MujAPI.Common.GameRules
 			/// <param name="weaponName"></param>
 			public bool UnBanWeapon(Weapon weapon)
 			{
-				if (mWeaponBans.ContainsKey(weapon))
+				if (mWeaponBans.Contains(weapon))
 				{
 					mWeaponBans.Remove(weapon);
 					return true;
@@ -127,14 +125,14 @@ namespace MujAPI.Common.GameRules
 			/// <param name="weaponName"></param>
 			public bool IsBanned(Weapon weapon)
 			{
-				return mWeaponBans.ContainsKey(weapon);			
+				return mWeaponBans.Contains(weapon);			
 			}
 
 			/// <summary>
 			/// returns a Dictionary of the weapons with <br/>
 			/// their names and Weapon object
 			/// </summary>
-			public Dictionary<Weapon, bool> GetBanList()
+			public HashSet<Weapon> GetBanList()
 			{
 				return mWeaponBans;
 			}
@@ -144,11 +142,11 @@ namespace MujAPI.Common.GameRules
 		//gadget bans
 		public class GadgetBans
 		{
-			private Dictionary<Gadget, bool> mGadgetBans;
+			private HashSet<Gadget> mGadgetBans;
 
 			public GadgetBans()
 			{
-				this.mGadgetBans = new Dictionary<Gadget, bool>();
+				this.mGadgetBans = new HashSet<Gadget>();
 			}
 
 			/// <summary>
@@ -162,9 +160,8 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gadget"></param>
 			public bool BanGadget(Gadget gadget)
 			{
-				if (!mGadgetBans.ContainsKey(gadget))
+				if (!mGadgetBans.Contains(gadget))
 				{
-					mGadgetBans[gadget] = true;
 					return true;
 				}
 				else
@@ -182,7 +179,7 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gadget"></param>
 			public bool UnBanGadget(Gadget gadget)
 			{
-				if (mGadgetBans.ContainsKey(gadget))
+				if (mGadgetBans.Contains(gadget))
 				{
 					mGadgetBans.Remove(gadget);
 					return true;
@@ -202,13 +199,13 @@ namespace MujAPI.Common.GameRules
 			/// <param name="gadget"></param>
 			public bool IsBanned(Gadget gadget)
 			{
-				return mGadgetBans.ContainsKey(gadget);
+				return mGadgetBans.Contains(gadget);
 			}
 
 			/// <summary>
 			/// returns a dictionary of the gadget ban list
 			/// </summary>
-			public Dictionary <Gadget, bool> GetBanList()
+			public HashSet<Gadget> GetBanList()
 			{
 				return mGadgetBans;
 			}
@@ -217,11 +214,11 @@ namespace MujAPI.Common.GameRules
 		//wearings bans - TODO: needs work
 		public class WearingsBans
 		{
-			private Dictionary<PlayerWearings, bool> mWearingsBans;
+			private HashSet<PlayerWearings> mWearingsBans;
 
 			public WearingsBans()
 			{
-				this.mWearingsBans = new Dictionary<PlayerWearings, bool>();
+				this.mWearingsBans = new HashSet<PlayerWearings>();
 			}
 
 			/// <summary>
@@ -235,9 +232,8 @@ namespace MujAPI.Common.GameRules
 			/// <param name="playerWearings"></param>
 			public bool BanWearings(PlayerWearings playerWearings)
 			{
-				if (!mWearingsBans.ContainsKey(playerWearings))
+				if (!mWearingsBans.Contains(playerWearings))
 				{
-					mWearingsBans[playerWearings] = true;
 					return true;
 				}
 				else
@@ -255,7 +251,7 @@ namespace MujAPI.Common.GameRules
 			/// <param name="playerWearings"></param>
 			public bool UnBanWearings(PlayerWearings playerWearings)
 			{
-				if (mWearingsBans.ContainsKey(playerWearings))
+				if (mWearingsBans.Contains(playerWearings))
 				{
 					mWearingsBans.Remove(playerWearings);
 					return true;
@@ -273,17 +269,64 @@ namespace MujAPI.Common.GameRules
 			/// false if not banned
 			/// </remarks>
 			/// <param name="playerWearings"></param>
-			public bool IsBanned(PlayerWearings playerWearings)
+			public async Task<(bool IsBanned, List<string> BannedItems)> IsBanned(PlayerWearings playerWearings)
 			{
-				// TODO: implement wearings ban check, needs to be able to return the banned clothing
-				return false;
+				List<string> BannedItems = new List<string>();
+
+				//check if playerWearings contains any banned items - need a more efficient solution 😭😭
+				foreach (var BannedWearings in mWearingsBans)
+				{
+					if (BannedWearings.Equals(playerWearings))
+					{
+						return await Task.FromResult( ( true, new List<string>() ) );
+					}
+
+					if (BannedWearings.Head == playerWearings.Head)
+						BannedItems.Add("Head");
+					
+					if (BannedWearings.Chest == playerWearings.Chest)
+						BannedItems.Add("Chest");
+					
+					if (BannedWearings.Belt == playerWearings.Belt)
+						BannedItems.Add("Belt");
+					
+					if (BannedWearings.Backbag == playerWearings.Backbag)
+						BannedItems.Add("Backbag");
+					
+					if (BannedWearings.Eye == playerWearings.Eye)
+						BannedItems.Add("Eye");
+					
+					if (BannedWearings.Face == playerWearings.Face)
+						BannedItems.Add("Face");
+					
+					if (BannedWearings.Hair == playerWearings.Hair)
+						BannedItems.Add("Hair");
+					
+					if (BannedWearings.Skin == playerWearings.Skin)
+						BannedItems.Add("Skin");
+					
+					if (BannedWearings.Uniform == playerWearings.Uniform)
+						BannedItems.Add("Uniform");
+					
+					if (BannedWearings.Camo == playerWearings.Camo)
+						BannedItems.Add("Camo");
+				}
+
+				if (BannedItems.Count > 0)
+				{
+					return await Task.FromResult( (true, BannedItems) );
+				}
+				else
+				{ 
+					return await Task.FromResult( ( false, new List<string>() ) ); 
+				}
 			}
 
 
 			/// <summary>
 			/// returns a dictionary of the Wearings ban list
 			/// </summary>
-			public Dictionary<PlayerWearings, bool> GetBanList()
+			public HashSet<PlayerWearings> GetBanList()
 			{
 				return this.mWearingsBans;
 			}

@@ -190,27 +190,75 @@ namespace MujAPI
 
 			// TODO: make sure that this worked
 			if (Rules.weaponBans.IsBanned(WeaponPrimary)){
-				WeaponPrimary = null;
 				player.Message($"{WeaponPrimary} is banned");
+				WeaponPrimary = null;
 			}
 			if (Rules.weaponBans.IsBanned(WeaponSecondary))
 			{
-				WeaponSecondary = null;
 				player.Message($"{WeaponSecondary} is banned");
+				WeaponSecondary = null;
 			}
 			if (Rules.gadgetBans.IsBanned(HeavyGadget))
 			{
-				HeavyGadget = null;
 				player.Message($"{HeavyGadget} is banned");
+				HeavyGadget = null;
 			}
 			if (Rules.gadgetBans.IsBanned(LightGadget))
 			{
-				LightGadget = null;
 				player.Message($"{LightGadget} is banned");
+				LightGadget = null;
 			}
-			if (Rules.wearingsBans.IsBanned(Wearings))
+			var (isBanned, bannedItems) = await Rules.wearingsBans.IsBanned(Wearings);
+			if (isBanned)
 			{
-				// TODO: have it check what clothing was banned and then make that item null
+				if (bannedItems.Count == 0)
+				{
+					player.Message("Bro ur entire fucking outfit is banned");
+					foreach (var field in typeof(PlayerWearings).GetFields())
+					{
+						field.SetValue(player, null);
+					}
+				}
+				else
+				{
+					foreach (var item in bannedItems)
+					{
+						switch (item)
+						{
+							case "Head":
+								Wearings.Head = null;
+								break;
+							case "Chest":
+								Wearings.Chest = null;
+								break;
+							case "Belt":
+								Wearings.Belt = null;
+								break;
+							case "Backbag":
+								Wearings.Backbag = null;
+								break;
+							case "Eye":
+								Wearings.Eye = null;
+								break;
+							case "Face":
+								Wearings.Face = null;
+								break;
+							case "Hair":
+								Wearings.Hair = null;
+								break;
+							case "Skin":
+								Wearings.Skin = null;
+								break;
+							case "Uniform":
+								Wearings.Uniform = null;
+								break;
+							case "Camo":
+								Wearings.Hair = null;
+								break;
+						}
+					}
+					player.Message($"The Following items are banned: |{string.Join("|", bannedItems)}|");
+				}
 			}
 
 
