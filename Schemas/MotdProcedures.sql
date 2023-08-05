@@ -1,0 +1,11 @@
+DROP PROCEDURE IF EXISTS GetMotd;
+
+DELIMITER $$
+CREATE PROCEDURE GetMotd()
+BEGIN
+	SELECT 
+    MotdId,
+    Motd
+    FROM motd;
+END $$
+DELIMITER ;

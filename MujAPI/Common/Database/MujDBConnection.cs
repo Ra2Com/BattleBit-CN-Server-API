@@ -13,41 +13,31 @@ namespace MujAPI.Common.Database
 		{
 			using var connection = new MySqlConnection(EnvReader.GetStringValue("DB_CONNECTION"));
 
-			var param = new DynamicParameters();
-			param.Add("identifier", 1234567890, DbType.Int64, ParameterDirection.Input);
+			// insert server
+			var serverParam = new DynamicParameters();
+			serverParam.Add("p_ServerName", "UK#1 Muj Test Server", DbType.String, ParameterDirection.Input);
+			serverParam.Add("p_IPAddress", "255.255.255.255", DbType.String, ParameterDirection.Input);
+			serverParam.Add("p_Port", 30000, DbType.Int16, ParameterDirection.Input);
+			serverParam.Add("p_Status", "Offline", DbType.String, ParameterDirection.Input);
 
-			var user = connection.Query<Players>(
-				"GetUser", 
-				param, 
-				commandType: CommandType.StoredProcedure
-				);
-		
-			Console.WriteLine(string.Join(Environment.NewLine,
-				user.Select(u => $"{u.SteamId}, {u.Name}, {u.LastTimePlayed}, {u.CreatedAt}, {u.Kills}, {u.Deaths}, {u.Wins}, {u.Losses}, {u.Rank}, {u.Exp}," +
-				$" {u.FavouriteWeapon}, {u.LongestKill}, {u.TotalHeadShots}, {u.TotalPlayTime}")
-				));
-
-			Console.WriteLine();
-
-			var users = connection.Query<Players>(
-				"GetUsers",
+			var InsertServer = connection.Query<GameServer>(
+				"InsertGameServer",
+				serverParam,
 				commandType: CommandType.StoredProcedure
 				);
 
-			Console.WriteLine(string.Join(Environment.NewLine,
-				users.Select(u => $"{u.SteamId}, {u.Name}, {u.LastTimePlayed}, {u.CreatedAt}, {u.Kills}, {u.Deaths}, {u.Wins}, {u.Losses}, {u.Rank}, {u.Exp}," +
-				$" {u.FavouriteWeapon}, {u.LongestKill}, {u.TotalHeadShots}, {u.TotalPlayTime}")
-				));
+			//get server by port
+			var serverPortParam = new DynamicParameters();
+			serverPortParam.Add("p_Port", 30000, DbType.Int16, ParameterDirection.Input);
+			var Server = connection.Query<GameServer>(
+			"GetServerByPort",
+			serverPortParam,
+			commandType: CommandType.StoredProcedure
+			);
 
-			var user2 = connection.Query<PlayerPermissions>(
-				"GetUserPermissions",
-				param,
-				commandType: CommandType.StoredProcedure
-				);
-			var isadmin = user2.Select(u => u.IsAdmin ? "Yes" : "No").ToList();
 
 			Console.WriteLine(string.Join(Environment.NewLine,
-				user2.Select(u => $"{u.SteamId}, Admin? {isadmin.First()}")));
+				Server.Select(u => $"{u.GameServerId}, {u.ServerName}, {u.IPAddress}, {u.Port}, {u.Status}, {u.CreatedAt}")));
 		}
 
 	}

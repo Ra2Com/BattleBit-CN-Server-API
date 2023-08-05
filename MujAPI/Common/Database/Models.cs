@@ -15,5 +15,6 @@ namespace MujAPI.Common.Database
 		public record PlayerPermissions(Int64 SteamId, bool IsAdmin, bool IsModerator, bool IsVip, 
 			bool IsSpecial, bool IsTrollFlagController, bool IsPremium, bool IsBanned);
 
+		public record GameServer(int GameServerId, string ServerName, string IPAddress, int Port, string Status, DateTime CreatedAt);
 	}
 }
