@@ -6,6 +6,5 @@ _ReSharper.*
 bin
 obj
 packages
-MujApi/Common/Database/
 appsettings.json
 *.env

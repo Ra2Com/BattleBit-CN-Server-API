@@ -242,7 +242,10 @@ namespace BattleBitAPI.Server
 		// --- GameServer CallBack ---
 		public GameServer[] GetGameServers()
 		{
-			return mActiveConnections.Values.ToArray();
+			lock (mActiveConnections)
+			{
+			  return mActiveConnections.Values.ToArray();
+			}
 		}
 		public void AddGameServer(GameServer server)
 		{

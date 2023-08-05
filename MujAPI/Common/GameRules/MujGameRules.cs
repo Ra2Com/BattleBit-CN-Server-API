@@ -292,7 +292,7 @@ namespace MujAPI.Common.GameRules
 				{
 					if (BannedWearings.Equals(playerWearings))
 					{
-						return await Task.FromResult( ( true, new List<string>() ) );
+						return await Task.FromResult( ( true, BannedItems ) ); // return true with empty list idk
 					}
 
 					if (BannedWearings.Head == playerWearings.Head)
@@ -328,11 +328,11 @@ namespace MujAPI.Common.GameRules
 
 				if (BannedItems.Count > 0)
 				{
-					return await Task.FromResult( (true, BannedItems) );
+					return await Task.FromResult( (true, BannedItems) ); // return true with the banned items in list
 				}
 				else
 				{ 
-					return await Task.FromResult( ( false, new List<string>() ) ); 
+					return await Task.FromResult( ( false, BannedItems ) ); // return false and a empty list
 				}
 			}
 

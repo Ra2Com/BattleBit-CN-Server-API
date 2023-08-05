@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using MujAPI;
 using MujAPI.Common;
+using MujAPI.Common.Database;
+using dotenv.net;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
@@ -11,9 +13,7 @@ class Program
 	{
 		var timerDoneEvent = new ManualResetEvent(false);
 
-		var root = Directory.GetCurrentDirectory();
-		var dotenv = Path.Combine(root, ".env");
-		DotEnv.Load(dotenv);
+		DotEnv.Load(options: new DotEnvOptions(ignoreExceptions: false));
 
 		Task.Run(() =>
 		{
@@ -23,6 +23,9 @@ class Program
 			}, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
 			timerDoneEvent.WaitOne();
 		});
+
+		MujDBConnection.Start();
+
 		MujApi.Start();
 		Thread.Sleep(-1);
 	}

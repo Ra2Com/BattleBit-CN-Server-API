@@ -29,7 +29,7 @@ namespace MujAPI.Commands
 			commandHandler.AddCommand("gamerule", ChatCommands.GameRuleCommand);
 		}
 
-		//gamerule Callback
+		// !gamerule Callback
 		private static void GameRuleCommand(string[] args, object[] optionalObjects)
 		{
 			var Player = (MujPlayer)optionalObjects[0];
@@ -80,7 +80,7 @@ namespace MujAPI.Commands
 							{
 								MujApi.Rules.weaponBans.UnBanWeapon(allWeapon);
 							}
-							Player.Message($"All Weapons Banned o_0!!");
+							Player.Message($"All Weapons UnBanned o_0!!");
 							break;
 						}
 						else if (Weapons.TryFind(args[1].ToUpper(), out Weapon unbanweapon))
