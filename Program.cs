@@ -24,8 +24,6 @@ class Program
 			timerDoneEvent.WaitOne();
 		});
 
-		MujDBConnection.Start();
-
 		MujApi.Start();
 		Thread.Sleep(-1);
 	}

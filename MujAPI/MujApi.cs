@@ -4,6 +4,7 @@ using CommunityServerAPI.MujAPI.Common.Utils;
 using log4net.Config;
 using MujAPI.Commands;
 using MujAPI.Common;
+using MujAPI.Common.Database;
 using MujAPI.Common.GameRules;
 using System.Net;
 
@@ -34,6 +35,9 @@ namespace MujAPI
 		// start the api
 		public static void Start()
 		{
+			// TODO: init database things here
+			MujUtils.RandomMOTD = MujDBConnection.DBGetMotds().Select(sv => sv.Motd).ToList(); // grab motds from server
+
 			log.Info($"Logger Started");
 
 			listener.OnPlayerTypedMessage += OnPlayerChat;
@@ -54,7 +58,6 @@ namespace MujAPI
 			serverCommandProcessor = new ApiCommandHandler(listener);
 			Task.Run(() => serverCommandProcessor.Start());
 			log.Info("ApiCommands Listening");
-
 		}
 
 		//for testing map voting

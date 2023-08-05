@@ -41,13 +41,7 @@ namespace CommunityServerAPI.MujAPI.Common.Utils
             { "day", MapDayNight.Day },
             { "night", MapDayNight.Night },
         };
-        public static List<string> RandomMOTD = new()
-        {
-            "Use <b><color=green>!votemap [mapnamehere]</b></color> to vote for maps!",
-            "Use <b><color=green>!votekick [personnamehere]</b></color> to vote kick!",
-            "Snipers Are banned on this server",
-            "Dont forget to favourite this server!!",
-        };
+        public static List<string> RandomMOTD;
 
 
 

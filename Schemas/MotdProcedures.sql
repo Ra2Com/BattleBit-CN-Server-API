@@ -3,8 +3,7 @@ DROP PROCEDURE IF EXISTS GetMotd;
 DELIMITER $$
 CREATE PROCEDURE GetMotd()
 BEGIN
-	SELECT 
-    MotdId,
+	SELECT
     Motd
     FROM motd;
 END $$

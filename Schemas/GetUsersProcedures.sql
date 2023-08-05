@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS GetUsers;
 DROP PROCEDURE IF EXISTS GetUserPermissions;
 
 DELIMITER $$
-CREATE PROCEDURE GetUser(IN identifier BIGINT)
+CREATE PROCEDURE GetUser(IN p_SteamId BIGINT)
 BEGIN
 	SELECT 
     SteamId,
@@ -21,7 +21,7 @@ BEGIN
     TotalHeadShots, 
     TotalPlayTime 
     FROM players 
-    WHERE SteamId = identifier;
+    WHERE SteamId = p_SteamId;
 END $$
 DELIMITER ;
 
@@ -33,7 +33,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE GetUserPermissions(IN identifier bigint)
+CREATE PROCEDURE GetUserPermissions(IN p_SteamId bigint)
 BEGIN
 	SELECT 
     SteamId, 
@@ -45,6 +45,6 @@ BEGIN
     IsPremium, 
     IsBanned 
     FROM playerpermissions
-    WHERE SteamId = identifier;
+    WHERE SteamId = p_SteamId;
 END $$
 DELIMITER ;

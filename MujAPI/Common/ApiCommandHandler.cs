@@ -5,6 +5,7 @@ using log4net.Config;
 using System.Net.Sockets;
 using System.Reflection;
 using BattleBitAPI.Common;
+using MujAPI.Common.Database;
 
 namespace MujAPI
 {
@@ -85,6 +86,9 @@ namespace MujAPI
 						case "listplayers":
 							ListAllPlayers();
 							break;
+						case "dbtest":
+							DBTest();
+							break;
 						case "crosschat":
 							EnableCrossServerChat();
 							break;
@@ -94,6 +98,47 @@ namespace MujAPI
 					}
 				}
 			}
+		}
+
+		private async void DBTest()
+		{
+			var ServerIP = IPAddress.Parse("234.123.24.54");
+			try
+			{
+				var AddGameServerResult = MujDBConnection.DBAddGameServer("TestServer", ServerIP.ToString(), 20000);
+				if (AddGameServerResult != null)
+				{
+					var AddGameServerDesc = AddGameServerResult
+						.Select(sv => $"DBID={sv.GameServerId}:{sv.ServerName}, {sv.IPAddress}, {sv.Port}, {sv.CreatedAt}: STATUS={sv.Status}")
+						.ToList();
+
+					log.Info($"GameServer Added To DB: {string.Join(", ", AddGameServerDesc)}");
+				}
+				else
+				{
+					log.Error("Failed to add the game server.");
+				}
+
+				// Changing Server Status
+				var ChangeStatusResult = MujDBConnection.DBUpdateServerStatus(ServerIP.ToString(), 20000, "Maintenance");
+				if (ChangeStatusResult != null)
+				{
+					var StatusDesc = ChangeStatusResult
+						.Select(s => $"Current Status:{s.Status} For: {s.ServerName}:{s.IPAddress}:{s.Port}")
+						.ToList();
+
+					log.Info(string.Join(", ", StatusDesc));
+				}
+				else
+				{
+					log.Error("Failed to update server status.");
+				}
+			}
+			catch (Exception ex)
+			{
+				log.Error($"An error occurred: {ex.Message}");
+			}
+
 		}
 
 		/// <summary>
@@ -276,7 +321,7 @@ namespace MujAPI
 			foreach (var command in commands)
 			{
 				// simulates a chat event
-				await Task.Delay(1000);
+				//await Task.Delay(1000);
 				await MujApi.OnPlayerChat(mujPlayer1, BattleBitAPI.Common.ChatChannel.AllChat, command);
 			}
 
