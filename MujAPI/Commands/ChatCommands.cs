@@ -21,12 +21,12 @@ namespace MujAPI.Commands
 		public static void RegisterMyCommands(ChatCommandHandler commandHandler)
 		{
 			//register commands
-			commandHandler.AddCommand("votekick", ChatCommands.VoteKickCommand);
-			commandHandler.AddCommand("kill", ChatCommands.KillCommand);
-			commandHandler.AddCommand("skipmap", ChatCommands.SkipMapCommand);
-			commandHandler.AddCommand("bully", ChatCommands.BullyUserCommand);
-			commandHandler.AddCommand("update", ChatCommands.UpdateMapOrGameModeRotation);
-			commandHandler.AddCommand("gamerule", ChatCommands.GameRuleCommand);
+			commandHandler.AddCommand("votekick", VoteKickCommand);
+			commandHandler.AddCommand("kill", KillCommand);
+			commandHandler.AddCommand("skipmap", SkipMapCommand);
+			commandHandler.AddCommand("bully", BullyUserCommand);
+			commandHandler.AddCommand("update", UpdateMapOrGameModeRotation);
+			commandHandler.AddCommand("gamerule", GameRuleCommand);
 		}
 
 		// !gamerule Callback

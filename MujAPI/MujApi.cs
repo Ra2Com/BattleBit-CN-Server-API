@@ -1,7 +1,6 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using CommunityServerAPI.MujAPI.Common.Utils;
-using log4net.Config;
 using MujAPI.Commands;
 using MujAPI.Common;
 using MujAPI.Common.Database;
@@ -142,7 +141,7 @@ namespace MujAPI
 				ChatMessage[0] = "all";
 				ChatMessage[1] = $"({ServerIdentifier}) {player.Name} : {msg}";
 
-				await Task.Run(() => serverCommandProcessor.SendChatMessageToAllServers(ChatMessage));
+				await Task.Run(() => ApiCommands.SendChatMessageToAllServers(ChatMessage, new object[] {}));
 			}
 		}
 
