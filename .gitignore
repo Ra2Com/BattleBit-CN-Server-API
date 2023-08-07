@@ -1,2 +1,10 @@
 
-.vs/CommunityServerAPI/v17/.suo
+.vs
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
+appsettings.json
+*.env

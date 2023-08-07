@@ -1,29 +1,30 @@
-﻿using BattleBitAPI;
-using BattleBitAPI.Common;
-using BattleBitAPI.Server;
-using BattleBitAPI.Storage;
-using System.Numerics;
+﻿using CommunityServerAPI.MujAPI.Common.Utils;
+using Microsoft.Extensions.Configuration;
+using MujAPI;
+using MujAPI.Common;
+using MujAPI.Common.Database;
+using dotenv.net;
+
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 class Program
 {
-    static void Main(string[] args)
-    {
-        var listener = new ServerListener<MyPlayer>();
-        listener.OnGameServerTick += OnGameServerTick;
-        listener.Start(29294);//Port
-        Thread.Sleep(-1);
-    }
+	static void Main(string[] args)
+	{
+		var timerDoneEvent = new ManualResetEvent(false);
 
-    private static async Task OnGameServerTick(GameServer server)
-    {
-        //server.Settings.SpectatorEnabled = !server.Settings.SpectatorEnabled;
-        //server.MapRotation.AddToRotation("DustyDew");
-        //server.MapRotation.AddToRotation("District");
-        //server.GamemodeRotation.AddToRotation("CONQ");
-        //server.ForceEndGame();
-    }
-}
-class MyPlayer : Player
-{
-    
+		DotEnv.Load(options: new DotEnvOptions(ignoreExceptions: false));
+
+		Task.Run(() =>
+		{
+			Timer timer = new Timer(state => 
+			{
+				MujUtils.SetConsoleTitle(MujApi.listener);
+			}, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+			timerDoneEvent.WaitOne();
+		});
+
+		MujApi.Start();
+		Thread.Sleep(-1);
+	}
 }
