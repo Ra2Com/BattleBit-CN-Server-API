@@ -139,14 +139,12 @@ namespace MujAPI.Commands
 				//}
 
 				await DbUpdatePlayerStats(1231223, DateTime.Now, 20);
-				await DbAddMotd("lemme see if the datetime works");
 
 			}
 			catch (Exception ex)
 			{
 				log.Error($"An error occurred: {ex.Message}");
 			}
-
 		}
 
 		// shutdown servers callback

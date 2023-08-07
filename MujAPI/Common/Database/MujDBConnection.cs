@@ -165,38 +165,42 @@ namespace MujAPI.Common.Database
 			int? totalHeadShots = null, int? totalPlayTime = null)
 		{
 			await using var dbContext = new MujDbContext();
-			var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)steamId);
-
-			if (player != null)
+			try
 			{
-				if (kills.HasValue)
-					player.Kills = kills.Value;
-				if (deaths.HasValue)
-					player.Deaths = deaths.Value;
-				if (wins.HasValue)
-					player.Wins = wins.Value;
-				if (losses.HasValue)
-					player.Losses = losses.Value;
-				if (rank.HasValue)
-					player.Rank = rank.Value;
-				if (exp.HasValue)
-					player.Exp = exp.Value;
-				if (favouriteWeapon != null)
-					player.FavouriteWeapon = favouriteWeapon;
-				if (longestKill.HasValue)
-					player.LongestKill = longestKill.Value;
-				if (totalHeadShots.HasValue)
-					player.TotalHeadShots = totalHeadShots.Value;
-				if (totalPlayTime.HasValue)
-					player.TotalPlayTime = totalPlayTime.Value;
-				player.LastTimePlayed = lastTimePlayed;
+				var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)steamId);
 
-				await dbContext.SaveChangesAsync();
-				log.Info($"{steamId} saved player stats");
+				if (player != null)
+				{
+					if (kills.HasValue)
+						player.Kills = kills.Value;
+					if (deaths.HasValue)
+						player.Deaths = deaths.Value;
+					if (wins.HasValue)
+						player.Wins = wins.Value;
+					if (losses.HasValue)
+						player.Losses = losses.Value;
+					if (rank.HasValue)
+						player.Rank = rank.Value;
+					if (exp.HasValue)
+						player.Exp = exp.Value;
+					if (favouriteWeapon != null)
+						player.FavouriteWeapon = favouriteWeapon;
+					if (longestKill.HasValue)
+						player.LongestKill = longestKill.Value;
+					if (totalHeadShots.HasValue)
+						player.TotalHeadShots = totalHeadShots.Value;
+					if (totalPlayTime.HasValue)
+						player.TotalPlayTime = totalPlayTime.Value;
+					player.LastTimePlayed = lastTimePlayed;
+
+					await dbContext.SaveChangesAsync();
+					log.Info($"{steamId} saved player stats");
+				}
 			}
-			else
+			catch (Exception e)
 			{
-				log.Error("Couldn't Find the player");
+				log.Error($"Error while retrieving player: {e.Message}");
+				throw;
 			}
 		}
 
