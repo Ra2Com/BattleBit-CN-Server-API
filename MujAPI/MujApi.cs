@@ -24,6 +24,8 @@ namespace MujAPI
 		public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
 		public static Dictionary<string, GameServer> GameServerIdentifiers = new Dictionary<string, GameServer>();
 		public static Dictionary<ulong, MujPlayer> BullyList = new Dictionary<ulong, MujPlayer>();
+		private static Dictionary<string, Timer> ServerTimers = new Dictionary<string, Timer>();
+
 
 		//chat command handler
 		private static ChatCommandHandler commandHandler = new ChatCommandHandler();
@@ -94,18 +96,47 @@ namespace MujAPI
 			player.IsPremium = isPremium;
 		}
 
-		private static async Task OnGameServerDisconnected(GameServer server)
+		// server disconnecting from api
+		public static async Task OnGameServerDisconnected(GameServer server)
 		{
+			if (ServerTimers.TryGetValue(server.ServerName, out Timer timer))
+			{
+				await timer.DisposeAsync(); // dispose the timer for motd
+				ServerTimers.Remove(server.ServerName); // remove the motd timer
+			}
+
 			var port = server.GamePort;
 			var ip = server.GameIP.MapToIPv4().ToString();
-			var serverFromPort = await MujDBConnection.DbGetServerByPort(port);
-			var serverExists = serverFromPort.Any(s => s.Port == port);
+			var serverFromPort = await MujDBConnection.DbGetServerByPort(port); // check if server exists in db
+			var serverExists = serverFromPort.Any(s => s.Port == port); // true if exists
 
 			if (serverExists)
 				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Offline"); //change the status of the server on db
 			else
 				await MujDBConnection.dbAddGameServer(server.ServerName, ip, port); //register game server to db
 			log.Info($"{server} Disconnected");
+		}
+
+		// server connecting to the api
+		public static async Task OnGameServerConnected(GameServer server)
+		{
+			var port = server.GamePort;
+			var ip = server.GameIP.MapToIPv4().ToString();
+
+			var serverFromPort = await MujDBConnection.DbGetServerByPort(port);
+			var serverExists = serverFromPort.Any(s => s.Port == port);
+
+			if (serverExists)
+				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Online"); //change the status of the server on db
+			else
+				await MujDBConnection.dbAddGameServer(server.ServerName, ip, port); //register game server to db
+			
+
+			string colouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);
+			GameServerIdentifiers.Add(colouredIdentifier, server);
+			log.Info($"{server} just connected");
+			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+			ServerTimers[server.ServerName] = timer; // add the timer to the dictionary
 		}
 
 		// player chat event
@@ -130,27 +161,6 @@ namespace MujAPI
 			}
 		}
 
-		// when a gameserver connects to the api
-		public static async Task OnGameServerConnected(GameServer server)
-		{
-			var port = server.GamePort;
-			var ip = server.GameIP.MapToIPv4().ToString();
-
-			var serverFromPort = await MujDBConnection.DbGetServerByPort(port);
-			var serverExists = serverFromPort.Any(s => s.Port == port);
-
-			if (serverExists)
-				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Online"); //change the status of the server on db
-			else
-				await MujDBConnection.dbAddGameServer(server.ServerName, ip, port); //register game server to db
-			
-
-			string ColouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);
-			GameServerIdentifiers.Add(ColouredIdentifier, server);
-			log.Info($"{server} just connected");
-			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
-		}
-
 		// match ending
 		private static async Task OnMatchEnding(GameServer server)
 		{
@@ -162,7 +172,7 @@ namespace MujAPI
 			log.Info($"{MostVotedMap}, {maxMapCount}, {totalMapCount}");
 		}
 
-
+		// player spawning
 		public static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
 		{
 			if (BullyList.ContainsKey(player.SteamID)) 

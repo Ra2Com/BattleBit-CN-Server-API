@@ -1,9 +1,9 @@
 ﻿using BattleBitAPI.Server;
-using MujAPI.Common.Database;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
+using static MujAPI.Common.Database.MujDBConnection;
 
 namespace MujAPI.Commands
 {
@@ -138,7 +138,8 @@ namespace MujAPI.Commands
 				//	log.Error("Failed to get player permissions");
 				//}
 
-				await MujDBConnection.DbUpdatePlayerStats(1231223, DateTime.Now, 20);
+				await DbUpdatePlayerStats(1231223, DateTime.Now, 20);
+				await DbAddMotd("lemme see if the datetime works");
 
 			}
 			catch (Exception ex)
@@ -406,6 +407,10 @@ namespace MujAPI.Commands
 			}
 
 			await MujApi.OnPlayerChat(mujPlayer2, BattleBitAPI.Common.ChatChannel.AllChat, "!votekick Test");
+
+
+			await MujApi.OnGameServerDisconnected(server1);
+			await MujApi.OnGameServerDisconnected(server2);
 
 		}
 

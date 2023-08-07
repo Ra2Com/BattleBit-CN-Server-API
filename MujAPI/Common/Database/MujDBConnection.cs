@@ -19,7 +19,9 @@ namespace MujAPI.Common.Database
 			Connection = new MySqlConnection(DbConnection);
 		}
 
-		public static async Task<GameServer> dbAddGameServer(string ServerName, string ServerIPAddress, int ServerPort)
+		// gameserver shit
+		// add the game server to the database
+		public static async Task<GameServer> DbAddGameServer(string ServerName, string ServerIPAddress, int ServerPort)
 		{
 			await using var dbContext = new MujDbContext();
 
@@ -35,7 +37,8 @@ namespace MujAPI.Common.Database
 			{
 				dbContext.GameServer.Add(newGameServer);
 				await dbContext.SaveChangesAsync();
-				return newGameServer;
+				var createdGameServer = await dbContext.GameServer.FindAsync(newGameServer.GameServerId);
+				return createdGameServer;
 			}
 			catch (Exception e)
 			{
@@ -55,7 +58,7 @@ namespace MujAPI.Common.Database
 
 			// check if the server exists
 			var existingServer = await dbContext.GameServer
-				.FirstOrDefaultAsync(gs => gs.IPAddress == ServerIPAddress && gs.Port == ServerPort);
+				.FirstAsync(gs => gs.IPAddress == ServerIPAddress && gs.Port == ServerPort);
 
 			if (existingServer == null)
 				return null;
@@ -77,27 +80,37 @@ namespace MujAPI.Common.Database
 		}
 
 		// get the server by its port
-		public static async Task<List<GameServer>> DbGetServerByPort(int ServerPort)
+		public static async Task<GameServer> DbGetServerByPort(int ServerPort)
 		{
 			await using var dbContext = new MujDbContext();
-			var gameServers = dbContext.GameServer
+			var gameServers = await dbContext.GameServer
 				.Where(gs => gs.Port == ServerPort)
-				.ToList();
+				.FirstAsync();
 			return gameServers;
 		}
 
+		// get the server by its ip and port
+		public static async Task<GameServer> DbGetServerByIpAndPort(string IPAddress, int ServerPort)
+		{
+			await using var dbContext = new MujDbContext();
+			var gameServer = await dbContext.GameServer
+				.Where(gs => gs.IPAddress == IPAddress && gs.Port == ServerPort)
+				.FirstAsync();
+			return gameServer;
+		}
 
 		// player database shit
 		// get the player permissions from database
 		public static async Task<PlayerPermissions> DbGetPlayerPermissions(ulong SteamId)
 		{
 			await using var dbContext = new MujDbContext();
-			var playerPermissions = dbContext.PlayerPermissions
+			var playerPermissions = await dbContext.PlayerPermissions
 				.Include(pp => pp.Player)
 				.Where(pp => pp.SteamId == (long)SteamId)
-				.FirstOrDefaultAsync();
-			return await playerPermissions;
+				.FirstAsync();
+				return playerPermissions;
 		}
+		
 		// get players in database
 		public static async Task<List<Player>> DbGetPlayers()
 		{
@@ -113,6 +126,23 @@ namespace MujAPI.Common.Database
 				throw;
 			}
 		}
+
+		// get player stat from database
+		public static async Task<Player> DbGetPlayer(ulong SteeamId)
+		{
+			await using var dbContext = new MujDbContext();
+			try
+			{
+				var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)SteeamId);
+				return player;
+			}
+			catch (Exception e)
+			{
+				log.Error(e);
+				throw;
+			}
+		}
+
 		// add player to database
 		public static async void DbAddPlayer(ulong steamId, string name)
 		{
@@ -121,7 +151,8 @@ namespace MujAPI.Common.Database
 			var newUser = new Player
 			{
 				SteamId = (long)steamId,
-				Name = name
+				Name = name,
+				CreatedAt = DateTime.Now
 			};
 
 			try
@@ -135,56 +166,93 @@ namespace MujAPI.Common.Database
 				throw;
 			}
 		}
-		// update player stats
-		public static async Task DbUpdatePlayerStats(ulong SteamId, DateTime LastTimePlayed , int? Kills = null, int? Deaths = null, int? Wins = null, 
-			int? Losses = null, int? Rank = null, int? Exp = null, string? FavouriteWeapon = null, decimal? LongestKill = null,
-			int? TotalHeadShots = null, int? TotalPlayTime = null)
+
+		// get player warns
+		public static async Task<List<PlayerWarnings>> DbGetPlayerWarns(ulong SteamId)
 		{
 			await using var dbContext = new MujDbContext();
-			var player = await dbContext.Players.FirstOrDefaultAsync(p => p.SteamId == (long)SteamId);
+
+			try
+			{
+				var Warnings = await dbContext.PlayerWarnings
+					.Where(pw => pw.SteamId == (long)SteamId)
+					.ToListAsync();
+				if (Warnings.Count == 0)
+					log.Error("No player warns found");
+				return Warnings;
+			}
+			catch (Exception e)
+			{
+				log.Error(e);
+				throw;
+			}
+		}
+
+		// add player warn
+		public static async Task<PlayerWarnings> DbAddPlayerWarn(ulong SteamId, string Warning)
+		{
+			await using var dbContext = new MujDbContext();
+			var newWarn = new PlayerWarnings
+			{
+				SteamId = (long)SteamId,
+				Message = Warning,
+				CreatedAt = DateTime.Now
+			};
+			
+			try
+			{
+				dbContext.PlayerWarnings.Add(newWarn);
+				await dbContext.SaveChangesAsync();
+				var createdWarn = await dbContext.PlayerWarnings.FindAsync(newWarn.Id);
+				return createdWarn;
+			}
+			catch (Exception e)
+			{
+				log.Error(e);
+				throw;
+			}
+		}
+
+		// update player stats
+		public static async Task DbUpdatePlayerStats(ulong steamId, DateTime lastTimePlayed , int? kills = null, int? deaths = null, int? wins = null, 
+			int? losses = null, int? rank = null, int? exp = null, string? favouriteWeapon = null, decimal? longestKill = null,
+			int? totalHeadShots = null, int? totalPlayTime = null)
+		{
+			await using var dbContext = new MujDbContext();
+			var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)steamId);
 
 			if (player != null)
 			{
-				if (Kills.HasValue)
-					player.Kills = Kills.Value;
-				
-				if (Deaths.HasValue)
-					player.Deaths = Deaths.Value;
-
-				if (Wins.HasValue)
-					player.Wins = Wins.Value;
-
-				if (Losses.HasValue)
-					player.Losses = Losses.Value;
-
-				if (Rank.HasValue)
-					player.Rank = Rank.Value;
-
-				if (Exp.HasValue)
-					player.Exp = Exp.Value;
-
-				if (FavouriteWeapon != null)
-					player.FavouriteWeapon = FavouriteWeapon;
-
-				if (LongestKill.HasValue)
-					player.LongestKill = LongestKill.Value;
-
-				if (TotalHeadShots.HasValue)
-					player.TotalHeadShots = TotalHeadShots.Value;
-				
-				if (TotalPlayTime.HasValue)
-					player.TotalPlayTime = TotalPlayTime.Value;
-
+				if (kills.HasValue)
+					player.Kills = kills.Value;
+				if (deaths.HasValue)
+					player.Deaths = deaths.Value;
+				if (wins.HasValue)
+					player.Wins = wins.Value;
+				if (losses.HasValue)
+					player.Losses = losses.Value;
+				if (rank.HasValue)
+					player.Rank = rank.Value;
+				if (exp.HasValue)
+					player.Exp = exp.Value;
+				if (favouriteWeapon != null)
+					player.FavouriteWeapon = favouriteWeapon;
+				if (longestKill.HasValue)
+					player.LongestKill = longestKill.Value;
+				if (totalHeadShots.HasValue)
+					player.TotalHeadShots = totalHeadShots.Value;
+				if (totalPlayTime.HasValue)
+					player.TotalPlayTime = totalPlayTime.Value;
+				player.LastTimePlayed = lastTimePlayed;
 
 				await dbContext.SaveChangesAsync();
-
+				log.Info($"{steamId} saved player stats");
 			}
 			else
 			{
 				log.Error("Couldn't Find the player");
 			}
 		}
-
 
 		// get message of the day's from database
 		public static async Task<List<Motd>> DbGetMotds()
@@ -209,14 +277,16 @@ namespace MujAPI.Common.Database
 
 			var newMotd = new Motd
 			{
-				MotdMessage = motdMessage
+				MotdMessage = motdMessage,
+				CreatedAt = DateTime.Now
 			};
 
 			try
 			{
-				var AddedMotdEntryTask = dbContext.Motd.AddAsync(newMotd);
+				var addedMotdEntryTask = dbContext.Motd.AddAsync(newMotd);
 				await dbContext.SaveChangesAsync();
-				var addedMotdEntry = await AddedMotdEntryTask;
+				var addedMotdEntry = await addedMotdEntryTask;
+				log.Info($"Motd Message:{motdMessage} sent to database");
 				return addedMotdEntry.Entity;
 			}
 			catch (Exception e)
@@ -226,6 +296,23 @@ namespace MujAPI.Common.Database
 			}
 		}
 
+		// matchdata shit
+		// add the matchdata 
+		// update the matchdata
+		// get the matchdata
+		// remove the matchdata
+
+		// team data shit
+		// add the team data
+		// update the team data
+		// get the team data
+		// remove the team data
+
+		// team player shit
+		// add the team player data
+		// update the team player data
+		// get the team player data
+		// remove the team player data
 	}
 
 }

@@ -120,7 +120,7 @@ namespace MujAPI.Common.Database
 
 		public class Player
 		{
-			public Int64 SteamId { get; set; }
+			public long SteamId { get; set; }
 			public string Name { get; set; }
 			public DateTime LastTimePlayed { get; set; }
 			public DateTime CreatedAt { get; set; }
@@ -158,7 +158,7 @@ namespace MujAPI.Common.Database
 		public class PlayerWarnings
 		{
 			public int Id { get; set; }
-			public Int64 SteamId { get; set; }
+			public long SteamId { get; set; }
 			public string Message { get; set; }
 
 			public Player Player { get; set; }
@@ -167,7 +167,7 @@ namespace MujAPI.Common.Database
 		public class PlayerWeaponStats
 		{
 			public int Id { get; set; }
-			public Int64 SteamId { get; set; }
+			public long SteamId { get; set; }
 			public string WeaponName { get; set; }
 			public int Kills { get; set; }
 			public int HeadShots { get; set; }
@@ -216,8 +216,8 @@ namespace MujAPI.Common.Database
 			public string Status { get; set; }
 			public DateTime CreatedAt { get; set; }
 
-			public ICollection<Motd> Motd { get; set; }
-			public ICollection<MatchData> MatchData { get; set; }
+			public ICollection<Motd> Motd { get; set; } = new List<Motd>();
+			public ICollection<MatchData> MatchData { get; set; } = new List<MatchData>();
 
 		}
 
@@ -252,7 +252,7 @@ namespace MujAPI.Common.Database
 		public class TeamPlayer
 		{
 			public int TeamId { get; set; }
-			public Int64 PlayerId { get; set; }
+			public long PlayerId { get; set; }
 			public DateTime CreatedAt { get; set; }
 			public int Kills { get; set; }
 			public int Deaths { get; set; }
@@ -260,8 +260,6 @@ namespace MujAPI.Common.Database
 			public TeamData TeamData { get; set; }
 			public Player Player { get; set; }
 		}
-
-		public record DBGameServer(int GameServerId, string ServerName, string IPAddress, int Port, string Status, DateTime CreatedAt);
 		
 	}
 
