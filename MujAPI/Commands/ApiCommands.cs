@@ -94,34 +94,52 @@ namespace MujAPI.Commands
 			var ServerIP = IPAddress.Parse("234.123.24.54");
 			try
 			{
-				var AddGameServerResult = MujDBConnection.DBAddGameServer("TestServer", ServerIP.ToString(), 20000);
-				if (AddGameServerResult != null)
-				{
-					var AddGameServerDesc = AddGameServerResult
-						.Select(sv => $"DBID={sv.GameServerId}:{sv.ServerName}, {sv.IPAddress}, {sv.Port}, {sv.CreatedAt}: STATUS={sv.Status}")
-						.ToList();
+				//var AddGameServerResult = MujDBConnection.DBAddGameServer("TestServer", ServerIP.ToString(), 20000);
+				//if (AddGameServerResult != null)
+				//{
+				//	var AddGameServerDesc = AddGameServerResult
+				//		.Select(sv => $"DBID={sv.GameServerId}:{sv.ServerName}, {sv.IPAddress}, {sv.Port}, {sv.CreatedAt}: STATUS={sv.Status}")
+				//		.ToList();
 
-					log.Info($"GameServer Added To DB: {string.Join(", ", AddGameServerDesc)}");
-				}
-				else
-				{
-					log.Error("Failed to add the game server.");
-				}
+				//	log.Info($"GameServer Added To DB: {string.Join(", ", AddGameServerDesc)}");
+				//}
+				//else
+				//{
+				//	log.Error("Failed to add the game server.");
+				//}
 
-				// Changing Server Status
-				var ChangeStatusResult = MujDBConnection.DBUpdateServerStatus(ServerIP.ToString(), 20000, "Maintenance");
-				if (ChangeStatusResult != null)
-				{
-					var StatusDesc = ChangeStatusResult
-						.Select(s => $"Current Status:{s.Status} For: {s.ServerName}:{s.IPAddress}:{s.Port}")
-						.ToList();
+				//// Changing Server Status
+				//var ChangeStatusResult = MujDBConnection.DbUpdateServerStatus(ServerIP.ToString(), 20000, "Maintenance");
+				//if (ChangeStatusResult != null)
+				//{
+				//	var StatusDesc = ChangeStatusResult
+				//		.Select(s => $"Current Status:{s.Status} For: {s.ServerName}:{s.IPAddress}:{s.Port}")
+				//		.ToList();
 
-					log.Info(string.Join(", ", StatusDesc));
-				}
-				else
-				{
-					log.Error("Failed to update server status.");
-				}
+				//	log.Info(string.Join(", ", StatusDesc));
+				//}
+				//else
+				//{
+				//	log.Error("Failed to update server status.");
+				//}
+
+				// add warns
+				//var PlayerPerms = await MujDBConnection.DbGetPlayerPermissions(1234567890);
+				//var Players = await MujDBConnection.DbGetPlayers();
+				//if (PlayerPerms != null)
+				//{
+				//	var playerPermsDesc = $"Player Steam:{PlayerPerms.SteamId}, {PlayerPerms.Player.SteamId}";
+				//	// var playerPermsDesc = PlayerPerms.Select(x => $"{x.Motd}").ToList();
+				//	log.Info(playerPermsDesc);
+				//	log.Info(Players.Count);
+				//}
+				//else
+				//{
+				//	log.Error("Failed to get player permissions");
+				//}
+
+				await MujDBConnection.DbUpdatePlayerStats(1231223, DateTime.Now, 20);
+
 			}
 			catch (Exception ex)
 			{
@@ -304,15 +322,15 @@ namespace MujAPI.Commands
 			TcpClient tcpClient1 = new();
 			GameServer.mInternalResources mInternalResources1 = new();
 			GameServer server1 = new(tcpClient1, mInternalResources1, null, IPAddress.Loopback,
-				30000, true, "EU#1", "CONQ", "azagor", BattleBitAPI.Common.MapSize._127vs127,
-				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
+			30000, true, "EU#1 muj test server", "CONQ", "azagor", BattleBitAPI.Common.MapSize._127vs127,
+			BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
 			//creates server 2
 			TcpClient tcpClient2 = new();
 			GameServer.mInternalResources mInternalResources2 = new();
 			GameServer server2 = new(tcpClient2, mInternalResources2, null, IPAddress.Loopback,
-				30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
-				BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
+			30022, true, "EU#2", "INFECTED", "tensatown", BattleBitAPI.Common.MapSize._127vs127,
+			BattleBitAPI.Common.MapDayNight.Day, 20, 2, 254, null, null);
 
 			//adds the servers to the mActiveConnections list
 			listener.AddGameServer(server1);
@@ -347,37 +365,37 @@ namespace MujAPI.Commands
 			var commands = new[]
 			{
 				"!testcommand",
-				"!votekick",
-				"!votekick Test",
-				"!kill",
-				"!kill Test",
-				"!skipmap",
-				"!skipmap mapnames",
-				"!skipmap trollflagon",
-				"!skipmap azagor",
-				"!skipmap azagor day",
-				"!skipmap lonovo night",
-				"!bully nouser",
-				"!bully 2376438746",
-				"!bully help",
-				"!update",
-				"!update map",
-				"!update gamemode",
-				"!update map dustydew", //add
-				"!update map dustydew", //remove
-				"!update map tensatown",
-				"!update map valley",
-				"!update map wakistanasdghasjhdg",
-				"!update gamemode dom",
-				"!update gamemode dom",
-				"!update gamemode domination",
-				"!gamerule banweapon m4a1",
-				"!gamerule banweapon mp9",
-				"!gamerule unbanweapon m4a1",
-				"!gamerule unbanweapon",
-				"!gamerule",
-				"!gamerule banwearings",
-				"!gamerule unbanwearings",
+				//"!votekick",
+				//"!votekick Test",
+				//"!kill",
+				//"!kill Test",
+				//"!skipmap",
+				//"!skipmap mapnames",
+				//"!skipmap trollflagon",
+				//"!skipmap azagor",
+				//"!skipmap azagor day",
+				//"!skipmap lonovo night",
+				//"!bully nouser",
+				//"!bully 2376438746",
+				//"!bully help",
+				//"!update",
+				//"!update map",
+				//"!update gamemode",
+				//"!update map dustydew", //add
+				//"!update map dustydew", //remove
+				//"!update map tensatown",
+				//"!update map valley",
+				//"!update map wakistanasdghasjhdg",
+				//"!update gamemode dom",
+				//"!update gamemode dom",
+				//"!update gamemode domination",
+				//"!gamerule banweapon m4a1",
+				//"!gamerule banweapon mp9",
+				//"!gamerule unbanweapon m4a1",
+				//"!gamerule unbanweapon",
+				//"!gamerule",
+				//"!gamerule banwearings",
+				//"!gamerule unbanwearings",
 			};
 
 			foreach (var command in commands)

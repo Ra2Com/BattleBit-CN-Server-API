@@ -7,17 +7,29 @@ namespace MujAPI.Commands
         //logger
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ApiCommandHandler));
 
-
         private readonly ServerListener<MujPlayer> listener;
-
-
         private Dictionary<string, Action<string[], object[]>> apiCommands { get; set; }
 
+        /// <summary>
+        /// this process user console input and checks for commands
+        /// </summary>
+        /// <remarks>
+        /// <c>(MujPlayer)</c> class needs to be public <br/>
+        /// </remarks>
+        /// <param name="listener">the api listener</param>
+        public ApiCommandHandler(ServerListener<MujPlayer> listener)
+        {
+            this.listener = listener;
+			this.apiCommands = new Dictionary<string, Action<string[], object[]>>();
+		}
+
+        // add command
         public void AddCommand(string CommandName, Action<string[], object[]> CommandCallback)
         {
             apiCommands[CommandName.ToLower()] = CommandCallback ?? throw new ArgumentNullException(nameof(CommandName), "Callback cannot be null");
         }
 
+        // execute command
         public void ExecuteCommand(string input, object[] objects)
         {
             string[] commandParts = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
@@ -37,19 +49,6 @@ namespace MujAPI.Commands
                 log.Error("Command not found");
             }
 
-		}
-
-        /// <summary>
-        /// this process user console input and checks for commands
-        /// </summary>
-        /// <remarks>
-        /// <c>(MujPlayer)</c> class needs to be public <br/>
-        /// </remarks>
-        /// <param name="listener">the api listener</param>
-        public ApiCommandHandler(ServerListener<MujPlayer> listener)
-        {
-            this.listener = listener;
-			this.apiCommands = new Dictionary<string, Action<string[], object[]>>();
 		}
 
         /// <summary>

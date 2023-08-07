@@ -4,6 +4,7 @@ using MujAPI;
 using MujAPI.Common;
 using MujAPI.Common.Database;
 using dotenv.net;
+using MySqlConnector;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
@@ -17,14 +18,13 @@ class Program
 
 		Task.Run(() =>
 		{
-			Timer timer = new Timer(state => 
-			{
-				MujUtils.SetConsoleTitle(MujApi.listener);
-			}, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+			Timer timer = new Timer(state => { MujUtils.SetConsoleTitle(MujApi.listener); }, null, TimeSpan.Zero,
+				TimeSpan.FromSeconds(1));
 			timerDoneEvent.WaitOne();
 		});
 
-		MujApi.Start();
+		MujApi.StartAsync();
+
 		Thread.Sleep(-1);
 	}
 }
