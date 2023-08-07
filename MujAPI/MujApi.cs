@@ -74,7 +74,7 @@ namespace MujAPI
 		//callback hooks
 		private static Task<PlayerStats> OnGetPlayerStats(ulong steamid, PlayerStats stats)
 		{
-			// TODO: 
+			// TODO: update player stats here
 			if (steamid == 76561198347766467)
 			{
 				Roles roles = Roles.Admin | Roles.Moderator;
@@ -88,6 +88,11 @@ namespace MujAPI
 		// TODO: get player stats from database
 		private static async Task OnPlayerConnected(MujPlayer player)
 		{
+			var playerStats = await MujDBConnection.DbGetPlayer(player.SteamID);
+
+			player.Stats.Progress.KillCount = (uint)playerStats.Kills;
+			player.Stats.Progress.DeathCount = (uint)playerStats.Deaths;
+
 
 			thePoliceMods.TryGetValue(player.SteamID, out var roles);
 			player.Stats.Roles = roles;

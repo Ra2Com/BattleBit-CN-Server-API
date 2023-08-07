@@ -130,6 +130,7 @@ CREATE TABLE `PlayerWarnings` (
 	`Id` int auto_increment not null,
     `SteamId` bigint not null,
     `Message` varchar(255),
+    `CreatedAt` datetime default current_timestamp,
     primary key (`Id`),
     foreign key (`SteamId`) references `Players` (`SteamId`)
 );

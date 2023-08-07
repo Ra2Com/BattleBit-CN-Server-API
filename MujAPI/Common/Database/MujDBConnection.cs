@@ -8,16 +8,8 @@ namespace MujAPI.Common.Database
 {
 	public class MujDBConnection
 	{
-		private static readonly MySqlConnection Connection;
 		//logger
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MujDBConnection));
-
-		private static readonly string DbConnection = EnvReader.GetStringValue("DB_CONNECTION");
-
-		static MujDBConnection()
-		{
-			Connection = new MySqlConnection(DbConnection);
-		}
 
 		// gameserver shit
 		// add the game server to the database
@@ -128,12 +120,12 @@ namespace MujAPI.Common.Database
 		}
 
 		// get player stat from database
-		public static async Task<Player> DbGetPlayer(ulong SteeamId)
+		public static async Task<Player> DbGetPlayer(ulong SteamId)
 		{
 			await using var dbContext = new MujDbContext();
 			try
 			{
-				var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)SteeamId);
+				var player = await dbContext.Players.FirstAsync(p => p.SteamId == (long)SteamId);
 				return player;
 			}
 			catch (Exception e)
@@ -159,52 +151,6 @@ namespace MujAPI.Common.Database
 			{
 				dbContext.Players.Add(newUser);
 				await dbContext.SaveChangesAsync();
-			}
-			catch (Exception e)
-			{
-				log.Error(e);
-				throw;
-			}
-		}
-
-		// get player warns
-		public static async Task<List<PlayerWarnings>> DbGetPlayerWarns(ulong SteamId)
-		{
-			await using var dbContext = new MujDbContext();
-
-			try
-			{
-				var Warnings = await dbContext.PlayerWarnings
-					.Where(pw => pw.SteamId == (long)SteamId)
-					.ToListAsync();
-				if (Warnings.Count == 0)
-					log.Error("No player warns found");
-				return Warnings;
-			}
-			catch (Exception e)
-			{
-				log.Error(e);
-				throw;
-			}
-		}
-
-		// add player warn
-		public static async Task<PlayerWarnings> DbAddPlayerWarn(ulong SteamId, string Warning)
-		{
-			await using var dbContext = new MujDbContext();
-			var newWarn = new PlayerWarnings
-			{
-				SteamId = (long)SteamId,
-				Message = Warning,
-				CreatedAt = DateTime.Now
-			};
-			
-			try
-			{
-				dbContext.PlayerWarnings.Add(newWarn);
-				await dbContext.SaveChangesAsync();
-				var createdWarn = await dbContext.PlayerWarnings.FindAsync(newWarn.Id);
-				return createdWarn;
 			}
 			catch (Exception e)
 			{
@@ -251,6 +197,52 @@ namespace MujAPI.Common.Database
 			else
 			{
 				log.Error("Couldn't Find the player");
+			}
+		}
+
+		// get player warns
+		public static async Task<List<PlayerWarnings>> DbGetPlayerWarns(ulong SteamId)
+		{
+			await using var dbContext = new MujDbContext();
+
+			try
+			{
+				var Warnings = await dbContext.PlayerWarnings
+					.Where(pw => pw.SteamId == (long)SteamId)
+					.ToListAsync();
+				if (Warnings.Count == 0)
+					log.Error("No player warns found");
+				return Warnings;
+			}
+			catch (Exception e)
+			{
+				log.Error(e);
+				throw;
+			}
+		}
+
+		// add player warn
+		public static async Task<PlayerWarnings> DbAddPlayerWarn(ulong SteamId, string Warning)
+		{
+			await using var dbContext = new MujDbContext();
+			var newWarn = new PlayerWarnings
+			{
+				SteamId = (long)SteamId,
+				Message = Warning,
+				CreatedAt = DateTime.Now
+			};
+			
+			try
+			{
+				dbContext.PlayerWarnings.Add(newWarn);
+				await dbContext.SaveChangesAsync();
+				var createdWarn = await dbContext.PlayerWarnings.FindAsync(newWarn.Id);
+				return createdWarn;
+			}
+			catch (Exception e)
+			{
+				log.Error(e);
+				throw;
 			}
 		}
 
