@@ -40,7 +40,7 @@
 	* [ ] `日志记录 —— RamboAdmin RCON 面板`
 	* [ ] `错误日志 —— 数据库`
 	* [ ] `错误日志 —— RamboAdmin RCON 面板`
-  * [ ]  RamboAdmin RCON 面板` 接入
+  * [ ]  `RamboAdmin RCON 面板` 接入
 	* [ ] `开服`
 	* [ ] `发送RCON`
 	* [ ] `RCON 管理员操作` —— 如聊天有屏蔽词或者局内举报、现行作弊等情况
