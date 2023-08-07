@@ -108,12 +108,12 @@ namespace MujAPI
 			var port = server.GamePort;
 			var ip = server.GameIP.MapToIPv4().ToString();
 			var serverFromPort = await MujDBConnection.DbGetServerByPort(port); // check if server exists in db
-			var serverExists = serverFromPort.Any(s => s.Port == port); // true if exists
+			var serverExists = serverFromPort.Port == port; // true if exists
 
 			if (serverExists)
 				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Offline"); //change the status of the server on db
 			else
-				await MujDBConnection.dbAddGameServer(server.ServerName, ip, port); //register game server to db
+				await MujDBConnection.DbAddGameServer(server.ServerName, ip, port); //register game server to db
 			log.Info($"{server} Disconnected");
 		}
 
@@ -124,12 +124,12 @@ namespace MujAPI
 			var ip = server.GameIP.MapToIPv4().ToString();
 
 			var serverFromPort = await MujDBConnection.DbGetServerByPort(port);
-			var serverExists = serverFromPort.Any(s => s.Port == port);
+			var serverExists = serverFromPort.Port == port;
 
 			if (serverExists)
 				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Online"); //change the status of the server on db
 			else
-				await MujDBConnection.dbAddGameServer(server.ServerName, ip, port); //register game server to db
+				await MujDBConnection.DbAddGameServer(server.ServerName, ip, port); //register game server to db
 			
 
 			string colouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);

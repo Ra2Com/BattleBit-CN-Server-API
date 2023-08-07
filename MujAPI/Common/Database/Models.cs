@@ -160,6 +160,7 @@ namespace MujAPI.Common.Database
 			public int Id { get; set; }
 			public long SteamId { get; set; }
 			public string Message { get; set; }
+			public DateTime CreatedAt { get; set; }
 
 			public Player Player { get; set; }
 		}
