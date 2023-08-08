@@ -79,8 +79,8 @@ namespace CommunityServerAPI.MujAPI.Common.Utils
             if (server == null)
             {
                 log.Info("uh oh");
+                return;
             }
-
             int randomIndex = random.Next(0, RandomMOTD.Count);
 
             string randomMOTD = RandomMOTD[randomIndex];

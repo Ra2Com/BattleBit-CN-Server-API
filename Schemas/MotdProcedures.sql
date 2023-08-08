@@ -4,7 +4,7 @@ DELIMITER $$
 CREATE PROCEDURE GetMotd()
 BEGIN
 	SELECT
-    Motd
+		Motd
     FROM motd;
 END $$
 DELIMITER ;

@@ -1,7 +1,6 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using CommunityServerAPI.MujAPI.Common.Utils;
-using log4net.Config;
 using MujAPI.Commands;
 using MujAPI.Common;
 using MujAPI.Common.Database;
@@ -12,12 +11,21 @@ namespace MujAPI
 {
     public class MujApi
 	{
+		/// <summary>
+		/// disclaimer!! this is my first software "project" so expect jank here,
+		/// if there are any errors you find or you find bad practices let me know here
+		/// https://github.com/muji2498/MujAPI/issues
+		/// </summary>
+
+
 		private static ApiCommandHandler serverCommandProcessor;
 		private static Dictionary<MujPlayer, bool> premiumPlayers = new Dictionary<MujPlayer, bool>();
 		private static Dictionary<ulong, Roles> thePoliceMods = new Dictionary<ulong, Roles>();
 		public static Dictionary<MujPlayer, MapInfo> VoteMapList = new Dictionary<MujPlayer, MapInfo>();
 		public static Dictionary<string, GameServer> GameServerIdentifiers = new Dictionary<string, GameServer>();
 		public static Dictionary<ulong, MujPlayer> BullyList = new Dictionary<ulong, MujPlayer>();
+		private static Dictionary<string, Timer> ServerTimers = new Dictionary<string, Timer>();
+
 
 		//chat command handler
 		private static ChatCommandHandler commandHandler = new ChatCommandHandler();
@@ -33,16 +41,17 @@ namespace MujAPI
 		public static ServerListener<MujPlayer> listener = new();
 
 		// start the api
-		public static void Start()
+		public static async Task StartAsync()
 		{
 			// TODO: init database things here
-			MujUtils.RandomMOTD = MujDBConnection.DBGetMotds().Select(sv => sv.Motd).ToList(); // grab motds from server
+			List<Models.Motd> motdList = await MujDBConnection.DbGetMotds();
+			MujUtils.RandomMOTD = motdList.Select(sv => sv.MotdMessage).ToList(); // grab motds from server
 
 			log.Info($"Logger Started");
 
 			listener.OnPlayerTypedMessage += OnPlayerChat;
 			listener.OnGameServerConnected += OnGameServerConnected;
-			listener.OnGameServerConnecting += OnGameServerConnecting;
+			listener.OnGameServerDisconnected += OnGameServerDisconnected;
 			listener.OnPlayerConnected += OnPlayerConnected;
 			listener.OnPlayerSpawning += OnPlayerSpawning;
 			listener.OnGetPlayerStats += OnGetPlayerStats;
@@ -60,40 +69,12 @@ namespace MujAPI
 			log.Info("ApiCommands Listening");
 		}
 
-		//for testing map voting
-		private static void TestUserVotes(ServerListener<MujPlayer> listener)
-		{
-			Random rnd = new Random();
-			long min = (long)Math.Pow(10, 16);
-			long max = (long)Math.Pow(10, 17) - 1;
 
-			for (int i = 0; i < 20; i++)
-			{
-				ulong steamdid = (ulong)rnd.NextInt64(min, max);
-				VoteMapList.Add(new MujPlayer(steamdid), new MapInfo((Maps)rnd.Next(1, 4), (MapDayNight)rnd.Next(0, 2)));
-			}
-
-			foreach (var keyValuePair in VoteMapList)
-			{
-				ulong SteamId = keyValuePair.Key.SteamID;
-				string VotedMap = keyValuePair.Value.ToString();
-
-				Console.WriteLine($"{SteamId} voted {VotedMap}");
-			}
-
-			var (totalOccurrencesCount, maxOccurrencesCount) = MujUtils.GetOccurances(VoteMapList);
-			Console.WriteLine($"Total Occurrences Count: {totalOccurrencesCount}");
-			Console.WriteLine($"Max Occurrences Count: {maxOccurrencesCount}");
-
-			var HighestVotedMap = MujUtils.GetMapInfoWithHighestOccurrences(VoteMapList);
-			Console.WriteLine($"Highest Vote: {HighestVotedMap}");
-
-		}
 
 		//callback hooks
 		private static Task<PlayerStats> OnGetPlayerStats(ulong steamid, PlayerStats stats)
 		{
-			// TODO: 
+			// TODO: update player stats here
 			if (steamid == 76561198347766467)
 			{
 				Roles roles = Roles.Admin | Roles.Moderator;
@@ -107,21 +88,60 @@ namespace MujAPI
 		// TODO: get player stats from database
 		private static async Task OnPlayerConnected(MujPlayer player)
 		{
+			var playerStats = await MujDBConnection.DbGetPlayer(player.SteamID);
+
+			player.Stats.Progress.KillCount = (uint)playerStats.Kills;
+			player.Stats.Progress.DeathCount = (uint)playerStats.Deaths;
+
+
 			thePoliceMods.TryGetValue(player.SteamID, out var roles);
 			player.Stats.Roles = roles;
 
 			premiumPlayers.TryGetValue(player, out var isPremium);
 			player.IsPremium = isPremium;
-
-
-			if (!isPremium)
-				player.Kick("Not a premium player. pay $2 bux");
 		}
 
-		private static async Task<bool> OnGameServerConnecting(IPAddress address)
+		// server disconnecting from api
+		public static async Task OnGameServerDisconnected(GameServer server)
 		{
-			log.Info(address.ToString() + " is attempting to connect");
-			return true;
+			if (ServerTimers.TryGetValue(server.ServerName, out Timer timer))
+			{
+				await timer.DisposeAsync(); // dispose the timer for motd
+				ServerTimers.Remove(server.ServerName); // remove the motd timer
+			}
+
+			var port = server.GamePort;
+			var ip = server.GameIP.MapToIPv4().ToString();
+			var serverFromPort = await MujDBConnection.DbGetServerByPort(port); // check if server exists in db
+			var serverExists = serverFromPort.Port == port; // true if exists
+
+			if (serverExists)
+				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Offline"); //change the status of the server on db
+			else
+				await MujDBConnection.DbAddGameServer(server.ServerName, ip, port); //register game server to db
+			log.Info($"{server} Disconnected");
+		}
+
+		// server connecting to the api
+		public static async Task OnGameServerConnected(GameServer server)
+		{
+			var port = server.GamePort;
+			var ip = server.GameIP.MapToIPv4().ToString();
+
+			var serverFromPort = await MujDBConnection.DbGetServerByPort(port);
+			var serverExists = serverFromPort.Port == port;
+
+			if (serverExists)
+				await MujDBConnection.DbUpdateServerStatus(server.ServerName, ip, port, "Online"); //change the status of the server on db
+			else
+				await MujDBConnection.DbAddGameServer(server.ServerName, ip, port); //register game server to db
+			
+
+			string colouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);
+			GameServerIdentifiers.Add(colouredIdentifier, server);
+			log.Info($"{server} just connected");
+			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+			ServerTimers[server.ServerName] = timer; // add the timer to the dictionary
 		}
 
 		// player chat event
@@ -142,22 +162,8 @@ namespace MujAPI
 				ChatMessage[0] = "all";
 				ChatMessage[1] = $"({ServerIdentifier}) {player.Name} : {msg}";
 
-				await Task.Run(() => serverCommandProcessor.SendChatMessageToAllServers(ChatMessage));
+				await Task.Run(() => ApiCommands.SendChatMessageToAllServers(ChatMessage, new object[] {}));
 			}
-		}
-
-		// when a gameserver connects to the api
-		public static async Task OnGameServerConnected(GameServer server)
-		{
-
-			string ColouredIdentifier = await MujUtils.GetColoredIdentifierAsync(server.ServerName);
-
-			GameServerIdentifiers.Add(ColouredIdentifier, server);
-
-			log.Info($"{server} just connected");
-
-			Timer timer = new(MujUtils.SendToServersMotd, server, TimeSpan.Zero, TimeSpan.FromMinutes(5));
-
 		}
 
 		// match ending
@@ -171,7 +177,7 @@ namespace MujAPI
 			log.Info($"{MostVotedMap}, {maxMapCount}, {totalMapCount}");
 		}
 
-
+		// player spawning
 		public static async Task<PlayerSpawnRequest> OnPlayerSpawning(MujPlayer player, PlayerSpawnRequest request)
 		{
 			if (BullyList.ContainsKey(player.SteamID)) 

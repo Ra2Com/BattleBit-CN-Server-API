@@ -18,7 +18,7 @@ CREATE TABLE `GameModeRotation` (
 
 CREATE TABLE `motd` (
 	`MotdId` int auto_increment,
-    `Motd` varchar(255) not null,
+    `MotdMessage` varchar(255) not null,
     `CreatedAt` datetime default current_timestamp,
     
     primary key (`MotdId`)
@@ -91,11 +91,6 @@ CREATE TABLE `MatchData` (
     `GameServerId` INT,
     `CreatedAt` datetime default current_timestamp,
     
-    `MapRotationId` int default '0',
-    `GameModeRotationId` int default '0',
-    `MotdId` int default '0',
-    `WeaponBanId` int default '0',
-    
     `USAPoints` INT DEFAULT '0',
     `USAKills` INT DEFAULT '0',
     `USADeaths` INT DEFAULT '0',
@@ -104,11 +99,7 @@ CREATE TABLE `MatchData` (
     `RUSKills` INT DEFAULT '0',
     `RUSDeaths` INT DEFAULT '0',
     PRIMARY KEY (`MatchId`),
-    FOREIGN KEY (`GameServerId`) REFERENCES `GameServer` (`GameServerId`) ON DELETE CASCADE,
-	FOREIGN KEY (`MapRotationId`) REFERENCES `MapRotation`(`MapRotationId`),
-	FOREIGN KEY (`GameModeRotationId`) REFERENCES `GameModeRotation`(`GameModeRotationId`),
-	FOREIGN KEY (`MotdId`) REFERENCES `Motd`(`MotdId`),
-	FOREIGN KEY (`WeaponBanId`) REFERENCES `WeaponBans`(`WeaponBanId`)
+    FOREIGN KEY (`GameServerId`) REFERENCES `GameServer` (`GameServerId`) ON DELETE CASCADE
 );
 
 CREATE TABLE `TeamData` (
@@ -133,4 +124,13 @@ CREATE TABLE `TeamPlayer` (
     PRIMARY KEY (`TeamId`),
     FOREIGN KEY (`TeamId`) REFERENCES `TeamData` (`TeamId`) ON DELETE CASCADE,
     FOREIGN KEY (`PlayerId`) REFERENCES `Players` (`SteamId`)
+);
+
+CREATE TABLE `PlayerWarnings` (
+	`Id` int auto_increment not null,
+    `SteamId` bigint not null,
+    `Message` varchar(255),
+    `CreatedAt` datetime default current_timestamp,
+    primary key (`Id`),
+    foreign key (`SteamId`) references `Players` (`SteamId`)
 );
