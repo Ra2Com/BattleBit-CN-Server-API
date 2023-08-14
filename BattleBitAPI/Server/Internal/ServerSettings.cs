@@ -1,84 +1,89 @@
 ﻿namespace BattleBitAPI.Server
 {
-	public class ServerSettings
-	{
-		private GameServer.mInternalResources mResources;
-		public ServerSettings(GameServer.mInternalResources resources)
-		{
-			mResources = resources;
-		}
+    public class ServerSettings<TPlayer> where TPlayer : Player<TPlayer>
+    {
+        private GameServer<TPlayer>.Internal mResources;
+        public ServerSettings(GameServer<TPlayer>.Internal resources)
+        {
+            mResources = resources;
+        }
 
-		public float DamageMultiplier
-		{
-			get => mResources.Settings.DamageMultiplier;
-			set
-			{
-				mResources.Settings.DamageMultiplier = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool BleedingEnabled
-		{
-			get => mResources.Settings.BleedingEnabled;
-			set
-			{
-				mResources.Settings.BleedingEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool StamineEnabled
-		{
-			get => mResources.Settings.StamineEnabled;
-			set
-			{
-				mResources.Settings.StamineEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool FriendlyFireEnabled
-		{
-			get => mResources.Settings.FriendlyFireEnabled;
-			set
-			{
-				mResources.Settings.FriendlyFireEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool OnlyWinnerTeamCanVote
-		{
-			get => mResources.Settings.OnlyWinnerTeamCanVote;
-			set
-			{
-				mResources.Settings.OnlyWinnerTeamCanVote = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool HitMarkersEnabled
-		{
-			get => mResources.Settings.HitMarkersEnabled;
-			set
-			{
-				mResources.Settings.HitMarkersEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool PointLogEnabled
-		{
-			get => mResources.Settings.PointLogEnabled;
-			set
-			{
-				mResources.Settings.PointLogEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-		public bool SpectatorEnabled
-		{
-			get => mResources.Settings.SpectatorEnabled;
-			set
-			{
-				mResources.Settings.SpectatorEnabled = value;
-				mResources.IsDirtySettings = true;
-			}
-		}
-	}
+        public float DamageMultiplier
+        {
+            get => mResources._RoomSettings.DamageMultiplier;
+            set
+            {
+                mResources._RoomSettings.DamageMultiplier = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool BleedingEnabled
+        {
+            get => mResources._RoomSettings.BleedingEnabled;
+            set
+            {
+                mResources._RoomSettings.BleedingEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool StamineEnabled
+        {
+            get => mResources._RoomSettings.StamineEnabled;
+            set
+            {
+                mResources._RoomSettings.StamineEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool FriendlyFireEnabled
+        {
+            get => mResources._RoomSettings.FriendlyFireEnabled;
+            set
+            {
+                mResources._RoomSettings.FriendlyFireEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool OnlyWinnerTeamCanVote
+        {
+            get => mResources._RoomSettings.OnlyWinnerTeamCanVote;
+            set
+            {
+                mResources._RoomSettings.OnlyWinnerTeamCanVote = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool HitMarkersEnabled
+        {
+            get => mResources._RoomSettings.HitMarkersEnabled;
+            set
+            {
+                mResources._RoomSettings.HitMarkersEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool PointLogEnabled
+        {
+            get => mResources._RoomSettings.PointLogEnabled;
+            set
+            {
+                mResources._RoomSettings.PointLogEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+        public bool SpectatorEnabled
+        {
+            get => mResources._RoomSettings.SpectatorEnabled;
+            set
+            {
+                mResources._RoomSettings.SpectatorEnabled = value;
+                mResources.IsDirtyRoomSettings = true;
+            }
+        }
+
+        public void Reset()
+        {
+
+        }
+    }
 }
