@@ -14,10 +14,10 @@
 
 ### 如何制作功能
 
-查看维基 [此页面](https://github.com/MrOkiDoki/BattleBit-Community-Server-API/wiki).
+查看维基(制作中) [此页面](https://github.com/MrOkiDoki/BattleBit-Community-Server-API/wiki).
 
-使用这个 API 将开启一个`ServerListener` 的监听进程，来了解你的服务端中正在发生什么。
-如果想给你的服务端添加功能，可以直接把功能写在 `Program.cs` 中，当然也可以按照框架规范进行其他的功能纂写。
+使用这个 API 将在运行本程序后开启一个`ServerListener` 的监听进程，传递你*自己定义*的`Player` 和 `GameServer` 类型覆盖原本游戏自身的`Player` 和 `GameServer`类型。在这些类型中添加任何你想要的功能，以此来定制属于你自己的游戏玩法。
+如果想给你的服务端添加功能，可以直接把覆盖的功能写在 `Program.cs` 的 `MyPlayer` 和 `MyGameServer`中，当然也可以按照框架规范进行其他的功能纂写。
 
 
 ### 编译
