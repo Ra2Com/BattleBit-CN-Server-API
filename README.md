@@ -1,3 +1,18 @@
+# RamboArena's Random Revenger Mode (WIP)
+* [ ] Server API
+	* [x] MOTD
+	* [x] K/D, Score, Nickname, Server Group Ranking
+    * [ ] Killer's HP, Killreason
+	* [ ] Random Sets of respawn weapon sets and gadgets, throwouts.
+	* [ ] Random Spawn Positions range.
+* [ ] Gameplay
+	* [x] Killer gets victim's Primary, Secondary weapon sets and gadgets.
+	* [ ] Victim kills latest killer will cost 10 score of the opposite team.
+	* [ ] Victim respawn show real-time last killer position to revenge. Until killer died(Killed by you, others or suicide).
+	* [x] Limited map pool.
+	* [x] Limited Day Map only.
+	* [x] 64 vs 64.
+
 # BBR服务器API
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
