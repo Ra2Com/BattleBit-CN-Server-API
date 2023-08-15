@@ -10,7 +10,7 @@ class Program
     {
         var listener = new ServerListener<MyPlayer, MyGameServer>();
         listener.Start(29294);
-
+          
         Thread.Sleep(-1);
     }
 }
