@@ -1,6 +1,6 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  
-# RamboArena's Battlebit Remastered Random Revenger Mode (WIP)
+# Battlebit Remastered Random Revenger Mode (WIP)
 * [ ] Server API
   * [ ] `ServerRules`
   * [ ] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
