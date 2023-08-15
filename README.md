@@ -2,20 +2,22 @@
  
 # RamboArena's Battlebit Remastered Random Revenger Mode (WIP)
 * [ ] Server API
-	* [ ] `ServerRules`
-	* [ ] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
-  * [ ] Killer's HP, Killreason by Message.
-	* [ ] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
-	* [ ] Random Spawn Positions range. And should be 20M away from any enemy.
+  * [ ] `ServerRules`
+  * [ ] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
+  * [ ] Killer's HP, Killreason by `Message`.
+  * [ ] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
+  * [ ] Random Spawn Positions range. And should be 20M away from any enemy.
 * [ ] Gameplay
-	* [x] Killer gets victim's Primary, Secondary weapon sets and gadgets. If one Weapon and gadget set is the same, it won't change.
-	* [ ] Victim kills latest killer will cost 10 score of the opposite team.
-	* [ ] Victim respawn show real-time last killer position to revenge. Until killer died(Killed by you, others or suicide).
-	* [x] Limited map pool.
-	* [x] Limited Day Map only.
-	* [x] 64 vs 64.
+  * [x] Killer gets victim's Primary, Secondary weapon sets and gadgets. If one Weapon and gadget set is the same, it won't change.
+  * [ ] Victim kills latest killer will cost 10 score of the opposite team.
+  * [ ] Victim respawn show real-time last killer position to revenge. Until killer died(Killed by you, others or suicide).
+  * [x] Limited map pool.
+  * [x] Limited Day Map only.
+  * [x] 64 vs 64.
 * [ ] TO-DO List
   * [ ] Kill streak Player Statics Boost. On 3/5/10/15/20/30.
+  * [ ] Die streak Player Statics Boost. On 2/3/5/7/11/13.
+  * [ ] Down streak Player Statics Boost. On 3/5/7/11/13/17.
   * [ ] Mongo DB connection and store player data.
   * [ ] Web based API to communicate with Server API to read/write ranking data.
   * [ ] Other upcoming server mode should view below. ⬇️
