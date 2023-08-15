@@ -10,7 +10,7 @@
 * [ ] Gameplay
   * [x] Killer gets victim's Primary, Secondary weapon sets and gadgets. If one Weapon and gadget set is the same, it won't change.
   * [ ] Victim kills latest killer will cost 10 score of the opposite team.
-  * [ ] Victim respawn show real-time last killer position to revenge. Until killer died(Killed by you, others or suicide).
+  * [ ] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
   * [x] Limited map pool.
   * [x] Limited Day Map only.
   * [x] 64 vs 64.
