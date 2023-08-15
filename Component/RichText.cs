@@ -2,7 +2,7 @@ namespace CommunityServerAPI;
 
 public static class RichText
 {
-    // Colors
+    // Basic Rich Text Colors
     // https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/StyledText.html#supported-colors
     public const string Aqua = "<color=#00ffff>";
     public const string Black = "<color=#000000>";

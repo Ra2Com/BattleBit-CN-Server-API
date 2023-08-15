@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace CommunityServerAPI.Component
 {
+    /// <summary>
+    /// Player Infomation Custom Component.
+    /// </summary>
+    /// 
+    /// <remarks>
+    /// Player Info includes player K/D, Lifetime XP in your server, marks in Revenger Mode and etc.<br/>
+    /// </remarks>
     internal interface IPlayerInfo
     {
         public int K { get; set; }

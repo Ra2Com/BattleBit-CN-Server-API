@@ -343,6 +343,7 @@ namespace BattleBitAPI.Server
                             {
                                 serverRulesText = string.Empty;
                             }
+                            //自定义serverRulesText
                             serverRulesText = RichText.Bold("Welcome");
                         }
 

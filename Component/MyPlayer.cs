@@ -25,6 +25,7 @@ namespace CommunityServerAPI.Component
         {
             _ = Task.Run(async () =>
             {
+                // Message to display your Killer's distance.
                 while (true)
                 {
                     await Task.Delay(3000);
@@ -45,6 +46,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnDied()
         {
+            // Spawn a player when died.
             _ = Task.Run(async () =>
              {
                  await Task.Delay(3000);

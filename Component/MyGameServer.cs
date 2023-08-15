@@ -26,12 +26,18 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
+            // When a player joined the game, send a Message to announce its Community Server data.
             MessageToPlayer(player.SteamID, $"{player.Name}，你的游戏时长{MyPlayer.GetPhaseDifference(player.JionTime)}，K/D：{player.K}/{player.D}，你的排名{player.rank}");
+            // todo: 添加 Say 聊天消息
+            // 添加 Message 消失时间
+            // 确认玩家连接进入后就可以收到，而不是每次复活提示这个，复活应该提示战斗后的消息。
+            
         }
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
             if (args.Killer != null)
             {
+                // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
                 args.Killer.K++;
                 args.Victim.Kill();
                 PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
@@ -43,6 +49,7 @@ namespace CommunityServerAPI.Component
                 args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, false);
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
+                // Announce the victim your killer. And the killer will be tracked.
                 MessageToPlayer(args.Victim, $"你被{args.Killer.Name}击杀，对方剩余血量{args.Killer.HP}");
             }
 
@@ -68,6 +75,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnTick()
         {
+            // Calculate current ranking.
             rankPlayers.Clear();
             foreach (var item in AllPlayers)
             {
