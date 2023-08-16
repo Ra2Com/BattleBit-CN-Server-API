@@ -9,9 +9,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        var ApiPort;
+        
+        const int ApiPort;
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
+        // TODO: 端口配置读取 Json 解析类结果
         ApiPort = 29294;
 
         listener.Start(ApiPort);
