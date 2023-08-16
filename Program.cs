@@ -9,7 +9,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        int ApiPort;
+        var ApiPort;
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         ApiPort = 29294;
