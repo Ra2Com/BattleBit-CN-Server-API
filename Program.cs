@@ -10,11 +10,10 @@ class Program
     static void Main(string[] args)
     {
       
-        var apiPort;
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         // TODO: 端口配置读取 Json 解析类结果
-        apiPort = 29294;
+        const int apiPort = 29294;
 
         listener.Start(apiPort);
 
