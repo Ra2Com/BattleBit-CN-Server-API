@@ -6,7 +6,6 @@ public static class RichText
     // http://digitalnativestudios.com/textmeshpro/docs/rich-text/
     // 增加了一些 Unity 游戏内自带的 Emoji 和格式 2023年8月16日 22:52:33
 
-    #region Colors
     public const string Aqua = "<color=#00ffff>";
     public const string Black = "<color=#000000>";
     public const string Blue = "<color=#0000ff>";
@@ -29,9 +28,7 @@ public static class RichText
     public const string Teal = "<color=#008080>";
     public const string White = "<color=#ffffff>";
     public const string Yellow = "<color=#ffff00>";
-    #endregion
 
-    #region Sprites
     //icons
     public const string Moderator = "<sprite index=0>";
     public const string Patreon = "<sprite index=1>";
@@ -67,12 +64,10 @@ public static class RichText
     public const string Rofl = "<sprite=\"EmojiOne\" index=13>";
     public const string SlightSmile = "<sprite=\"EmojiOne\" index=14>";
     public const string SlightFrown = "<sprite=\"EmojiOne\" index=15>";
-    #endregion
 
     public const string LineBreak = "<br>";
     public const string EndColor = "</color>";
 
-    #region Text Formatting
     public static string Bold(string text)
     {
         return $"<b>{text}</b>";
@@ -102,9 +97,7 @@ public static class RichText
     {
         return $"<sub>{text}</sub>";
     }
-    #endregion
 
-    #region Styles
     public static string StyleH1(string text)
     {
         return $"<style=\"H1\">{text}</style>";
@@ -168,5 +161,5 @@ public static class RichText
     {
         return $"<size={sizeValue}>{text}</size>";
     }
-    #endregion    
+ 
 }
