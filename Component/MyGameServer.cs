@@ -26,10 +26,7 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-            // When a player joined the game, send a Message to announce its Community Server data.
-            // todo: 添加 Say 聊天消息
-            // 添加 Message 消失时间
-            // 确认玩家连接进入后就可以收到，而不是每次复活提示这个，复活应该提示战斗后的消息。
+           
             
         }
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)

@@ -29,6 +29,8 @@ namespace CommunityServerAPI.Component
                 // Message to display your Killer's distance.
                 while (true)
                 {
+                    // When a player joined the game, send a Message to announce its Community Server data.
+                    // todo: 添加 Say 聊天消息
                     await Task.Delay(3000);
                     Message($"{Name}，你的游戏时长{MyPlayer.GetPhaseDifference(JionTime)}，K/D：{K}/{D}，你的排名{rank}", 3f);
 
@@ -80,6 +82,7 @@ namespace CommunityServerAPI.Component
 
         }
 
+        // Time calculation stuff
         public static string GetPhaseDifference(long oldtime)
         {
             var dif = GetUtcTimeMs() - oldtime;
