@@ -69,7 +69,7 @@ namespace CommunityServerAPI.Component
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
                 // Announce the victim your killer. And the killer will be tracked.
-                MessageToPlayer(args.Victim, $"你被{RichText.Red}{args.Killer.Name}{RichText.EndColor}击杀，敌人剩余血量" + RichText.Bold(args.Killer.HP.ToString));
+                MessageToPlayer(args.Victim, $"你被{RichText.Red}{args.Killer.Name}{RichText.EndColor}击杀，敌人剩余血量 {RichText.Green}{args.Killer.HP}{RichText.EndColor}");
             }
 
             //await Console.Out.WriteLineAsync("Downed: " + args.Victim);
