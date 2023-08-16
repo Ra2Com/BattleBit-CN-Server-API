@@ -12,16 +12,7 @@ namespace CommunityServerAPI.Component
 {
     internal class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        internal MyPlayer(long joinTime, int k, int rank, int score, float maxHP) 
-        {
-            this.JoinTime = joinTime;
-    this.K = k;
-    this.rank = rank;
-    this.Score = score;
-    this.maxHP = maxHP;
-   
-        }
-                public long JoinTime { get; set; } = GetUtcTimeMs();
+        public long JoinTime { get; set; } = GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
