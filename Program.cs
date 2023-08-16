@@ -7,11 +7,19 @@ using System.Xml;
 
 class Program
 {
+    public int ApiPort;
+
     static void Main(string[] args)
     {
         var listener = new ServerListener<MyPlayer, MyGameServer>();
-        listener.Start(29294);
-          
+
+        ApiPort = 29294;
+
+        listener.Start(ApiPort);
+
+        if (listener.IsListening)
+            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 开始监听端口: {ApiPort}");
+
         Thread.Sleep(-1);
     }
 
