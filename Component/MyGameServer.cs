@@ -38,7 +38,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            Console.WriteLine("{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
@@ -76,7 +76,7 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync("{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已放弃: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已放弃: " + player);
         }
         public override async Task OnPlayerDied(MyPlayer player)
         {
@@ -85,11 +85,11 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
-            await Console.Out.WriteLineAsync("{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + from + " 复活了 " + to);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + from + " 复活了 " + to);
         }
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync("{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已离线: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已离线: " + player);
         }
 
         public override async Task OnTick()
