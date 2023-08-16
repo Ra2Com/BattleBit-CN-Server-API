@@ -1,15 +1,11 @@
-﻿using System;
-
-namespace BattleBitAPI.Common
+﻿namespace BattleBitAPI.Common
 {
-	public class Weapon : IEquatable<string>, IEquatable<Weapon>
+	public class GameMaps : IEquatable<string>, IEquatable<GameMaps>
 	{
 		public string Name { get; private set; }
-		public WeaponType WeaponType { get; private set; }
-		public Weapon(string name, WeaponType weaponType)
+		public GameMaps(string name)
 		{
 			Name = name;
-			WeaponType = weaponType;
 		}
 
 		public override string ToString()
@@ -22,14 +18,14 @@ namespace BattleBitAPI.Common
 				return false;
 			return this.Name.Equals(other);
 		}
-		public bool Equals(Weapon other)
+		public bool Equals(GameMaps other)
 		{
 			if (other == null)
 				return false;
 			return this.Name.Equals(other.Name);
 		}
 
-		public static bool operator ==(string left, Weapon right)
+		public static bool operator ==(string left, GameMaps right)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -39,7 +35,7 @@ namespace BattleBitAPI.Common
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator !=(string left, Weapon right)
+		public static bool operator !=(string left, GameMaps right)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -49,7 +45,7 @@ namespace BattleBitAPI.Common
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator ==(Weapon right, string left)
+		public static bool operator ==(GameMaps right, string left)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
@@ -59,7 +55,7 @@ namespace BattleBitAPI.Common
 				return false;
 			return right.Name.Equals(left);
 		}
-		public static bool operator !=(Weapon right, string left)
+		public static bool operator !=(GameMaps right, string left)
 		{
 			bool leftNull = object.ReferenceEquals(left, null);
 			bool rightNull = object.ReferenceEquals(right, null);
