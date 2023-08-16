@@ -1,10 +1,10 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  
-# RamboArena's Battlebit Remastered Random Revenger Mode (WIP)
+# Battlebit Remastered Random Revenger Mode (WIP)
 * [ ] Server API
-  * [ ] `ServerRules`
-  * [ ] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
-  * [ ] Killer's HP, Killreason by `Message`.
+  * [x] `ServerRules`
+  * [x] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
+  * [x] Killer's HP, Killreason by `Message`.
   * [ ] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
   * [ ] Random Spawn Positions range. And should be 20M away from any enemy.
 * [ ] Gameplay
@@ -113,4 +113,3 @@
 * [x] Match or Blitz
 	* [x] 小队击杀增减
 	* [x] 战队击杀增减
-

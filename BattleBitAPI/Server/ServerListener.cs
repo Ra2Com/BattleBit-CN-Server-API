@@ -8,8 +8,8 @@ using BattleBitAPI.Common;
 using BattleBitAPI.Common.Extentions;
 using BattleBitAPI.Common.Serialization;
 using BattleBitAPI.Networking;
+using CommunityServerAPI;
 using CommunityServerAPI.BattleBitAPI;
-using CommunityServerAPI.BattleBitAPI.Server;
 
 namespace BattleBitAPI.Server
 {
@@ -90,6 +90,7 @@ namespace BattleBitAPI.Server
         {
             this.mActiveConnections = new Dictionary<ulong, (TGameServer, GameServer<TPlayer>.Internal)>(16);
             this.mInstanceDatabase = new mInstances<TPlayer, TGameServer>();
+            Console.WriteLine("服务启动");
         }
 
         // --- Starting ---
@@ -147,6 +148,7 @@ namespace BattleBitAPI.Server
         {
             var ip = (client.Client.RemoteEndPoint as IPEndPoint).Address;
 
+            Console.WriteLine(ip + "已连接");
             bool allow = true;
             if (OnGameServerConnecting != null)
                 allow = await OnGameServerConnecting(ip);
@@ -343,6 +345,8 @@ namespace BattleBitAPI.Server
                             {
                                 serverRulesText = string.Empty;
                             }
+                            //自定义serverRulesText 目前没用
+                            serverRulesText = RichText.Bold("Welcome");
                         }
 
                         var hash = ((ulong)gamePort << 32) | (ulong)ip.ToUInt();
@@ -1147,6 +1151,7 @@ namespace BattleBitAPI.Server
                                     @internal.InVehicle = inSeat;
                                     @internal.IsBleeding = isBleeding;
                                     @internal.PingMs = ping;
+
                                 }
                             }
                         }

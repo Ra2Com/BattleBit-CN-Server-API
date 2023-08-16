@@ -2,16 +2,16 @@
 {
     public struct PlayerLoadout
     {
-        public WeaponItem PrimaryWeapon;
-        public WeaponItem SecondaryWeapon;
-        public string FirstAidName;
-        public string LightGadgetName;
-        public string HeavyGadgetName;
-        public string ThrowableName;
+        public WeaponItem PrimaryWeapon;//主武器
+        public WeaponItem SecondaryWeapon;//手枪
+        public string FirstAidName;//绷带
+        public string LightGadgetName;//轻型道具
+        public string HeavyGadgetName;//重型道具
+        public string ThrowableName;//手雷
 
-        public byte PrimaryExtraMagazines;
-        public byte SecondaryExtraMagazines;
-        public byte FirstAidExtra;
+        public byte PrimaryExtraMagazines;//主武器弹夹
+        public byte SecondaryExtraMagazines;//手枪弹夹
+        public byte FirstAidExtra;//额外绷带
         public byte LightGadgetExtra;
         public byte HeavyGadgetExtra;
         public byte ThrowableExtra;

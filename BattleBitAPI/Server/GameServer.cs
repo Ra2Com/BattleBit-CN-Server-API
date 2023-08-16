@@ -315,7 +315,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from,TPlayer to)
+        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to)
         {
 
         }
@@ -359,18 +359,25 @@ namespace BattleBitAPI.Server
             }
         }
 
+        // 设置新的服务器密码
         public void SetNewPassword(string newPassword)
         {
             ExecuteCommand("setpass " + newPassword);
         }
+
+        // 设置 Ping 高于多少踢出
         public void SetPingLimit(int newPing)
         {
             ExecuteCommand("setmaxping " + newPing);
         }
+
+        // 发布一条短公告消息在屏幕上方
         public void AnnounceShort(string msg)
         {
             ExecuteCommand("an " + msg);
         }
+
+        // 发布一条长公告在屏幕中间偏上
         public void AnnounceLong(string msg)
         {
             ExecuteCommand("ann " + msg);
@@ -379,55 +386,80 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("serverlog " + msg + " " + messageLifetime);
         }
+
+        // 即使不满足条件也强行开始本局游戏 
         public void ForceStartGame()
         {
             ExecuteCommand("forcestart");
         }
+
+         // 即使不满足条件也强行结束本局游戏 
         public void ForceEndGame()
         {
             ExecuteCommand("endgame");
         }
+
+         // 发布聊天栏内容
         public void SayToChat(string msg)
         {
             ExecuteCommand("say " + msg);
         }
 
+        // 夭寿，服务器药丸
         public void StopServer()
         {
             ExecuteCommand("stop");
         }
+
+        // 通知大家服务器药丸
         public void CloseServer()
         {
             ExecuteCommand("notifyend");
         }
+
+        // 杀死所有玩家
         public void KickAllPlayers()
         {
             ExecuteCommand("kick all");
         }
+
+        // 通过 steamID 踢出某个玩家，需要填写原因
         public void Kick(ulong steamID, string reason)
         {
             ExecuteCommand("kick " + steamID + " " + reason);
         }
+
+        // 通过 昵称 踢出某个玩家，需要填写原因
         public void Kick(Player<TPlayer> player, string reason)
         {
             Kick(player.SteamID, reason);
         }
+
+        // 通过 steamID 杀死某个玩家
         public void Kill(ulong steamID)
         {
             ExecuteCommand("kill " + steamID);
         }
+
+        // 通过 昵称 杀死某个玩家
         public void Kill(Player<TPlayer> player)
         {
             Kill(player.SteamID);
         }
+
+        // 通过 steamID 给某个玩家换边
         public void ChangeTeam(ulong steamID)
         {
             ExecuteCommand("changeteam " + steamID);
         }
+
+        // 通过 昵称 给某个玩家换边
         public void ChangeTeam(Player<TPlayer> player)
         {
             ChangeTeam(player.SteamID);
         }
+
+        // 通过 steamID 给某个玩家指定团队
         public void ChangeTeam(ulong steamID, Team team)
         {
             if (team == Team.TeamA)
@@ -435,74 +467,124 @@ namespace BattleBitAPI.Server
             else if (team == Team.TeamB)
                 ExecuteCommand("changeteam " + steamID + " b");
         }
+
+        // 通过 昵称 给某个玩家指定团队
         public void ChangeTeam(Player<TPlayer> player, Team team)
         {
             ChangeTeam(player.SteamID, team);
         }
+
+        // 通过 steamID 给某个玩家踢出小队
         public void KickFromSquad(ulong steamID)
         {
             ExecuteCommand("squadkick " + steamID);
         }
+
+        // 通过 昵称 给某个玩家踢出小队
         public void KickFromSquad(Player<TPlayer> player)
         {
             KickFromSquad(player.SteamID);
         }
+
+        // 通过 steamID 给某个玩家加入小队
         public void JoinSquad(ulong steamID, Squads targetSquad)
         {
             ExecuteCommand("setsquad " + steamID + " " + ((int)targetSquad));
         }
+
+        // 通过 昵称 给某个玩家踢出小队
         public void JoinSquad(Player<TPlayer> player, Squads targetSquad)
         {
             JoinSquad(player.SteamID, targetSquad);
         }
+
+        // 通过 steamID 解散某个玩家所在小队
         public void DisbandPlayerSquad(ulong steamID)
         {
             ExecuteCommand("squaddisband " + steamID);
         }
+
+        // 通过 昵称 解散某个玩家所在小队
         public void DisbandPlayerCurrentSquad(Player<TPlayer> player)
         {
             DisbandPlayerSquad(player.SteamID);
         }
+
+        // 通过 steamID 晋升某个玩家为队长
         public void PromoteSquadLeader(ulong steamID)
         {
             ExecuteCommand("squadpromote " + steamID);
         }
+
+        // 通过 昵称 晋升某个玩家为队长
         public void PromoteSquadLeader(Player<TPlayer> player)
         {
             PromoteSquadLeader(player.SteamID);
         }
+
+        // 通过 steamID 给某个玩家发送警告 Warn 弹窗，需要手动关闭
         public void WarnPlayer(ulong steamID, string msg)
         {
             ExecuteCommand("warn " + steamID + " " + msg);
         }
+
+        // 通过 昵称 给某个玩家发送警告 Warn 弹窗，需要手动关闭
         public void WarnPlayer(Player<TPlayer> player, string msg)
         {
             WarnPlayer(player.SteamID, msg);
         }
+
+        // 通过 steamID 给某个玩家发送消息 Message 弹窗，需要手动关闭
         public void MessageToPlayer(ulong steamID, string msg)
         {
             ExecuteCommand("msg " + steamID + " " + msg);
         }
+
+        // 通过 昵称 给某个玩家发送消息 Message 弹窗，需要手动关闭
         public void MessageToPlayer(Player<TPlayer> player, string msg)
         {
             MessageToPlayer(player.SteamID, msg);
         }
+
+        // 通过 steamID 给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
         public void MessageToPlayer(ulong steamID, string msg, float fadeOutTime)
         {
             ExecuteCommand("msgf " + steamID + " " + fadeOutTime + " " + msg);
         }
+
+        // 通过 昵称 给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
         public void MessageToPlayer(Player<TPlayer> player, string msg, float fadeOutTime)
         {
             MessageToPlayer(player.SteamID, msg, fadeOutTime);
         }
+
+        // 通过 steamID 给某个玩家指定服务器内角色
         public void SetRoleTo(ulong steamID, GameRole role)
         {
             ExecuteCommand("setrole " + steamID + " " + role);
         }
+
+        // 通过 昵称 给某个玩家指定服务器内角色
         public void SetRoleTo(Player<TPlayer> player, GameRole role)
         {
             SetRoleTo(player.SteamID, role);
         }
+
+        // // 通过用户名查询 Steam64
+        // public ulong FindSteamIdByName(string steamName, GameServer server)
+		// {
+		// 	var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamName);
+		// 	return keyValuePair.Key;
+		// }
+
+        // // 通过 Steam64 查找用户名
+		// public Player FindPlayerBySteamId(ulong SteamID, GameServer server)
+		// {
+		// 	var player = server.mInternal.Players.FirstOrDefault(player => player.Key == SteamID).Value;
+		// 	return (Player)player;
+		// }
+
+        // 通过 Steam64 让玩家重生
         public void SpawnPlayer(ulong steamID, PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)
         {
             var request = new OnPlayerSpawnArguments()
@@ -527,14 +609,20 @@ namespace BattleBitAPI.Server
                 WriteToSocket(response);
             }
         }
+
+        // 通过 昵称 让玩家重生
         public void SpawnPlayer(Player<TPlayer> player, PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)
         {
             SpawnPlayer(player.SteamID, loadout, wearings, position, lookDirection, stand, spawnProtection);
         }
+
+        // 通过 Steam64 设置玩家生命
         public void SetHP(ulong steamID, float newHP)
         {
             ExecuteCommand("sethp " + steamID + " " + newHP);
         }
+
+        // 通过 昵称 设置玩家生命
         public void SetHP(Player<TPlayer> player, float newHP)
         {
             SetHP(player.SteamID, newHP);

@@ -1,0 +1,3761 @@
+
+[
+  {
+    "_comment":"This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
+    "WeaponName": "AK74",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "PK-AS",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "1P78",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A",
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "M4A1",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "AK15",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "PK-AS",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "1P78",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A",
+          "Extended-B"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "SCAR-H",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "AUG A3",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A",
+          "Extended-B"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "SG550",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "FAMAS",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "ACR",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A",
+          "Quick-B"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "G36C",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A",
+          "Drum-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "HK419",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "FAL",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A",
+          "Quick-A",
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "AK5C",
+    "WeaponType": "Rifle",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Aim_Comp",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Heavy",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "Long_Barrel",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": []
+      }
+    ]
+  },
+  {
+    "WeaponName": "MP7",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A",
+          "Extended-B"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "UMP-45",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "PP-2000",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "PP19",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "PP2000",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "FYou_Sight",
+          "Reflex",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "Strikefire",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Kriss Vector",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "FYou_Sight",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Osprey_9",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Drum-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MP5",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Holo_PK-120",
+          "Holographic",
+          "Razor",
+          "HS401G5",
+          "Prisma",
+          "Acog",
+          "Echo",
+          "BurrisAR332",
+          "Slip",
+          "M_125",
+          "TRI4X32",
+          "Flir"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Angled_Grip",
+          "Vertical_Grip",
+          "SE-5_Grip",
+          "VTAC_Grip",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "Stabil_Grip"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Searchlight",
+          "RedLaser",
+          "Rangefinder",
+          "GreenLaser",
+          "Tactical_Flashlight"
+        ]
+      },
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "VAMB-762",
+          "Tactical",
+          "DGN-308",
+          "Compensator",
+          "NT-4_556",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Short-A"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Honey Badger",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Groza",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "P90",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "AS Val",
+    "WeaponType": "Carbine",
+    "Attachments": [
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "ScorpionEVO",
+    "WeaponType": "Carbine",
+    "Attachments": [
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "L86A1",
+    "WeaponType": "LightSupportGun_LSG",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Drum-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_Tactical_Grip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MG36",
+    "WeaponType": "LightSupportGun_LSG",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Drum-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Stubby_Grip",
+          "B-25URK",
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_Tactical_Grip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "M249",
+    "WeaponType": "LightMachineGun_LMG",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Bipod",
+          "Stubby_Grip",
+          "B-25URK",
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_Tactical_Grip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Ultimax100",
+    "WeaponType": "LightMachineGun_LMG",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Flash_Hider",
+          "SDN-6_762",
+          "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Aim_Comp",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Strikefire",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "HS401G5",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Bipod",
+          "Stubby_Grip",
+          "B-25URK",
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_Tactical_Grip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MK-20",
+    "WeaponType": "DMR",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A",
+          "Quick-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "M110",
+    "WeaponType": "DMR",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MK14 EBR",
+    "WeaponType": "DMR",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Quick-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "SVD",
+    "WeaponType": "DMR",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Muzzle_Break",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Holographic",
+          "Kobra",
+          "Red_Dot",
+          "Reflex",
+          "Razor",
+          "FYou_Sight",
+          "Holo_PK-120",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Slip",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Stabil_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "BCM-Gun_Fighter",
+          "Shift_Short_Angled_Grip",
+          "SE-5_Grip",
+          "RK-6_Foregrip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "SSG 69",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "SV-98",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "L96",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A",
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Rem700",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "M200",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Short-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MSR",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Basic",
+          "Compensator",
+          "Heavy",
+          "Long_Barrel",
+          "Ranger",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "VAMB-762",
+          "SDN-6_762",
+          "NT-4_556",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "Bolt",
+        "Attachments": [
+          "Bolt_Action_A",
+          "Bolt_Action_B",
+          "Bolt_Action_C",
+          "Bolt_Action_D",
+          "Bolt_Action_E"
+        ]
+      },
+      {
+        "AttachmentType": "CantedSight",
+        "Attachments": [
+          "Ironsight",
+          "Red_Dot",
+          "FYou_Canted",
+          "Holo_Dot"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "None",
+          "Acog",
+          "M_125",
+          "Prisma",
+          "Flir",
+          "Echo",
+          "TRI4X32",
+          "BurrisAR332",
+          "6x_Scope",
+          "8x_Scope",
+          "15x_Scope",
+          "20x_Scope",
+          "PTR-40_Hunter"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "Rangefinder",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser",
+          "Searchlight"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Delta_Sight_Top",
+          "Red_Dot",
+          "C_Red_Dot",
+          "FYou_Top"
+        ]
+      },
+      {
+        "AttachmentType": "UnderRail",
+        "Attachments": [
+          "Angled_Grip",
+          "Bipod",
+          "Vertical_Grip",
+          "Stubby_Grip",
+          "Vertical_Skeleton_Grip",
+          "FAB-DTFG",
+          "Magpul_Angled",
+          "Shift_Short_Angled_Grip",
+          "HeraCQR_Front",
+          "B-25URK",
+          "VTAC_UVG_Tactical_Grip"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "M9",
+    "WeaponType": "Pistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Compensator",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "Suppressor_Long",
+          "Suppressor_Short",
+          "Osprey_9"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "MP 443",
+    "WeaponType": "Pistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Compensator",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "Suppressor_Long",
+          "Suppressor_Short",
+          "Osprey_9"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "USP",
+    "WeaponType": "Pistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Compensator",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "Suppressor_Long",
+          "Suppressor_Short",
+          "Osprey_9"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Glock 18",
+    "WeaponType": "AutoPistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Compensator",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "Suppressor_Long",
+          "Suppressor_Short",
+          "Osprey_9"
+        ]
+      },
+      {
+        "AttachmentType": "Magazine",
+        "Attachments": [
+          "Extended-A"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Unica",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight",
+          "Pistol_8x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Desert Eagle",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Compensator",
+          "Tactical",
+          "Flash_Hider",
+          "DGN-308",
+          "Suppressor_Long",
+          "Suppressor_Short"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  },
+  {
+    "WeaponName": "Rsh12",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
+      {
+        "AttachmentType": "Barrel",
+        "Attachments": [
+          "Suppressor_Long"
+        ]
+      },
+      {
+        "AttachmentType": "MainSight",
+        "Attachments": [
+          "Pistol_Red_Dot",
+          "Pistol_Delta_Sight",
+          "Pistol_8x_Scope"
+        ]
+      },
+      {
+        "AttachmentType": "SideRail",
+        "Attachments": [
+          "Flashlight",
+          "RedLaser",
+          "Tactical_Flashlight",
+          "GreenLaser"
+        ]
+      }
+    ]
+  }
+]
