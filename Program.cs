@@ -7,10 +7,9 @@ using System.Xml;
 
 class Program
 {
-    public int ApiPort;
-
     static void Main(string[] args)
     {
+        int ApiPort;
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         ApiPort = 29294;
