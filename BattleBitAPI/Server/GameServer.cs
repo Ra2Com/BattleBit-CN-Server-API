@@ -570,19 +570,19 @@ namespace BattleBitAPI.Server
             SetRoleTo(player.SteamID, role);
         }
 
-        // 通过用户名查询 Steam64
-        public ulong FindSteamIdByName(string steamName, GameServer server)
-		{
-			var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamName);
-			return keyValuePair.Key;
-		}
+        // // 通过用户名查询 Steam64
+        // public ulong FindSteamIdByName(string steamName, GameServer server)
+		// {
+		// 	var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamName);
+		// 	return keyValuePair.Key;
+		// }
 
-        // 通过 Steam64 查找用户名
-		public Player FindPlayerBySteamId(ulong SteamID, GameServer server)
-		{
-			var player = server.mInternal.Players.FirstOrDefault(player => player.Key == SteamID).Value;
-			return (Player)player;
-		}
+        // // 通过 Steam64 查找用户名
+		// public Player FindPlayerBySteamId(ulong SteamID, GameServer server)
+		// {
+		// 	var player = server.mInternal.Players.FirstOrDefault(player => player.Key == SteamID).Value;
+		// 	return (Player)player;
+		// }
 
         // 通过 Steam64 让玩家重生
         public void SpawnPlayer(ulong steamID, PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)

@@ -22,6 +22,20 @@ namespace CommunityServerAPI.Component
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
 
+        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
+        // public override Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
+        // {
+        //     officialStats.Progress.Rank = 200;
+        //     officialStats.Progress.Prestige = 6;
+        //     return Task.FromResult(officialStats);
+
+        //     // TODO: 此处的 Admin 角色最好走 Json 配置
+        //     if (steamID == 76561198395073327)
+        //     {
+        //         stats.Roles = Roles.Admin;
+        //     }
+        // }
+
         public override async Task OnConnected()
         {
             _ = Task.Run(async () =>
@@ -30,9 +44,10 @@ namespace CommunityServerAPI.Component
                 while (true)
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
-                    // TODO: 同时添加 Say 聊天消息
                     await Task.Delay(3000);
-                    Message($"{Name}，你的游戏时长{MyPlayer.GetPhaseDifference(JoinTime)}，K/D：{K}/{D}，你的排名{rank}", 3f);
+                    Message($"{RichText.Cyan(Name)}你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名{RichText.Orange(rank)}", 3f);
+                    // TODO: 同时添加 Say 聊天消息
+                    SayToChat($"欢迎 {RichText.Purple(Name)} , K/D: {K}/{D}，排名{RichText.Orange(rank)}");
 
                     if (markId != 0)
                     {
@@ -42,16 +57,31 @@ namespace CommunityServerAPI.Component
                         else
                         {
                             var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message($"你的仇人{markPlayer.Name}距你{dis}米", 3f);
+                            this.Message($"你的仇人{RichText.Red(markPlayer.Name)}距你{dis}米", 3f);
                         }
                     }
                 }
             });
         }
 
+        // 聊天监控和命令
+        // public override async Task OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
+        // {
+        //     Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
+        //     // TODO: 聊天记录建议单独保存
+        //     // TODO: 屏蔽词告警
+        //     // TODO: 屏蔽词系统
+
+        //     // 管理员命令执行
+        //     if (player.SteamID != 76561198395073327 || !msg.StartsWith("/")) return true;
+
+        // }
+
         public override async Task OnDied()
         {
             // Spawn a player when died and give him a new set(example).
+            // QUESTION: 一般设置玩家的道具都是在 OnPlayerSpawning 中，这样不管玩家在死亡的时候更换什么道具都将被覆盖掉
+            // TODO: 最好按照 /Config/WeaponData.json 内容进行配置，方便后面修改数值
             _ = Task.Run(async () =>
              {
                  await Task.Delay(3000);
@@ -71,6 +101,8 @@ namespace CommunityServerAPI.Component
                  playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
                  //手雷
                  playerLoadout.Throwable = Gadgets.Flashbang;
+                 // 不给绷带！
+                 playerLoadout.FirstAid = null;
 
                  SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
              });
@@ -79,7 +111,8 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnSpawned()
         {
-
+            // 由于是刚枪服务器，所以武器伤害值都降低到 0.7
+            // player.SetGiveDamageMultiplier(0.70f);
         }
 
         // Time calculation stuff
