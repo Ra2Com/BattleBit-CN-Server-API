@@ -10,16 +10,16 @@ class Program
     static void Main(string[] args)
     {
         
-        const int ApiPort;
+        var apiPort;
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         // TODO: 端口配置读取 Json 解析类结果
-        ApiPort = 29294;
+        apiPort = 29294;
 
-        listener.Start(ApiPort);
+        listener.Start(apiPort);
 
         if (listener.IsListening)
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 开始监听端口: {ApiPort}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 开始监听端口: {apiPort}");
 
         Thread.Sleep(-1);
     }
