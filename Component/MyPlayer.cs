@@ -12,7 +12,7 @@ namespace CommunityServerAPI.Component
 {
     internal class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        public long JionTime { get; set; } = GetUtcTimeMs();
+        public long JoinTime { get; set; } = GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
@@ -30,9 +30,9 @@ namespace CommunityServerAPI.Component
                 while (true)
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
-                    // todo: 添加 Say 聊天消息
+                    // TODO: 同时添加 Say 聊天消息
                     await Task.Delay(3000);
-                    Message($"{Name}，你的游戏时长{MyPlayer.GetPhaseDifference(JionTime)}，K/D：{K}/{D}，你的排名{rank}", 3f);
+                    Message($"{Name}，你的游戏时长{MyPlayer.GetPhaseDifference(JoinTime)}，K/D：{K}/{D}，你的排名{rank}", 3f);
 
                     if (markId != 0)
                     {
@@ -51,7 +51,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnDied()
         {
-            // Spawn a player when died.
+            // Spawn a player when died and give him a new set(example).
             _ = Task.Run(async () =>
              {
                  await Task.Delay(3000);

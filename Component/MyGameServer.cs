@@ -22,7 +22,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync("Connected: " + player);
+            await Console.Out.WriteLineAsync("玩家已链接: " + player);
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
@@ -53,7 +53,7 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync("Giveup: " + player);
+            await Console.Out.WriteLineAsync("玩家已放弃: " + player);
         }
         public override async Task OnPlayerDied(MyPlayer player)
         {
@@ -62,11 +62,11 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
-            await Console.Out.WriteLineAsync(from + " revived " + to);
+            await Console.Out.WriteLineAsync(from + " 复活了 " + to);
         }
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync("Disconnected: " + player);
+            await Console.Out.WriteLineAsync("玩家已离线: " + player);
         }
 
         public override async Task OnTick()
