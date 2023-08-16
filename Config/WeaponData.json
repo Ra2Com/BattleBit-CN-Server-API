@@ -9,6 +9,7 @@
         "slot": "MainSight",
         "attachments": [
           "Kobra",
+          "PK-AS",
           "Red_Dot",
           "Reflex",
           "Aim_Comp",
@@ -23,6 +24,7 @@
           "Echo",
           "BurrisAR332",
           "Slip",
+          "1P78",
           "M_125",
           "TRI4X32",
           "Flir"
@@ -97,6 +99,7 @@
       {
         "slot": "Magazine",
         "attachments": [
+          "Short-A",
           "Quick-A",
           "Extended-A"
         ]
@@ -1136,10 +1139,7 @@
       },
       {
         "slot": "Magazine",
-        "attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "attachments": []
       }
     ]
   },
