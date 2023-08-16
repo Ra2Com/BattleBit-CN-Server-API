@@ -2,12 +2,12 @@
 [
   {
     "_comment":"This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
-    "name": "AK74",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "AK74",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "PK-AS",
           "Red_Dot",
@@ -31,8 +31,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -40,8 +40,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -49,8 +49,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -68,8 +68,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -79,8 +79,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -97,8 +97,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A",
           "Quick-A",
           "Extended-A"
@@ -107,12 +107,12 @@
     ]
   },
   {
-    "name": "M4A1",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "M4A1",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -134,8 +134,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -143,8 +143,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -152,8 +152,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -171,8 +171,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -182,8 +182,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -200,8 +200,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
@@ -209,12 +209,12 @@
     ]
   },
   {
-    "name": "AK15",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "AK15",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -238,8 +238,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -247,8 +247,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -266,8 +266,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -277,8 +277,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -293,8 +293,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A",
           "Extended-B"
@@ -303,12 +303,12 @@
     ]
   },
   {
-    "name": "SCAR-H",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "SCAR-H",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -330,8 +330,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -339,8 +339,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -358,8 +358,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -369,8 +369,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -387,8 +387,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
@@ -396,12 +396,12 @@
     ]
   },
   {
-    "name": "AUG A3",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "AUG A3",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -423,8 +423,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -432,8 +432,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -451,8 +451,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -462,8 +462,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -480,8 +480,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A",
           "Extended-B"
@@ -490,12 +490,12 @@
     ]
   },
   {
-    "name": "SG550",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "SG550",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -517,8 +517,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -526,8 +526,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -545,8 +545,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -556,8 +556,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -574,8 +574,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
@@ -583,12 +583,12 @@
     ]
   },
   {
-    "name": "FAMAS",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "FAMAS",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -609,8 +609,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -618,8 +618,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -637,8 +637,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -648,8 +648,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -664,8 +664,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
@@ -673,12 +673,12 @@
     ]
   },
   {
-    "name": "ACR",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "ACR",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -700,8 +700,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -709,8 +709,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -728,8 +728,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -739,8 +739,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -757,8 +757,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A",
           "Quick-B"
@@ -767,12 +767,12 @@
     ]
   },
   {
-    "name": "G36C",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "G36C",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -793,8 +793,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -802,8 +802,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -821,8 +821,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -832,8 +832,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -849,8 +849,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A",
           "Drum-A"
@@ -859,12 +859,12 @@
     ]
   },
   {
-    "name": "HK419",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "HK419",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -886,8 +886,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -895,8 +895,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -914,8 +914,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -925,8 +925,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -943,20 +943,20 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A"
         ]
       }
     ]
   },
   {
-    "name": "FAL",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "FAL",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -978,8 +978,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -987,8 +987,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1006,8 +1006,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1017,8 +1017,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -1035,8 +1035,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A",
           "Quick-A",
           "Extended-A"
@@ -1045,12 +1045,12 @@
     ]
   },
   {
-    "name": "AK5C",
-    "type": "Rifle",
-    "attachments": [
+    "WeaponName": "AK5C",
+    "WeaponType": "Rifle",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1072,8 +1072,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1081,8 +1081,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -1090,8 +1090,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1109,8 +1109,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1120,8 +1120,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Heavy",
           "VAMB-762",
@@ -1138,18 +1138,18 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": []
+        "AttachmentType": "Magazine",
+        "Attachments": []
       }
     ]
   },
   {
-    "name": "MP7",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "MP7",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1170,8 +1170,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1179,8 +1179,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1198,8 +1198,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1209,8 +1209,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -1225,8 +1225,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A",
           "Extended-B"
@@ -1235,12 +1235,12 @@
     ]
   },
   {
-    "name": "UMP-45",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "UMP-45",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1261,8 +1261,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1270,8 +1270,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1289,8 +1289,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1300,8 +1300,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -1315,20 +1315,20 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A"
         ]
       }
     ]
   },
   {
-    "name": "PP-2000",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "PP-2000",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1348,8 +1348,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1357,8 +1357,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1368,20 +1368,20 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       }
     ]
   },
   {
-    "name": "PP19",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "PP19",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1401,8 +1401,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1410,8 +1410,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1429,8 +1429,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1440,8 +1440,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -1455,20 +1455,20 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A"
         ]
       }
     ]
   },
   {
-    "name": "PP2000",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "PP2000",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "FYou_Sight",
@@ -1489,8 +1489,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1498,8 +1498,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1517,8 +1517,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1528,28 +1528,28 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Suppressor_Long",
           "Suppressor_Short"
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       }
     ]
   },
   {
-    "name": "Kriss Vector",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "Kriss Vector",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1570,8 +1570,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1579,8 +1579,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1598,8 +1598,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1609,8 +1609,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -1625,8 +1625,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Drum-A"
         ]
@@ -1634,12 +1634,12 @@
     ]
   },
   {
-    "name": "MP5",
-    "type": "SubmachineGun_SMG",
-    "attachments": [
+    "WeaponName": "MP5",
+    "WeaponType": "SubmachineGun_SMG",
+    "Attachments": [
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Kobra",
           "Red_Dot",
           "Reflex",
@@ -1659,8 +1659,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "Holo_Dot",
@@ -1668,8 +1668,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "RK-6_Foregrip",
@@ -1687,8 +1687,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Searchlight",
           "RedLaser",
@@ -1698,8 +1698,8 @@
         ]
       },
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "VAMB-762",
           "Tactical",
@@ -1713,8 +1713,8 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Short-A"
         ]
@@ -1722,12 +1722,12 @@
     ]
   },
   {
-    "name": "Honey Badger",
-    "type": "PersonalDefenseWeapon_PDW",
-    "attachments": [
+    "WeaponName": "Honey Badger",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -1735,15 +1735,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -1765,8 +1765,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -1776,8 +1776,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -1785,8 +1785,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Vertical_Grip",
           "Stubby_Grip",
@@ -1806,12 +1806,12 @@
     ]
   },
   {
-    "name": "Groza",
-    "type": "PersonalDefenseWeapon_PDW",
-    "attachments": [
+    "WeaponName": "Groza",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -1828,8 +1828,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -1837,8 +1837,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -1860,8 +1860,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -1871,8 +1871,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -1882,12 +1882,12 @@
     ]
   },
   {
-    "name": "P90",
-    "type": "PersonalDefenseWeapon_PDW",
-    "attachments": [
+    "WeaponName": "P90",
+    "WeaponType": "PersonalDefenseWeapon_PDW",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -1904,8 +1904,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -1913,14 +1913,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -1942,8 +1942,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -1953,8 +1953,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -1964,12 +1964,12 @@
     ]
   },
   {
-    "name": "AS Val",
-    "type": "Carbine",
-    "attachments": [
+    "WeaponName": "AS Val",
+    "WeaponType": "Carbine",
+    "Attachments": [
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -1977,15 +1977,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2007,8 +2007,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2018,8 +2018,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2027,8 +2027,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Vertical_Grip",
           "Stubby_Grip",
@@ -2048,12 +2048,12 @@
     ]
   },
   {
-    "name": "ScorpionEVO",
-    "type": "Carbine",
-    "attachments": [
+    "WeaponName": "ScorpionEVO",
+    "WeaponType": "Carbine",
+    "Attachments": [
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2061,8 +2061,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2084,8 +2084,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2095,8 +2095,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2104,8 +2104,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Vertical_Grip",
           "Stubby_Grip",
@@ -2125,12 +2125,12 @@
     ]
   },
   {
-    "name": "L86A1",
-    "type": "LightSupportGun_LSG",
-    "attachments": [
+    "WeaponName": "L86A1",
+    "WeaponType": "LightSupportGun_LSG",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Flash_Hider",
@@ -2147,8 +2147,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2156,15 +2156,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Drum-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2186,8 +2186,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2197,8 +2197,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2206,8 +2206,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "Angled_Grip",
@@ -2227,12 +2227,12 @@
     ]
   },
   {
-    "name": "MG36",
-    "type": "LightSupportGun_LSG",
-    "attachments": [
+    "WeaponName": "MG36",
+    "WeaponType": "LightSupportGun_LSG",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Flash_Hider",
@@ -2249,8 +2249,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2258,14 +2258,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Drum-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2287,8 +2287,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2298,8 +2298,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2307,8 +2307,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Stubby_Grip",
           "B-25URK",
           "Angled_Grip",
@@ -2328,12 +2328,12 @@
     ]
   },
   {
-    "name": "M249",
-    "type": "LightMachineGun_LMG",
-    "attachments": [
+    "WeaponName": "M249",
+    "WeaponType": "LightMachineGun_LMG",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Flash_Hider",
@@ -2350,8 +2350,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2359,8 +2359,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2382,8 +2382,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2393,8 +2393,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2402,8 +2402,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Bipod",
           "Stubby_Grip",
           "B-25URK",
@@ -2424,12 +2424,12 @@
     ]
   },
   {
-    "name": "Ultimax100",
-    "type": "LightMachineGun_LMG",
-    "attachments": [
+    "WeaponName": "Ultimax100",
+    "WeaponType": "LightMachineGun_LMG",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Flash_Hider",
@@ -2446,8 +2446,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Aim_Comp",
           "Holographic",
           "Kobra",
@@ -2469,8 +2469,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2480,8 +2480,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2489,8 +2489,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Bipod",
           "Stubby_Grip",
           "B-25URK",
@@ -2511,12 +2511,12 @@
     ]
   },
   {
-    "name": "MK-20",
-    "type": "DMR",
-    "attachments": [
+    "WeaponName": "MK-20",
+    "WeaponType": "DMR",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -2533,8 +2533,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2542,16 +2542,16 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A",
           "Quick-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Holographic",
           "Kobra",
@@ -2572,8 +2572,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2583,8 +2583,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2592,8 +2592,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -2614,12 +2614,12 @@
     ]
   },
   {
-    "name": "M110",
-    "type": "DMR",
-    "attachments": [
+    "WeaponName": "M110",
+    "WeaponType": "DMR",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -2636,8 +2636,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2645,15 +2645,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Holographic",
           "Kobra",
@@ -2674,8 +2674,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2685,8 +2685,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2694,8 +2694,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -2716,12 +2716,12 @@
     ]
   },
   {
-    "name": "MK14 EBR",
-    "type": "DMR",
-    "attachments": [
+    "WeaponName": "MK14 EBR",
+    "WeaponType": "DMR",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -2738,8 +2738,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2747,15 +2747,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Quick-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Holographic",
           "Kobra",
@@ -2776,8 +2776,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2787,8 +2787,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2796,8 +2796,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -2818,12 +2818,12 @@
     ]
   },
   {
-    "name": "SVD",
-    "type": "DMR",
-    "attachments": [
+    "WeaponName": "SVD",
+    "WeaponType": "DMR",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -2840,8 +2840,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2849,8 +2849,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Holographic",
           "Kobra",
@@ -2871,8 +2871,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2882,8 +2882,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot_Top",
           "C_Red_Dot_Top",
@@ -2891,8 +2891,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -2913,12 +2913,12 @@
     ]
   },
   {
-    "name": "SSG 69",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "SSG 69",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -2935,8 +2935,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -2945,8 +2945,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -2954,14 +2954,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -2978,8 +2978,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -2989,8 +2989,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -2998,8 +2998,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3016,12 +3016,12 @@
     ]
   },
   {
-    "name": "SV-98",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "SV-98",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -3038,8 +3038,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -3048,8 +3048,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -3057,8 +3057,8 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -3075,8 +3075,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -3086,8 +3086,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -3095,8 +3095,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3113,12 +3113,12 @@
     ]
   },
   {
-    "name": "L96",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "L96",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -3135,8 +3135,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -3145,8 +3145,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -3154,15 +3154,15 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A",
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -3179,8 +3179,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -3190,8 +3190,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -3199,8 +3199,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3217,12 +3217,12 @@
     ]
   },
   {
-    "name": "Rem700",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "Rem700",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -3239,8 +3239,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -3249,8 +3249,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -3258,14 +3258,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -3282,8 +3282,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -3293,8 +3293,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -3302,8 +3302,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3320,12 +3320,12 @@
     ]
   },
   {
-    "name": "M200",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "M200",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -3342,8 +3342,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -3352,8 +3352,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -3361,14 +3361,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Short-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -3385,8 +3385,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -3396,8 +3396,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -3405,8 +3405,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3423,12 +3423,12 @@
     ]
   },
   {
-    "name": "MSR",
-    "type": "SniperRifle",
-    "attachments": [
+    "WeaponName": "MSR",
+    "WeaponType": "SniperRifle",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Basic",
           "Compensator",
           "Heavy",
@@ -3445,8 +3445,8 @@
         ]
       },
       {
-        "slot": "Bolt",
-        "attachments": [
+        "AttachmentType": "Bolt",
+        "Attachments": [
           "Bolt_Action_A",
           "Bolt_Action_B",
           "Bolt_Action_C",
@@ -3455,8 +3455,8 @@
         ]
       },
       {
-        "slot": "CantedSight",
-        "attachments": [
+        "AttachmentType": "CantedSight",
+        "Attachments": [
           "Ironsight",
           "Red_Dot",
           "FYou_Canted",
@@ -3464,14 +3464,14 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "None",
           "Acog",
           "M_125",
@@ -3488,8 +3488,8 @@
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "Rangefinder",
           "RedLaser",
@@ -3499,8 +3499,8 @@
         ]
       },
       {
-        "slot": "TopSight",
-        "attachments": [
+        "AttachmentType": "TopSight",
+        "Attachments": [
           "Delta_Sight_Top",
           "Red_Dot",
           "C_Red_Dot",
@@ -3508,8 +3508,8 @@
         ]
       },
       {
-        "slot": "UnderRail",
-        "attachments": [
+        "AttachmentType": "UnderRail",
+        "Attachments": [
           "Angled_Grip",
           "Bipod",
           "Vertical_Grip",
@@ -3526,12 +3526,12 @@
     ]
   },
   {
-    "name": "M9",
-    "type": "Pistol",
-    "attachments": [
+    "WeaponName": "M9",
+    "WeaponType": "Pistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Compensator",
           "Tactical",
           "Flash_Hider",
@@ -3542,15 +3542,15 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3560,12 +3560,12 @@
     ]
   },
   {
-    "name": "MP 443",
-    "type": "Pistol",
-    "attachments": [
+    "WeaponName": "MP 443",
+    "WeaponType": "Pistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Compensator",
           "Tactical",
           "Flash_Hider",
@@ -3576,15 +3576,15 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3594,12 +3594,12 @@
     ]
   },
   {
-    "name": "USP",
-    "type": "Pistol",
-    "attachments": [
+    "WeaponName": "USP",
+    "WeaponType": "Pistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Compensator",
           "Tactical",
           "Flash_Hider",
@@ -3610,15 +3610,15 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3628,12 +3628,12 @@
     ]
   },
   {
-    "name": "Glock 18",
-    "type": "AutoPistol",
-    "attachments": [
+    "WeaponName": "Glock 18",
+    "WeaponType": "AutoPistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Compensator",
           "Tactical",
           "Flash_Hider",
@@ -3644,21 +3644,21 @@
         ]
       },
       {
-        "slot": "Magazine",
-        "attachments": [
+        "AttachmentType": "Magazine",
+        "Attachments": [
           "Extended-A"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3668,26 +3668,26 @@
     ]
   },
   {
-    "name": "Unica",
-    "type": "HeavyPistol",
-    "attachments": [
+    "WeaponName": "Unica",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Suppressor_Long"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight",
           "Pistol_8x_Scope"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3697,12 +3697,12 @@
     ]
   },
   {
-    "name": "Desert Eagle",
-    "type": "HeavyPistol",
-    "attachments": [
+    "WeaponName": "Desert Eagle",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Compensator",
           "Tactical",
           "Flash_Hider",
@@ -3712,15 +3712,15 @@
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
@@ -3730,26 +3730,26 @@
     ]
   },
   {
-    "name": "Rsh12",
-    "type": "HeavyPistol",
-    "attachments": [
+    "WeaponName": "Rsh12",
+    "WeaponType": "HeavyPistol",
+    "Attachments": [
       {
-        "slot": "Barrel",
-        "attachments": [
+        "AttachmentType": "Barrel",
+        "Attachments": [
           "Suppressor_Long"
         ]
       },
       {
-        "slot": "MainSight",
-        "attachments": [
+        "AttachmentType": "MainSight",
+        "Attachments": [
           "Pistol_Red_Dot",
           "Pistol_Delta_Sight",
           "Pistol_8x_Scope"
         ]
       },
       {
-        "slot": "SideRail",
-        "attachments": [
+        "AttachmentType": "SideRail",
+        "Attachments": [
           "Flashlight",
           "RedLaser",
           "Tactical_Flashlight",
