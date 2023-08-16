@@ -45,7 +45,7 @@ namespace CommunityServerAPI.Component
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
                     await Task.Delay(3000);
-                    Message(RichText.Cyan($"{Name}") + RichText.EndColor() + $"你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名{RichText.Orange($"{rank}")}", 3f);
+                    Message(RichText.Cyan(Name) + RichText.EndColor() + $"你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名" + RichText.Orange(rank), 3f);
                     // TODO: 同时添加 Say 聊天消息
                     // SayToChat("欢迎" + RichText.Purple($"{Name}") + RichText.EndColor() + $", K/D: {K}/{D}，排名{RichText.Orange($"{rank}")}");
 
@@ -57,7 +57,7 @@ namespace CommunityServerAPI.Component
                         else
                         {
                             var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message("你的仇人" + RichText.Red($"{markPlayer.Name}") + RichText.EndColor() + $"距你{dis}米", 3f);
+                            this.Message("你的仇人" + RichText.Red(markPlayer.Name) + RichText.EndColor() + $"距你{dis}米", 3f);
                         }
                     }
                 }
