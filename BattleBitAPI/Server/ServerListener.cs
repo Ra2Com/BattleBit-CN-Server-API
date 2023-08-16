@@ -90,6 +90,7 @@ namespace BattleBitAPI.Server
         {
             this.mActiveConnections = new Dictionary<ulong, (TGameServer, GameServer<TPlayer>.Internal)>(16);
             this.mInstanceDatabase = new mInstances<TPlayer, TGameServer>();
+            Console.WriteLine("服务启动");
         }
 
         // --- Starting ---
@@ -147,6 +148,7 @@ namespace BattleBitAPI.Server
         {
             var ip = (client.Client.RemoteEndPoint as IPEndPoint).Address;
 
+            Console.WriteLine(ip + "已连接");
             bool allow = true;
             if (OnGameServerConnecting != null)
                 allow = await OnGameServerConnecting(ip);

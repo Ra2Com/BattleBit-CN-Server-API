@@ -1,5 +1,6 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,24 @@ namespace CommunityServerAPI.Component
             _ = Task.Run(async () =>
              {
                  await Task.Delay(3000);
-                 SpawnPlayer(new PlayerLoadout() { }, new PlayerWearings() { }, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
+                 PlayerLoadout playerLoadout = new PlayerLoadout();
+                 //主武器
+                 playerLoadout.PrimaryWeapon.Tool = Weapons.AK74;
+                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Ranger);
+                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Holographic);
+                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.VerticalGrip);
+                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.TacticalFlashlight);
+                 //手枪
+                 playerLoadout.SecondaryWeapon.Tool = Weapons.USP;
+                 playerLoadout.SecondaryWeapon.SetAttachment(Attachments.PistolRedDot);
+                 //主附件池
+                 playerLoadout.HeavyGadget = Gadgets.C4;
+                 //轻附件
+                 playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
+                 //手雷
+                 playerLoadout.Throwable = Gadgets.Flashbang;
+
+                 SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
              });
         }
 

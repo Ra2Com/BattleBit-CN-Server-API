@@ -315,7 +315,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from,TPlayer to)
+        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to)
         {
 
         }
