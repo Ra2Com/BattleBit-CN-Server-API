@@ -16,7 +16,7 @@ namespace CommunityServerAPI.Component
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
-        public int rank { get; set; } = 0;
+        public int rank { get; set; } = 1;
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
@@ -30,6 +30,8 @@ namespace CommunityServerAPI.Component
                 while (true)
                 {
                     await Task.Delay(3000);
+                    Message($"{Name}，你的游戏时长{MyPlayer.GetPhaseDifference(JionTime)}，K/D：{K}/{D}，你的排名{rank}", 3f);
+
                     if (markId != 0)
                     {
                         var markPlayer = GameServer.AllPlayers.First(o => o.SteamID == markId);
@@ -38,7 +40,7 @@ namespace CommunityServerAPI.Component
                         else
                         {
                             var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message($"你的仇人{markPlayer.Name}距你{dis}米");
+                            this.Message($"你的仇人{markPlayer.Name}距你{dis}米", 3f);
                         }
                     }
                 }
@@ -71,6 +73,7 @@ namespace CommunityServerAPI.Component
                  SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
              });
         }
+
 
         public override async Task OnSpawned()
         {
