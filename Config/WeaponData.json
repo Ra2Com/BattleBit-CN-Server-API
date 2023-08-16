@@ -1,6 +1,7 @@
-// This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API
+
 [
   {
+    "_comment":"This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
     "name": "AK74",
     "type": "Rifle",
     "attachments": [
