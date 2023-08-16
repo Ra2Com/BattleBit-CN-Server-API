@@ -12,7 +12,16 @@ namespace CommunityServerAPI.Component
 {
     internal class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        public long JoinTime { get; set; } = GetUtcTimeMs();
+        internal MyPlayer(long joinTime, int k, int rank, int score, float maxHP) 
+        {
+            this.JoinTime = joinTime;
+    this.K = k;
+    this.rank = rank;
+    this.Score = score;
+    this.maxHP = maxHP;
+   
+        }
+                public long JoinTime { get; set; } = GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
@@ -23,12 +32,18 @@ namespace CommunityServerAPI.Component
         public float maxHP { get; set; }
 
         // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
-        public override Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
-        {
-            officialStats.Progress.Rank = 200;
-            officialStats.Progress.Prestige = 6;
-            return Task.FromResult(officialStats);
-        }
+        // public override Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
+        // {
+        //     officialStats.Progress.Rank = 200;
+        //     officialStats.Progress.Prestige = 6;
+        //     return Task.FromResult(officialStats);
+
+        //     // TODO: 此处的 Admin 角色最好走 Json 配置
+        //     if (steamID == 76561198395073327)
+        //     {
+        //         stats.Roles = Roles.Admin;
+        //     }
+        // }
 
         public override async Task OnConnected()
         {
@@ -59,17 +74,17 @@ namespace CommunityServerAPI.Component
         }
 
         // 聊天监控和命令
-        public override async Task<bool> OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
-        {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
-            // TODO: 聊天记录建议单独保存
-            // TODO: 屏蔽词告警
-            // TODO: 屏蔽词系统
+        // public override async Task OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
+        // {
+        //     Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
+        //     // TODO: 聊天记录建议单独保存
+        //     // TODO: 屏蔽词告警
+        //     // TODO: 屏蔽词系统
 
-            // 管理员命令执行
-            if (player.SteamID != 76561198395073327 || !msg.StartsWith("/")) return true;
+        //     // 管理员命令执行
+        //     if (player.SteamID != 76561198395073327 || !msg.StartsWith("/")) return true;
 
-        }
+        // }
 
         public override async Task OnDied()
         {
@@ -95,6 +110,8 @@ namespace CommunityServerAPI.Component
                  playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
                  //手雷
                  playerLoadout.Throwable = Gadgets.Flashbang;
+                 // 不给绷带！
+                 playerLoadout.FirstAid = null;
 
                  SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
              });
@@ -103,7 +120,8 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnSpawned()
         {
-
+            // 由于是刚枪服务器，所以武器伤害值都降低到 0.7
+            // player.SetGiveDamageMultiplier(0.70f);
         }
 
         // Time calculation stuff
