@@ -45,7 +45,7 @@ namespace CommunityServerAPI.Component
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
                     await Task.Delay(3000);
-                    Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+                    Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 10f);
                     
                     if (markId != 0)
                     {
@@ -55,7 +55,7 @@ namespace CommunityServerAPI.Component
                         else
                         {
                             var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米", 3f);
+                            this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
                         }
                     }
                 }
@@ -69,10 +69,10 @@ namespace CommunityServerAPI.Component
             // Spawn a player when died and give him a new set(example).
             _ = Task.Run(async () =>
              {
-                 await Task.Delay(3000);
+                 await Task.Delay(1000);
 
 
-                 SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { }, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
+                 SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { }, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 1);
              });
         }
 
@@ -89,7 +89,7 @@ namespace CommunityServerAPI.Component
             PlayerModifications.CanUseNightVision = false;
 
             // 倒地后马上就死
-            PlayerModifications.DownTimeGiveUpTime = 0.01f;
+            PlayerModifications.DownTimeGiveUpTime = 1f;
 
             // 更拟真一点，学学 CSGO 跳跃转向丢失速度
             PlayerModifications.AirStrafe = false;
