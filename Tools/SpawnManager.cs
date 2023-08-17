@@ -50,7 +50,7 @@ namespace CommunityServerAPI.Tools
             pWI.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
             pWI.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
             pWI.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
-            pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex??"0"));
+            pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "0"));
             pWI.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
             pWI.PrimaryExtraMagazines = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "0"));
             playerLoadout.PrimaryWeapon = pWI;
