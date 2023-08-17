@@ -117,7 +117,7 @@ namespace CommunityServerAPI.Component
             Console.WriteLine($"{player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             return request;
         }
-        
+
         // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
         public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
         {
@@ -129,6 +129,22 @@ namespace CommunityServerAPI.Component
             {
                 args.Stats.Roles = Roles.Admin;
             }
+        }
+
+        // 聊天监控和命令
+        public override async Task<bool> OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
+        {
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
+            // TODO: 聊天记录建议单独保存
+            // TODO: 屏蔽词告警
+            // TODO: 屏蔽词系统
+
+            // 管理员命令执行
+            if (player.SteamID != 76561198395073327 || !msg.StartsWith("/"))
+                return true;
+
+            return false;
+
         }
     }
 }
