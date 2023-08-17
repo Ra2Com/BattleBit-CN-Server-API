@@ -1,6 +1,7 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using CommunityServerAPI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,26 +110,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
         {
-            PlayerLoadout playerLoadout = new PlayerLoadout();
-            //主武器
-            playerLoadout.PrimaryWeapon.Tool = Weapons.AK74;
-            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Ranger);
-            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Holographic);
-            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.VerticalGrip);
-            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.TacticalFlashlight);
-            //手枪
-            playerLoadout.SecondaryWeapon.Tool = Weapons.USP;
-            playerLoadout.SecondaryWeapon.SetAttachment(Attachments.PistolRedDot);
-            //主附件池
-            playerLoadout.HeavyGadget = Gadgets.C4;
-            //轻附件
-            playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
-            //手雷
-            playerLoadout.Throwable = Gadgets.Flashbang;
-            // 不给绷带！
-            playerLoadout.FirstAid = null;
-
-            request.Loadout = playerLoadout;
+            request.Loadout = SpawnManager.GetRandom();
             return request;
         }
     }
