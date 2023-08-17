@@ -114,7 +114,7 @@ namespace CommunityServerAPI.Component
             request.SpawnStand = PlayerStand.Standing;
             //request.SpawnPosition = new System.Numerics.Vector3();
             //request.LookDirection = new System.Numerics.Vector3();
-            Console.WriteLine($"{player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             return request;
         }
 
@@ -140,7 +140,7 @@ namespace CommunityServerAPI.Component
             // TODO: 屏蔽词系统
 
             // 管理员命令执行
-            if (player.SteamID != 76561198395073327 || !msg.StartsWith("/"))
+            if (player.SteamID != 76561198090800555 || !msg.StartsWith("/"))
                 return true;
 
             return false;
