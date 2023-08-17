@@ -17,6 +17,8 @@
 		// 枪栓
 		Bolt,
 		// 弹夹
-		Magazine,
+		MagazineIndex,
+		// 皮肤
+		SkinIndex,
 	}
 }
