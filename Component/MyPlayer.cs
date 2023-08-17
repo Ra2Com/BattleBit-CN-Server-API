@@ -40,6 +40,7 @@ namespace CommunityServerAPI.Component
         {
             _ = Task.Run(async () =>
             {
+                GameServer.SayToChat($"欢迎{RichText.Purple}{Name}{RichText.EndColor}，K/D:{K}/{D}排名{RichText.Orange}{rank}{RichText.EndColor}");
                 // Message to display your Killer's distance.
                 while (true)
                 {
@@ -47,7 +48,6 @@ namespace CommunityServerAPI.Component
                     await Task.Delay(3000);
                     Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
                     // TODO: 同时添加 Say 聊天消息
-                    // SayToChat("欢迎" + RichText.Purple($"{Name}") + RichText.EndColor() + $", K/D: {K}/{D}，排名{RichText.Orange($"{rank}")}");
 
                     if (markId != 0)
                     {
@@ -85,26 +85,9 @@ namespace CommunityServerAPI.Component
             _ = Task.Run(async () =>
              {
                  await Task.Delay(3000);
-                 PlayerLoadout playerLoadout = new PlayerLoadout();
-                 //主武器
-                 playerLoadout.PrimaryWeapon.Tool = Weapons.AK74;
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Ranger);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Holographic);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.VerticalGrip);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.TacticalFlashlight);
-                 //手枪
-                 playerLoadout.SecondaryWeapon.Tool = Weapons.USP;
-                 playerLoadout.SecondaryWeapon.SetAttachment(Attachments.PistolRedDot);
-                 //主附件池
-                 playerLoadout.HeavyGadget = Gadgets.C4;
-                 //轻附件
-                 playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
-                 //手雷
-                 playerLoadout.Throwable = Gadgets.Flashbang;
-                 // 不给绷带！
-                 playerLoadout.FirstAid = null;
 
-                 SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
+
+                 SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { }, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
              });
         }
 

@@ -12,7 +12,7 @@ namespace CommunityServerAPI.Component
     internal class MyGameServer : GameServer<MyPlayer>
     {
         public override async Task OnConnected()
-        {   
+        {
             Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
@@ -42,8 +42,8 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-           
-            
+
+
         }
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
@@ -105,6 +105,31 @@ namespace CommunityServerAPI.Component
             {
                 rankPlayers[i].rank = i + 1;
             }
+        }
+
+        public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
+        {
+            PlayerLoadout playerLoadout = new PlayerLoadout();
+            //主武器
+            playerLoadout.PrimaryWeapon.Tool = Weapons.AK74;
+            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Ranger);
+            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Holographic);
+            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.VerticalGrip);
+            playerLoadout.PrimaryWeapon.SetAttachment(Attachments.TacticalFlashlight);
+            //手枪
+            playerLoadout.SecondaryWeapon.Tool = Weapons.USP;
+            playerLoadout.SecondaryWeapon.SetAttachment(Attachments.PistolRedDot);
+            //主附件池
+            playerLoadout.HeavyGadget = Gadgets.C4;
+            //轻附件
+            playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
+            //手雷
+            playerLoadout.Throwable = Gadgets.Flashbang;
+            // 不给绷带！
+            playerLoadout.FirstAid = null;
+
+            request.Loadout = playerLoadout;
+            return request;
         }
     }
 }
