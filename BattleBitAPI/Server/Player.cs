@@ -24,7 +24,7 @@ namespace BattleBitAPI
                 SetNewRole(value);
             }
         }
-        public Team Team // 玩家在服务器内的阵营/团队
+        public Team Team // 玩家在服务器内的团队阵营
         {
             get => mInternal.Team;
             set
@@ -140,7 +140,7 @@ namespace BattleBitAPI
 
         }
 
-        // ---- Functions ----
+        // ---- 功能 ----
         public void Kick(string reason = "")
         {
             GameServer.Kick(this, reason);

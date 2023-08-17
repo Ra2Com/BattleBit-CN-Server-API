@@ -79,8 +79,29 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnSpawned()
         {
-            // 由于是刚枪服务器，所以武器伤害值都降低到 0.7
-            // player.SetGiveDamageMultiplier(0.70f);
+            // 娱乐服，咱不玩流血那套
+            PlayerModifications.DisableBleeding();
+
+            // 娱乐服，换弹速度降低到 70%
+            PlayerModifications.ReloadSpeedMultiplier = 0.7f;
+
+            // 白天，用个鬼的夜视仪
+            PlayerModifications.CanUseNightVision = false;
+
+            // 倒地后马上就死
+            PlayerModifications.DownTimeGiveUpTime = 0.01f;
+
+            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+            PlayerModifications.AirStrafe = false;
+
+            // 死了马上就能活
+            PlayerModifications.RespawnTime = 1f;
+
+            // 开启击杀通知
+            PlayerModifications.KillFeed = true;
+
+            // 刚枪服务器，所有武器伤害值都降低到 75%
+            PlayerModifications.GiveDamageMultiplier = 0.75f;
         }
 
         // Time calculation stuff

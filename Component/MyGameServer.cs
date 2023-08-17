@@ -15,26 +15,25 @@ namespace CommunityServerAPI.Component
     {
         public override async Task OnConnected()
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
+            
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
             GamemodeRotation.SetRotation("Domination");
 
-            // 娱乐服，咱不玩流血那套
-            ServerSettings.BleedingEnabled = false;
-
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
             RoundSettings.MaxTickets = 1500;
 
-            // 2个玩家,10 秒后就可以开干了
+            // 全局对局设置 - 2个玩家,10 秒后就可以开干了
             RoundSettings.PlayersToStart = 2;
             RoundSettings.SecondsLeft = 10;
+
+            // 开启玩家体积碰撞
+            ServerSettings.PlayerCollision = true;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
 
-            // 不知道干啥的游戏设置，好像是小队标记点
-            // ServerSettings.PointLogEnabled = false;
         }
 
         List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();

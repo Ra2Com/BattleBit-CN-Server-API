@@ -2,8 +2,10 @@
 {
 	public enum Squads
 	{
+		// 没有加入小队 —— 此时应该是无法出生的
 		NoSquad = 0,
 
+		// 系统自动分配的小队名
 		Alpha = 1,
 		Bravo = 2,
 		Charlie = 3,

@@ -29,6 +29,7 @@ class Program
         Thread.Sleep(-1);
     }
 
+    // 新加了一个验证服务端 Token 的功能，防止端口被别人偷走
     private static async Task<bool> OnValidateGameServerToken(IPAddress ip, ushort gameport, string sentToken)
     {
         await Console.Out.WriteLineAsync(ip + ":" + gameport + " sent " + sentToken);

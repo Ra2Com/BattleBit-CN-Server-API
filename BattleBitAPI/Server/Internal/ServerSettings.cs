@@ -2,14 +2,14 @@ namespace BattleBitAPI.Server
 {
     public class ServerSettings<TPlayer> where TPlayer : Player<TPlayer>
     {
-        // ---- Construction ---- 
+        // ---- 构造 ---- 
         private GameServer<TPlayer>.Internal mResources;
         public ServerSettings(GameServer<TPlayer>.Internal resources)
         {
             mResources = resources;
         }
 
-        // ---- Variables ---- 
+        // ---- 变量 ---- 
         public float DamageMultiplier
         {
             get => mResources._RoomSettings.DamageMultiplier;
@@ -61,17 +61,27 @@ namespace BattleBitAPI.Server
 
         }
 
-        // ---- Classes ---- 
+        // ---- 类型 ---- 
+        // 房间设置
         public class mRoomSettings
         {
+            // 伤害增幅倍数
             public float DamageMultiplier = 1.0f;
+            // 是否友伤
             public bool FriendlyFireEnabled = false;
+            // 是否隐藏对局结算地图投票
             public bool HideMapVotes = true;
+            // 是否只有胜利团队可以投票
             public bool OnlyWinnerTeamCanVote = false;
+            // 是否玩家有碰撞体积
             public bool PlayerCollision = false;
+            // 每小队医疗限制
             public byte MedicLimitPerSquad = 8;
+            // 每小队工程限制
             public byte EngineerLimitPerSquad = 8;
+            // 每小队支援限制
             public byte SupportLimitPerSquad = 8;
+            // 每小队侦查限制
             public byte ReconLimitPerSquad = 8;
 
             public void Write(Common.Serialization.Stream ser)

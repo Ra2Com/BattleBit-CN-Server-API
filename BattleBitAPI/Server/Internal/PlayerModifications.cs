@@ -2,14 +2,14 @@
 {
     public class PlayerModifications<TPlayer> where TPlayer : Player<TPlayer>
     {
-        // ---- Construction ---- 
+        // ---- 构建 ---- 
         private Player<TPlayer>.Internal @internal;
         public PlayerModifications(Player<TPlayer>.Internal @internal)
         {
             this.@internal = @internal;
         }
 
-        // ---- Variables ---- 
+        // ---- 变量 ---- 
         public float RunningSpeedMultiplier
         {
             get => @internal._Modifications.RunningSpeedMultiplier;
@@ -280,45 +280,72 @@
             }
         }
 
+        // 快速关闭流血
         public void DisableBleeding()
         {
             this.MinimumDamageToStartBleeding = 100f;
             this.MinimumHpToStartBleeding = 0f;
         }
+
+        // 快速开启流血
         public void EnableBleeding(float minimumHP = 40f, float minimumDamage = 10f)
         {
             this.MinimumDamageToStartBleeding = minimumDamage;
             this.MinimumHpToStartBleeding = minimumHP;
         }
 
-        // ---- Classes ---- 
+        // ---- 类 ---- 
         public class mPlayerModifications
         {
+            // 移动速度加成倍数
             public float RunningSpeedMultiplier = 1f;
+            // 受到伤害加成倍数
             public float ReceiveDamageMultiplier = 1f;
+            // 输出伤害加成倍数
             public float GiveDamageMultiplier = 1f;
+            // 跳跃高度加成倍数
             public float JumpHeightMultiplier = 1f;
+            // 跌落伤害加成倍数
             public float FallDamageMultiplier = 1f;
+            // 换弹速度加成倍数
             public float ReloadSpeedMultiplier = 1f;
+            // 是否可使用夜视仪
             public bool CanUseNightVision = true;
+            // 倒地后等待救援初始时间
             public float DownTimeGiveUpTime = 60f;
+            // 跳跃转向不丢失速度
             public bool AirStrafe = true;
+            // 可以手动部署
             public bool CanDeploy = true;
+            // 可以切换到观战
             public bool CanSpectate = true;
+            // 聊天禁言
             public bool IsTextChatMuted = false;
+            // 语音禁言
             public bool IsVoiceChatMuted = false;
+            // 重生等待时间
             public float RespawnTime = 10f;
+            // 可以自杀
             public bool CanSuicide = true;
+            // 最小受到多少伤害开始流血
             public float MinDamageToStartBleeding = 10f;
+            // 血量低于多少开始流血
             public float MinHpToStartBleeding = 40f;
+            // 每个绷带能治疗血量
             public float HPperBandage = 40f;
+            // 是否开启体力槽
             public bool StaminaEnabled = false;
+            // 是否允许使用击中指示器
             public bool HitMarkersEnabled = true;
+            // 屏幕上是否显示友军
             public bool FriendlyHUDEnabled = true;
+            // 夺旗模式移动速度加成
             public float CaptureFlagSpeedMultiplier = 1f;
+            // 不确定 —— 被击中指示器是否开启
             public bool PointLogHudEnabled = true;
+            // 击杀通知
             public bool KillFeed = false;
-
+            // 是否是纯净设置
             public bool IsDirtyFlag = false;
             public void Write(BattleBitAPI.Common.Serialization.Stream ser)
             {
