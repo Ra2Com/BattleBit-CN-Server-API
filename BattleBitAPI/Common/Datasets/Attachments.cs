@@ -4,10 +4,10 @@ namespace BattleBitAPI.Common
 {
 	public static class Attachments
 	{
-		// ----- Private Variables ----- 
+		// ----- 武器附件词典 ----- 
 		private static Dictionary<string, Attachment> mAttachments;
 
-		// ----- Barrels ----- 
+		// ----- 枪管 ----- 
 		public static readonly Attachment Basic = new Attachment("Basic", AttachmentType.Barrel);
 		public static readonly Attachment Compensator = new Attachment("Compensator", AttachmentType.Barrel);
 		public static readonly Attachment Heavy = new Attachment("Heavy", AttachmentType.Barrel);
@@ -24,13 +24,13 @@ namespace BattleBitAPI.Common
 		public static readonly Attachment SDN6762 = new Attachment("SDN-6_762", AttachmentType.Barrel);
 		public static readonly Attachment NT4556 = new Attachment("NT-4_556", AttachmentType.Barrel);
 
-		// ----- Canted Sights ----- 
+		// ----- 侧瞄具 ----- 
 		public static readonly Attachment Ironsight = new Attachment("Ironsight", AttachmentType.CantedSight);
 		public static readonly Attachment CantedRedDot = new Attachment("Canted_Red_Dot", AttachmentType.CantedSight);
 		public static readonly Attachment FYouCanted = new Attachment("FYou_Canted", AttachmentType.CantedSight);
 		public static readonly Attachment HoloDot = new Attachment("Holo_Dot", AttachmentType.CantedSight);
 
-		// ----- Scope ----- 
+		// ----- 瞄准镜 ----- 
 		public static readonly Attachment _6xScope = new Attachment("6x_Scope", AttachmentType.MainSight);
 		public static readonly Attachment _8xScope = new Attachment("8x_Scope", AttachmentType.MainSight);
 		public static readonly Attachment _15xScope = new Attachment("15x_Scope", AttachmentType.MainSight);
@@ -61,13 +61,13 @@ namespace BattleBitAPI.Common
 		public static readonly Attachment BurrisAR332 = new Attachment("BurrisAR332", AttachmentType.MainSight);
 		public static readonly Attachment HS401G5 = new Attachment("HS401G5", AttachmentType.MainSight);
 
-		// ----- Top Scope ----- 
+		// ----- 顶部瞄准镜 ----- 
 		public static readonly Attachment DeltaSightTop = new Attachment("Delta_Sight_Top", AttachmentType.TopSight);
 		public static readonly Attachment RedDotTop = new Attachment("Red_Dot_Top", AttachmentType.TopSight);
 		public static readonly Attachment CRedDotTop = new Attachment("C_Red_Dot_Top", AttachmentType.TopSight);
 		public static readonly Attachment FYouTop = new Attachment("FYou_Top", AttachmentType.TopSight);
 
-		// ----- Under Rails ----- 
+		// ----- 下导轨 ----- 
 		public static readonly Attachment AngledGrip = new Attachment("Angled_Grip", AttachmentType.UnderRail);
 		public static readonly Attachment Bipod = new Attachment("Bipod", AttachmentType.UnderRail);
 		public static readonly Attachment VerticalGrip = new Attachment("Vertical_Grip", AttachmentType.UnderRail);
@@ -84,7 +84,7 @@ namespace BattleBitAPI.Common
 		public static readonly Attachment B25URK = new Attachment("B-25URK", AttachmentType.UnderRail);
 		public static readonly Attachment VTACUVGTacticalGrip = new Attachment("VTAC_UVG_TacticalGrip", AttachmentType.UnderRail);
 
-		// ----- Side Rails ----- 
+		// ----- 侧导轨 ----- 
 		public static readonly Attachment Flashlight = new Attachment("Flashlight", AttachmentType.SideRail);
 		public static readonly Attachment Rangefinder = new Attachment("Rangefinder", AttachmentType.SideRail);
 		public static readonly Attachment Redlaser = new Attachment("Redlaser", AttachmentType.SideRail);
@@ -92,20 +92,20 @@ namespace BattleBitAPI.Common
 		public static readonly Attachment Greenlaser = new Attachment("Greenlaser", AttachmentType.SideRail);
 		public static readonly Attachment Searchlight = new Attachment("Searchlight", AttachmentType.SideRail);
 
-		// ----- Bolts ----- 
+		// ----- 枪栓 ----- 
 		public static readonly Attachment BoltActionA = new Attachment("Bolt_Action_A", AttachmentType.Bolt);
 		public static readonly Attachment BoltActionB = new Attachment("Bolt_Action_B", AttachmentType.Bolt);
 		public static readonly Attachment BoltActionC = new Attachment("Bolt_Action_C", AttachmentType.Bolt);
 		public static readonly Attachment BoltActionD = new Attachment("Bolt_Action_D", AttachmentType.Bolt);
 		public static readonly Attachment BoltActionE = new Attachment("Bolt_Action_E", AttachmentType.Bolt);
 
-		// ----- Public Calls ----- 
+		// ----- 词典查找方法 ----- 
 		public static bool TryFind(string name, out Attachment item)
 		{
 			return mAttachments.TryGetValue(name, out item);
 		}
 
-		// ----- Init ----- 
+		// ----- 初始化 ----- 
 		static Attachments()
 		{
 			var members = typeof(Attachments).GetMembers(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);

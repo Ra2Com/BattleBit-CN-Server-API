@@ -2,6 +2,11 @@
 {
 	public enum PlayerStand : byte
 	{
-		Standing = 0, Crouching = 1, Proning = 2
+		// 站着
+		Standing = 0,
+		// 蹲着 
+		Crouching = 1,
+		// 趴着 
+		Proning = 2
 	}
 }
