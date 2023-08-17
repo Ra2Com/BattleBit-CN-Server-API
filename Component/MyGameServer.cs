@@ -99,6 +99,8 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnTick()
         {
+            // TODO: 每 2 分钟发布一条 AnnounceShort 让玩家加群反馈
+            // TODO: 每 3 分钟发布一条 全服聊天信息 让玩家加群反馈
             // Calculate current ranking.
             rankPlayers.Clear();
             foreach (var item in AllPlayers)
@@ -118,7 +120,7 @@ namespace CommunityServerAPI.Component
             request.SpawnStand = PlayerStand.Standing; // 站着出生
             request.SpawnProtection = 5f; // 出生不动保护 5 秒
             // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
-            // 当前随机出生方案，记录玩家 10、20、30、45 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 45 秒前的坐标仍然不可以刷新，则强制刷新到 45 秒前的坐标，如果取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
+            // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
             //request.SpawnPosition = new System.Numerics.Vector3();
             //request.LookDirection = new System.Numerics.Vector3();
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
