@@ -25,8 +25,9 @@ namespace CommunityServerAPI.Component
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
             RoundSettings.MaxTickets = 1500;
 
-            // 2个玩家就可以开干了
+            // 2个玩家,10 秒后就可以开干了
             RoundSettings.PlayersToStart = 2;
+            RoundSettingsSecondsLeft = 10;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
@@ -40,12 +41,24 @@ namespace CommunityServerAPI.Component
         public override async Task OnPlayerConnected(MyPlayer player)
         {
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+
+            // 特殊角色登录日志
+            if (player.Stats.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {player.SteamID} 已连接, IP: {player.IP}");
+            }
+            if (player.Stats.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {player.SteamID} 已连接, IP: {player.IP}");
+            }
         }
+
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
 
 
         }
+
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
 
@@ -139,9 +152,18 @@ namespace CommunityServerAPI.Component
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
 
-            // 管理员命令执行
-            if (player.SteamID != 76561198090800555 || !msg.StartsWith("/"))
+            // 管理员判断以及命令执行
+            if (player.Stats.Roles != Roles.Admin || !msg.StartsWith("/"))
+            {
+
                 return true;
+            }
+
+            if (player.Stats.Roles != (Roles.Admin || Roles.Moderator) || !msg.StartsWith("/"))
+            {
+
+                return true;
+            }
 
             return false;
 
