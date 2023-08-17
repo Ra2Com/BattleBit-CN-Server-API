@@ -14,7 +14,7 @@ namespace CommunityServerAPI.Component
     {
         public override async Task OnConnected()
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
             GamemodeRotation.SetRotation("Domination");
@@ -39,7 +39,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
@@ -77,7 +77,7 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已放弃: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已放弃: " + player);
         }
         public override async Task OnPlayerDied(MyPlayer player)
         {
@@ -86,11 +86,11 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + from + " 复活了 " + to);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
         }
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已离线: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已离线: " + player);
         }
 
         public override async Task OnTick()
