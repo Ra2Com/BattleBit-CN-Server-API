@@ -1,6 +1,7 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
+using CommunityServerAPI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace CommunityServerAPI.Component
     internal class MyGameServer : GameServer<MyPlayer>
     {
         public override async Task OnConnected()
-        {   
+        {
             Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
@@ -42,8 +43,8 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-           
-            
+
+
         }
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
@@ -105,6 +106,16 @@ namespace CommunityServerAPI.Component
             {
                 rankPlayers[i].rank = i + 1;
             }
+        }
+
+        public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
+        {
+            request.Loadout = SpawnManager.GetRandom();
+            request.SpawnStand = PlayerStand.Standing;
+            //request.SpawnPosition = new System.Numerics.Vector3();
+            //request.LookDirection = new System.Numerics.Vector3();
+            Console.WriteLine($"{player.Name}复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            return request;
         }
     }
 }

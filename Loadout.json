@@ -1,0 +1,32 @@
+{
+  "ListPrimaryWeapon": [
+    {
+      "Name": "AK74",
+      "Barrel": "Ranger",
+      "MainSight": "Holographic",
+      "UnderRail": "TacticalFlashlight",
+      "SideRail": "VerticalGrip"
+    }
+  ],
+  "ListSecondaryWeapon": [
+    {
+      "Name": "USP",
+      "MainSight": "PistolRedDot"
+    }
+  ],
+  "ListHeavyGadget": [
+    {
+      "Name": "C4"
+    }
+  ],
+  "ListLightGadget": [
+    {
+      "Name": "Small Ammo Kit"
+    }
+  ],
+  "ListThrowable": [
+    {
+      "Name": "Flashbang"
+    }
+  ]
+}
