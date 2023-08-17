@@ -22,19 +22,7 @@ namespace CommunityServerAPI.Component
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
 
-        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
-        // public override Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
-        // {
-        //     officialStats.Progress.Rank = 200;
-        //     officialStats.Progress.Prestige = 6;
-        //     return Task.FromResult(officialStats);
 
-        //     // TODO: 此处的 Admin 角色最好走 Json 配置
-        //     if (steamID == 76561198395073327)
-        //     {
-        //         stats.Roles = Roles.Admin;
-        //     }
-        // }
 
         public override async Task OnConnected()
         {

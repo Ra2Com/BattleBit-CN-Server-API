@@ -117,5 +117,17 @@ namespace CommunityServerAPI.Component
             Console.WriteLine($"{player.Name}复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             return request;
         }
+        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
+        public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        {
+            args.Stats.Progress.Rank = 200;
+            args.Stats.Progress.Prestige = 6;
+
+            // TODO: 此处的 Admin 角色最好走 Json 配置
+            if (steamID == 76561198395073327)
+            {
+                args.Stats.Roles = Roles.Admin;
+            }
+        }
     }
 }
