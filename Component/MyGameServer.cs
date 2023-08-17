@@ -27,7 +27,7 @@ namespace CommunityServerAPI.Component
 
             // 2个玩家,10 秒后就可以开干了
             RoundSettings.PlayersToStart = 2;
-            RoundSettingsSecondsLeft = 10;
+            RoundSettings.SecondsLeft = 10;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
@@ -41,16 +41,6 @@ namespace CommunityServerAPI.Component
         public override async Task OnPlayerConnected(MyPlayer player)
         {
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
-
-            // 特殊角色登录日志
-            if (player.Stats.Roles == Roles.Admin)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {player.SteamID} 已连接, IP: {player.IP}");
-            }
-            if (player.Stats.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {player.SteamID} 已连接, IP: {player.IP}");
-            }
         }
 
         public override async Task OnPlayerSpawned(MyPlayer player)

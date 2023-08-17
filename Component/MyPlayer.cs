@@ -26,6 +26,16 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnConnected()
         {
+            // 特殊角色登录日志
+            if (player.Stats.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {player.SteamID} 已连接, IP: {player.IP}");
+            }
+            if (player.Stats.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {player.SteamID} 已连接, IP: {player.IP}");
+            }
+            
             _ = Task.Run(async () =>
             {
                 // 同时添加 Say 聊天消息

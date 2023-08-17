@@ -20,7 +20,7 @@ namespace CommunityServerAPI.Tools
         {
             try
             {
-                string filePath = $"{Environment.CurrentDirectory}\\RandomLoadouts.json"; // TODO WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
+                string filePath = $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // TODO WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
                 string content = File.ReadAllText(filePath);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
             }
@@ -37,10 +37,10 @@ namespace CommunityServerAPI.Tools
             PlayerLoadout playerLoadout = new PlayerLoadout();
 
             // 使用新特性的 RNGCSP https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.rngcryptoserviceprovider?view=net-6.0
-            RNGCryptoServiceProvider rd = new RNGCryptoServiceProvider();
+            var rd = RandomNumberGenerator();
 
             // 主武器配置
-            int PrimaryWeaponIndex = rd.Next(0, loadoutJson.ListPrimaryWeapon.Count - 1);
+            int PrimaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count - 1);
             var pWI = new WeaponItem();
             pWI.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
             pWI.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
@@ -56,7 +56,7 @@ namespace CommunityServerAPI.Tools
             playerLoadout.PrimaryWeapon = pWI;
 
             // 手枪配置
-            int SecondaryWeaponIndex = rd.Next(0, loadoutJson.ListSecondaryWeapon.Count - 1);
+            int SecondaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListSecondaryWeapon.Count - 1);
             var sWI = new WeaponItem();
             sWI.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
             sWI.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
@@ -68,22 +68,22 @@ namespace CommunityServerAPI.Tools
             playerLoadout.SecondaryWeapon = sWI;
 
             // 绷带配置
-            int ListFirstAidIndex = rd.Next(0, loadoutJson.ListFirstAid.Count - 1);
+            int ListFirstAidIndex = rd.GetInt32(0, loadoutJson.ListFirstAid.Count - 1);
             playerLoadout.FirstAidName = loadoutJson.ListFirstAid[ListFirstAidIndex].Name ?? "none";
             playerLoadout.FirstAidExtra = (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
 
             // 轻型道具配置
-            int ListLightGadgetIndex = rd.Next(0, loadoutJson.ListLightGadget.Count - 1);
+            int ListLightGadgetIndex = rd.GetInt32(0, loadoutJson.ListLightGadget.Count - 1);
             playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
             playerLoadout.LightGadgetExtra = (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
 
             // 重型道具配置
-            int ListHeavyGadgetIndex = rd.Next(0, loadoutJson.ListHeavyGadget.Count - 1);
+            int ListHeavyGadgetIndex = rd.GetInt32(0, loadoutJson.ListHeavyGadget.Count - 1);
             playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
             playerLoadout.HeavyGadgetExtra = (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
 
             // 投掷物配置
-            int ListThrowableIndex = rd.Next(0, loadoutJson.ListThrowable.Count - 1);
+            int ListThrowableIndex = rd.GetInt32(0, loadoutJson.ListThrowable.Count - 1);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
             playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "0"));
 
