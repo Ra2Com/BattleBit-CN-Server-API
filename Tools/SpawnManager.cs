@@ -37,7 +37,7 @@ namespace CommunityServerAPI.Tools
             PlayerLoadout playerLoadout = new PlayerLoadout();
 
             // 使用新特性的 RNG https://learn.microsoft.com/zh-cn/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-6.0
-            var rd = RandomNumberGenerator();
+            var rd = RandomNumberGenerator;
 
             // 主武器配置
             int PrimaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count - 1);
