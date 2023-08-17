@@ -46,36 +46,36 @@ namespace CommunityServerAPI.Tools
 
             int PrimaryWeaponIndex = rd.Next(0, loadoutJson.ListPrimaryWeapon.Count - 1);
             var wi = new WeaponItem();
-            wi.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ? default : "none";
-            wi.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ? default : "none";
-            wi.TopSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].TopSight ? default : "none";
-            wi.CantedSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].CantedSight ? default : "none";
-            wi.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel ? default : "none";
-            wi.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ? default : "none";
-            wi.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ? default : "none";
-            wi.BoltName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ? default : "none";
-            wi.SkinIndexNumber = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ? default : 0;
-            wi.MagazineIndexNumber = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ? default : 0;
+            wi.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
+            wi.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
+            wi.TopSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].TopSight ?? "none";
+            wi.CantedSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].CantedSight ?? "none";
+            wi.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel ?? "none";
+            wi.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
+            wi.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
+            wi.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
+            wi.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex??"0"));
+            wi.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.PrimaryWeapon = wi;
 
             int SecondaryWeaponIndex = rd.Next(0, loadoutJson.ListSecondaryWeapon.Count - 1);
             var wi2 = new WeaponItem();
             wi2.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
-            wi2.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ? default : "none";
-            wi2.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ? default : "none";
-            wi2.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ? default : "none";
-            wi2.SkinIndexNumber = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ? default : 0;
-            wi2.MagazineIndexNumber = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ? default : 0;
+            wi2.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
+            wi2.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
+            wi2.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
+            wi2.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
+            wi2.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.SecondaryWeapon = wi2;
 
             int ListHeavyGadgetIndex = rd.Next(0, loadoutJson.ListHeavyGadget.Count - 1);
-            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ? default : "none";
+            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
 
             int ListLightGadgetIndex = rd.Next(0, loadoutJson.ListLightGadget.Count - 1);
-            playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ? default : "none";
+            playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
 
             int ListThrowableIndex = rd.Next(0, loadoutJson.ListThrowable.Count - 1);
-            playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ? default : "none";
+            playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
 
             return playerLoadout;
         }
