@@ -28,15 +28,16 @@ namespace CommunityServerAPI.Component
         {
             _ = Task.Run(async () =>
             {
+                // 同时添加 Say 聊天消息
                 GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-                // Message to display your Killer's distance.
+                
+                // Message to display your Killer's distance and welcome msg.
                 while (true)
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
                     await Task.Delay(3000);
                     Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
-                    // TODO: 同时添加 Say 聊天消息
-
+                    
                     if (markId != 0)
                     {
                         var markPlayer = GameServer.AllPlayers.First(o => o.SteamID == markId);
