@@ -46,27 +46,36 @@ namespace CommunityServerAPI.Tools
 
             int PrimaryWeaponIndex = rd.Next(0, loadoutJson.ListPrimaryWeapon.Count - 1);
             var wi = new WeaponItem();
-            wi.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name;
-            wi.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight;
-            wi.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel;
-            wi.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail;
-            wi.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail;
+            wi.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
+            wi.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
+            wi.TopSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].TopSight ?? "none";
+            wi.CantedSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].CantedSight ?? "none";
+            wi.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel ?? "none";
+            wi.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
+            wi.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
+            wi.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
+            wi.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex??"0"));
+            wi.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.PrimaryWeapon = wi;
 
             int SecondaryWeaponIndex = rd.Next(0, loadoutJson.ListSecondaryWeapon.Count - 1);
             var wi2 = new WeaponItem();
             wi2.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
-            wi2.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight;
+            wi2.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
+            wi2.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
+            wi2.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
+            wi2.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
+            wi2.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.SecondaryWeapon = wi2;
 
             int ListHeavyGadgetIndex = rd.Next(0, loadoutJson.ListHeavyGadget.Count - 1);
-            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name;
+            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
 
             int ListLightGadgetIndex = rd.Next(0, loadoutJson.ListLightGadget.Count - 1);
-            playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name;
+            playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
 
             int ListThrowableIndex = rd.Next(0, loadoutJson.ListThrowable.Count - 1);
-            playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name;
+            playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
 
             return playerLoadout;
         }
@@ -88,14 +97,23 @@ namespace CommunityServerAPI.Tools
         public string Name { get; set; }
         public string Barrel { get; set; }
         public string MainSight { get; set; }
+        public string TopSight { get; set; }
+        public string CantedSight { get; set; }
         public string UnderRail { get; set; }
         public string SideRail { get; set; }
+        public string Bolt { get; set; }
+        public string SkinIndex { get; set; }
+        public string MagazineIndex { get; set; }
     }
 
     public class SecondaryWeaponJson
     {
         public string Name { get; set; }
+        public string Barrel { get; set; }
         public string MainSight { get; set; }
+        public string SideRail { get; set; }
+        public string SkinIndex { get; set; }
+        public string MagazineIndex { get; set; }
     }
 
     public class HeavyGadgetJson

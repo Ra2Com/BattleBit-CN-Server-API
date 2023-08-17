@@ -14,7 +14,7 @@ namespace CommunityServerAPI.Component
     {
         public override async Task OnConnected()
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
             GamemodeRotation.SetRotation("Domination");
@@ -39,7 +39,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
@@ -77,7 +77,7 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已放弃: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已放弃: " + player);
         }
         public override async Task OnPlayerDied(MyPlayer player)
         {
@@ -86,11 +86,11 @@ namespace CommunityServerAPI.Component
         }
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + from + " 复活了 " + to);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
         }
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - 玩家已离线: " + player);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已离线: " + player);
         }
 
         public override async Task OnTick()
@@ -114,8 +114,37 @@ namespace CommunityServerAPI.Component
             request.SpawnStand = PlayerStand.Standing;
             //request.SpawnPosition = new System.Numerics.Vector3();
             //request.LookDirection = new System.Numerics.Vector3();
-            Console.WriteLine($"{player.Name}复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            Console.WriteLine($"{player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             return request;
+        }
+
+        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
+        public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        {
+            args.Stats.Progress.Rank = 200;
+            args.Stats.Progress.Prestige = 6;
+
+            // TODO: 此处的 Admin 角色最好走 Json 配置
+            if (steamID == 76561198090800555)
+            {
+                args.Stats.Roles = Roles.Admin;
+            }
+        }
+
+        // 聊天监控和命令
+        public override async Task<bool> OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
+        {
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
+            // TODO: 聊天记录建议单独保存
+            // TODO: 屏蔽词告警
+            // TODO: 屏蔽词系统
+
+            // 管理员命令执行
+            if (player.SteamID != 76561198395073327 || !msg.StartsWith("/"))
+                return true;
+
+            return false;
+
         }
     }
 }

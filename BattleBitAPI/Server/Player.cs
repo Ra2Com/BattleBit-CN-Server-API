@@ -9,12 +9,12 @@ namespace BattleBitAPI
     {
         private Internal mInternal;
 
-        // ---- Variables ----
-        public ulong SteamID => mInternal.SteamID;
-        public string Name => mInternal.Name;
-        public IPAddress IP => mInternal.IP;
+        // ---- 变量 ----
+        public ulong SteamID => mInternal.SteamID; // 玩家的 Steam64
+        public string Name => mInternal.Name; // 玩家的昵称
+        public IPAddress IP => mInternal.IP; // 玩家的IP地址
         public GameServer<TPlayer> GameServer => mInternal.GameServer;
-        public GameRole Role
+        public GameRole Role // 玩家在服务器内的权限
         {
             get => mInternal.Role;
             set
@@ -24,7 +24,7 @@ namespace BattleBitAPI
                 SetNewRole(value);
             }
         }
-        public Team Team
+        public Team Team // 玩家在服务器内的阵营/团队
         {
             get => mInternal.Team;
             set
@@ -33,7 +33,7 @@ namespace BattleBitAPI
                     ChangeTeam(value);
             }
         }
-        public Squads Squad
+        public Squads Squad // 玩家在服务器内的小队
         {
             get => mInternal.Squad;
             set
@@ -46,28 +46,28 @@ namespace BattleBitAPI
                     JoinSquad(value);
             }
         }
-        public bool InSquad => mInternal.Squad != Squads.NoSquad;
-        public int PingMs => mInternal.PingMs;
+        public bool InSquad => mInternal.Squad != Squads.NoSquad; // 玩家是否在小队中
+        public int PingMs => mInternal.PingMs; // 玩家的网络连接延迟 Ping
 
-        public float HP => mInternal.HP;
-        public bool IsAlive => mInternal.HP >= 0f;
-        public bool IsUp => mInternal.HP > 0f;
-        public bool IsDown => mInternal.HP == 0f;
-        public bool IsDead => mInternal.HP == -1f;
+        public float HP => mInternal.HP; // 玩家的 HP值
+        public bool IsAlive => mInternal.HP >= 0f; // 玩家是否还活着
+        public bool IsUp => mInternal.HP > 0f; // 玩家 HP是否大于0
+        public bool IsDown => mInternal.HP == 0f; // 玩家是否被击倒
+        public bool IsDead => mInternal.HP == -1f; // 玩家是否已死亡
 
-        public Vector3 Position
+        public Vector3 Position // 玩家的坐标
         {
             get => mInternal.Position;
             set => Teleport(value);
         }
-        public PlayerStand StandingState => mInternal.Standing;
-        public LeaningSide LeaningState => mInternal.Leaning;
-        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex;
-        public bool InVehicle => mInternal.InVehicle;
-        public bool IsBleeding => mInternal.IsBleeding;
-        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout;
-        public PlayerWearings CurrentWearings => mInternal.CurrentWearings;
-        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications;
+        public PlayerStand StandingState => mInternal.Standing; // 玩家的站立状态
+        public LeaningSide LeaningState => mInternal.Leaning; // 玩家的歪头状态
+        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex; // 玩家的武器装备配置数据
+        public bool InVehicle => mInternal.InVehicle; // 玩家是否在载具中
+        public bool IsBleeding => mInternal.IsBleeding; // 玩家是否在流血
+        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout; // 玩家当前的武器装备配置
+        public PlayerWearings CurrentWearings => mInternal.CurrentWearings; // 玩家当前的角色穿着配置
+        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications; // 玩家的数值修改调整
 
         // ---- Events ----
         public virtual void OnCreated()
