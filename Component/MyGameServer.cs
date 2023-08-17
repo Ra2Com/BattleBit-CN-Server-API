@@ -1,4 +1,5 @@
-﻿using BattleBitAPI;
+﻿using System.Net.Cache;
+using BattleBitAPI;
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Tools;
@@ -14,25 +15,25 @@ namespace CommunityServerAPI.Component
     {
         public override async Task OnConnected()
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器建立通信! {GameIP}:{GamePort} {ServerName}");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
+            
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
             GamemodeRotation.SetRotation("Domination");
 
-            // 娱乐服，咱不玩流血那套
-            ServerSettings.BleedingEnabled = false;
-
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
             RoundSettings.MaxTickets = 1500;
 
-            // 2个玩家就可以开干了
+            // 全局对局设置 - 2个玩家,10 秒后就可以开干了
             RoundSettings.PlayersToStart = 2;
+            RoundSettings.SecondsLeft = 10;
+
+            // 开启玩家体积碰撞
+            ServerSettings.PlayerCollision = true;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
 
-            // 不知道干啥的游戏设置
-            ServerSettings.PointLogEnabled = false;
         }
 
         List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();
@@ -41,11 +42,13 @@ namespace CommunityServerAPI.Component
         {
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
+
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
 
 
         }
+
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
 
@@ -70,6 +73,7 @@ namespace CommunityServerAPI.Component
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
                 // Announce the victim your killer. And the killer will be tracked.
+                // TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
                 MessageToPlayer(args.Victim, $"你被{RichText.Red}{args.Killer.Name}{RichText.EndColor}击杀，敌人剩余血量 {RichText.Green}{args.Killer.HP}{RichText.EndColor}");
             }
 
@@ -110,8 +114,11 @@ namespace CommunityServerAPI.Component
 
         public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
         {
-            request.Loadout = SpawnManager.GetRandom();
-            request.SpawnStand = PlayerStand.Standing;
+            request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
+            request.SpawnStand = PlayerStand.Standing; // 站着出生
+            request.SpawnProtection = 5f; // 出生不动保护 5 秒
+            // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
+            // 当前随机出生方案，记录玩家 10、20、30、45 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 45 秒前的坐标仍然不可以刷新，则强制刷新到 45 秒前的坐标，如果取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
             //request.SpawnPosition = new System.Numerics.Vector3();
             //request.LookDirection = new System.Numerics.Vector3();
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
@@ -139,9 +146,19 @@ namespace CommunityServerAPI.Component
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
 
-            // 管理员命令执行
-            if (player.SteamID != 76561198090800555 || !msg.StartsWith("/"))
+            // 管理员判断以及命令执行
+            // TODO: 管理员类命令执行结果需要打印 Log
+            if (player.Stats.Roles != Roles.Admin || !msg.StartsWith("/"))
+            {
+
                 return true;
+            }
+
+            if (player.Stats.Roles != (Roles.Admin || Roles.Moderator) || !msg.StartsWith("/"))
+            {
+
+                return true;
+            }
 
             return false;
 

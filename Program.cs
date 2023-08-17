@@ -3,6 +3,8 @@ using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Component;
 using CommunityServerAPI.Tools;
+using System.Net;
+using System.Numerics;
 using System.Threading.Channels;
 using System.Xml;
 
@@ -17,6 +19,8 @@ class Program
         int apiPort = 29294;
         SpawnManager.Init();
         SpawnManager.GetRandom();
+        listener.OnGameServerConnecting += OnGameServerConnecting;
+        listener.OnValidateGameServerToken += OnValidateGameServerToken;
         listener.Start(apiPort);
 
         if (listener.IsListening)
@@ -25,6 +29,18 @@ class Program
         Thread.Sleep(-1);
     }
 
+    // 新加了一个验证服务端 Token 的功能，防止端口被别人偷走
+    private static async Task<bool> OnValidateGameServerToken(IPAddress ip, ushort gameport, string sentToken)
+    {
+        await Console.Out.WriteLineAsync(ip + ":" + gameport + " sent " + sentToken);
+        return true;
+    }
+
+    private static async Task<bool> OnGameServerConnecting(IPAddress arg)
+    {
+        await Console.Out.WriteLineAsync(arg.ToString() + " connecting");
+        return true;
+    }
 
 }
 

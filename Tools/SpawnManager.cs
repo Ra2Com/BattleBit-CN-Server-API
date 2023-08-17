@@ -7,6 +7,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace CommunityServerAPI.Tools
 {
@@ -19,22 +20,15 @@ namespace CommunityServerAPI.Tools
         {
             try
             {
-                string filepath = $"{Environment.CurrentDirectory}\\Loadout.json";
-                string content = File.ReadAllText(filepath);
+                string filePath = $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // TODO WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
+                string content = File.ReadAllText(filePath);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
             }
             catch (Exception ee)
             {
-                Console.WriteLine("解析json出错" + ee.Message);
+                Console.WriteLine("解析 RandomLoadouts.json 出错，请检查" + ee.Message); // Error when JSON file is wrong
                 return;
             }
-            //LoadoutJson loadoutJson = new LoadoutJson();
-            //loadoutJson.ListPrimaryWeapon.Add(new PrimaryWeaponJson { Name = "AK74", Barrel = "Ranger", MainSight = "Holographic", SideRail = "VerticalGrip", UnderRail = "TacticalFlashlight" });
-            //loadoutJson.ListSecondaryWeapon.Add(new SecondaryWeaponJson { Name = "USP", MainSight = "PistolRedDot" });
-            //loadoutJson.ListHeavyGadget.Add(new HeavyGadgetJson { Name = "C4" });
-            //loadoutJson.ListLightGadget.Add(new LightGadgetJson { Name = "Small Ammo Kit" });
-            //loadoutJson.ListThrowable.Add(new ThrowableJson { Name = "Flashbang" });
-
             //var x = JsonConvert.SerializeObject(loadoutJson);
         }
 
@@ -42,40 +36,56 @@ namespace CommunityServerAPI.Tools
         {
             PlayerLoadout playerLoadout = new PlayerLoadout();
 
-            Random rd = new Random();
+            // 使用新特性的 RNG https://learn.microsoft.com/zh-cn/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-6.0
+            var rd = RandomNumberGenerator;
 
-            int PrimaryWeaponIndex = rd.Next(0, loadoutJson.ListPrimaryWeapon.Count - 1);
-            var wi = new WeaponItem();
-            wi.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
-            wi.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
-            wi.TopSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].TopSight ?? "none";
-            wi.CantedSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].CantedSight ?? "none";
-            wi.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel ?? "none";
-            wi.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
-            wi.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
-            wi.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
-            wi.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex??"0"));
-            wi.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
-            playerLoadout.PrimaryWeapon = wi;
+            // 主武器配置
+            int PrimaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count - 1);
+            var pWI = new WeaponItem();
+            pWI.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
+            pWI.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
+            pWI.TopSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].TopSight ?? "none";
+            pWI.CantedSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].CantedSight ?? "none";
+            pWI.BarrelName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Barrel ?? "none";
+            pWI.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
+            pWI.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
+            pWI.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
+            pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "0"));
+            pWI.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
+            pWI.PrimaryExtraMagazines = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "0"));
+            playerLoadout.PrimaryWeapon = pWI;
 
-            int SecondaryWeaponIndex = rd.Next(0, loadoutJson.ListSecondaryWeapon.Count - 1);
-            var wi2 = new WeaponItem();
-            wi2.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
-            wi2.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
-            wi2.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
-            wi2.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
-            wi2.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
-            wi2.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
-            playerLoadout.SecondaryWeapon = wi2;
+            // 手枪配置
+            int SecondaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListSecondaryWeapon.Count - 1);
+            var sWI = new WeaponItem();
+            sWI.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
+            sWI.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
+            sWI.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
+            sWI.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
+            sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
+            sWI.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
+            sWI.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "0"));
+            playerLoadout.SecondaryWeapon = sWI;
 
-            int ListHeavyGadgetIndex = rd.Next(0, loadoutJson.ListHeavyGadget.Count - 1);
-            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
+            // 绷带配置
+            int ListFirstAidIndex = rd.GetInt32(0, loadoutJson.ListFirstAid.Count - 1);
+            playerLoadout.FirstAidName = loadoutJson.ListFirstAid[ListFirstAidIndex].Name ?? "none";
+            playerLoadout.FirstAidExtra = (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
 
-            int ListLightGadgetIndex = rd.Next(0, loadoutJson.ListLightGadget.Count - 1);
+            // 轻型道具配置
+            int ListLightGadgetIndex = rd.GetInt32(0, loadoutJson.ListLightGadget.Count - 1);
             playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
+            playerLoadout.LightGadgetExtra = (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
 
-            int ListThrowableIndex = rd.Next(0, loadoutJson.ListThrowable.Count - 1);
+            // 重型道具配置
+            int ListHeavyGadgetIndex = rd.GetInt32(0, loadoutJson.ListHeavyGadget.Count - 1);
+            playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
+            playerLoadout.HeavyGadgetExtra = (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
+
+            // 投掷物配置
+            int ListThrowableIndex = rd.GetInt32(0, loadoutJson.ListThrowable.Count - 1);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
+            playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "0"));
 
             return playerLoadout;
         }
@@ -87,8 +97,9 @@ namespace CommunityServerAPI.Tools
 
         public List<SecondaryWeaponJson> ListSecondaryWeapon { get; set; } = new List<SecondaryWeaponJson>();
 
-        public List<HeavyGadgetJson> ListHeavyGadget { get; set; } = new List<HeavyGadgetJson>();
+        public List<FirstAidJson> ListFirstAid { get; set; } = new List<FirstAidJson>();
         public List<LightGadgetJson> ListLightGadget { get; set; } = new List<LightGadgetJson>();
+        public List<HeavyGadgetJson> ListHeavyGadget { get; set; } = new List<HeavyGadgetJson>();
         public List<ThrowableJson> ListThrowable { get; set; } = new List<ThrowableJson>();
     }
 
@@ -104,6 +115,7 @@ namespace CommunityServerAPI.Tools
         public string Bolt { get; set; }
         public string SkinIndex { get; set; }
         public string MagazineIndex { get; set; }
+        public string PrimaryExtraMagazines { get; set; }
     }
 
     public class SecondaryWeaponJson
@@ -114,19 +126,30 @@ namespace CommunityServerAPI.Tools
         public string SideRail { get; set; }
         public string SkinIndex { get; set; }
         public string MagazineIndex { get; set; }
+        public string SecondaryExtraMagazines { get; set; }
     }
 
-    public class HeavyGadgetJson
+    public class FirstAidJson
     {
         public string Name { get; set; }
+        public string FirstAidExtra { get; set; }
     }
 
     public class LightGadgetJson
     {
         public string Name { get; set; }
+        public string LightGadgetExtra { get; set; }
     }
+
+    public class HeavyGadgetJson
+    {
+        public string Name { get; set; }
+        public string HeavyGadgetExtra { get; set; }
+    }
+
     public class ThrowableJson
     {
         public string Name { get; set; }
+        public string ThrowableExtra { get; set; }
     }
 }
