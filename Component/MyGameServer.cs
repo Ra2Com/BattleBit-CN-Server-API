@@ -111,6 +111,10 @@ namespace CommunityServerAPI.Component
         public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
         {
             request.Loadout = SpawnManager.GetRandom();
+            request.SpawnStand = PlayerStand.Standing;
+            //request.SpawnPosition = new System.Numerics.Vector3();
+            //request.LookDirection = new System.Numerics.Vector3();
+            Console.WriteLine($"{player.Name}复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             return request;
         }
     }
