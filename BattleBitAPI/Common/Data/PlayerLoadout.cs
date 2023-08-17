@@ -7,14 +7,14 @@
         public string FirstAidName;//绷带
         public string LightGadgetName;//轻型道具
         public string HeavyGadgetName;//重型道具
-        public string ThrowableName;//手雷
+        public string ThrowableName;//投掷物
 
-        public byte PrimaryExtraMagazines;//主武器弹夹
-        public byte SecondaryExtraMagazines;//手枪弹夹
+        public byte PrimaryExtraMagazines;//主武器额外弹夹
+        public byte SecondaryExtraMagazines;//手枪额外弹夹
         public byte FirstAidExtra;//额外绷带
-        public byte LightGadgetExtra;
-        public byte HeavyGadgetExtra;
-        public byte ThrowableExtra;
+        public byte LightGadgetExtra;//额外轻型道具
+        public byte HeavyGadgetExtra;//额外重型道具
+        public byte ThrowableExtra;//额外投掷物
 
         public Gadget FirstAid
         {
