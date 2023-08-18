@@ -48,7 +48,7 @@ namespace CommunityServerAPI.Tools
             pWI.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
             pWI.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
             pWI.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
-            pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "0"));
+            //pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "1"));
             pWI.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.PrimaryWeapon = pWI;
 
@@ -59,7 +59,7 @@ namespace CommunityServerAPI.Tools
             sWI.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
             sWI.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
             sWI.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
-            sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
+            //sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
             sWI.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.SecondaryWeapon = sWI;
 
@@ -81,9 +81,11 @@ namespace CommunityServerAPI.Tools
             // 投掷物配置
             int ListThrowableIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListThrowable.Count);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
-            playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "0"));
+            playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "1"));
 
-            playerLoadout.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "0"));
+            // 处理主副武器的额外弹夹设置（不考虑着装）
+            playerLoadout.PrimaryExtraMagazines = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "2"));
+            playerLoadout.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "3"));
 
             return playerLoadout;
         }
