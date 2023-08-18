@@ -478,6 +478,18 @@ namespace BattleBitAPI.Server
         }
 
         // 通过 steamID 踢出某个玩家，需要填写原因
+        public void Ban(ulong steamID, string reason)
+        {
+            ExecuteCommand("ban " + steamID + " " + reason);
+        }
+
+        // 通过 昵称 封禁某个玩家，需要填写原因
+        public void Ban(Player<TPlayer> player, string reason)
+        {
+            Ban(player.SteamID, reason);
+        }
+
+        // 通过 steamID 踢出某个玩家，需要填写原因
         public void Kick(ulong steamID, string reason)
         {
             ExecuteCommand("kick " + steamID + " " + reason);
