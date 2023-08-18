@@ -20,9 +20,9 @@ namespace CommunityServerAPI.Component
         public ulong SteamID { get; }
         public int K { get; set; }
         public int D { get; set; }
-        public bool IsAdmin { get; set; };
-        public bool IsModerator { get; set;} ;
-        public bool IsVIP { get; set; };
+        public bool IsAdmin { get; set; }
+        public bool IsModerator { get; set;} 
+        public bool IsVIP { get; set; }
 
         public int rank { get; set; }
 
