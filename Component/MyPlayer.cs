@@ -25,43 +25,54 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnConnected()
         {
-            // 特殊角色登录日志
-            if (stats.Roles == Roles.Admin)
+            try
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
-            }
-            if (stats.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
-            }
+                Console.Out.WriteLineAsync($"MyPlayer OnConnected");
 
-            _ = Task.Run(async () =>
-            {
+                // 娱乐服，咱不玩流血那套
+                Modifications.DisableBleeding();
 
+                // 娱乐服，换弹速度降低到 70%
+                Modifications.ReloadSpeedMultiplier = 0.7f;
+
+                // 白天，用个鬼的夜视仪
+                Modifications.CanUseNightVision = false;
+
+                // 倒地后马上就死
+                Modifications.DownTimeGiveUpTime = 1f;
+
+                // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+                Modifications.AirStrafe = false;
+
+                // 死了马上就能活
+                Modifications.RespawnTime = 1f;
+
+                // 开启击杀通知
+                Modifications.KillFeed = true;
+
+                // 刚枪服务器，所有武器伤害值都降低到 75%
+                Modifications.GiveDamageMultiplier = 0.75f;
+                // 特殊角色登录日志
+                if (stats?.Roles == Roles.Admin)
+                {
+                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
+                }
+                if (stats?.Roles == Roles.Moderator)
+                {
+                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
+                }
                 // 同时添加 Say 聊天消息
                 GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+                Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+                Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
-                // Message to display your Killer's distance and welcome msg.
-                while (true)
-                {
-                    positionBef.Enqueue(new PositionBef { position = Position, time = GetUtcTimeMs() });
-                    // When a player joined the game, send a Message to announce its Community Server data.
-                    await Task.Delay(3000);
-                    Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+            }
+            catch (Exception ee)
+            {
+                Console.Out.WriteLineAsync(ee.StackTrace);
 
-                    if (markId != 0)
-                    {
-                        var markPlayer = GameServer.AllPlayers.First(o => o.SteamID == markId);
-                        if (markPlayer == null)
-                            markId = 0;
-                        else
-                        {
-                            var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
-                        }
-                    }
-                }
-            });
+            }
+
         }
 
 
@@ -74,36 +85,49 @@ namespace CommunityServerAPI.Component
                  await Task.Delay(1000);
 
 
-                 SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { }, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 1);
+                 //SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { },Position, new Vector3() { }, PlayerStand.Standing, 1);
              });
         }
 
 
         public override async Task OnSpawned()
         {
-            // 娱乐服，咱不玩流血那套
-            Modifications.DisableBleeding();
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    while (IsAlive)
+                    {
+                        if (Position.X != 0 && Position.Y != 0)
+                        {
+                            positionBef.Enqueue(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
+                            Console.Out.WriteLineAsync($"{Name}加入坐标点:{Position}");
+                        }
 
-            // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 0.7f;
+                        // When a player joined the game, send a Message to announce its Community Server data.
 
-            // 白天，用个鬼的夜视仪
-            Modifications.CanUseNightVision = false;
+                        if (markId != 0)
+                        {
+                            var markPlayer = GameServer.AllPlayers.FirstOrDefault(o => o.SteamID == markId);
+                            if (markPlayer == null)
+                                markId = 0;
+                            else
+                            {
+                                var dis = Vector3.Distance(markPlayer.Position, this.Position);
+                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
+                                Console.WriteLine($"玩家{this.Name}：K/D: {K}/{D},仇人{markId}");
 
-            // 倒地后马上就死
-            Modifications.DownTimeGiveUpTime = 1f;
+                            }
+                        }
+                        await Task.Delay(3000);
+                    }
+                }
+                catch (Exception ee)
+                {
+                    Console.Out.WriteLineAsync(ee.StackTrace);
+                }
 
-            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
-            Modifications.AirStrafe = false;
-
-            // 死了马上就能活
-            Modifications.RespawnTime = 1f;
-
-            // 开启击杀通知
-            Modifications.KillFeed = true;
-
-            // 刚枪服务器，所有武器伤害值都降低到 75%
-            Modifications.GiveDamageMultiplier = 0.75f;
+            });
         }
 
         // Time calculation stuff

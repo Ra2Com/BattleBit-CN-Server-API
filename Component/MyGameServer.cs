@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using Newtonsoft.Json;
 
 namespace CommunityServerAPI.Component
 {
@@ -62,17 +63,18 @@ namespace CommunityServerAPI.Component
             {
                 // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
                 args.Killer.K++;
-                args.Victim.Kill();
                 // TODO: 如果击杀的是仇人，且仇人在复活后没有死亡，仇人队伍的 Tickets 要扣除 10（配置项）
                 PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
                 args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 0, true);
-                args.Killer.SetThrowable(victimLoadout.ThrowableName, 0, false);
-                args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 0, false);
-                args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 0, false);
-                args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, false);
-                args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, false);
+                args.Killer.SetThrowable(victimLoadout.ThrowableName, 0, true);
+                args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 0, true);
+                args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 0, true);
+                args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, true);
+                args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
+                await Console.Out.WriteLineAsync($"{args.Killer.Name}击杀了{args.Victim.Name},缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+
                 // Announce the victim your killer. And the killer will be tracked.
                 // TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
                 MessageToPlayer(args.Victim, $"你被{RichText.Red}{args.Killer.Name}{RichText.EndColor}击杀，敌人剩余血量 {RichText.Green}{args.Killer.HP}{RichText.EndColor}");
@@ -96,6 +98,7 @@ namespace CommunityServerAPI.Component
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已离线: " + player);
+            player = new MyPlayer();
         }
 
         public override async Task OnTick()
@@ -117,41 +120,53 @@ namespace CommunityServerAPI.Component
 
         public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
         {
-            request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
-            request.SpawnStand = PlayerStand.Standing; // 站着出生
-            request.SpawnProtection = 5f; // 出生不动保护 5 秒
-
-            int beforePosTime = 15;
-            while (true)
+            try
             {
-                if (player.positionBef.TryDequeue(out PositionBef pb))
+                request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
+                request.SpawnStand = PlayerStand.Standing; // 站着出生
+                request.SpawnProtection = 5f; // 出生不动保护 5 秒
+
+                int beforePosTime = 15;
+
+                while (true)
                 {
-                    if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
+                    if (player.positionBef.TryDequeue(out PositionBef pb))
                     {
-                        foreach (var item in AllPlayers)
+                        Console.Out.WriteLineAsync($"{pb.position}");
+
+                        if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
                         {
-                            if (!item.Team.Equals(player.Team))
+                            if (AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != player.Team) == null)
                             {
-                                if (Vector3.Distance(item.Position, pb.position) < 20f)
-                                    break;
+                                request.SpawnPosition = pb.position;
+                                request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
+                                Console.WriteLine($"{player.Name}复活在{pb.position}");
+                                break;
                             }
-                            request.SpawnPosition = pb.position;
                         }
-                        break;
+                        beforePosTime = beforePosTime + 15;
                     }
-                    beforePosTime = beforePosTime + 15;
+                    else
+                    {
+                        //request.SpawnPosition = new Vector3();
+                        Console.WriteLine($"{player.Name}复活在选择点");
+
+                    }
                 }
-                else
-                {
-                    request.SpawnPosition = new Vector3();
-                    break;
-                }
+
+
+                // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
+                // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
+                //request.SpawnPosition = new System.Numerics.Vector3();
+                //request.LookDirection = new System.Numerics.Vector3();
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             }
-            // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
-            // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
-            //request.SpawnPosition = new System.Numerics.Vector3();
-            //request.LookDirection = new System.Numerics.Vector3();
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            catch (Exception ee)
+            {
+                Console.Out.WriteLineAsync(ee.StackTrace);
+
+            }
+
             return request;
         }
 
