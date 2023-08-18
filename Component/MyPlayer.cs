@@ -20,10 +20,8 @@ namespace CommunityServerAPI.Component
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
-        public Vector3 positionBef10 { get; set; }
-        public Vector3 positionBef20 { get; set; }
-        public Vector3 positionBef30 { get; set; }
         public PlayerStats stats { get; set; }
+        public Queue<PositionBef> positionBef { get; set; } = new Queue<PositionBef>(10);
 
         public override async Task OnConnected()
         {
@@ -39,12 +37,14 @@ namespace CommunityServerAPI.Component
 
             _ = Task.Run(async () =>
             {
+
                 // 同时添加 Say 聊天消息
                 GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
 
                 // Message to display your Killer's distance and welcome msg.
                 while (true)
                 {
+                    positionBef.Enqueue(new PositionBef { position = Position, time = GetUtcTimeMs() });
                     // When a player joined the game, send a Message to announce its Community Server data.
                     await Task.Delay(3000);
                     Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
@@ -122,5 +122,12 @@ namespace CommunityServerAPI.Component
             return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
         }
 
+    }
+
+    public class PositionBef
+    {
+        public long time { get; set; }
+
+        public Vector3 position { get; set; }
     }
 }
