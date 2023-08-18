@@ -37,10 +37,8 @@ namespace CommunityServerAPI.Tools
             PlayerLoadout playerLoadout = new PlayerLoadout();
 
             // 使用新特性的 RNG https://learn.microsoft.com/zh-cn/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-6.0
-            var rd = RandomNumberGenerator;
-
             // 主武器配置
-            int PrimaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count - 1);
+            int PrimaryWeaponIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count);
             var pWI = new WeaponItem();
             pWI.ToolName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Name ?? "none";
             pWI.MainSightName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MainSight ?? "none";
@@ -52,11 +50,10 @@ namespace CommunityServerAPI.Tools
             pWI.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
             pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "0"));
             pWI.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
-            pWI.PrimaryExtraMagazines = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "0"));
             playerLoadout.PrimaryWeapon = pWI;
 
             // 手枪配置
-            int SecondaryWeaponIndex = rd.GetInt32(0, loadoutJson.ListSecondaryWeapon.Count - 1);
+            int SecondaryWeaponIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListSecondaryWeapon.Count);
             var sWI = new WeaponItem();
             sWI.ToolName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Name;
             sWI.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
@@ -64,28 +61,29 @@ namespace CommunityServerAPI.Tools
             sWI.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
             sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
             sWI.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
-            sWI.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "0"));
             playerLoadout.SecondaryWeapon = sWI;
 
             // 绷带配置
-            int ListFirstAidIndex = rd.GetInt32(0, loadoutJson.ListFirstAid.Count - 1);
+            int ListFirstAidIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListFirstAid.Count);
             playerLoadout.FirstAidName = loadoutJson.ListFirstAid[ListFirstAidIndex].Name ?? "none";
             playerLoadout.FirstAidExtra = (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
 
             // 轻型道具配置
-            int ListLightGadgetIndex = rd.GetInt32(0, loadoutJson.ListLightGadget.Count - 1);
+            int ListLightGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListLightGadget.Count);
             playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
             playerLoadout.LightGadgetExtra = (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
 
             // 重型道具配置
-            int ListHeavyGadgetIndex = rd.GetInt32(0, loadoutJson.ListHeavyGadget.Count - 1);
+            int ListHeavyGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListHeavyGadget.Count);
             playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
             playerLoadout.HeavyGadgetExtra = (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
 
             // 投掷物配置
-            int ListThrowableIndex = rd.GetInt32(0, loadoutJson.ListThrowable.Count - 1);
+            int ListThrowableIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListThrowable.Count);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
             playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "0"));
+
+            playerLoadout.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "0"));
 
             return playerLoadout;
         }

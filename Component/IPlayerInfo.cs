@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleBitAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -16,6 +17,7 @@ namespace CommunityServerAPI.Component
     /// </remarks>
     internal interface IPlayerInfo
     {
+        public ulong SteamID { get; }
         public int K { get; set; }
         public int D { get; set; }
 
@@ -27,5 +29,7 @@ namespace CommunityServerAPI.Component
         public Vector3 positionBef10 { get; set; }
         public Vector3 positionBef20 { get; set; }
         public Vector3 positionBef30 { get; set; }
+
+        public PlayerStats stats { get; set; }
     }
 }
