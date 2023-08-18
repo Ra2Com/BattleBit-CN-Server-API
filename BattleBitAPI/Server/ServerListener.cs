@@ -85,11 +85,11 @@ namespace BattleBitAPI.Server
         public Func<TGameServer> OnCreatingGameServerInstance { get; set; }
 
         /// <summary>
-        /// Fired when a new instance of player instance created.
+        /// Fired 新的玩家实例被建立时.
         /// </summary>
         /// 
         /// <remarks>
-        /// TPlayer: The player instance that was created<br/>
+        /// TPlayer: 新的玩家实例被建立<br/>
         /// </remarks>
         public Func<TPlayer> OnCreatingPlayerInstance { get; set; }
 
@@ -98,12 +98,12 @@ namespace BattleBitAPI.Server
         private Dictionary<ulong, (TGameServer server, GameServer<TPlayer>.Internal resources)> mActiveConnections;
         private mInstances<TPlayer, TGameServer> mInstanceDatabase;
 
-        // --- Construction --- 
+        // --- 构造 --- 
         public ServerListener()
         {
             this.mActiveConnections = new Dictionary<ulong, (TGameServer, GameServer<TPlayer>.Internal)>(16);
             this.mInstanceDatabase = new mInstances<TPlayer, TGameServer>();
-            Console.WriteLine("服务启动");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 兰博电竞 BBR API 服务启动");
         }
 
         // --- Starting ---
@@ -135,7 +135,7 @@ namespace BattleBitAPI.Server
             if (this.IsDisposed)
                 throw new ObjectDisposedException(this.GetType().FullName);
             if (!IsListening)
-                throw new Exception("Already not running.");
+                throw new Exception($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已停止运行");
 
             try
             {
@@ -691,7 +691,7 @@ namespace BattleBitAPI.Server
                     this.mActiveConnections.Remove(server.ServerHash);
         }
 
-        // --- Logic Executing ---
+        // --- 执行逻辑 ---
         private async Task mExecutePackage(GameServer<TPlayer> server, GameServer<TPlayer>.Internal resources, Common.Serialization.Stream stream)
         {
             var communcation = (NetworkCommunication)stream.ReadInt8();

@@ -85,62 +85,75 @@ namespace BattleBitAPI
         public PlayerWearings CurrentWearings => mInternal.CurrentWearings; // 玩家当前的角色穿着配置
         public PlayerModifications<TPlayer> Modifications => mInternal.Modifications; // 玩家的数值修改调整
 
-        // ---- Events ----
+        // ---- 虚函数 ----
+
         public virtual void OnCreated()
         {
 
         }
 
+        // 玩家已连接时
         public virtual async Task OnConnected()
         {
 
         }
+        // 玩家已重生时
         public virtual async Task OnSpawned()
         {
 
         }
+        // 玩家倒地时
         public virtual async Task OnDowned()
         {
 
         }
+        // 玩家放弃被救助时
         public virtual async Task OnGivenUp()
         {
 
         }
+        // 玩家被其他玩家救起时
         public virtual async Task OnRevivedByAnotherPlayer()
         {
 
         }
+        // 玩家救起其他玩家时
         public virtual async Task OnRevivedAnotherPlayer()
         {
 
         }
+        // 玩家死亡时
         public virtual async Task OnDied()
         {
 
         }
+        // 玩家更换阵营团队时
         public virtual async Task OnChangedTeam()
         {
 
         }
+        // 玩家成功更换队伍角色时
         public virtual async Task OnChangedRole(GameRole newRole)
         {
 
         }
+        // 玩家加入小队时
         public virtual async Task OnJoinedSquad(Squads newSquad)
         {
 
         }
+        // 玩家离开小队时
         public virtual async Task OnLeftSquad(Squads oldSquad)
         {
 
         }
+        // 玩家断开连接时
         public virtual async Task OnDisconnected()
         {
 
         }
 
-        // ---- 功能 ----
+        // ---- 功能方法 ----
         // 踢出游戏，理由
         public void Kick(string reason = "")
         {
