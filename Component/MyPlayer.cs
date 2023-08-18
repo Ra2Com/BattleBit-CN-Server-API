@@ -17,6 +17,9 @@ namespace CommunityServerAPI.Component
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
+        public bool IsAdmin { get; set; } = false;
+        public bool IsModerator { get; set; } = false;
+        public bool IsVIP { get; set; } = false;
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
@@ -51,6 +54,7 @@ namespace CommunityServerAPI.Component
 
             // 刚枪服务器，所有武器伤害值都降低到 75%
             Modifications.GiveDamageMultiplier = 0.75f;
+
             // 特殊角色登录日志
             if (stats?.Roles == Roles.Admin)
             {
@@ -60,6 +64,7 @@ namespace CommunityServerAPI.Component
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
             }
+
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
             Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
@@ -74,7 +79,7 @@ namespace CommunityServerAPI.Component
                         if (Position.X != 0 && Position.Y != 0)
                         {
                             positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
-                            Console.Out.WriteLineAsync($"{Name}加入坐标点:{Position}");
+                            Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name}加入坐标点:{Position}");
                         }
 
                         // When a player joined the game, send a Message to announce its Community Server data.
@@ -88,7 +93,7 @@ namespace CommunityServerAPI.Component
                             {
                                 var dis = Vector3.Distance(markPlayer.Position, this.Position);
                                 this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
-                                Console.WriteLine($"玩家{this.Name}：K/D: {K}/{D},仇人{markId}");
+                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{this.Name}：K/D: {K}/{D},仇人{markId}");
 
                             }
                         }
