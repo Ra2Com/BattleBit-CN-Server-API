@@ -47,6 +47,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
+            Console.WriteLine($"{player.Name}复活ed，坐标{player.Position}");
 
 
         }
@@ -69,8 +70,8 @@ namespace CommunityServerAPI.Component
                 args.Killer.SetThrowable(victimLoadout.ThrowableName, 0, true);
                 args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 0, true);
                 args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 0, true);
-                args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, true);
-                args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
+                //args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, true);
+                //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
                 await Console.Out.WriteLineAsync($"{args.Killer.Name}击杀了{args.Victim.Name},缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
@@ -130,17 +131,19 @@ namespace CommunityServerAPI.Component
 
                 while (true)
                 {
-                    if (player.positionBef.TryDequeue(out PositionBef pb))
+                    if (player.positionBef.Count > 0)
                     {
+                        var pb = player.positionBef.Last();
+                        player.positionBef.Remove(pb);
                         Console.Out.WriteLineAsync($"{pb.position}");
 
                         if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
                         {
                             if (AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != player.Team) == null)
                             {
-                                request.SpawnPosition = pb.position;
+                                request.SpawnPosition = new Vector3 { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
                                 request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
-                                Console.WriteLine($"{player.Name}复活在{pb.position}");
+                                Console.WriteLine($"{player.Name}即将复活在{request.SpawnPosition}");
                                 break;
                             }
                         }
@@ -150,10 +153,11 @@ namespace CommunityServerAPI.Component
                     {
                         //request.SpawnPosition = new Vector3();
                         Console.WriteLine($"{player.Name}复活在选择点");
+                        break;
 
                     }
                 }
-
+                player.positionBef.Clear();
 
                 // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
                 // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）

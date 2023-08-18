@@ -1,5 +1,6 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
+using CommunityServerAPI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,86 +22,58 @@ namespace CommunityServerAPI.Component
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
         public PlayerStats stats { get; set; }
-        public Queue<PositionBef> positionBef { get; set; } = new Queue<PositionBef>(10);
+        public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
 
         public override async Task OnConnected()
         {
-            try
+            Console.Out.WriteLineAsync($"MyPlayer OnConnected");
+
+            // 娱乐服，咱不玩流血那套
+            Modifications.DisableBleeding();
+
+            // 娱乐服，换弹速度降低到 70%
+            Modifications.ReloadSpeedMultiplier = 0.7f;
+
+            // 白天，用个鬼的夜视仪
+            Modifications.CanUseNightVision = false;
+
+            // 倒地后马上就死
+            Modifications.DownTimeGiveUpTime = 1f;
+
+            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+            Modifications.AirStrafe = false;
+
+            // 死了马上就能活
+            Modifications.RespawnTime = 1f;
+
+            // 开启击杀通知
+            Modifications.KillFeed = true;
+
+            // 刚枪服务器，所有武器伤害值都降低到 75%
+            Modifications.GiveDamageMultiplier = 0.75f;
+            // 特殊角色登录日志
+            if (stats?.Roles == Roles.Admin)
             {
-                Console.Out.WriteLineAsync($"MyPlayer OnConnected");
-
-                // 娱乐服，咱不玩流血那套
-                Modifications.DisableBleeding();
-
-                // 娱乐服，换弹速度降低到 70%
-                Modifications.ReloadSpeedMultiplier = 0.7f;
-
-                // 白天，用个鬼的夜视仪
-                Modifications.CanUseNightVision = false;
-
-                // 倒地后马上就死
-                Modifications.DownTimeGiveUpTime = 1f;
-
-                // 更拟真一点，学学 CSGO 跳跃转向丢失速度
-                Modifications.AirStrafe = false;
-
-                // 死了马上就能活
-                Modifications.RespawnTime = 1f;
-
-                // 开启击杀通知
-                Modifications.KillFeed = true;
-
-                // 刚枪服务器，所有武器伤害值都降低到 75%
-                Modifications.GiveDamageMultiplier = 0.75f;
-                // 特殊角色登录日志
-                if (stats?.Roles == Roles.Admin)
-                {
-                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
-                }
-                if (stats?.Roles == Roles.Moderator)
-                {
-                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
-                }
-                // 同时添加 Say 聊天消息
-                GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-                Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-                Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
-
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
             }
-            catch (Exception ee)
+            if (stats?.Roles == Roles.Moderator)
             {
-                Console.Out.WriteLineAsync(ee.StackTrace);
-
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
             }
+            // 同时添加 Say 聊天消息
+            GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
-        }
-
-
-
-        public override async Task OnDied()
-        {
-            // Spawn a player when died and give him a new set(example).
-            _ = Task.Run(async () =>
-             {
-                 await Task.Delay(1000);
-
-
-                 //SpawnPlayer(new PlayerLoadout { }, new PlayerWearings { },Position, new Vector3() { }, PlayerStand.Standing, 1);
-             });
-        }
-
-
-        public override async Task OnSpawned()
-        {
             _ = Task.Run(async () =>
             {
                 try
                 {
-                    while (IsAlive)
+                    while (true)
                     {
                         if (Position.X != 0 && Position.Y != 0)
                         {
-                            positionBef.Enqueue(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
+                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
                             Console.Out.WriteLineAsync($"{Name}加入坐标点:{Position}");
                         }
 
@@ -128,6 +101,70 @@ namespace CommunityServerAPI.Component
                 }
 
             });
+        }
+
+
+
+
+        public override async Task OnDied()
+        {
+            // Spawn a player when died and give him a new set(example).
+            //_ = Task.Run(async () =>
+            // {
+            //     await Task.Delay(3100);
+
+
+            //     try
+            //     {
+            //         int beforePosTime = 15;
+            //         var sp = new Vector3() { };
+            //         while (true)
+            //         {
+            //             if (positionBef.TryDequeue(out PositionBef pb))
+            //             {
+            //                 Console.Out.WriteLineAsync($"{pb.position}");
+
+            //                 if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
+            //                 {
+            //                     if (GameServer.AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != Team) == null)
+            //                     {
+            //                         sp = pb.position;
+            //                         Console.WriteLine($"{Name}即将复活在{pb.position}");
+            //                         break;
+            //                     }
+            //                 }
+            //                 beforePosTime = beforePosTime + 15;
+            //             }
+            //             else
+            //             {
+            //                 //request.SpawnPosition = new Vector3();
+            //                 Console.WriteLine($"{Name}复活在选择点");
+            //                 break;
+
+            //             }
+            //         }
+            //         SpawnPlayer(SpawnManager.GetRandom(), CurrentWearings, sp, new Vector3() { X = 0, Y = 0, Z = 1 }, PlayerStand.Standing, 5f);
+
+
+            //         // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
+            //         // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
+            //         //request.SpawnPosition = new System.Numerics.Vector3();
+            //         //request.LookDirection = new System.Numerics.Vector3();
+            //         //Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            //     }
+            //     catch (Exception ee)
+            //     {
+            //         Console.Out.WriteLineAsync(ee.StackTrace);
+
+            //     }
+
+            // });
+        }
+
+
+        public override async Task OnSpawned()
+        {
+            
         }
 
         // Time calculation stuff

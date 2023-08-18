@@ -26,7 +26,7 @@ namespace CommunityServerAPI.Component
         public ulong markId { get; set; }
         public float maxHP { get; set; }
 
-        public Queue<PositionBef> positionBef { get; set; }
+        public List<PositionBef> positionBef { get; set; }
 
         public PlayerStats stats { get; set; }
     }

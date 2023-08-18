@@ -13,7 +13,6 @@ class Program
 {
     static void Main(string[] args)
     {
-
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         // TODO: 端口配置读取 Json 解析类结果
