@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace CommunityServerAPI.Component
 {
@@ -119,6 +120,33 @@ namespace CommunityServerAPI.Component
             request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
             request.SpawnStand = PlayerStand.Standing; // 站着出生
             request.SpawnProtection = 5f; // 出生不动保护 5 秒
+
+            int beforePosTime = 15;
+            while (true)
+            {
+                if (player.positionBef.TryDequeue(out PositionBef pb))
+                {
+                    if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
+                    {
+                        foreach (var item in AllPlayers)
+                        {
+                            if (!item.Team.Equals(player.Team))
+                            {
+                                if (Vector3.Distance(item.Position, pb.position) < 20f)
+                                    break;
+                            }
+                            request.SpawnPosition = pb.position;
+                        }
+                        break;
+                    }
+                    beforePosTime = beforePosTime + 15;
+                }
+                else
+                {
+                    request.SpawnPosition = new Vector3();
+                    break;
+                }
+            }
             // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
             // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
             //request.SpawnPosition = new System.Numerics.Vector3();
