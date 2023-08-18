@@ -64,8 +64,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
-            SayToChat("<color=orange>" + player.Name + " left the game!</color>");
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已离开服务器: {player}");
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} 已离线");
         }
 
         public override async Task OnPlayerSpawned(MyPlayer player)
@@ -93,15 +92,18 @@ namespace CommunityServerAPI.Component
                 args.Killer.SetThrowable(victimLoadout.ThrowableName, 0, true);
                 args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 0, true);
                 args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 0, true);
+                // DEVELOP TODO: 需要在别的地方更换死者武器，放到 OnPlayerSpawned 那边的方法
                 //args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, true);
                 //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
-                await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name}击杀了{args.Victim.Name},缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+                // 获取双方距离
+                float killDistance = Vector3.Distance(args.Victim.VictimPosition, args.Killer.KillerPosition);
+
+                await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                 // Announce the victim your killer. And the killer will be tracked.
-                // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
-                MessageToPlayer(args.Victim, $"你被{RichText.Red}{args.Killer.Name}{RichText.EndColor}击杀，敌人剩余血量 {RichText.Green}{args.Killer.HP}{RichText.EndColor}");
+                MessageToPlayer(args.Victim, $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒，凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
             }
 
         }
@@ -117,11 +119,6 @@ namespace CommunityServerAPI.Component
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
-        }
-        public override async Task OnPlayerDisconnected(MyPlayer player)
-        {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已离线: " + player);
-            player = new MyPlayer();
         }
 
         public override async Task OnTick()
@@ -227,7 +224,7 @@ namespace CommunityServerAPI.Component
 
             var splits = msg.Split(" ");
             var cmd = splits[0].ToLower();
-            
+
             // 管理员判断以及命令执行
             // TODO: 管理员类命令执行结果需要打印 Log
             if (player.stats.Roles == Roles.Admin)

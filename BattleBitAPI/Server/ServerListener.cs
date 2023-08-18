@@ -382,7 +382,7 @@ namespace BattleBitAPI.Server
                             {
                                 serverRulesText = string.Empty;
                             }
-                            //自定义serverRulesText 目前没用
+                            // TODO: 自定义 serverRulesText 目前没用
                             serverRulesText = RichText.Bold("Welcome");
                         }
 
