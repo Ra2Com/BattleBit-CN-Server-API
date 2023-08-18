@@ -3,6 +3,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+[Cc]onfig/RandomLoadouts.json
 
 # Build results
 [Dd]ebug/

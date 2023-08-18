@@ -5,12 +5,12 @@
   * [x] `ServerRules`
   * [x] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
   * [x] Killer's HP, Killreason by `Message`.
-  * [ ] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
-  * [ ] Random Spawn Positions range. And should be 20M away from any enemy.
+  * [x] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
+  * [x] Random Spawn Positions range. And should be 20M away from any enemy.
 * [ ] Gameplay
   * [x] Killer gets victim's Primary, Secondary weapon sets and gadgets. If one Weapon and gadget set is the same, it won't change.
   * [ ] Victim kills latest killer will cost 10 score of the opposite team.
-  * [ ] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
+  * [x] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
   * [x] Limited map pool.
   * [x] Limited Day Map only.
   * [x] 64 vs 64.
@@ -23,15 +23,15 @@
   * [ ] Other upcoming server mode should view below. ⬇️
 
 ## 当前玩法功能：
-* [ ] 服务器`ServerRules`通知
-* [ ] `Message`小窗通知
-    * [ ] 玩家出生时，提示玩家昵称、游戏时长、K/D、当前总积分、当前在此类型的排名（通过得分计算）
-    * [ ] 玩家被击杀时，提示死亡原因，对方剩余血量
-    * [ ] 玩家被击杀复活后，小窗新增一行显示当前标记的仇人
-* [ ] 玩家被击杀复活后，永久标记上一次击杀此玩家的当前位置。击杀仇人将减少对面 10 点人口，标记直到仇人死亡一次后消失。
-* [ ] 玩家在击杀某个玩家后，获得所击杀玩家的主武器、副武器和主副道具，并治疗自身 20 HP（不可超过生命值上限）。
-* [ ] 无论玩家选择任何出生点，将在地图上随机出生位置，并和其它敌对玩家至少保持 20M 的安全距离。
-* [ ] 玩家出生时无论设置的套装是怎样，在装备列表中随机几个组合分配给玩家。
+* [x] 服务器`ServerRules`通知
+* [x] `Message`小窗通知
+    * [x] 玩家出生时，提示玩家昵称、游戏时长、K/D、当前总积分、当前在此类型的排名（通过得分计算）
+    * [x] 玩家被击杀时，提示死亡原因，对方剩余血量
+    * [x] 玩家被击杀复活后，小窗新增一行显示当前标记的仇人
+* [x] 玩家被击杀复活后，永久标记上一次击杀此玩家的当前位置。击杀仇人将减少对面 10 点人口，标记直到仇人死亡一次后消失。
+* [x] 玩家在击杀某个玩家后，获得所击杀玩家的主武器、副武器和主副道具，并治疗自身 20 HP（不可超过生命值上限）。
+* [x] 无论玩家选择任何出生点，将在地图上随机出生位置，并和其它敌对玩家至少保持 20M 的安全距离。
+* [x] 玩家出生时无论设置的套装是怎样，在装备列表中随机几个组合分配给玩家。
 
 ### 即将推出
 * [ ] 玩家进入服务器后从主 API 获取玩家当前的数据，并与本地数据进行对比更新，若玩家的等级、武器解锁数据比存储中则更新玩家的游戏数据。

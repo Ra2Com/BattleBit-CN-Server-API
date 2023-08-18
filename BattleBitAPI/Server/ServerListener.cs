@@ -1,12 +1,9 @@
-﻿using System.Diagnostics;
-using System.Net;
-using System.Net.Security;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
-using System.Xml;
+using System.Runtime.CompilerServices;
 using BattleBitAPI.Common;
 using BattleBitAPI.Common.Extentions;
-using BattleBitAPI.Common.Serialization;
 using BattleBitAPI.Networking;
 using CommunityServerAPI;
 using CommunityServerAPI.BattleBitAPI;
@@ -34,6 +31,22 @@ namespace BattleBitAPI.Server
         /// Returns: true if allow connection, false if deny the connection.
         /// </value>
         public Func<IPAddress, Task<bool>> OnGameServerConnecting { get; set; }
+
+        /// <summary>
+        /// Fired when server needs to validate token from incoming connection.<br/>
+        /// Default, any connection attempt will be accepted
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// IPAddress: IP of incoming connection <br/>
+        /// ushort: Game Port of the connection <br/>
+        /// string: Token of connection<br/>
+        /// </remarks>
+        /// 
+        /// <value>
+        /// Returns: true if allow connection, false if deny the connection.
+        /// </value>
+        public Func<IPAddress, ushort, string, Task<bool>> OnValidateGameServerToken { get; set; }
 
         /// <summary>
         /// Fired when a game server connects.
@@ -69,7 +82,7 @@ namespace BattleBitAPI.Server
         /// <remarks>
         /// GameServer: Game server that has been just created.<br/>
         /// </remarks>
-        public Func<GameServer<TPlayer>, Task> OnCreatingGameServerInstance { get; set; }
+        public Func<TGameServer> OnCreatingGameServerInstance { get; set; }
 
         /// <summary>
         /// Fired when a new instance of player instance created.
@@ -78,7 +91,7 @@ namespace BattleBitAPI.Server
         /// <remarks>
         /// TPlayer: The player instance that was created<br/>
         /// </remarks>
-        public Func<TPlayer, Task> OnCreatingPlayerInstance { get; set; }
+        public Func<TPlayer> OnCreatingPlayerInstance { get; set; }
 
         // --- Private --- 
         private TcpListener mSocket;
@@ -180,6 +193,24 @@ namespace BattleBitAPI.Server
                                 throw new Exception("Incoming package wasn't hail.");
                         }
 
+                        //Read the server name
+                        string token;
+                        {
+                            readStream.Reset();
+                            if (!await networkStream.TryRead(readStream, 2, source.Token))
+                                throw new Exception("Unable to read the Token Size");
+
+                            int stringSize = readStream.ReadUInt16();
+                            if (stringSize > Const.MaxTokenSize)
+                                throw new Exception("Invalid token size");
+
+                            readStream.Reset();
+                            if (!await networkStream.TryRead(readStream, stringSize, source.Token))
+                                throw new Exception("Unable to read the token");
+
+                            token = readStream.ReadString(stringSize);
+                        }
+
                         //Read port
                         int gamePort;
                         {
@@ -188,6 +219,12 @@ namespace BattleBitAPI.Server
                                 throw new Exception("Unable to read the Port");
                             gamePort = readStream.ReadUInt16();
                         }
+
+                        if (OnValidateGameServerToken != null)
+                            allow = await OnValidateGameServerToken(ip, (ushort)gamePort, token);
+
+                        if (!allow)
+                            throw new Exception("Token was not valid!");
 
                         //Read is server protected
                         bool isPasswordProtected;
@@ -350,9 +387,10 @@ namespace BattleBitAPI.Server
                         }
 
                         var hash = ((ulong)gamePort << 32) | (ulong)ip.ToUInt();
-                        server = this.mInstanceDatabase.GetServerInstance(hash, out bool isNew, out resources);
+                        server = this.mInstanceDatabase.GetServerInstance(hash, out resources, this.OnCreatingGameServerInstance);
                         resources.Set(
                             this.mExecutePackage,
+                            this.mGetPlayerInternals,
                             client,
                             ip,
                             gamePort,
@@ -413,7 +451,7 @@ namespace BattleBitAPI.Server
                         //Round Settings
                         {
                             readStream.Reset();
-                            if (!await networkStream.TryRead(readStream, GameServer<TPlayer>.mRoundSettings.Size, source.Token))
+                            if (!await networkStream.TryRead(readStream, RoundSettings<TPlayer>.mRoundSettings.Size, source.Token))
                                 throw new Exception("Unable to read the round settings");
                             resources._RoundSettings.Read(readStream);
                         }
@@ -523,7 +561,8 @@ namespace BattleBitAPI.Server
                                 wearings.Read(readStream);
                             }
 
-                            TPlayer player = mInstanceDatabase.GetPlayerInstance(steamid, out bool isNewClient, out var playerInternal);
+
+                            TPlayer player = mInstanceDatabase.GetPlayerInstance(steamid, out var playerInternal, this.OnCreatingPlayerInstance);
                             playerInternal.SteamID = steamid;
                             playerInternal.Name = username;
                             playerInternal.IP = new IPAddress(ipHash);
@@ -535,25 +574,24 @@ namespace BattleBitAPI.Server
                             playerInternal.CurrentLoadout = loadout;
                             playerInternal.CurrentWearings = wearings;
 
-                            if (isNewClient)
+                            //Modifications
                             {
-                                if (this.OnCreatingPlayerInstance != null)
-                                    this.OnCreatingPlayerInstance(player);
-                            }
+                                readStream.Reset();
+                                if (!await networkStream.TryRead(readStream, 4, source.Token))
+                                    throw new Exception("Unable to read the Modifications Size");
+                                int modificationSize = (int)readStream.ReadUInt32();
 
+                                readStream.Reset();
+                                if (!await networkStream.TryRead(readStream, modificationSize, source.Token))
+                                    throw new Exception("Unable to read the Modifications");
+                                playerInternal._Modifications.Read(readStream);
+                            }
 
                             resources.AddPlayer(player);
                         }
 
                         //Send accepted notification.
                         networkStream.WriteByte((byte)NetworkCommuncation.Accepted);
-
-                        if (isNew)
-                        {
-                            if (this.OnCreatingGameServerInstance != null)
-                                this.OnCreatingGameServerInstance(server);
-                        }
-
                     }
                 }
             }
@@ -671,7 +709,7 @@ namespace BattleBitAPI.Server
                                 Squads squad = (Squads)stream.ReadInt8();
                                 GameRole role = (GameRole)stream.ReadInt8();
 
-                                TPlayer player = mInstanceDatabase.GetPlayerInstance(steamID, out bool isNewClient, out var playerInternal);
+                                TPlayer player = mInstanceDatabase.GetPlayerInstance(steamID, out var playerInternal, this.OnCreatingPlayerInstance);
                                 playerInternal.SteamID = steamID;
                                 playerInternal.Name = username;
                                 playerInternal.IP = new IPAddress(ip);
@@ -681,11 +719,8 @@ namespace BattleBitAPI.Server
                                 playerInternal.Squad = squad;
                                 playerInternal.Role = role;
 
-                                if (isNewClient)
-                                {
-                                    if (this.OnCreatingPlayerInstance != null)
-                                        this.OnCreatingPlayerInstance(player);
-                                }
+                                //Start from default.
+                                playerInternal._Modifications.Reset();
 
                                 resources.AddPlayer(player);
                                 player.OnConnected();
@@ -1070,7 +1105,7 @@ namespace BattleBitAPI.Server
                     }
                 case NetworkCommuncation.NotifyNewRoundState:
                     {
-                        if (stream.CanRead(GameServer<TPlayer>.mRoundSettings.Size))
+                        if (stream.CanRead(RoundSettings<TPlayer>.mRoundSettings.Size))
                         {
                             var oldState = resources._RoundSettings.State;
                             resources._RoundSettings.Read(stream);
@@ -1192,6 +1227,12 @@ namespace BattleBitAPI.Server
             }
         }
 
+        // --- Private ---
+        private Player<TPlayer>.Internal mGetPlayerInternals(ulong steamID)
+        {
+            return mInstanceDatabase.GetPlayerInternals(steamID);
+        }
+
         // --- Public ---
         public IEnumerable<TGameServer> ConnectedGameServers
         {
@@ -1246,42 +1287,52 @@ namespace BattleBitAPI.Server
                 this.mPlayerInstances = new Dictionary<ulong, (TPlayer, Player<TPlayer>.Internal)>(1024 * 16);
             }
 
-            public TGameServer GetServerInstance(ulong hash, out bool isNew, out GameServer<TPlayer>.Internal @internal)
+            public TGameServer GetServerInstance(ulong hash, out GameServer<TPlayer>.Internal @internal, Func<TGameServer> createFunc)
             {
                 lock (mGameServerInstances)
                 {
                     if (mGameServerInstances.TryGetValue(hash, out var data))
                     {
                         @internal = data.Item2;
-                        isNew = false;
                         return data.Item1;
                     }
 
                     @internal = new GameServer<TPlayer>.Internal();
-                    TGameServer gameServer = GameServer<TPlayer>.CreateInstance<TGameServer>(@internal);
+                    GameServer<TPlayer> server;
 
-                    isNew = true;
-                    mGameServerInstances.Add(hash, (gameServer, @internal));
-                    return gameServer;
+                    if (createFunc != null)
+                        server = createFunc();
+                    else
+                        server = Activator.CreateInstance<GameServer<TPlayer>>();
+
+                    GameServer<TPlayer>.SetInstance(server, @internal);
+
+                    mGameServerInstances.Add(hash, ((TGameServer)server, @internal));
+                    return (TGameServer)server;
                 }
             }
-            public TPlayer GetPlayerInstance(ulong steamID, out bool isNew, out Player<TPlayer>.Internal @internal)
+            public TPlayer GetPlayerInstance(ulong steamID, out Player<TPlayer>.Internal @internal, Func<TPlayer> createFunc)
             {
                 lock (this.mPlayerInstances)
                 {
                     if (this.mPlayerInstances.TryGetValue(steamID, out var player))
                     {
-                        isNew = false;
                         @internal = player.Item2;
                         return player.Item1;
                     }
 
                     @internal = new Player<TPlayer>.Internal();
-                    var pplayer = Player<TPlayer>.CreateInstance(@internal);
 
-                    isNew = true;
-                    mPlayerInstances.Add(steamID, (pplayer, @internal));
-                    return pplayer;
+                    Player<TPlayer> pplayer;
+
+                    if (createFunc != null)
+                        pplayer = createFunc();
+                    else
+                        pplayer = Activator.CreateInstance<TPlayer>();
+                    Player<TPlayer>.SetInstance((TPlayer)pplayer, @internal);
+
+                    mPlayerInstances.Add(steamID, ((TPlayer)pplayer, @internal));
+                    return (TPlayer)pplayer;
                 }
             }
             public Player<TPlayer>.Internal GetPlayerInternals(ulong steamID)
