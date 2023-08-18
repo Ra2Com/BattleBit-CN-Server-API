@@ -1,19 +1,19 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  
 # Battlebit Remastered Random Revenger Mode (WIP)
-* [ ] Server API
+* [x] Server API
   * [x] `ServerRules`
   * [x] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
   * [x] Killer's HP, Killreason by `Message`.
   * [x] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
   * [x] Random Spawn Positions range. And should be 20M away from any enemy.
 * [ ] Gameplay
-  * [x] Killer gets victim's Primary, Secondary weapon sets and gadgets. If one Weapon and gadget set is the same, it won't change.
-  * [ ] Victim kills latest killer will cost 10 score of the opposite team.
+  * [x] Killer gets victim's gadgets and throwouts. If one Weapon and gadget set is the same, it won't change.
+  * [ ] Victim successful revenge will cost additional 10 score of the opposite team.
   * [x] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
   * [x] Limited map pool.
   * [x] Limited Day Map only.
-  * [x] 64 vs 64.
+  * [x] 32 vs 32.
 * [ ] TO-DO List
   * [ ] Kill streak Player Statics Boost. On 3/5/10/15/20/30.
   * [ ] Die streak Player Statics Boost. On 2/3/5/7/11/13.
@@ -22,25 +22,30 @@
   * [ ] Web based API to communicate with Server API to read/write ranking data.
   * [ ] Other upcoming server mode should view below. ⬇️
 
-## 随机复仇模式玩法功能：
-* [x] 服务器`ServerRules`通知
+## 随机复仇模式玩法测试功能 2023年8月19日：
+* [x] 服务器
+	* [x] `ServerRules`通知。
+	* [x] 地图模式：TDM
+	* [x] 地图池：`Salhan`（萨尔罕）, `Azagor`（阿扎戈尔）, `Dusty Dew`（尘露谷）, `Sandy Sunset`（日落沙丘）, `Wine Paradise`（酿酒圣地）, `Frugis`（弗鲁吉斯城）, `Tensa Town`（坦萨小镇）顺序轮换。
+	* [x] 最少 8 v 8, 最大 32 v 32 (由于是游戏模式限制所以暂时还扩大不了)。
+	* [x] 服务器 Tickrate 刷新率 240hz。 
 * [x] 游戏设置
-	* [x] 无流血、无绷带、无扶人。
+	* [x] 无流血、限量绷带、无扶人。
 	* [x] 角色间有碰撞体积。
-	* [x] 跳跃变换方向时会损失速度。
-	* [x] 被击倒立即死亡。
+	* [x] 跳跃变换方向时会损失移动速度。
+	* [x] 被击倒立即死亡并刷新在新的位置。
 	* [x] 地图永远是白天，禁止使用夜视仪。
 	* [x] 换弹速度为武器实际速度的 70%。
 	* [x] 右上角会展示击杀通知。
 	* [x] 所有武器伤害值降低到 75%，符合大部分 TTK 逻辑。
 * [x] `Message`小窗通知
     * [x] 玩家出生时，提示玩家昵称、游戏时长、K/D、当前总积分、当前在此类型的排名（通过得分计算）
-    * [x] 玩家被击杀时，提示死亡原因，对方剩余血量
-    * [x] 玩家被击杀复活后，小窗新增一行显示当前标记的仇人
-* [x] 玩家被击杀复活后，永久标记上一次击杀此玩家的当前位置。击杀仇人将减少对面 10 点人口，标记直到仇人死亡一次后消失。
-* [x] 玩家在击杀某个玩家后，获得所击杀玩家的主武器、副武器和主副道具，并治疗自身 20 HP（不可超过生命值上限）。
+    * [x] 玩家被击杀时，提示死亡原因，对方剩余血量。
+    * [x] 玩家被击杀复活后，小窗新增一行内容显示当前标记的仇人。
+* [x] 玩家被击杀复活后，永久标记上一次击杀此玩家的当前位置。击杀仇人将减少对面 10 点人口，标记和人口惩罚直到仇人死亡一次后消失。
+* [x] 玩家在击杀某个玩家后，获得所击杀玩家的主副道具和投掷物，并治疗自身 20 HP（不可超过生命值上限）。
 * [x] 无论玩家选择任何出生点，将在地图上随机出生位置，并和其它敌对玩家至少保持 20M 的安全距离。
-* [x] 玩家出生时无论设置的套装是怎样，在全部装备列表中随机几个组合分配给玩家。
+* [x] 玩家出生时无论设置的主副武器、道具、投掷物是怎样，服务器会在装备列表配置中随机抽取几个组合分配给玩家。
 
 ### 即将推出
 * [ ] 玩家进入服务器后从主 API 获取玩家当前的数据，并与本地数据进行对比更新，若玩家的等级、武器解锁数据比存储中则更新玩家的游戏数据。
