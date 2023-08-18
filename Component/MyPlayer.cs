@@ -95,7 +95,7 @@ namespace CommunityServerAPI.Component
                             {
                                 float dis = Vector3.Distance(markPlayer.Position, this.Position);
                                 // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
-                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
+                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
                                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{this.Name}：K/D: {K}/{D},仇人 {markId}");
 
                             }
