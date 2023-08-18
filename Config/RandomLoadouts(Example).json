@@ -1,0 +1,47 @@
+{
+  "ListPrimaryWeapon": [
+    {
+      "Name": "AK74",
+      "Barrel": "Ranger",
+      "MainSight": "Holographic",
+      "UnderRail": "TacticalFlashlight",
+      "SideRail": "VerticalGrip"
+    },
+    {
+      "Name": "Ultimax100",
+      "Barrel": "Long_Barrel",
+      "MainSight": "M_125",
+      "SideRail": "none",
+      "UnderRail": "Magpul_Angled",
+      "PrimaryExtraMagazines": 6
+    }
+  ],
+  "ListSecondaryWeapon": [
+    {
+      "Name": "USP",
+      "MainSight": "PistolRedDot"
+    }
+  ],
+  "ListFirstAid": [
+    {
+      "Name": "Bandage",
+      "FirstAidExtra": 0
+    }
+  ],
+  "ListHeavyGadget": [
+    {
+      "Name": "C4",
+      "HeavyGadgetExtra": 1
+    }
+  ],
+  "ListLightGadget": [
+    {
+      "Name": "Small Ammo Kit"
+    }
+  ],
+  "ListThrowable": [
+    {
+      "Name": "Flashbang"
+    }
+  ]
+}

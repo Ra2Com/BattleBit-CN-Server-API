@@ -2,6 +2,7 @@
 {
 	public enum WeaponType : int
 	{
+		// 武器类型
 		Rifle,
 		DMR,
 		SniperRifle,

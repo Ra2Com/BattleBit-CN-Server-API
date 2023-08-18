@@ -2,19 +2,19 @@
 {
     public struct PlayerLoadout
     {
-        public WeaponItem PrimaryWeapon;//主武器
-        public WeaponItem SecondaryWeapon;//手枪
-        public string FirstAidName;//绷带
-        public string LightGadgetName;//轻型道具
-        public string HeavyGadgetName;//重型道具
-        public string ThrowableName;//手雷
+        public WeaponItem PrimaryWeapon; // 主武器
+        public WeaponItem SecondaryWeapon; // 手枪
+        public string FirstAidName; // 绷带
+        public string LightGadgetName; // 轻型道具
+        public string HeavyGadgetName; // 重型道具
+        public string ThrowableName; // 投掷物
 
-        public byte PrimaryExtraMagazines;//主武器弹夹
-        public byte SecondaryExtraMagazines;//手枪弹夹
-        public byte FirstAidExtra;//额外绷带
-        public byte LightGadgetExtra;
-        public byte HeavyGadgetExtra;
-        public byte ThrowableExtra;
+        public byte PrimaryExtraMagazines; // 主武器额外弹夹
+        public byte SecondaryExtraMagazines; // 手枪额外弹夹
+        public byte FirstAidExtra; // 额外绷带
+        public byte LightGadgetExtra; // 额外轻型道具
+        public byte HeavyGadgetExtra; // 额外重型道具
+        public byte ThrowableExtra; // 额外投掷物
 
         public Gadget FirstAid
         {
@@ -282,7 +282,7 @@
                 case AttachmentType.Barrel:
                     return this.Barrel == attachment;
                 case AttachmentType.UnderRail:
-                    return this.Barrel == attachment;
+                    return this.UnderRail == attachment;
                 case AttachmentType.SideRail:
                     return this.SideRail == attachment;
                 case AttachmentType.Bolt:
@@ -307,7 +307,7 @@
                     this.Barrel = attachment;
                     break;
                 case AttachmentType.UnderRail:
-                    this.Barrel = attachment;
+                    this.UnderRail = attachment;
                     break;
                 case AttachmentType.SideRail:
                     this.SideRail = attachment;

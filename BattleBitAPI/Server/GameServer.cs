@@ -12,32 +12,54 @@ namespace BattleBitAPI.Server
 {
     public class GameServer<TPlayer> : System.IDisposable where TPlayer : Player<TPlayer>
     {
-        // ---- Public Variables ---- 
+        // ---- 全局变量 ---- 
         public ulong ServerHash => mInternal.ServerHash;
+        // 服务器哈希
         public bool IsConnected => mInternal.IsConnected;
+        // 已连接
         public IPAddress GameIP => mInternal.GameIP;
+        // 服务器IP
         public int GamePort => mInternal.GamePort;
+        // 服务器端口
 
         public TcpClient Socket => mInternal.Socket;
+        // TCP端口
         public bool IsPasswordProtected => mInternal.IsPasswordProtected;
+        // 服务器是否有密码
         public string ServerName => mInternal.ServerName;
+        // 服务器名称
         public string Gamemode => mInternal.Gamemode;
+        // 游戏模式
         public string Map => mInternal.Map;
+        // 地图
         public MapSize MapSize => mInternal.MapSize;
+        // 地图大小
         public MapDayNight DayNight => mInternal.DayNight;
+        // 地图日夜
         public int CurrentPlayerCount => mInternal.CurrentPlayerCount;
+        // 当前在线玩家
         public int InQueuePlayerCount => mInternal.InQueuePlayerCount;
+        // 队列中玩家
         public int MaxPlayerCount => mInternal.MaxPlayerCount;
+        // 最大玩家
         public string LoadingScreenText => mInternal.LoadingScreenText;
+        // 加载页面文本
         public string ServerRulesText => mInternal.ServerRulesText;
+        // 服务器规则文本
         public ServerSettings<TPlayer> ServerSettings => mInternal.ServerSettings;
+        // 服务器设置
         public MapRotation<TPlayer> MapRotation => mInternal.MapRotation;
+        // 地图池设置
         public GamemodeRotation<TPlayer> GamemodeRotation => mInternal.GamemodeRotation;
+        // 游戏模式池设置
         public RoundSettings<TPlayer> RoundSettings => mInternal.RoundSettings;
+        // 本局设置
         public string TerminationReason => mInternal.TerminationReason;
+        // 服务器关闭原因
         public bool ReconnectFlag => mInternal.ReconnectFlag;
+        // 重连标志
 
-        // ---- Private Variables ---- 
+        // ---- 内部变量 ---- 
         private Internal mInternal;
 
         // ---- Tick ----
@@ -50,7 +72,7 @@ namespace BattleBitAPI.Server
             {
                 this.mInternal.IsDirtyRoomSettings = false;
 
-                //Send new settings
+                // 发送新的设置
                 using (var pck = Common.Serialization.Stream.Get())
                 {
                     pck.Write((byte)NetworkCommuncation.SetNewRoomSettings);
@@ -92,11 +114,40 @@ namespace BattleBitAPI.Server
             {
                 this.mInternal.IsDirtyRoundSettings = false;
 
-                //Send new round settings
+                //发送新的本局设置
                 using (var pck = Common.Serialization.Stream.Get())
                 {
                     pck.Write((byte)NetworkCommuncation.SetNewRoundState);
                     this.mInternal._RoundSettings.Write(pck);
+                    WriteToSocket(pck);
+                }
+            }
+
+            //Gather all changes.
+            this.mInternal.mChangedModifications.Clear();
+            lock (this.mInternal.Players)
+            {
+                foreach (var steamid in this.mInternal.Players.Keys)
+                {
+                    var @internal = this.mInternal.mGetInternals(steamid);
+                    if (@internal._Modifications.IsDirtyFlag)
+                        this.mInternal.mChangedModifications.Enqueue((steamid, @internal._Modifications));
+                }
+            }
+
+            //Send all changes.
+            while (this.mInternal.mChangedModifications.Count > 0)
+            {
+                (ulong steamID, PlayerModifications<TPlayer>.mPlayerModifications modifications) item = this.mInternal.mChangedModifications.Dequeue();
+
+                item.modifications.IsDirtyFlag = false;
+
+                //Send new settings
+                using (var pck = Common.Serialization.Stream.Get())
+                {
+                    pck.Write((byte)NetworkCommuncation.SetPlayerModifications);
+                    pck.Write(item.steamID);
+                    item.modifications.Write(pck);
                     WriteToSocket(pck);
                 }
             }
@@ -206,7 +257,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // ---- Team ----
+        // ---- 团队 ----
         public IEnumerable<TPlayer> AllPlayers
         {
             get
@@ -220,6 +271,7 @@ namespace BattleBitAPI.Server
                 return list;
             }
         }
+        // 尝试获取玩家 Steam64
         public bool TryGetPlayer(ulong steamID, out TPlayer player)
         {
             lock (this.mInternal.Players)
@@ -235,108 +287,108 @@ namespace BattleBitAPI.Server
             return false;
         }
 
-        // ---- Virtual ---- 
-        public virtual async Task OnConnected()
+        // ---- 虚函数 ---- 
+        public virtual async Task OnConnected() // 服务器链接成功时
         {
 
         }
-        public virtual async Task OnTick()
+        public virtual async Task OnTick() // 服务器通信时
         {
 
         }
-        public virtual async Task OnReconnected()
+        public virtual async Task OnReconnected() // 服务器重连时
         {
 
         }
-        public virtual async Task OnDisconnected()
+        public virtual async Task OnDisconnected() // 服务器离线时
         {
 
         }
-        public virtual async Task OnPlayerConnected(TPlayer player)
+        public virtual async Task OnPlayerConnected(TPlayer player) // 当某个玩家成功连接时
         {
 
         }
-        public virtual async Task OnPlayerDisconnected(TPlayer player)
+        public virtual async Task OnPlayerDisconnected(TPlayer player) // 当某个玩家离线时
         {
 
         }
-        public virtual async Task<bool> OnPlayerTypedMessage(TPlayer player, ChatChannel channel, string msg)
+        public virtual async Task<bool> OnPlayerTypedMessage(TPlayer player, ChatChannel channel, string msg) // 当某个玩家发送聊天信息时
         {
             return true;
         }
-        public virtual async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        public virtual async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args) // 当某个玩家加入服务器时
         {
         }
-        public virtual async Task OnSavePlayerStats(ulong steamID, PlayerStats stats)
+        public virtual async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
 
         }
-        public virtual async Task<bool> OnPlayerRequestingToChangeRole(TPlayer player, GameRole requestedRole)
+        public virtual async Task<bool> OnPlayerRequestingToChangeRole(TPlayer player, GameRole requestedRole) // 当玩家请求更换小队角色时
         {
             return true;
         }
-        public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam)
+        public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam) // 当玩家请求更换游戏内阵营（团队）时
         {
             return true;
         }
-        public virtual async Task OnPlayerChangedRole(TPlayer player, GameRole role)
+        public virtual async Task OnPlayerChangedRole(TPlayer player, GameRole role) // 当玩家成功更换小队角色时
         {
 
         }
-        public virtual async Task OnPlayerJoinedSquad(TPlayer player, Squads squad)
+        public virtual async Task OnPlayerJoinedSquad(TPlayer player, Squads squad) // 当玩家成功加入小队时
         {
 
         }
-        public virtual async Task OnPlayerLeftSquad(TPlayer player, Squads squad)
+        public virtual async Task OnPlayerLeftSquad(TPlayer player, Squads squad) // 当玩家成功离开小队时
         {
 
         }
-        public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team)
+        public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team) // 当玩家成功更换游戏内阵营（团队）时
         {
 
         }
-        public virtual async Task<OnPlayerSpawnArguments> OnPlayerSpawning(TPlayer player, OnPlayerSpawnArguments request)
+        public virtual async Task<OnPlayerSpawnArguments> OnPlayerSpawning(TPlayer player, OnPlayerSpawnArguments request)  // 当玩家正在重生时
         {
             return request;
         }
-        public virtual async Task OnPlayerSpawned(TPlayer player)
+        public virtual async Task OnPlayerSpawned(TPlayer player) // 当玩家重生成功时
         {
 
         }
-        public virtual async Task OnPlayerDied(TPlayer player)
+        public virtual async Task OnPlayerDied(TPlayer player) // 当玩家死亡时
         {
 
         }
-        public virtual async Task OnPlayerGivenUp(TPlayer player)
+        public virtual async Task OnPlayerGivenUp(TPlayer player) // 当玩家放弃被救助时
         {
 
         }
-        public virtual async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<TPlayer> args)
+        public virtual async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<TPlayer> args) // 当玩家被其它玩家击倒时
         {
 
         }
-        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to)
+        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to) // 当玩家被其它玩家救助时
         {
 
         }
-        public virtual async Task OnPlayerReported(TPlayer from, TPlayer to, ReportReason reason, string additional)
+        public virtual async Task OnPlayerReported(TPlayer from, TPlayer to, ReportReason reason, string additional) // 当玩家被其他人举报时
         {
 
         }
-        public virtual async Task OnGameStateChanged(GameState oldState, GameState newState)
+        public virtual async Task OnGameStateChanged(GameState oldState, GameState newState) // 当本局游戏状态发生变化时
         {
 
         }
-        public virtual async Task OnRoundStarted()
+        public virtual async Task OnRoundStarted() // 当本局刚开始时
         {
 
         }
-        public virtual async Task OnRoundEnded()
+        public virtual async Task OnRoundEnded() // 当本局结束进入结算时
         {
 
         }
 
-        // ---- Functions ----
+        // ---- 方法 ----
         public void WriteToSocket(Common.Serialization.Stream pck)
         {
             lock (this.mInternal.mWriteStream)
@@ -382,6 +434,8 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("ann " + msg);
         }
+        
+        // 写一条服务端的 Log
         public void UILogOnServer(string msg, float messageLifetime)
         {
             ExecuteCommand("serverlog " + msg + " " + messageLifetime);
@@ -417,7 +471,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("notifyend");
         }
 
-        // 杀死所有玩家
+        // 踢出所有玩家
         public void KickAllPlayers()
         {
             ExecuteCommand("kick all");
@@ -492,7 +546,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("setsquad " + steamID + " " + ((int)targetSquad));
         }
 
-        // 通过 昵称 给某个玩家踢出小队
+        // 通过 昵称 给某个玩家加入小队
         public void JoinSquad(Player<TPlayer> player, Squads targetSquad)
         {
             JoinSquad(player.SteamID, targetSquad);
@@ -570,20 +624,6 @@ namespace BattleBitAPI.Server
             SetRoleTo(player.SteamID, role);
         }
 
-        // // 通过用户名查询 Steam64
-        // public ulong FindSteamIdByName(string steamName, GameServer server)
-		// {
-		// 	var keyValuePair = server.mInternal.Players.FirstOrDefault(x => x.Value.Name == steamName);
-		// 	return keyValuePair.Key;
-		// }
-
-        // // 通过 Steam64 查找用户名
-		// public Player FindPlayerBySteamId(ulong SteamID, GameServer server)
-		// {
-		// 	var player = server.mInternal.Players.FirstOrDefault(player => player.Key == SteamID).Value;
-		// 	return (Player)player;
-		// }
-
         // 通过 Steam64 让玩家重生
         public void SpawnPlayer(ulong steamID, PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)
         {
@@ -598,7 +638,7 @@ namespace BattleBitAPI.Server
                 SpawnProtection = spawnProtection
             };
 
-            //Respond back.
+            // 回调
             using (var response = Common.Serialization.Stream.Get())
             {
                 response.Write((byte)NetworkCommuncation.SpawnPlayer);
@@ -643,47 +683,8 @@ namespace BattleBitAPI.Server
         {
             Heal(player.SteamID, heal);
         }
-        public void SetRunningSpeedMultiplier(ulong steamID, float value)
-        {
-            ExecuteCommand("setrunningspeed " + steamID + " " + value);
-        }
-        public void SetRunningSpeedMultiplier(Player<TPlayer> player, float value)
-        {
-            SetRunningSpeedMultiplier(player.SteamID, value);
-        }
-        public void SetReceiveDamageMultiplier(ulong steamID, float value)
-        {
-            ExecuteCommand("setreceivedamagemultiplier " + steamID + " " + value);
-        }
-        public void SetReceiveDamageMultiplier(Player<TPlayer> player, float value)
-        {
-            SetReceiveDamageMultiplier(player.SteamID, value);
-        }
-        public void SetGiveDamageMultiplier(ulong steamID, float value)
-        {
-            ExecuteCommand("setgivedamagemultiplier " + steamID + " " + value);
-        }
-        public void SetGiveDamageMultiplier(Player<TPlayer> player, float value)
-        {
-            SetGiveDamageMultiplier(player.SteamID, value);
-        }
-        public void SetJumpMultiplier(ulong steamID, float value)
-        {
-            ExecuteCommand("setjumpmultiplier " + steamID + " " + value);
-        }
-        public void SetJumpMultiplier(Player<TPlayer> player, float value)
-        {
-            SetJumpMultiplier(player.SteamID, value);
-        }
-        public void SetFallDamageMultiplier(ulong steamID, float value)
-        {
-            ExecuteCommand("setfalldamagemultiplier " + steamID + " " + value);
-        }
-        public void SetFallDamageMultiplier(Player<TPlayer> player, float value)
-        {
-            SetFallDamageMultiplier(player.SteamID, value);
-        }
 
+        // 通过 Steam64 设置主武器
         public void SetPrimaryWeapon(ulong steamID, WeaponItem item, int extraMagazines, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -698,10 +699,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+        
+        // 通过 昵称 设置主武器
         public void SetPrimaryWeapon(Player<TPlayer> player, WeaponItem item, int extraMagazines, bool clear = false)
         {
             SetPrimaryWeapon(player.SteamID, item, extraMagazines, clear);
         }
+
+        // 通过 Steam64 设置手枪
         public void SetSecondaryWeapon(ulong steamID, WeaponItem item, int extraMagazines, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -716,10 +721,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+
+        // 通过 昵称 设置手枪
         public void SetSecondaryWeapon(Player<TPlayer> player, WeaponItem item, int extraMagazines, bool clear = false)
         {
             SetSecondaryWeapon(player.SteamID, item, extraMagazines, clear);
         }
+
+        // 通过 Steam64 设置绷带
         public void SetFirstAid(ulong steamID, string tool, int extra, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -734,10 +743,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+
+        // 通过 昵称 设置绷带
         public void SetFirstAid(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetFirstAid(player.SteamID, tool, extra, clear);
         }
+
+        // 通过 Steam64 设置主道具
         public void SetLightGadget(ulong steamID, string tool, int extra, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -752,10 +765,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+
+        // 通过 昵称 设置主道具
         public void SetLightGadget(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetLightGadget(player.SteamID, tool, extra, clear);
         }
+
+        // 通过 Steam64 设置次要道具
         public void SetHeavyGadget(ulong steamID, string tool, int extra, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -770,10 +787,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+
+        // 通过 昵称 设置次要道具
         public void SetHeavyGadget(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetHeavyGadget(player.SteamID, tool, extra, clear);
         }
+
+        // 通过 Steam64 设置投掷物
         public void SetThrowable(ulong steamID, string tool, int extra, bool clear = false)
         {
             using (var packet = Common.Serialization.Stream.Get())
@@ -788,12 +809,14 @@ namespace BattleBitAPI.Server
                 WriteToSocket(packet);
             }
         }
+
+        // 通过 昵称 设置投掷物
         public void SetThrowable(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetThrowable(player.SteamID, tool, extra, clear);
         }
 
-        // ---- Closing ----
+        // ---- 关闭链接 ----
         public void CloseConnection(string additionInfo = "")
         {
             if (string.IsNullOrWhiteSpace(additionInfo))
@@ -830,11 +853,9 @@ namespace BattleBitAPI.Server
         }
 
         // ---- Static ----
-        public static TGameServer CreateInstance<TGameServer>(Internal @internal) where TGameServer : GameServer<TPlayer>
+        public static void SetInstance(GameServer<TPlayer> server, Internal @internal)
         {
-            TGameServer gameServer = (TGameServer)Activator.CreateInstance(typeof(TGameServer));
-            gameServer.mInternal = @internal;
-            return gameServer;
+            server.mInternal = @internal;
         }
 
         // ---- Internal ----
@@ -847,6 +868,7 @@ namespace BattleBitAPI.Server
             public int GamePort;
             public TcpClient Socket;
             public Func<GameServer<TPlayer>, Internal, Common.Serialization.Stream, Task> mExecutionFunc;
+            public Func<ulong, Player<TPlayer>.Internal> mGetInternals;
             public bool IsPasswordProtected;
             public string ServerName;
             public string Gamemode;
@@ -874,6 +896,7 @@ namespace BattleBitAPI.Server
             public long mLastPackageSent;
             public bool mWantsToCloseConnection;
             public StringBuilder mBuilder;
+            public Queue<(ulong steamID, PlayerModifications<TPlayer>.mPlayerModifications)> mChangedModifications;
 
             public Internal()
             {
@@ -904,17 +927,18 @@ namespace BattleBitAPI.Server
                 this.MapRotation = new MapRotation<TPlayer>(this);
                 this.GamemodeRotation = new GamemodeRotation<TPlayer>(this);
                 this.RoundSettings = new RoundSettings<TPlayer>(this);
+                this.mChangedModifications = new Queue<(ulong steamID, PlayerModifications<TPlayer>.mPlayerModifications)>(254);
             }
 
             // ---- Players In Room ---- 
             public Dictionary<ulong, Player<TPlayer>> Players = new Dictionary<ulong, Player<TPlayer>>(254);
 
             // ---- Room Settings ---- 
-            public mRoomSettings _RoomSettings = new mRoomSettings();
+            public ServerSettings<TPlayer>.mRoomSettings _RoomSettings = new ServerSettings<TPlayer>.mRoomSettings();
             public bool IsDirtyRoomSettings;
 
             // ---- Round Settings ---- 
-            public mRoundSettings _RoundSettings = new mRoundSettings();
+            public RoundSettings<TPlayer>.mRoundSettings _RoundSettings = new RoundSettings<TPlayer>.mRoundSettings();
             public bool IsDirtyRoundSettings;
 
             // ---- Map Rotation ---- 
@@ -926,7 +950,24 @@ namespace BattleBitAPI.Server
             public bool IsDirtyGamemodeRotation = false;
 
             // ---- Public Functions ---- 
-            public void Set(Func<GameServer<TPlayer>, Internal, Common.Serialization.Stream, Task> func, TcpClient socket, IPAddress iP, int port, bool isPasswordProtected, string serverName, string gamemode, string map, MapSize mapSize, MapDayNight dayNight, int currentPlayers, int inQueuePlayers, int maxPlayers, string loadingScreenText, string serverRulesText)
+            public void Set (
+                Func<GameServer<TPlayer>, Internal, Common.Serialization.Stream, Task> func,
+                Func<ulong, Player<TPlayer>.Internal> internalGetFunc,
+                TcpClient socket,
+                IPAddress iP,
+                int port,
+                bool isPasswordProtected,
+                string serverName,
+                string gamemode,
+                string map,
+                MapSize mapSize,
+                MapDayNight dayNight,
+                int currentPlayers,
+                int inQueuePlayers,
+                int maxPlayers,
+                string loadingScreenText,
+                string serverRulesText
+                )
             {
                 this.ServerHash = ((ulong)port << 32) | (ulong)iP.ToUInt();
                 this.IsConnected = true;
@@ -934,6 +975,7 @@ namespace BattleBitAPI.Server
                 this.GamePort = port;
                 this.Socket = socket;
                 this.mExecutionFunc = func;
+                this.mGetInternals = internalGetFunc;
                 this.IsPasswordProtected = isPasswordProtected;
                 this.ServerName = serverName;
                 this.Gamemode = gamemode;
@@ -972,6 +1014,7 @@ namespace BattleBitAPI.Server
                 this.mLastPackageSent = Extentions.TickCount;
                 this.mWantsToCloseConnection = false;
                 this.mBuilder.Clear();
+                this.mChangedModifications.Clear();
             }
             public void AddPlayer(Player<TPlayer> player)
             {
@@ -991,118 +1034,6 @@ namespace BattleBitAPI.Server
                 lock (Players)
                     return Players.TryGetValue(steamID, out result);
             }
-        }
-        public class mRoomSettings
-        {
-            public float DamageMultiplier = 1.0f;
-            public bool BleedingEnabled = true;
-            public bool StaminaEnabled = false;
-            public bool FriendlyFireEnabled = false;
-            public bool HideMapVotes = true;
-            public bool OnlyWinnerTeamCanVote = false;
-            public bool HitMarkersEnabled = true;
-            public bool PointLogEnabled = true;
-            public bool SpectatorEnabled = true;
-            public float CaptureFlagSpeedMultiplier = 1f;
-
-            public byte MedicLimitPerSquad = 8;
-            public byte EngineerLimitPerSquad = 8;
-            public byte SupportLimitPerSquad = 8;
-            public byte ReconLimitPerSquad = 8;
-
-            public void Write(Common.Serialization.Stream ser)
-            {
-                ser.Write(this.DamageMultiplier);
-                ser.Write(this.BleedingEnabled);
-                ser.Write(this.StaminaEnabled);
-                ser.Write(this.FriendlyFireEnabled);
-                ser.Write(this.HideMapVotes);
-                ser.Write(this.OnlyWinnerTeamCanVote);
-                ser.Write(this.HitMarkersEnabled);
-                ser.Write(this.PointLogEnabled);
-                ser.Write(this.SpectatorEnabled);
-                ser.Write(this.CaptureFlagSpeedMultiplier);
-
-                ser.Write(this.MedicLimitPerSquad);
-                ser.Write(this.EngineerLimitPerSquad);
-                ser.Write(this.SupportLimitPerSquad);
-                ser.Write(this.ReconLimitPerSquad);
-            }
-            public void Read(Common.Serialization.Stream ser)
-            {
-                this.DamageMultiplier = ser.ReadFloat();
-                this.BleedingEnabled = ser.ReadBool();
-                this.StaminaEnabled = ser.ReadBool();
-                this.FriendlyFireEnabled = ser.ReadBool();
-                this.HideMapVotes = ser.ReadBool();
-                this.OnlyWinnerTeamCanVote = ser.ReadBool();
-                this.HitMarkersEnabled = ser.ReadBool();
-                this.PointLogEnabled = ser.ReadBool();
-                this.SpectatorEnabled = ser.ReadBool();
-                this.CaptureFlagSpeedMultiplier = ser.ReadFloat();
-
-                this.MedicLimitPerSquad = ser.ReadInt8();
-                this.EngineerLimitPerSquad = ser.ReadInt8();
-                this.SupportLimitPerSquad = ser.ReadInt8();
-                this.ReconLimitPerSquad = ser.ReadInt8();
-            }
-            public void Reset()
-            {
-                this.DamageMultiplier = 1.0f;
-                this.BleedingEnabled = true;
-                this.StaminaEnabled = false;
-                this.FriendlyFireEnabled = false;
-                this.HideMapVotes = true;
-                this.OnlyWinnerTeamCanVote = false;
-                this.HitMarkersEnabled = true;
-                this.PointLogEnabled = true;
-                this.SpectatorEnabled = true;
-
-                this.MedicLimitPerSquad = 8;
-                this.EngineerLimitPerSquad = 8;
-                this.SupportLimitPerSquad = 8;
-                this.ReconLimitPerSquad = 8;
-            }
-        }
-        public class mRoundSettings
-        {
-            public const int Size = 1 + 8 + 8 + 8 + 4 + 4;
-
-            public GameState State = GameState.WaitingForPlayers;
-            public double TeamATickets = 0;
-            public double TeamBTickets = 0;
-            public double MaxTickets = 1;
-            public int PlayersToStart = 16;
-            public int SecondsLeft = 60;
-
-            public void Write(Common.Serialization.Stream ser)
-            {
-                ser.Write((byte)this.State);
-                ser.Write(this.TeamATickets);
-                ser.Write(this.TeamBTickets);
-                ser.Write(this.MaxTickets);
-                ser.Write(this.PlayersToStart);
-                ser.Write(this.SecondsLeft);
-            }
-            public void Read(Common.Serialization.Stream ser)
-            {
-                this.State = (GameState)ser.ReadInt8();
-                this.TeamATickets = ser.ReadDouble();
-                this.TeamBTickets = ser.ReadDouble();
-                this.MaxTickets = ser.ReadDouble();
-                this.PlayersToStart = ser.ReadInt32();
-                this.SecondsLeft = ser.ReadInt32();
-            }
-
-            public void Reset()
-            {
-                this.State = GameState.WaitingForPlayers;
-                this.TeamATickets = 0;
-                this.TeamBTickets = 0;
-                this.MaxTickets = 1;
-                this.PlayersToStart = 16;
-                this.SecondsLeft = 60;
-            }
-        }
+        } 
     }
 }

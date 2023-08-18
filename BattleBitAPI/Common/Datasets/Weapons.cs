@@ -5,10 +5,10 @@ namespace BattleBitAPI.Common
 {
 	public static class Weapons
 	{
-		// ----- Private Variables ----- 
+		// ----- 武器类型词典 ----- 
 		private static Dictionary<string, Weapon> mWeapons;
 
-		// ----- Public Variables ----- 
+		// ----- 武器名称 ----- 
 		public readonly static Weapon ACR = new Weapon("ACR", WeaponType.Rifle);
 		public readonly static Weapon AK15 = new Weapon("AK15", WeaponType.Rifle);
 		public readonly static Weapon AK74 = new Weapon("AK74", WeaponType.Rifle);
@@ -54,7 +54,7 @@ namespace BattleBitAPI.Common
 		public readonly static Weapon AK5C = new Weapon("AK5C", WeaponType.Rifle);
 		public readonly static Weapon Ultimax100 = new Weapon("Ultimax100", WeaponType.LightMachineGun_LMG);
 
-		// ----- Public Calls ----- 
+		// ----- 公开查询方法 ----- 
 		public static bool TryFind(string name, out Weapon item)
 		{
 			return mWeapons.TryGetValue(name, out item);
@@ -65,7 +65,7 @@ namespace BattleBitAPI.Common
 			return mWeapons;
 		}
 
-		// ----- Init ----- 
+		// ----- 初始化 ----- 
 		static Weapons()
 		{
 			var members = typeof(Weapons).GetMembers(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);

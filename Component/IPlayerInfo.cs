@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BattleBitAPI.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@ namespace CommunityServerAPI.Component
     /// </remarks>
     internal interface IPlayerInfo
     {
+        public ulong SteamID { get; }
         public int K { get; set; }
         public int D { get; set; }
 
@@ -22,5 +25,9 @@ namespace CommunityServerAPI.Component
 
         public ulong markId { get; set; }
         public float maxHP { get; set; }
+
+        public List<PositionBef> positionBef { get; set; }
+
+        public PlayerStats stats { get; set; }
     }
 }

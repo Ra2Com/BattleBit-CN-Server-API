@@ -2,6 +2,9 @@
 {
     public enum LeaningSide
     {
-        Left, None, Right
+        // 侧头方向
+        Left,
+        None, 
+        Right
     }
 }

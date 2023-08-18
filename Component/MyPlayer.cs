@@ -1,6 +1,6 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
-using Org.BouncyCastle.Ocsp;
+using CommunityServerAPI.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,98 +21,150 @@ namespace CommunityServerAPI.Component
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
-
-        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
-        // public override Task<PlayerStats> OnGetPlayerStats(ulong steamID, PlayerStats officialStats)
-        // {
-        //     officialStats.Progress.Rank = 200;
-        //     officialStats.Progress.Prestige = 6;
-        //     return Task.FromResult(officialStats);
-
-        //     // TODO: 此处的 Admin 角色最好走 Json 配置
-        //     if (steamID == 76561198395073327)
-        //     {
-        //         stats.Roles = Roles.Admin;
-        //     }
-        // }
+        public PlayerStats stats { get; set; }
+        public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
 
         public override async Task OnConnected()
         {
+            Console.Out.WriteLineAsync($"MyPlayer OnConnected");
+
+            // 娱乐服，咱不玩流血那套
+            Modifications.DisableBleeding();
+
+            // 娱乐服，换弹速度降低到 70%
+            Modifications.ReloadSpeedMultiplier = 0.7f;
+
+            // 白天，用个鬼的夜视仪
+            Modifications.CanUseNightVision = false;
+
+            // 倒地后马上就死
+            Modifications.DownTimeGiveUpTime = 1f;
+
+            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+            Modifications.AirStrafe = false;
+
+            // 死了马上就能活
+            Modifications.RespawnTime = 1f;
+
+            // 开启击杀通知
+            Modifications.KillFeed = true;
+
+            // 刚枪服务器，所有武器伤害值都降低到 75%
+            Modifications.GiveDamageMultiplier = 0.75f;
+            // 特殊角色登录日志
+            if (stats?.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
+            }
+            if (stats?.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
+            }
+            // 同时添加 Say 聊天消息
+            GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+
             _ = Task.Run(async () =>
             {
-                // Message to display your Killer's distance.
-                while (true)
+                try
                 {
-                    // When a player joined the game, send a Message to announce its Community Server data.
-                    await Task.Delay(3000);
-                    Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
-                    // TODO: 同时添加 Say 聊天消息
-                    // SayToChat("欢迎" + RichText.Purple($"{Name}") + RichText.EndColor() + $", K/D: {K}/{D}，排名{RichText.Orange($"{rank}")}");
-
-                    if (markId != 0)
+                    while (true)
                     {
-                        var markPlayer = GameServer.AllPlayers.First(o => o.SteamID == markId);
-                        if (markPlayer == null)
-                            markId = 0;
-                        else
+                        if (Position.X != 0 && Position.Y != 0)
                         {
-                            var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                            this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米", 3f);
+                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
+                            Console.Out.WriteLineAsync($"{Name}加入坐标点:{Position}");
                         }
+
+                        // When a player joined the game, send a Message to announce its Community Server data.
+
+                        if (markId != 0)
+                        {
+                            var markPlayer = GameServer.AllPlayers.FirstOrDefault(o => o.SteamID == markId);
+                            if (markPlayer == null)
+                                markId = 0;
+                            else
+                            {
+                                var dis = Vector3.Distance(markPlayer.Position, this.Position);
+                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
+                                Console.WriteLine($"玩家{this.Name}：K/D: {K}/{D},仇人{markId}");
+
+                            }
+                        }
+                        await Task.Delay(3000);
                     }
                 }
+                catch (Exception ee)
+                {
+                    Console.Out.WriteLineAsync(ee.StackTrace);
+                }
+
             });
         }
 
-        // 聊天监控和命令
-        // public override async Task OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
-        // {
-        //     Console.WriteLine($"{DateTime.Now.ToString("MM/DD hh:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
-        //     // TODO: 聊天记录建议单独保存
-        //     // TODO: 屏蔽词告警
-        //     // TODO: 屏蔽词系统
 
-        //     // 管理员命令执行
-        //     if (player.SteamID != 76561198395073327 || !msg.StartsWith("/")) return true;
 
-        // }
 
         public override async Task OnDied()
         {
             // Spawn a player when died and give him a new set(example).
-            // QUESTION: 一般设置玩家的道具都是在 OnPlayerSpawning 中，这样不管玩家在死亡的时候更换什么道具都将被覆盖掉
-            // TODO: 最好按照 /Config/WeaponData.json 内容进行配置，方便后面修改数值
-            _ = Task.Run(async () =>
-             {
-                 await Task.Delay(3000);
-                 PlayerLoadout playerLoadout = new PlayerLoadout();
-                 //主武器
-                 playerLoadout.PrimaryWeapon.Tool = Weapons.AK74;
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Ranger);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.Holographic);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.VerticalGrip);
-                 playerLoadout.PrimaryWeapon.SetAttachment(Attachments.TacticalFlashlight);
-                 //手枪
-                 playerLoadout.SecondaryWeapon.Tool = Weapons.USP;
-                 playerLoadout.SecondaryWeapon.SetAttachment(Attachments.PistolRedDot);
-                 //主附件池
-                 playerLoadout.HeavyGadget = Gadgets.C4;
-                 //轻附件
-                 playerLoadout.LightGadget = Gadgets.SmallAmmoKit;
-                 //手雷
-                 playerLoadout.Throwable = Gadgets.Flashbang;
-                 // 不给绷带！
-                 playerLoadout.FirstAid = null;
+            //_ = Task.Run(async () =>
+            // {
+            //     await Task.Delay(3100);
 
-                 SpawnPlayer(playerLoadout, CurrentWearings, new Vector3() { }, new Vector3() { }, PlayerStand.Standing, 3);
-             });
+
+            //     try
+            //     {
+            //         int beforePosTime = 15;
+            //         var sp = new Vector3() { };
+            //         while (true)
+            //         {
+            //             if (positionBef.TryDequeue(out PositionBef pb))
+            //             {
+            //                 Console.Out.WriteLineAsync($"{pb.position}");
+
+            //                 if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
+            //                 {
+            //                     if (GameServer.AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != Team) == null)
+            //                     {
+            //                         sp = pb.position;
+            //                         Console.WriteLine($"{Name}即将复活在{pb.position}");
+            //                         break;
+            //                     }
+            //                 }
+            //                 beforePosTime = beforePosTime + 15;
+            //             }
+            //             else
+            //             {
+            //                 //request.SpawnPosition = new Vector3();
+            //                 Console.WriteLine($"{Name}复活在选择点");
+            //                 break;
+
+            //             }
+            //         }
+            //         SpawnPlayer(SpawnManager.GetRandom(), CurrentWearings, sp, new Vector3() { X = 0, Y = 0, Z = 1 }, PlayerStand.Standing, 5f);
+
+
+            //         // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
+            //         // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
+            //         //request.SpawnPosition = new System.Numerics.Vector3();
+            //         //request.LookDirection = new System.Numerics.Vector3();
+            //         //Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+            //     }
+            //     catch (Exception ee)
+            //     {
+            //         Console.Out.WriteLineAsync(ee.StackTrace);
+
+            //     }
+
+            // });
         }
 
 
         public override async Task OnSpawned()
         {
-            // 由于是刚枪服务器，所以武器伤害值都降低到 0.7
-            // player.SetGiveDamageMultiplier(0.70f);
+            
         }
 
         // Time calculation stuff
@@ -131,5 +183,12 @@ namespace CommunityServerAPI.Component
             return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
         }
 
+    }
+
+    public class PositionBef
+    {
+        public long time { get; set; }
+
+        public Vector3 position { get; set; }
     }
 }

@@ -2,6 +2,17 @@
 {
 	public enum GameRole
 	{
-		Assault = 0, Medic = 1, Support = 2, Engineer = 3, Recon = 4, Leader = 5
+		// 突击兵
+		Assault = 0, 
+		// 医疗兵
+		Medic = 1,
+		// 支援兵 
+		Support = 2,
+		// 工程兵 
+		Engineer = 3,
+		// 侦察兵
+		Recon = 4,
+		// 小队长 
+		Leader = 5
 	}
 }
