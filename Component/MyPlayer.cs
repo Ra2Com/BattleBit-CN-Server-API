@@ -23,17 +23,18 @@ namespace CommunityServerAPI.Component
         public Vector3 positionBef10 { get; set; }
         public Vector3 positionBef20 { get; set; }
         public Vector3 positionBef30 { get; set; }
+        public PlayerStats stats { get; set; }
 
         public override async Task OnConnected()
         {
             // 特殊角色登录日志
-            if (player.Stats.Roles == Roles.Admin)
+            if (stats.Roles == Roles.Admin)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {player.SteamID} 已连接, IP: {player.IP}");
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
             }
-            if (player.Stats.Roles == Roles.Moderator)
+            if (stats.Roles == Roles.Moderator)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {player.SteamID} 已连接, IP: {player.IP}");
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
             }
 
             _ = Task.Run(async () =>
@@ -81,28 +82,28 @@ namespace CommunityServerAPI.Component
         public override async Task OnSpawned()
         {
             // 娱乐服，咱不玩流血那套
-            PlayerModifications.DisableBleeding();
+            Modifications.DisableBleeding();
 
             // 娱乐服，换弹速度降低到 70%
-            PlayerModifications.ReloadSpeedMultiplier = 0.7f;
+            Modifications.ReloadSpeedMultiplier = 0.7f;
 
             // 白天，用个鬼的夜视仪
-            PlayerModifications.CanUseNightVision = false;
+            Modifications.CanUseNightVision = false;
 
             // 倒地后马上就死
-            PlayerModifications.DownTimeGiveUpTime = 1f;
+            Modifications.DownTimeGiveUpTime = 1f;
 
             // 更拟真一点，学学 CSGO 跳跃转向丢失速度
-            PlayerModifications.AirStrafe = false;
+            Modifications.AirStrafe = false;
 
             // 死了马上就能活
-            PlayerModifications.RespawnTime = 1f;
+            Modifications.RespawnTime = 1f;
 
             // 开启击杀通知
-            PlayerModifications.KillFeed = true;
+            Modifications.KillFeed = true;
 
             // 刚枪服务器，所有武器伤害值都降低到 75%
-            PlayerModifications.GiveDamageMultiplier = 0.75f;
+            Modifications.GiveDamageMultiplier = 0.75f;
         }
 
         // Time calculation stuff

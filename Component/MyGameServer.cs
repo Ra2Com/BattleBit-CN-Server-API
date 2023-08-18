@@ -16,7 +16,7 @@ namespace CommunityServerAPI.Component
         public override async Task OnConnected()
         {
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
-            
+
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
             GamemodeRotation.SetRotation("Domination");
@@ -150,20 +150,25 @@ namespace CommunityServerAPI.Component
 
             // 管理员判断以及命令执行
             // TODO: 管理员类命令执行结果需要打印 Log
-            if (player.Stats.Roles != Roles.Admin || !msg.StartsWith("/"))
+            if (player.stats.Roles != Roles.Admin || !msg.StartsWith("/"))
             {
-
                 return true;
             }
 
-            if (player.Stats.Roles != (Roles.Admin || Roles.Moderator) || !msg.StartsWith("/"))
+            if (player.stats.Roles != Roles.Admin || player.stats.Roles != Roles.Moderator || !msg.StartsWith("/"))
             {
-
                 return true;
             }
 
             return false;
 
+        }
+
+        public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
+        {
+            var player = rankPlayers.Find(o => o.SteamID == steamID);
+
+            player.stats = stats;
         }
     }
 }
