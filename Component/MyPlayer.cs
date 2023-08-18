@@ -21,8 +21,9 @@ namespace CommunityServerAPI.Component
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
-
-
+        public Vector3 positionBef10 { get; set; }
+        public Vector3 positionBef20 { get; set; }
+        public Vector3 positionBef30 { get; set; }
 
         public override async Task OnConnected()
         {
@@ -30,14 +31,14 @@ namespace CommunityServerAPI.Component
             {
                 // 同时添加 Say 聊天消息
                 GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-                
+
                 // Message to display your Killer's distance and welcome msg.
                 while (true)
                 {
                     // When a player joined the game, send a Message to announce its Community Server data.
                     await Task.Delay(3000);
                     Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
-                    
+
                     if (markId != 0)
                     {
                         var markPlayer = GameServer.AllPlayers.First(o => o.SteamID == markId);
@@ -53,7 +54,7 @@ namespace CommunityServerAPI.Component
             });
         }
 
-      
+
 
         public override async Task OnDied()
         {
@@ -71,7 +72,7 @@ namespace CommunityServerAPI.Component
         public override async Task OnSpawned()
         {
             // 由于是刚枪服务器，所以武器伤害值都降低到 0.7
-            // player.SetGiveDamageMultiplier(0.70f);
+            SetGiveDamageMultiplier(0.70f);
         }
 
         // Time calculation stuff

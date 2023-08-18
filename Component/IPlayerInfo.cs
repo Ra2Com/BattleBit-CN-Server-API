@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,5 +23,9 @@ namespace CommunityServerAPI.Component
 
         public ulong markId { get; set; }
         public float maxHP { get; set; }
+
+        public Vector3 positionBef10 { get; set; }
+        public Vector3 positionBef20 { get; set; }
+        public Vector3 positionBef30 { get; set; }
     }
 }
