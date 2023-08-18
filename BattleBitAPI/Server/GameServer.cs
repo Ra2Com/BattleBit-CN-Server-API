@@ -471,7 +471,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("notifyend");
         }
 
-        // 杀死所有玩家
+        // 踢出所有玩家
         public void KickAllPlayers()
         {
             ExecuteCommand("kick all");
@@ -546,7 +546,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("setsquad " + steamID + " " + ((int)targetSquad));
         }
 
-        // 通过 昵称 给某个玩家踢出小队
+        // 通过 昵称 给某个玩家加入小队
         public void JoinSquad(Player<TPlayer> player, Squads targetSquad)
         {
             JoinSquad(player.SteamID, targetSquad);
