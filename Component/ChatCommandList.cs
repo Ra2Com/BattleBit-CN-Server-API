@@ -34,7 +34,7 @@ public class HealCommand : ChatCommandList
 
     // public override Command ChatCommand(MyPlayer player, ChatChannel channel, string msg)
     // {
-    //     return new Command()
+    //     return new Command
     //     {
     // TODO: VIP 的治疗命令，每 1分钟只能用一次
     //         Action = CommandType.Heal,
@@ -64,7 +64,7 @@ public class HelpCommand : ChatCommandList
 
     public override Command ChatCommand(MyPlayer player, ChatChannel channel, string msg)
     {
-        return new Command()
+        return new Command
         {
             Action = CommandType.Help,
             Executor = player.Name,
@@ -85,7 +85,7 @@ public class StatsCommand : ChatCommandList
     
     public override Command ChatCommand(MyPlayer player, ChatChannel channel, string msg)
     {
-        return new Command()
+        return new Command
         {
             Action = CommandType.Stats,
             Executor = player.Name,
@@ -109,7 +109,7 @@ public class KillCommand : ChatCommandList
 
     public override Command ChatCommand(MyPlayer player, ChatChannel channel, string msg)
     {
-        return new Command()
+        return new Command
         {
             Action = CommandType.Kill,
             Executor = player.Name,
