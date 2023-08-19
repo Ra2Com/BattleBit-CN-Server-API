@@ -17,4 +17,6 @@ public enum CommandTypes
     Help,
     Start,
     End,
+    Announce,
+    AnnounceLong
 }
