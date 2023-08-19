@@ -2,18 +2,18 @@
 
 # Battlebit Remastered Random Revenger Mode (WIP)
 * [x] Server API
-	* [x] `ServerRules`
-	* [x] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
-	* [x] Killer's HP, Killreason by `Message`.
-	* [x] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
-	* [x] Random Spawn Positions range. And should be 20M away from any enemy.
+  * [x] `ServerRules`
+  * [x] K/D, Score, Nickname, Server Group Ranking(By Points Earned Lifetime in Community Server)
+  * [x] Killer's HP, Killreason by `Message`.
+  * [x] Random Sets assigned on each respawn weapon sets and gadgets, throwouts.
+  * [x] Random Spawn Positions range. And should be 20M away from any enemy.
 * [ ] Gameplay
-	* [x] Killer gets victim's gadgets and throwouts. If one Weapon and gadget set is the same, it won't change.
-	* [ ] Victim successful revenge will cost additional 10 score of the opposite team.
-	* [x] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
-	* [x] Limited map pool.
-	* [x] Limited Day Map only.
-	* [x] 32 vs 32.
+  * [x] Killer gets victim's gadgets and throwouts. If one Weapon and gadget set is the same, it won't change.
+  * [ ] Victim successful revenge will cost additional 10 score of the opposite team.
+  * [x] Victim respawn show real-time last killer position to revenge in `Message`. Until killer died(Killed by you, others or suicide).
+  * [x] Limited map pool.
+  * [x] Limited Day Map only.
+  * [x] 32 vs 32.
 * [ ] TO-DO List
 	* [ ] Kill streak Player Statics Boost. On 3/5/10/15/20/30.
 	* [ ] Die streak Player Statics Boost. On 2/3/5/7/11/13.
@@ -22,14 +22,16 @@
 	* [ ] Web based API to communicate with Server API to read/write ranking data.
 	* [ ] Other upcoming server mode should view below. ⬇️
 
+## 测试 QQ 群 887245025
+
 ## 随机复仇模式玩法测试功能 2023年8月19日：
 * [x] 服务器
 	* [x] `ServerRules`通知。
 	* [x] 地图模式：TDM
 	* [x] 地图池：`Salhan`（萨尔罕）, `Azagor`（阿扎戈尔）, `Dusty Dew`（尘露谷）, `Sandy Sunset`（日落沙丘）, `Wine Paradise`（酿酒圣地）, `Frugis`（弗鲁吉斯城）, `Tensa Town`（坦萨小镇）顺序轮换。
-	  备选地图：`Basra`（巴士拉群岛），`Construction`（建筑工地），`District`（军事特区）,`Eduardovo`（爱德华多沃），`Valley`（风力峡谷），`River`（港口），`Lonovo`（新罗市），如果有其他备选地图欢迎加QQ群 887245025 提建议
+		备选地图：`Basra`（巴士拉群岛），`Construction`（建筑工地），`District`（军事特区）,`Eduardovo`（爱德华多沃），`Valley`（风力峡谷），`River`（港口），`Lonovo`（新罗市），如果有其他备选地图欢迎加QQ群 887245025 提建议
 	* [x] 最少 8 v 8, 最大 32 v 32 (由于是游戏模式限制所以暂时还扩大不了)。
-	* [x] 服务器 Tickrate 刷新率 240hz。
+	* [x] 服务器 Tickrate 刷新率 240hz。 
 * [x] 游戏设置
 	* [x] 无流血、限量绷带、无扶人。
 	* [x] 角色间有碰撞体积。
@@ -40,9 +42,9 @@
 	* [x] 右上角会展示击杀通知。
 	* [x] 所有武器伤害值降低到 75%，符合大部分 TTK 逻辑。
 * [x] `Message`小窗通知
-	* [x] 玩家出生时，提示玩家昵称、游戏时长、K/D、当前总积分、当前在此类型的排名（通过得分计算）
-	* [x] 玩家被击杀时，提示死亡原因，对方剩余血量。
-	* [x] 玩家被击杀复活后，小窗新增一行内容显示当前标记的仇人。
+    * [x] 玩家出生时，提示玩家昵称、游戏时长、K/D、当前总积分、当前在此类型的排名（通过得分计算）
+    * [x] 玩家被击杀时，提示死亡原因，对方剩余血量。
+    * [x] 玩家被击杀复活后，小窗新增一行内容显示当前标记的仇人。
 * [x] 玩家被击杀复活后，永久标记上一次击杀此玩家的当前位置。击杀仇人将减少对面 10 点人口，标记和人口惩罚直到仇人死亡一次后消失。
 * [x] 玩家在击杀某个玩家后，获得所击杀玩家的主副道具和投掷物，并治疗自身 20 HP（不可超过生命值上限）。
 * [x] 无论玩家选择任何出生点，将在地图上随机出生位置，并和其它敌对玩家至少保持 20M 的安全距离。

@@ -9,12 +9,12 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommunityServerAPI.Component
+namespace CommunityServerAPI.ServerExtension.Model
 {
-    internal class MyPlayer : Player<MyPlayer>, IPlayerInfo
+    public class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
         // DEVELOP TODO: 玩家离线、没有复活时要停止计时
-        public long JoinTime { get; set; } = GetUtcTimeMs();
+        public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
@@ -46,7 +46,7 @@ namespace CommunityServerAPI.Component
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服");
             Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{TimeUtil.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
             _ = Task.Run(async () =>
             {
@@ -56,7 +56,7 @@ namespace CommunityServerAPI.Component
                     {
                         if (Position.X != 0 && Position.Y != 0)
                         {
-                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
+                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });
                             Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
                         }
 
@@ -69,10 +69,10 @@ namespace CommunityServerAPI.Component
                                 markId = 0;
                             else
                             {
-                                float dis = Vector3.Distance(markPlayer.Position, this.Position);
+                                float dis = Vector3.Distance(markPlayer.Position, Position);
                                 // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
-                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
-                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{this.Name}：K/D: {K}/{D},仇人 {markId}");
+                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
+                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");
 
                             }
                         }
@@ -174,21 +174,7 @@ namespace CommunityServerAPI.Component
         }
 
         // Time calculation stuff
-        public static string GetPhaseDifference(long oldtime)
-        {
-            var dif = GetUtcTimeMs() - oldtime;
-            return (dif / 1000 / 60).ToString() + "分钟";
-        }
-        public static long GetUtcTimeMs()
-        {
-            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
-        }
-
-        public static long GetUtcTime(DateTime dateTime)
-        {
-            return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
-        }
-
+       
     }
 
     public class PositionBef

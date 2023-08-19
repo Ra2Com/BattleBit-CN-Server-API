@@ -220,12 +220,5 @@ namespace CommunityServerAPI.ServerExtension
 
             player.stats = stats;
         }
-
-        public override async Task OnRoundEnded()
-        {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 本局游戏结束 ----------");
-            // DEVELOP: 测试时立马开始下一局游戏
-            ForceStartGame();
-        }
     }
 }
