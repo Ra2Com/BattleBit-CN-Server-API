@@ -81,7 +81,7 @@ public class CommandComponent
         // 针对 Help 指令的处理
         switch (getCommand.CommandType)
         {
-            case CommandTypeEnum.Help:
+            case CommandTypes.Help:
                 {
                     player.Message("可用聊天命令:", 2f);
                     var showCommands = new List<CommandHandlerBase>();

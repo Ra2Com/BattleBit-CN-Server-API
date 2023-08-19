@@ -17,7 +17,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypeEnum.Mute,
+                CommandType = CommandTypes.Mute,
                 Executor = player.Name,
                 Error = false,
             };

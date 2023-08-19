@@ -19,7 +19,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypeEnum.Speed,
+                CommandType = CommandTypes.Speed,
                 Executor = player.Name,
                 Error = false
             };

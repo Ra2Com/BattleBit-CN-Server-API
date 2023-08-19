@@ -19,7 +19,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypeEnum.Heal,
+                CommandType = CommandTypes.Heal,
                 Executor = player.Name,
                 Error = false
             };

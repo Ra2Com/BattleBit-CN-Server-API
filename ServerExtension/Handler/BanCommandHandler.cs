@@ -18,7 +18,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypeEnum.Ban,
+                CommandType = CommandTypes.Ban,
                 Executor = player.Name,
                 Error = false,
             };
