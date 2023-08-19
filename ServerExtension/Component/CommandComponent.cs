@@ -61,7 +61,7 @@ public class CommandComponent
 
             return ;
         }
-        if (string.IsNullOrEmpty(getCommand.Message))
+        if (!string.IsNullOrEmpty(getCommand.Message))
         {
             player.Message(getCommand.Message, 5f);
         }
