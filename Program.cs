@@ -19,6 +19,7 @@ class Program
         // TODO: 端口配置读取 Json 解析类结果或配置
         int apiPort = 29294;
         SpawnManager.Init();
+        PrivilegeManager.Init();
         listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
         listener.OnCreatingPlayerInstance += OnCreatingPlayerInstance;
         listener.Start(apiPort);
