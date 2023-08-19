@@ -13,7 +13,8 @@ namespace CommunityServerAPI.ServerExtension
     {
         public override async Task OnConnected()
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
+            Console.WriteLine(
+                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.ClearRotation();
@@ -35,16 +36,15 @@ namespace CommunityServerAPI.ServerExtension
 
             // 测试用途 For development test ONLY
             ForceStartGame();
-
         }
 
-       
 
         List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+            await Console.Out.WriteLineAsync(
+                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
 
         public override async Task OnPlayerDisconnected(MyPlayer player)
@@ -54,14 +54,12 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
-
-
+            await Console.Out.WriteLineAsync(
+                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
         }
 
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
-
             if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
             {
                 // DEVELOP TODO: 记录玩家爆头击杀数
@@ -84,24 +82,28 @@ namespace CommunityServerAPI.ServerExtension
                 // 获取双方距离
                 float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition);
 
-                await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+                await Console.Out.WriteLineAsync(
+                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                 // Announce the victim your killer. And the killer will be tracked.
-                MessageToPlayer(args.Victim, $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒，凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
+                MessageToPlayer(args.Victim,
+                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒，凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
                 // 等到消息发布之后再给凶手补充血量
                 args.Killer.Heal(20);
             }
-
         }
+
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已放弃: " + player);
         }
+
         public override async Task OnPlayerDied(MyPlayer player)
         {
             player.D++;
             //await Console.Out.WriteLineAsync("Died: " + player);
         }
+
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
@@ -117,6 +119,7 @@ namespace CommunityServerAPI.ServerExtension
             {
                 rankPlayers.Add(item);
             }
+
             rankPlayers = rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
             for (int i = 0; i < rankPlayers.Count; i++)
             {
@@ -124,7 +127,8 @@ namespace CommunityServerAPI.ServerExtension
             }
         }
 
-        public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player, OnPlayerSpawnArguments request)
+        public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player,
+            OnPlayerSpawnArguments request)
         {
             try
             {
@@ -144,36 +148,36 @@ namespace CommunityServerAPI.ServerExtension
 
                         if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
                         {
-                            if (AllPlayers.FirstOrDefault(o => Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
+                            if (AllPlayers.FirstOrDefault(o =>
+                                    Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
                             {
-                                request.SpawnPosition = new Vector3 { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
+                                request.SpawnPosition = new Vector3
+                                    { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
                                 request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
-                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
+                                Console.WriteLine(
+                                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
                                 break;
                             }
                         }
+
                         beforePosTime = beforePosTime + 15;
                     }
                     else
                     {
-                        //request.SpawnPosition = new Vector3();
                         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活在选择点");
                         break;
-
                     }
                 }
+
                 player.positionBef.Clear();
 
                 // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
-                // // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
-                //request.SpawnPosition = new System.Numerics.Vector3();
-                //request.LookDirection = new System.Numerics.Vector3();
+                // 由于 Oki 在 Discord 中提及了地图边界的问题以及 SpawnPosition 的不可写问题，所以暂时使用 TDM 模式的固定出生点
                 Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             }
             catch (Exception ee)
             {
                 Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}");
-
             }
 
             return request;
@@ -190,10 +194,12 @@ namespace CommunityServerAPI.ServerExtension
             {
                 args.Stats.Roles = Roles.Admin;
             }
+
             if (steamID == 765611980908011)
             {
                 args.Stats.Roles = Roles.Moderator;
             }
+
             if (steamID == 765611980908022)
             {
                 args.Stats.Roles = Roles.Vip;
@@ -203,14 +209,15 @@ namespace CommunityServerAPI.ServerExtension
         // 聊天监控和命令
         public override async Task<bool> OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + player.Name + "在「" + channel + "」发送聊天 - " + msg);
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + player.Name + "在「" +
+                                             channel + "」发送聊天 - " + msg);
             // TODO: 聊天记录建议单独保存
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
 
-           
+
             await CommandComponent.Initialize().HandleCommand(player, channel, msg);
-            
+
             return true;
         }
 

@@ -40,8 +40,11 @@ public class CommandComponent
         var splits = msg.Split(" ");
         var cmd = splits[0].ToLower();
         var playerRole = player.stats.Roles;
+        
+        // DEVELOP TODO: 使用新的 Privilege 权限检查来做这个判断
         if (playerRole != Roles.Admin || playerRole != Roles.Moderator || !msg.StartsWith("/"))
             return ;
+        
         var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd) || a.Aliases.Contains(cmd));
         if (null == commandHandler)
         {
@@ -51,14 +54,14 @@ public class CommandComponent
         // 检查执行的 Roles 是什么
         if (commandHandler.roles is not null && !commandHandler.roles.Contains(Roles.None) && !commandHandler.roles.Contains(playerRole))
         {
-
+            
             return ;
         }
        
         var getCommand = commandHandler.BuildCommand(player, channel);
         if (null == getCommand) 
         {
-
+            
             return ;
         }
         if (!string.IsNullOrEmpty(getCommand.Message))
@@ -66,21 +69,15 @@ public class CommandComponent
             player.Message(getCommand.Message, 5f);
         }
         
-        // 额外的处理
+        // 针对 Help 指令的处理
         switch (getCommand.CommandType)
         {
             case CommandTypeEnum.Help:
                 {
                     player.Message("可用聊天命令:", 2f);
                     var showCommands = new List<CommandHandlerBase>();
-                    if (playerRole == Roles.Admin)
-                    {
-                        showCommands = commandHandlers;
-                    }
-                    else
-                    {
-                        showCommands = commandHandlers.Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(Roles.Admin)).ToList();
-                    }                   
+                        showCommands = commandHandlers.Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
+
                     StringBuilder messageBuilder = new StringBuilder();
                     foreach (var command in showCommands)
                     {
@@ -93,7 +90,8 @@ public class CommandComponent
                 }
                        
         }
-        // 执行这条命令
+        // 执行这条命令并打印日志
+        await Console.Out.WriteLineAsync(($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - [{player.Role}] - {player.Name} 执行命令 -" + msg));
         commandHandler.Execute(player, msg);
     }
 }

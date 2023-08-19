@@ -23,6 +23,9 @@ namespace CommunityServerAPI.ServerExtension.Model
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
+        
+        public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
+        public long LastSpeedTime { get; set; }
         public PlayerStats stats { get; set; }
         public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
 
@@ -43,7 +46,7 @@ namespace CommunityServerAPI.ServerExtension.Model
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服");
             Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{TimeUtil.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
             _ = Task.Run(async () =>
             {

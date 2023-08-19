@@ -12,7 +12,6 @@ namespace CommunityServerAPI.ServerExtension.Handler
             helpMessage = "立刻结束本轮对局";
             Aliases = new string[] { "/ed" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator};
-          
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
@@ -36,7 +35,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             player.GameServer.SayToChat($"管理员 {player.Name} - 使用命令结束了本局!");
             player.GameServer.ForceEndGame();
-            player.GameServer.RoundSettings.SecondsLeft = 3;            
+            player.GameServer.RoundSettings.SecondsLeft = 3;
             return;
         }
     }
