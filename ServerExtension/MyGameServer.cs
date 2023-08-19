@@ -39,7 +39,7 @@ namespace CommunityServerAPI.ServerExtension
         }
 
 
-        List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();
+        List<IPlayerInfo> _rankPlayers = new List<IPlayerInfo>();
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
@@ -115,16 +115,16 @@ namespace CommunityServerAPI.ServerExtension
             // DEVELOP TODO: 每 2 分钟发布一条 AnnounceShort 让玩家加群反馈
             // DEVELOP TODO: 每 3 分钟发布一条 全服聊天信息 让玩家加群反馈
             // Calculate current ranking.
-            rankPlayers.Clear();
+            _rankPlayers.Clear();
             foreach (var item in AllPlayers)
             {
-                rankPlayers.Add(item);
+                _rankPlayers.Add(item);
             }
 
-            rankPlayers = rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
-            for (int i = 0; i < rankPlayers.Count; i++)
+            _rankPlayers = _rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
+            for (int i = 0; i < _rankPlayers.Count; i++)
             {
-                rankPlayers[i].rank = i + 1;
+                _rankPlayers[i].rank = i + 1;
             }
         }
 
@@ -223,7 +223,7 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
-            var player = rankPlayers.Find(o => o.SteamID == steamID);
+            var player = _rankPlayers.Find(o => o.SteamID == steamID);
 
             player.stats = stats;
         }
