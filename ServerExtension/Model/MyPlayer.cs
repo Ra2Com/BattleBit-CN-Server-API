@@ -19,9 +19,6 @@ namespace CommunityServerAPI.ServerExtension.Model
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
-        public bool IsAdmin { get; set; } = false;
-        public bool IsModerator { get; set; } = false;
-        public bool IsVIP { get; set; } = false;
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;

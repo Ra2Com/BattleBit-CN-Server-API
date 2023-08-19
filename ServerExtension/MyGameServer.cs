@@ -88,7 +88,7 @@ namespace CommunityServerAPI.ServerExtension
 
                 // Announce the victim your killer. And the killer will be tracked.
                 MessageToPlayer(args.Victim, $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒，凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
-                // 等到消息发布之后再给杀手补充血量
+                // 等到消息发布之后再给凶手补充血量
                 args.Killer.Heal(20);
             }
 
@@ -219,6 +219,13 @@ namespace CommunityServerAPI.ServerExtension
             var player = rankPlayers.Find(o => o.SteamID == steamID);
 
             player.stats = stats;
+        }
+
+        public override async Task OnRoundEnded()
+        {
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 本局游戏结束 ----------");
+            // DEVELOP: 测试时立马开始下一句游戏
+            ForceStartGame();
         }
     }
 }
