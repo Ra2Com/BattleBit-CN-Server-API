@@ -2,12 +2,13 @@
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using System.Linq.Expressions;
-using CommunityServerAPI.Component;
 using CommunityServerAPI.Tools;
 using System.Net;
 using System.Numerics;
 using System.Threading.Channels;
 using System.Xml;
+using CommunityServerAPI.ServerExtension;
+using CommunityServerAPI.ServerExtension.Model;
 
 class Program
 {

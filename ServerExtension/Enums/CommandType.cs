@@ -1,6 +1,6 @@
-namespace CommunityServerAPI.Common;
+namespace CommunityServerAPI.ServerExtension.Enums;
 
-public enum CommandType
+public enum CommandTypeEnum
 {
     Heal,
     Speed,

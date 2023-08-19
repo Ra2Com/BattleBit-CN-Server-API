@@ -1,17 +1,13 @@
-﻿using System.Net.Cache;
-using BattleBitAPI;
-using BattleBitAPI.Common;
+﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 using Newtonsoft.Json;
+using CommunityServerAPI.ServerExtension.Component;
+using CommunityServerAPI.ServerExtension.Model;
+using CommunityServerAPI.ServerExtension.Handler;
 
-namespace CommunityServerAPI.Component
+namespace CommunityServerAPI.ServerExtension
 {
     internal class MyGameServer : GameServer<MyPlayer>
     {
@@ -42,18 +38,7 @@ namespace CommunityServerAPI.Component
 
         }
 
-        // 构造聊天命令列表
-        public static List<ChatCommandList> ChatCommandLists = new()
-        {
-            new HelpCommand(),
-            new StatsCommand(),
-            new KillCommand(),
-            new StartCommand(),
-            new EndCommand(),
-        };
-    
-        // 构造命令处理 Controller
-        private CommandManager handler = new();
+       
 
         List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();
 
@@ -69,7 +54,7 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
+            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
 
 
         }
@@ -98,7 +83,7 @@ namespace CommunityServerAPI.Component
                 args.Killer.Heal(20);
                 args.Victim.markId = args.Killer.SteamID;
                 // 获取双方距离
-                float killDistance = Vector3.Distance(args.Victim.VictimPosition, args.Killer.KillerPosition);
+                float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition);
 
                 await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
@@ -156,9 +141,9 @@ namespace CommunityServerAPI.Component
                         player.positionBef.Remove(pb);
                         Console.Out.WriteLineAsync($"{pb.position}");
 
-                        if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
+                        if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
                         {
-                            if (AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != player.Team) == null)
+                            if (AllPlayers.FirstOrDefault(o => Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
                             {
                                 request.SpawnPosition = new Vector3 { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
                                 request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
@@ -182,7 +167,7 @@ namespace CommunityServerAPI.Component
                 // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
                 //request.SpawnPosition = new System.Numerics.Vector3();
                 //request.LookDirection = new System.Numerics.Vector3();
-                 Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             }
             catch (Exception ee)
             {
@@ -210,7 +195,7 @@ namespace CommunityServerAPI.Component
             }
             if (steamID == 765611980908022)
             {
-                args.Stats.Roles = Roles.VIP;
+                args.Stats.Roles = Roles.Vip;
             }
         }
 
@@ -222,38 +207,9 @@ namespace CommunityServerAPI.Component
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
 
-            var splits = msg.Split(" ");
-            var cmd = splits[0].ToLower();
-
-            // 管理员判断以及命令执行
-            // TODO: 管理员类命令执行结果需要打印 Log
-            if (player.stats.Roles == Roles.Admin)
-                player.IsAdmin = true;
-            if (player.stats.Roles == Roles.Moderator)
-                player.IsModerator = true;
-            if (player.stats.Roles == Roles.VIP)
-                player.IsVIP = true;
+           
+            await CommandComponent.Initialize().HandleCommand(player, channel, msg);
             
-            if (!player.IsAdmin || !player.IsModerator || !msg.StartsWith("/"))
-                return true;
-            
-            foreach(var ChatCommandList in ChatCommandLists)
-            {
-                if (ChatCommandList.commandMessage == cmd || ChatCommandList.Aliases.Contains(cmd))
-                {
-                    var command = ChatCommandList.ChatCommand(player, channel, msg);
-                    if (ChatCommandList.needAdmin && !player.IsAdmin)
-                        return true;
-                    if (ChatCommandList.needModerator && !player.IsModerator)
-                        return true;
-                    if (ChatCommandList.needVIP && !player.IsVIP)
-                        return true;
-                        
-                    await handler.handleCommand(player, command);
-                    return false;
-                }
-            }
-
             return true;
         }
 
