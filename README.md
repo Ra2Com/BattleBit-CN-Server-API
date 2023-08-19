@@ -26,7 +26,8 @@
 * [x] 服务器
 	* [x] `ServerRules`通知。
 	* [x] 地图模式：TDM
-	* [x] 地图池："Salhan（萨尔罕）", "Azagor（阿扎戈尔）", "Dusty Dew（尘露谷）", "Sandy Sunset（日落沙丘）", "Wine Paradise（酿酒圣地）", "Frugis（弗鲁吉斯城）", "Tensa Town（坦萨小镇）" 顺序轮换。
+	* [x] 地图池：`Salhan`（萨尔罕）, `Azagor`（阿扎戈尔）, `Dusty Dew`（尘露谷）, `Sandy Sunset`（日落沙丘）, `Wine Paradise`（酿酒圣地）, `Frugis`（弗鲁吉斯城）, `Tensa Town`（坦萨小镇）顺序轮换。
+		备选地图：`Basra`（巴士拉群岛），`Construction`（建筑工地），`District`（军事特区）,`Eduardovo`（爱德华多沃），`Valley`（风力峡谷），`River`（港口），`Lonovo`（新罗市），如果有其他备选地图欢迎加QQ群 887245025 提建议
 	* [x] 最少 8 v 8, 最大 32 v 32 (由于是游戏模式限制所以暂时还扩大不了)。
 	* [x] 服务器 Tickrate 刷新率 240hz。 
 * [x] 游戏设置
