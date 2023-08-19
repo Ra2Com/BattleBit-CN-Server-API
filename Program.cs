@@ -2,12 +2,13 @@
 using BattleBitAPI.Common;
 using BattleBitAPI.Server;
 using System.Linq.Expressions;
-using CommunityServerAPI.Component;
 using CommunityServerAPI.Tools;
 using System.Net;
 using System.Numerics;
 using System.Threading.Channels;
 using System.Xml;
+using CommunityServerAPI.ServerExtension;
+using CommunityServerAPI.ServerExtension.Model;
 
 class Program
 {
@@ -15,7 +16,7 @@ class Program
     {
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
-        // TODO: 端口配置读取 Json 解析类结果
+        // TODO: 端口配置读取 Json 解析类结果或配置
         int apiPort = 29294;
         SpawnManager.Init();
         listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
@@ -28,7 +29,13 @@ class Program
         Thread.Sleep(-1);
     }
 
-    // 新加了一个验证服务端 Token 的功能，防止端口被别人偷走
+    // DEVELOP TODO: 新加了一个验证服务端 Token 的功能，防止端口和服务器功能被别人偷走
+    // private static async Task<bool> OnValidateGameServerToken(IPAddress ip, ushort gameport, string sentToken)
+    // {
+    // await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ip}，{gameport} 验证Token: {sentToken}");
+    //     return sentToken == "RamboArenaExamp1e@888";
+    // }
+
     private static MyPlayer OnCreatingPlayerInstance()
     {
         return new MyPlayer();
