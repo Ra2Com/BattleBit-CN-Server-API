@@ -80,7 +80,7 @@ namespace CommunityServerAPI.ServerExtension
                 //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Victim.markId = args.Killer.SteamID;
                 // 获取双方距离
-                float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition).ToString("#0.0");
+                var killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition).ToString("#0.0");
 
                 await Console.Out.WriteLineAsync(
                     $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
