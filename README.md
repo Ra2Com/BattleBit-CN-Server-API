@@ -22,6 +22,8 @@
   * [ ] Web based API to communicate with Server API to read/write ranking data.
   * [ ] Other upcoming server mode should view below. ⬇️
 
+## 测试 QQ 群 887245025
+
 ## 随机复仇模式玩法测试功能 2023年8月19日：
 * [x] 服务器
 	* [x] `ServerRules`通知。
