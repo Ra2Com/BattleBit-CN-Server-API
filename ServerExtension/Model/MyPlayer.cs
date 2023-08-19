@@ -51,7 +51,9 @@ namespace CommunityServerAPI.ServerExtension.Model
                     $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
                     $"{RichText.LineBreak}" +
                     $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
-                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据。玩家 QQ群：887245025", 5f);
+                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
+                    $"{RichText.LineBreak}" +
+                    $"{RichText.LineBreak}玩家 QQ群：887245025", 5f);
 
             _ = Task.Run(async () =>
             {
@@ -74,7 +76,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                                 markId = 0;
                             else
                             {
-                                float dis = Vector3.Distance(markPlayer.Position, Position);
+                                var dis = Vector3.Distance(markPlayer.Position, Position).ToString("#0.0");
                                 // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
                                 Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
                                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");

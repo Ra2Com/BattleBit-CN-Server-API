@@ -80,15 +80,16 @@ namespace CommunityServerAPI.ServerExtension
                 //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Victim.markId = args.Killer.SteamID;
                 // 获取双方距离
-                float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition);
+                float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition).ToString("#0.0");
 
                 await Console.Out.WriteLineAsync(
                     $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                 // Announce the victim your killer. And the killer will be tracked.
                 MessageToPlayer(args.Victim,
-                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
-                // 等到消息发布之后再给凶手补充血量
+                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒" +
+                    $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
+                // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                 args.Killer.Heal(20);
             }
         }
@@ -214,8 +215,7 @@ namespace CommunityServerAPI.ServerExtension
             // TODO: 聊天记录建议单独保存
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
-
-
+            
             await CommandComponent.Initialize().HandleCommand(player, channel, msg);
 
             return true;
