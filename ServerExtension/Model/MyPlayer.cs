@@ -1,4 +1,5 @@
-﻿using BattleBitAPI;
+﻿using System.Runtime.Intrinsics.X86;
+using BattleBitAPI;
 using BattleBitAPI.Common;
 using CommunityServerAPI.Tools;
 using System;
@@ -8,11 +9,12 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommunityServerAPI.Component
+namespace CommunityServerAPI.ServerExtension.Model
 {
-    internal class MyPlayer : Player<MyPlayer>, IPlayerInfo
+    public class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        public long JoinTime { get; set; } = GetUtcTimeMs();
+        // DEVELOP TODO: 玩家离线、没有复活时要停止计时
+        public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
@@ -28,29 +30,6 @@ namespace CommunityServerAPI.Component
         {
             Console.Out.WriteLineAsync($"MyPlayer OnConnected");
 
-            // 娱乐服，咱不玩流血那套
-            Modifications.DisableBleeding();
-
-            // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 0.7f;
-
-            // 白天，用个鬼的夜视仪
-            Modifications.CanUseNightVision = false;
-
-            // 倒地后马上就死
-            Modifications.DownTimeGiveUpTime = 1f;
-
-            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
-            Modifications.AirStrafe = false;
-
-            // 死了马上就能活
-            Modifications.RespawnTime = 1f;
-
-            // 开启击杀通知
-            Modifications.KillFeed = true;
-
-            // 刚枪服务器，所有武器伤害值都降低到 75%
-            Modifications.GiveDamageMultiplier = 0.75f;
             // 特殊角色登录日志
             if (stats?.Roles == Roles.Admin)
             {
@@ -60,10 +39,11 @@ namespace CommunityServerAPI.Component
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
             }
+
             // 同时添加 Say 聊天消息
-            GameServer.SayToChat($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Console.Out.WriteLineAsync($"欢迎 {RichText.Purple}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{MyPlayer.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+            GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服");
+            Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长{TimeUtil.GetPhaseDifference(JoinTime)} , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
             _ = Task.Run(async () =>
             {
@@ -73,8 +53,8 @@ namespace CommunityServerAPI.Component
                     {
                         if (Position.X != 0 && Position.Y != 0)
                         {
-                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = GetUtcTimeMs() });
-                            Console.Out.WriteLineAsync($"{Name}加入坐标点:{Position}");
+                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });
+                            Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
                         }
 
                         // When a player joined the game, send a Message to announce its Community Server data.
@@ -86,9 +66,10 @@ namespace CommunityServerAPI.Component
                                 markId = 0;
                             else
                             {
-                                var dis = Vector3.Distance(markPlayer.Position, this.Position);
-                                this.Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {dis} 米");
-                                Console.WriteLine($"玩家{this.Name}：K/D: {K}/{D},仇人{markId}");
+                                float dis = Vector3.Distance(markPlayer.Position, Position);
+                                // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
+                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
+                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");
 
                             }
                         }
@@ -164,25 +145,33 @@ namespace CommunityServerAPI.Component
 
         public override async Task OnSpawned()
         {
-            
+            // 娱乐服，咱不玩流血那套
+            Modifications.DisableBleeding();
+
+            // 娱乐服，换弹速度降低到 70%
+            Modifications.ReloadSpeedMultiplier = 0.7f;
+
+            // 白天，用个鬼的夜视仪
+            Modifications.CanUseNightVision = false;
+
+            // 倒地后马上就死
+            Modifications.DownTimeGiveUpTime = 0.1f;
+
+            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+            Modifications.AirStrafe = false;
+
+            // 死了马上就能活
+            Modifications.RespawnTime = 1f;
+
+            // 开启击杀通知
+            Modifications.KillFeed = true;
+
+            // 刚枪服务器，所有武器伤害值都降低到 75%
+            Modifications.GiveDamageMultiplier = 0.75f;
         }
 
         // Time calculation stuff
-        public static string GetPhaseDifference(long oldtime)
-        {
-            var dif = GetUtcTimeMs() - oldtime;
-            return (dif / 1000 / 60).ToString() + "分钟";
-        }
-        public static long GetUtcTimeMs()
-        {
-            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
-        }
-
-        public static long GetUtcTime(DateTime dateTime)
-        {
-            return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
-        }
-
+       
     }
 
     public class PositionBef

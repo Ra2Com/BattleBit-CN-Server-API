@@ -1,5 +1,5 @@
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Battlebit Remastered Random Revenger Mode (WIP)
 * [x] Server API
   * [x] `ServerRules`
@@ -15,12 +15,12 @@
   * [x] Limited Day Map only.
   * [x] 32 vs 32.
 * [ ] TO-DO List
-  * [ ] Kill streak Player Statics Boost. On 3/5/10/15/20/30.
-  * [ ] Die streak Player Statics Boost. On 2/3/5/7/11/13.
-  * [ ] Down streak Player Statics Boost. On 3/5/7/11/13/17.
-  * [ ] Mongo DB connection and store player data.
-  * [ ] Web based API to communicate with Server API to read/write ranking data.
-  * [ ] Other upcoming server mode should view below. ⬇️
+	* [ ] Kill streak Player Statics Boost. On 3/5/10/15/20/30.
+	* [ ] Die streak Player Statics Boost. On 2/3/5/7/11/13.
+	* [ ] Down streak Player Statics Boost. On 3/5/7/11/13/17.
+	* [ ] Mongo DB connection and store player data.
+	* [ ] Web based API to communicate with Server API to read/write ranking data.
+	* [ ] Other upcoming server mode should view below. ⬇️
 
 ## 测试 QQ 群 887245025
 
@@ -58,8 +58,8 @@
 * [ ] 日志 Logs
 	* [x] 基础日志 Basic Logs
 	* [x] 日志文件 Log4j Service
-    * [ ] 日志入库 Log Control Panel
-	* [ ] 日志记录 —— RamboAdmin RCON 
+	* [ ] 日志入库 Log Control Panel
+	* [ ] 日志记录 —— RamboAdmin RCON
 	* [ ] 错误日志 —— Database
 	* [ ] 错误日志 —— RamboAdmin RCON
 * [ ]  RamboAdmin RCON 接入
@@ -73,24 +73,24 @@
 	* [ ] 手动操作
 	* [ ] 赛程预约
 * [ ] `RamboProtect` 反作弊接入
-  	* [ ] EAC 兼容性
-  	* [x] Ring 0 驱动签名
-  	* [x] API 上报
-  	* [ ] Steam64 ID 上报
-  	* [ ] 击杀视角回放
-  	* [x] DMA 异常设备检测
-  	* [ ] Lockstep 帧同步大数据
-  	* [x] 聚类算法特征码
-  	* [x] 异常封包特征码
-  	* [x] 异常行为特征算法
-  	* [x] 异常数据特征算法
-   	* [x] 样本搜集功能
+  * [ ] EAC 兼容性
+  * [x] Ring 0 驱动签名
+  * [x] API 上报
+  * [ ] Steam64 ID 上报
+  * [ ] 击杀视角回放
+  * [x] DMA 异常设备检测
+  * [ ] Lockstep 帧同步大数据
+  * [x] 聚类算法特征码
+  * [x] 异常封包特征码
+  * [x] 异常行为特征算法
+  * [x] 异常数据特征算法
+  * [x] 样本搜集功能
 * [ ] `RamboSkill` MMR 算法接入
-  	* [x] 单人 TDM 天梯匹配
-  	* [ ] 8 V 8 TDM 天梯匹配
-  	* [x] 5人 250 人吃鸡天梯
-  	* [ ] 250 人吃鸡休闲娱乐
-  	* [ ] Rating Pro 算法
+  * [x] 单人 TDM 天梯匹配
+  * [ ] 8 V 8 TDM 天梯匹配
+  * [x] 5人 250 人吃鸡天梯
+  * [ ] 250 人吃鸡休闲娱乐
+  * [ ] Rating Pro 算法
 * [x] 环境变量
 * [x] 聊天命令
 	* [x] 聊天指令 指令和回调
@@ -115,18 +115,18 @@
 	* [x] 使用聊天指令更新地图池
 * [x] Game Modes Control
 	* [x] 使用聊天指令更新游戏模式
-  * [ ] `禁用武器`
-	* [x] 使用聊天指令更新禁用武器
-	* [ ] 使用数据库储存禁用武器
-  * [ ] `禁用职业`
-	* [x] 使用聊天指令更新禁用职业
-	* [ ] 使用数据库储存禁用职业
-  * [ ] `禁用建造物`
-	* [x] 使用聊天指令更新禁用建造物
-	* [ ] 使用数据库储存禁用建造物
-  * [ ] `禁用士兵着装`
-	* [x] 使用聊天指令更新禁用士兵着装
-	* [ ] 使用数据库储存禁用士兵着装
+	* [ ] `禁用武器`
+		* [x] 使用聊天指令更新禁用武器
+		* [ ] 使用数据库储存禁用武器
+	* [ ] `禁用职业`
+		* [x] 使用聊天指令更新禁用职业
+		* [ ] 使用数据库储存禁用职业
+	* [ ] `禁用建造物`
+		* [x] 使用聊天指令更新禁用建造物
+		* [ ] 使用数据库储存禁用建造物
+	* [ ] `禁用士兵着装`
+		* [x] 使用聊天指令更新禁用士兵着装
+		* [ ] 使用数据库储存禁用士兵着装
 * [x] Match or Blitz
 	* [x] 小队击杀增减
 	* [x] 战队击杀增减

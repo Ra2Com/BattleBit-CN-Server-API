@@ -1,0 +1,23 @@
+{
+  "ListAdmin": [
+    {
+      "UID": "3524815",
+      "Nickname": "Maple Gao",
+      "Steam64": "76561198090800555"
+    }
+  ],
+  "ListModerator": [
+    {
+      "UID": "1",
+      "Nickname": "Moderator",
+      "Steam64": "1234567890"
+    }
+  ],
+  "ListVIP": [
+    {
+      "UID": "22",
+      "Nickname": "VIP",
+      "Steam64": "1234567890"
+    }
+  ]
+}

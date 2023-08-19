@@ -75,7 +75,7 @@ namespace BattleBitAPI.Server
                 // 发送新的设置
                 using (var pck = Common.Serialization.Stream.Get())
                 {
-                    pck.Write((byte)NetworkCommuncation.SetNewRoomSettings);
+                    pck.Write((byte)NetworkCommunication.SetNewRoomSettings);
                     this.mInternal._RoomSettings.Write(pck);
                     WriteToSocket(pck);
                 }
@@ -117,7 +117,7 @@ namespace BattleBitAPI.Server
                 //发送新的本局设置
                 using (var pck = Common.Serialization.Stream.Get())
                 {
-                    pck.Write((byte)NetworkCommuncation.SetNewRoundState);
+                    pck.Write((byte)NetworkCommunication.SetNewRoundState);
                     this.mInternal._RoundSettings.Write(pck);
                     WriteToSocket(pck);
                 }
@@ -145,7 +145,7 @@ namespace BattleBitAPI.Server
                 //Send new settings
                 using (var pck = Common.Serialization.Stream.Get())
                 {
-                    pck.Write((byte)NetworkCommuncation.SetPlayerModifications);
+                    pck.Write((byte)NetworkCommunication.SetPlayerModifications);
                     pck.Write(item.steamID);
                     item.modifications.Write(pck);
                     WriteToSocket(pck);
@@ -288,107 +288,132 @@ namespace BattleBitAPI.Server
         }
 
         // ---- 虚函数 ---- 
-        public virtual async Task OnConnected() // 服务器链接成功时
+        // 服务器链接成功时
+        public virtual async Task OnConnected() 
         {
 
         }
-        public virtual async Task OnTick() // 服务器通信时
+        // 服务器通信时
+        public virtual async Task OnTick() 
         {
 
         }
-        public virtual async Task OnReconnected() // 服务器重连时
+        // 服务器重连时
+        public virtual async Task OnReconnected() 
         {
 
         }
-        public virtual async Task OnDisconnected() // 服务器离线时
+        // 服务器离线时
+        public virtual async Task OnDisconnected() 
         {
 
         }
-        public virtual async Task OnPlayerConnected(TPlayer player) // 当某个玩家成功连接时
+        // 当某个玩家成功连接时
+        public virtual async Task OnPlayerConnected(TPlayer player) 
         {
 
         }
-        public virtual async Task OnPlayerDisconnected(TPlayer player) // 当某个玩家离线时
+        // 当某个玩家离线时
+        public virtual async Task OnPlayerDisconnected(TPlayer player) 
         {
 
         }
-        public virtual async Task<bool> OnPlayerTypedMessage(TPlayer player, ChatChannel channel, string msg) // 当某个玩家发送聊天信息时
+        // 当某个玩家发送聊天信息时
+        public virtual async Task<bool> OnPlayerTypedMessage(TPlayer player, ChatChannel channel, string msg) 
         {
             return true;
         }
-        public virtual async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args) // 当某个玩家加入服务器时
+        // 当某个玩家加入服务器时
+        public virtual async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args) 
         {
         }
-        public virtual async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
+        // 当储存玩家进度信息时
+        public virtual async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) 
         {
 
         }
-        public virtual async Task<bool> OnPlayerRequestingToChangeRole(TPlayer player, GameRole requestedRole) // 当玩家请求更换小队角色时
+        // 当玩家请求更换小队角色时
+        public virtual async Task<bool> OnPlayerRequestingToChangeRole(TPlayer player, GameRole requestedRole) 
         {
             return true;
         }
-        public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam) // 当玩家请求更换游戏内阵营（团队）时
+        // 当玩家请求更换游戏内阵营（团队）时
+        public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam) 
         {
             return true;
         }
-        public virtual async Task OnPlayerChangedRole(TPlayer player, GameRole role) // 当玩家成功更换小队角色时
+        // 当玩家成功更换小队角色时
+        public virtual async Task OnPlayerChangedRole(TPlayer player, GameRole role) 
         {
 
         }
-        public virtual async Task OnPlayerJoinedSquad(TPlayer player, Squads squad) // 当玩家成功加入小队时
+        // 当玩家成功加入小队时
+        public virtual async Task OnPlayerJoinedSquad(TPlayer player, Squads squad) 
         {
 
         }
-        public virtual async Task OnPlayerLeftSquad(TPlayer player, Squads squad) // 当玩家成功离开小队时
+        // 当玩家成功离开小队时
+        public virtual async Task OnPlayerLeftSquad(TPlayer player, Squads squad) 
         {
 
         }
-        public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team) // 当玩家成功更换游戏内阵营（团队）时
+        // 当玩家成功更换游戏内团队阵营时
+        public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team) 
         {
 
         }
-        public virtual async Task<OnPlayerSpawnArguments> OnPlayerSpawning(TPlayer player, OnPlayerSpawnArguments request)  // 当玩家正在重生时
+        // 当玩家正在重生时
+        public virtual async Task<OnPlayerSpawnArguments> OnPlayerSpawning(TPlayer player, OnPlayerSpawnArguments request)  
         {
             return request;
         }
-        public virtual async Task OnPlayerSpawned(TPlayer player) // 当玩家重生成功时
+        // 当玩家重生成功时
+        public virtual async Task OnPlayerSpawned(TPlayer player) 
         {
 
         }
-        public virtual async Task OnPlayerDied(TPlayer player) // 当玩家死亡时
+        // 当玩家死亡时
+        public virtual async Task OnPlayerDied(TPlayer player) 
         {
 
         }
-        public virtual async Task OnPlayerGivenUp(TPlayer player) // 当玩家放弃被救助时
+        // 当玩家放弃被救助时
+        public virtual async Task OnPlayerGivenUp(TPlayer player) 
         {
 
         }
-        public virtual async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<TPlayer> args) // 当玩家被其它玩家击倒时
+        // 当玩家被其它玩家击倒时
+        public virtual async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<TPlayer> args) 
         {
 
         }
-        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to) // 当玩家被其它玩家救助时
+        // 当玩家被其它玩家救助时
+        public virtual async Task OnAPlayerRevivedAnotherPlayer(TPlayer from, TPlayer to) 
         {
 
         }
-        public virtual async Task OnPlayerReported(TPlayer from, TPlayer to, ReportReason reason, string additional) // 当玩家被其他人举报时
+        // 当玩家被其他人举报时
+        public virtual async Task OnPlayerReported(TPlayer from, TPlayer to, ReportReason reason, string additional) 
         {
 
         }
-        public virtual async Task OnGameStateChanged(GameState oldState, GameState newState) // 当本局游戏状态发生变化时
+        // 当本局游戏状态发生变化时
+        public virtual async Task OnGameStateChanged(GameState oldState, GameState newState) 
         {
 
         }
-        public virtual async Task OnRoundStarted() // 当本局刚开始时
+        // 当本局刚开始时
+        public virtual async Task OnRoundStarted() 
         {
 
         }
-        public virtual async Task OnRoundEnded() // 当本局结束进入结算时
+        // 当本局结束进入结算时
+        public virtual async Task OnRoundEnded() 
         {
 
         }
 
-        // ---- 方法 ----
+        // ---- 功能方法 ----
         public void WriteToSocket(Common.Serialization.Stream pck)
         {
             lock (this.mInternal.mWriteStream)
@@ -406,7 +431,7 @@ namespace BattleBitAPI.Server
             lock (this.mInternal.mWriteStream)
             {
                 this.mInternal.mWriteStream.Write((uint)(1 + 2 + bytesLong));
-                this.mInternal.mWriteStream.Write((byte)NetworkCommuncation.ExecuteCommand);
+                this.mInternal.mWriteStream.Write((byte)NetworkCommunication.ExecuteCommand);
                 this.mInternal.mWriteStream.Write(cmd);
             }
         }
@@ -478,12 +503,24 @@ namespace BattleBitAPI.Server
         }
 
         // 通过 steamID 踢出某个玩家，需要填写原因
+        public void Ban(ulong steamID, string reason)
+        {
+            ExecuteCommand("ban " + steamID + " " + reason);
+        }
+
+        // 通过昵称封禁某个玩家，需要填写原因
+        public void Ban(Player<TPlayer> player, string reason)
+        {
+            Ban(player.SteamID, reason);
+        }
+
+        // 通过 steamID 踢出某个玩家，需要填写原因
         public void Kick(ulong steamID, string reason)
         {
             ExecuteCommand("kick " + steamID + " " + reason);
         }
 
-        // 通过 昵称 踢出某个玩家，需要填写原因
+        // 通过昵称踢出某个玩家，需要填写原因
         public void Kick(Player<TPlayer> player, string reason)
         {
             Kick(player.SteamID, reason);
@@ -495,7 +532,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("kill " + steamID);
         }
 
-        // 通过 昵称 杀死某个玩家
+        // 通过昵称杀死某个玩家
         public void Kill(Player<TPlayer> player)
         {
             Kill(player.SteamID);
@@ -507,7 +544,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("changeteam " + steamID);
         }
 
-        // 通过 昵称 给某个玩家换边
+        // 通过昵称给某个玩家换边
         public void ChangeTeam(Player<TPlayer> player)
         {
             ChangeTeam(player.SteamID);
@@ -522,7 +559,7 @@ namespace BattleBitAPI.Server
                 ExecuteCommand("changeteam " + steamID + " b");
         }
 
-        // 通过 昵称 给某个玩家指定团队
+        // 通过昵称给某个玩家指定团队
         public void ChangeTeam(Player<TPlayer> player, Team team)
         {
             ChangeTeam(player.SteamID, team);
@@ -534,7 +571,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("squadkick " + steamID);
         }
 
-        // 通过 昵称 给某个玩家踢出小队
+        // 通过昵称给某个玩家踢出小队
         public void KickFromSquad(Player<TPlayer> player)
         {
             KickFromSquad(player.SteamID);
@@ -546,7 +583,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("setsquad " + steamID + " " + ((int)targetSquad));
         }
 
-        // 通过 昵称 给某个玩家加入小队
+        // 通过昵称给某个玩家加入小队
         public void JoinSquad(Player<TPlayer> player, Squads targetSquad)
         {
             JoinSquad(player.SteamID, targetSquad);
@@ -558,7 +595,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("squaddisband " + steamID);
         }
 
-        // 通过 昵称 解散某个玩家所在小队
+        // 通过昵称解散某个玩家所在小队
         public void DisbandPlayerCurrentSquad(Player<TPlayer> player)
         {
             DisbandPlayerSquad(player.SteamID);
@@ -570,7 +607,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("squadpromote " + steamID);
         }
 
-        // 通过 昵称 晋升某个玩家为队长
+        // 通过昵称晋升某个玩家为队长
         public void PromoteSquadLeader(Player<TPlayer> player)
         {
             PromoteSquadLeader(player.SteamID);
@@ -582,7 +619,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("warn " + steamID + " " + msg);
         }
 
-        // 通过 昵称 给某个玩家发送警告 Warn 弹窗，需要手动关闭
+        // 通过昵称给某个玩家发送警告 Warn 弹窗，需要手动关闭
         public void WarnPlayer(Player<TPlayer> player, string msg)
         {
             WarnPlayer(player.SteamID, msg);
@@ -594,7 +631,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("msg " + steamID + " " + msg);
         }
 
-        // 通过 昵称 给某个玩家发送消息 Message 弹窗，需要手动关闭
+        // 通过昵称给某个玩家发送消息 Message 弹窗，需要手动关闭
         public void MessageToPlayer(Player<TPlayer> player, string msg)
         {
             MessageToPlayer(player.SteamID, msg);
@@ -606,7 +643,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("msgf " + steamID + " " + fadeOutTime + " " + msg);
         }
 
-        // 通过 昵称 给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
+        // 通过昵称给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
         public void MessageToPlayer(Player<TPlayer> player, string msg, float fadeOutTime)
         {
             MessageToPlayer(player.SteamID, msg, fadeOutTime);
@@ -618,7 +655,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("setrole " + steamID + " " + role);
         }
 
-        // 通过 昵称 给某个玩家指定服务器内角色
+        // 通过昵称给某个玩家指定服务器内角色
         public void SetRoleTo(Player<TPlayer> player, GameRole role)
         {
             SetRoleTo(player.SteamID, role);
@@ -641,7 +678,7 @@ namespace BattleBitAPI.Server
             // 回调
             using (var response = Common.Serialization.Stream.Get())
             {
-                response.Write((byte)NetworkCommuncation.SpawnPlayer);
+                response.Write((byte)NetworkCommunication.SpawnPlayer);
                 response.Write(steamID);
                 request.Write(response);
                 response.Write((ushort)0);
@@ -650,7 +687,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 让玩家重生
+        // 通过昵称让玩家重生
         public void SpawnPlayer(Player<TPlayer> player, PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)
         {
             SpawnPlayer(player.SteamID, loadout, wearings, position, lookDirection, stand, spawnProtection);
@@ -662,23 +699,27 @@ namespace BattleBitAPI.Server
             ExecuteCommand("sethp " + steamID + " " + newHP);
         }
 
-        // 通过 昵称 设置玩家生命
+        // 通过昵称设置玩家生命
         public void SetHP(Player<TPlayer> player, float newHP)
         {
             SetHP(player.SteamID, newHP);
         }
+        // 通过 Steam64 给予玩家伤害
         public void GiveDamage(ulong steamID, float damage)
         {
             ExecuteCommand("givedamage " + steamID + " " + damage);
         }
+        // 通过昵称给予玩家伤害
         public void GiveDamage(Player<TPlayer> player, float damage)
         {
             GiveDamage(player.SteamID, damage);
         }
+        // 通过 Steam64 给玩家回血
         public void Heal(ulong steamID, float heal)
         {
             ExecuteCommand("heal " + steamID + " " + heal);
         }
+        // 通过昵称给玩家回血
         public void Heal(Player<TPlayer> player, float heal)
         {
             Heal(player.SteamID, heal);
@@ -689,7 +730,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerWeapon);
+                packet.Write((byte)NetworkCommunication.SetPlayerWeapon);
                 packet.Write(steamID);
                 packet.Write((byte)0);//Primary
                 item.Write(packet);
@@ -700,7 +741,7 @@ namespace BattleBitAPI.Server
             }
         }
         
-        // 通过 昵称 设置主武器
+        // 通过昵称设置主武器
         public void SetPrimaryWeapon(Player<TPlayer> player, WeaponItem item, int extraMagazines, bool clear = false)
         {
             SetPrimaryWeapon(player.SteamID, item, extraMagazines, clear);
@@ -711,7 +752,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerWeapon);
+                packet.Write((byte)NetworkCommunication.SetPlayerWeapon);
                 packet.Write(steamID);
                 packet.Write((byte)1);//Secondary
                 item.Write(packet);
@@ -722,7 +763,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 设置手枪
+        // 通过昵称设置手枪
         public void SetSecondaryWeapon(Player<TPlayer> player, WeaponItem item, int extraMagazines, bool clear = false)
         {
             SetSecondaryWeapon(player.SteamID, item, extraMagazines, clear);
@@ -733,7 +774,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerGadget);
+                packet.Write((byte)NetworkCommunication.SetPlayerGadget);
                 packet.Write(steamID);
                 packet.Write((byte)2);//first aid
                 packet.Write(tool);
@@ -744,7 +785,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 设置绷带
+        // 通过昵称设置绷带
         public void SetFirstAid(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetFirstAid(player.SteamID, tool, extra, clear);
@@ -755,7 +796,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerGadget);
+                packet.Write((byte)NetworkCommunication.SetPlayerGadget);
                 packet.Write(steamID);
                 packet.Write((byte)3);//Tool A
                 packet.Write(tool);
@@ -766,7 +807,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 设置主道具
+        // 通过昵称设置主道具
         public void SetLightGadget(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetLightGadget(player.SteamID, tool, extra, clear);
@@ -777,7 +818,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerGadget);
+                packet.Write((byte)NetworkCommunication.SetPlayerGadget);
                 packet.Write(steamID);
                 packet.Write((byte)4);//Tool A
                 packet.Write(tool);
@@ -788,7 +829,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 设置次要道具
+        // 通过昵称设置次要道具
         public void SetHeavyGadget(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetHeavyGadget(player.SteamID, tool, extra, clear);
@@ -799,7 +840,7 @@ namespace BattleBitAPI.Server
         {
             using (var packet = Common.Serialization.Stream.Get())
             {
-                packet.Write((byte)NetworkCommuncation.SetPlayerGadget);
+                packet.Write((byte)NetworkCommunication.SetPlayerGadget);
                 packet.Write(steamID);
                 packet.Write((byte)5);//Tool A
                 packet.Write(tool);
@@ -810,7 +851,7 @@ namespace BattleBitAPI.Server
             }
         }
 
-        // 通过 昵称 设置投掷物
+        // 通过昵称设置投掷物
         public void SetThrowable(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetThrowable(player.SteamID, tool, extra, clear);
@@ -930,22 +971,22 @@ namespace BattleBitAPI.Server
                 this.mChangedModifications = new Queue<(ulong steamID, PlayerModifications<TPlayer>.mPlayerModifications)>(254);
             }
 
-            // ---- Players In Room ---- 
+            // ---- 服务器中的玩家字典 ---- 
             public Dictionary<ulong, Player<TPlayer>> Players = new Dictionary<ulong, Player<TPlayer>>(254);
 
-            // ---- Room Settings ---- 
+            // ---- 房间设置 ---- 
             public ServerSettings<TPlayer>.mRoomSettings _RoomSettings = new ServerSettings<TPlayer>.mRoomSettings();
             public bool IsDirtyRoomSettings;
 
-            // ---- Round Settings ---- 
+            // ---- 对局设置 ---- 
             public RoundSettings<TPlayer>.mRoundSettings _RoundSettings = new RoundSettings<TPlayer>.mRoundSettings();
             public bool IsDirtyRoundSettings;
 
-            // ---- Map Rotation ---- 
+            // ---- 地图池 ---- 
             public HashSet<string> _MapRotation = new HashSet<string>(8);
             public bool IsDirtyMapRotation = false;
 
-            // ---- Gamemode Rotation ---- 
+            // ---- 游戏模式池 ---- 
             public HashSet<string> _GamemodeRotation = new HashSet<string>(8);
             public bool IsDirtyGamemodeRotation = false;
 

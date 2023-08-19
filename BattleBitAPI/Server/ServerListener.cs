@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 using BattleBitAPI.Common;
 using BattleBitAPI.Common.Extentions;
 using BattleBitAPI.Networking;
-using CommunityServerAPI;
 using CommunityServerAPI.BattleBitAPI;
+using CommunityServerAPI.Tools;
 
 namespace BattleBitAPI.Server
 {
@@ -85,11 +85,11 @@ namespace BattleBitAPI.Server
         public Func<TGameServer> OnCreatingGameServerInstance { get; set; }
 
         /// <summary>
-        /// Fired when a new instance of player instance created.
+        /// Fired 新的玩家实例被建立时.
         /// </summary>
         /// 
         /// <remarks>
-        /// TPlayer: The player instance that was created<br/>
+        /// TPlayer: 新的玩家实例被建立<br/>
         /// </remarks>
         public Func<TPlayer> OnCreatingPlayerInstance { get; set; }
 
@@ -98,12 +98,12 @@ namespace BattleBitAPI.Server
         private Dictionary<ulong, (TGameServer server, GameServer<TPlayer>.Internal resources)> mActiveConnections;
         private mInstances<TPlayer, TGameServer> mInstanceDatabase;
 
-        // --- Construction --- 
+        // --- 构造 --- 
         public ServerListener()
         {
             this.mActiveConnections = new Dictionary<ulong, (TGameServer, GameServer<TPlayer>.Internal)>(16);
             this.mInstanceDatabase = new mInstances<TPlayer, TGameServer>();
-            Console.WriteLine("服务启动");
+            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 兰博电竞 BBR API 服务启动");
         }
 
         // --- Starting ---
@@ -135,7 +135,7 @@ namespace BattleBitAPI.Server
             if (this.IsDisposed)
                 throw new ObjectDisposedException(this.GetType().FullName);
             if (!IsListening)
-                throw new Exception("Already not running.");
+                throw new Exception($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已停止运行");
 
             try
             {
@@ -188,8 +188,8 @@ namespace BattleBitAPI.Server
                             readStream.Reset();
                             if (!await networkStream.TryRead(readStream, 1, source.Token))
                                 throw new Exception("Unable to read the package type");
-                            NetworkCommuncation type = (NetworkCommuncation)readStream.ReadInt8();
-                            if (type != NetworkCommuncation.Hail)
+                            NetworkCommunication type = (NetworkCommunication)readStream.ReadInt8();
+                            if (type != NetworkCommunication.Hail)
                                 throw new Exception("Incoming package wasn't hail.");
                         }
 
@@ -382,7 +382,7 @@ namespace BattleBitAPI.Server
                             {
                                 serverRulesText = string.Empty;
                             }
-                            //自定义serverRulesText 目前没用
+                            // TODO: 自定义 serverRulesText 目前没用
                             serverRulesText = RichText.Bold("Welcome");
                         }
 
@@ -591,7 +591,7 @@ namespace BattleBitAPI.Server
                         }
 
                         //Send accepted notification.
-                        networkStream.WriteByte((byte)NetworkCommuncation.Accepted);
+                        networkStream.WriteByte((byte)NetworkCommunication.Accepted);
                     }
                 }
             }
@@ -602,7 +602,7 @@ namespace BattleBitAPI.Server
                     var networkStream = client.GetStream();
                     using (var pck = BattleBitAPI.Common.Serialization.Stream.Get())
                     {
-                        pck.Write((byte)NetworkCommuncation.Denied);
+                        pck.Write((byte)NetworkCommunication.Denied);
                         pck.Write(e.Message);
 
                         //Send denied notification.
@@ -691,13 +691,13 @@ namespace BattleBitAPI.Server
                     this.mActiveConnections.Remove(server.ServerHash);
         }
 
-        // --- Logic Executing ---
+        // --- 执行逻辑 ---
         private async Task mExecutePackage(GameServer<TPlayer> server, GameServer<TPlayer>.Internal resources, Common.Serialization.Stream stream)
         {
-            var communcation = (NetworkCommuncation)stream.ReadInt8();
+            var communcation = (NetworkCommunication)stream.ReadInt8();
             switch (communcation)
             {
-                case NetworkCommuncation.PlayerConnected:
+                case NetworkCommunication.PlayerConnected:
                     {
                         if (stream.CanRead(8 + 2 + 4 + (1 + 1 + 1)))
                         {
@@ -729,7 +729,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.PlayerDisconnected:
+                case NetworkCommunication.PlayerDisconnected:
                     {
                         if (stream.CanRead(8))
                         {
@@ -756,7 +756,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerTypedMessage:
+                case NetworkCommunication.OnPlayerTypedMessage:
                     {
                         if (stream.CanRead(2 + 8 + 1 + 2))
                         {
@@ -775,7 +775,7 @@ namespace BattleBitAPI.Server
                                         //Respond back.
                                         using (var response = Common.Serialization.Stream.Get())
                                         {
-                                            response.Write((byte)NetworkCommuncation.RespondPlayerMessage);
+                                            response.Write((byte)NetworkCommunication.RespondPlayerMessage);
                                             response.Write(messageID);
                                             response.Write(pass);
                                             server.WriteToSocket(response);
@@ -789,7 +789,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnAPlayerDownedAnotherPlayer:
+                case NetworkCommunication.OnAPlayerDownedAnotherPlayer:
                     {
                         if (stream.CanRead(8 + 12 + 8 + 12 + 2 + 1 + 1))
                         {
@@ -828,7 +828,7 @@ namespace BattleBitAPI.Server
 
                         break;
                     }
-                case NetworkCommuncation.OnPlayerJoining:
+                case NetworkCommunication.OnPlayerJoining:
                     {
                         if (stream.CanRead(8 + 2))
                         {
@@ -849,7 +849,7 @@ namespace BattleBitAPI.Server
                                 await server.OnPlayerJoiningToServer(steamID, args);
                                 using (var response = Common.Serialization.Stream.Get())
                                 {
-                                    response.Write((byte)NetworkCommuncation.SendPlayerStats);
+                                    response.Write((byte)NetworkCommunication.SendPlayerStats);
                                     response.Write(steamID);
                                     args.Write(response);
                                     server.WriteToSocket(response);
@@ -860,7 +860,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.SavePlayerStats:
+                case NetworkCommunication.SavePlayerStats:
                     {
                         if (stream.CanRead(8 + 4))
                         {
@@ -872,7 +872,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerAskingToChangeRole:
+                case NetworkCommunication.OnPlayerAskingToChangeRole:
                     {
                         if (stream.CanRead(8 + 1))
                         {
@@ -893,7 +893,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerChangedRole:
+                case NetworkCommunication.OnPlayerChangedRole:
                     {
                         if (stream.CanRead(8 + 1))
                         {
@@ -911,7 +911,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerJoinedASquad:
+                case NetworkCommunication.OnPlayerJoinedASquad:
                     {
                         if (stream.CanRead(8 + 1))
                         {
@@ -929,7 +929,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerLeftSquad:
+                case NetworkCommunication.OnPlayerLeftSquad:
                     {
                         if (stream.CanRead(8))
                         {
@@ -956,7 +956,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerChangedTeam:
+                case NetworkCommunication.OnPlayerChangedTeam:
                     {
                         if (stream.CanRead(8 + 1))
                         {
@@ -975,7 +975,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerRequestingToSpawn:
+                case NetworkCommunication.OnPlayerRequestingToSpawn:
                     {
                         if (stream.CanRead(2))
                         {
@@ -994,7 +994,7 @@ namespace BattleBitAPI.Server
                                     //Respond back.
                                     using (var response = Common.Serialization.Stream.Get())
                                     {
-                                        response.Write((byte)NetworkCommuncation.SpawnPlayer);
+                                        response.Write((byte)NetworkCommunication.SpawnPlayer);
                                         response.Write(steamID);
                                         request.Write(response);
                                         response.Write(vehicleID);
@@ -1007,7 +1007,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerReport:
+                case NetworkCommunication.OnPlayerReport:
                     {
                         if (stream.CanRead(8 + 8 + 1 + 2))
                         {
@@ -1026,7 +1026,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerSpawn:
+                case NetworkCommunication.OnPlayerSpawn:
                     {
                         if (stream.CanRead(8 + 2))
                         {
@@ -1051,7 +1051,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerDie:
+                case NetworkCommunication.OnPlayerDie:
                     {
                         if (stream.CanRead(8))
                         {
@@ -1067,7 +1067,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.NotifyNewMapRotation:
+                case NetworkCommunication.NotifyNewMapRotation:
                     {
                         if (stream.CanRead(4))
                         {
@@ -1085,7 +1085,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.NotifyNewGamemodeRotation:
+                case NetworkCommunication.NotifyNewGamemodeRotation:
                     {
                         if (stream.CanRead(4))
                         {
@@ -1103,7 +1103,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.NotifyNewRoundState:
+                case NetworkCommunication.NotifyNewRoundState:
                     {
                         if (stream.CanRead(RoundSettings<TPlayer>.mRoundSettings.Size))
                         {
@@ -1123,7 +1123,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerAskingToChangeTeam:
+                case NetworkCommunication.OnPlayerAskingToChangeTeam:
                     {
                         if (stream.CanRead(8 + 1))
                         {
@@ -1144,7 +1144,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.GameTick:
+                case NetworkCommunication.GameTick:
                     {
                         if (stream.CanRead(4 + 4 + 4))
                         {
@@ -1192,7 +1192,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerGivenUp:
+                case NetworkCommunication.OnPlayerGivenUp:
                     {
                         if (stream.CanRead(8))
                         {
@@ -1205,7 +1205,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnPlayerRevivedAnother:
+                case NetworkCommunication.OnPlayerRevivedAnother:
                     {
                         if (stream.CanRead(8 + 8))
                         {

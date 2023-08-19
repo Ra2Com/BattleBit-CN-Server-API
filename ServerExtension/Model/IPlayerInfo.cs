@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommunityServerAPI.Component
+namespace CommunityServerAPI.ServerExtension.Model
 {
     /// <summary>
     /// Player Infomation Custom Component.

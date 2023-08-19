@@ -1,32 +1,32 @@
-
 [
   {
-    "_comment":"This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
+    "_comment": "This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
     "WeaponName": "AK74",
     "WeaponType": "Rifle",
     "Attachments": [
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "PK-AS",
           "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Kobra",
+          "PK-AS",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "OKP7",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
+          "M_125",
           "Acog",
+          "TRI4X32",
           "Echo",
-          "BurrisAR332",
+          "Prisma",
           "Slip",
           "1P78",
-          "M_125",
-          "TRI4X32",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -34,7 +34,7 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
         ]
@@ -42,8 +42,8 @@
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -53,56 +53,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A",
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Short-A", "Quick-A", "Extended-A"]
       }
     ]
   },
@@ -113,23 +109,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -137,7 +133,7 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
         ]
@@ -145,8 +141,8 @@
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -156,55 +152,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       }
     ]
   },
@@ -215,25 +208,25 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "PK-AS",
-          "Aim_Comp",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "1P78",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "1P78",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -241,9 +234,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -251,54 +253,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
-          "Muzzle_Break"
+          "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A",
-          "Extended-B"
-        ]
+        "Attachments": ["Quick-A", "Extended-B", "Extended-A"]
       }
     ]
   },
@@ -309,23 +309,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -333,9 +333,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -343,55 +352,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       }
     ]
   },
@@ -402,23 +408,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -426,9 +432,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -436,56 +451,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A",
-          "Extended-B"
-        ]
+        "Attachments": ["Quick-A", "Extended-A", "Extended-B"]
       }
     ]
   },
@@ -496,23 +507,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -520,9 +531,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -530,55 +550,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       }
     ]
   },
@@ -589,22 +606,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
+          "FYou_Sight",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -612,9 +630,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -622,53 +649,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
-          "Suppressor_Short"
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       }
     ]
   },
@@ -679,23 +705,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -703,9 +729,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -713,56 +748,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A",
-          "Quick-B"
-        ]
+        "Attachments": ["Quick-A", "Extended-A", "Quick-B"]
       }
     ]
   },
@@ -773,22 +804,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -796,9 +828,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -806,55 +847,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
-          "Suppressor_Short"
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A",
-          "Drum-A"
-        ]
+        "Attachments": ["Extended-A", "Quick-A", "Drum-A"]
       }
     ]
   },
@@ -865,23 +903,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -889,9 +927,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -899,54 +946,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A"
-        ]
+        "Attachments": ["Quick-A"]
       }
     ]
   },
@@ -957,23 +1002,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -981,9 +1026,18 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
@@ -991,56 +1045,52 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A",
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Short-A", "Quick-A", "Extended-A"]
       }
     ]
   },
@@ -1051,23 +1101,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
-          "Red_Dot",
           "Reflex",
-          "Aim_Comp",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
+          "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
           "FYou_Sight",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
           "M_125",
+          "Acog",
           "TRI4X32",
+          "Echo",
+          "Prisma",
+          "Slip",
+          "BurrisAR332",
           "Flir"
         ]
       },
@@ -1075,7 +1125,7 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
         ]
@@ -1083,8 +1133,8 @@
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -1094,45 +1144,45 @@
         "Attachments": [
           "Stubby_Grip",
           "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
           "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_TacticalGrip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Heavy",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
           "Compensator",
-          "Long_Barrel",
-          "NT-4_556",
           "Flash_Hider",
           "SDN-6_762",
           "Muzzle_Break",
+          "DGN-308",
+          "Tactical",
+          "NT-4_556",
+          "VAMB-762",
+          "Long_Barrel",
+          "Heavy",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
@@ -1150,22 +1200,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
           "FYou_Sight",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1173,64 +1224,69 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Stubby_Grip",
-          "B-25URK",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
+          "VTAC_UVG_TacticalGrip",
           "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
+          "B-25URK",
+          "Angled_Grip",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "Stabil_Grip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
-          "Compensator",
-          "NT-4_556",
-          "Flash_Hider",
-          "SDN-6_762",
           "Muzzle_Break",
+          "Compensator",
+          "Flash_Hider",
+          "DGN-308",
+          "Tactical",
+          "VAMB-762",
+          "NT-4_556",
+          "SDN-6_762",
           "Suppressor_Short",
           "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A",
-          "Extended-B"
-        ]
+        "Attachments": ["Quick-A"]
       }
     ]
   },
@@ -1241,22 +1297,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
           "FYou_Sight",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1264,61 +1321,69 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Stubby_Grip",
-          "B-25URK",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
+          "VTAC_UVG_TacticalGrip",
           "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
+          "B-25URK",
+          "Angled_Grip",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "Stabil_Grip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
-          "Compensator",
-          "NT-4_556",
-          "Flash_Hider",
-          "SDN-6_762",
           "Muzzle_Break",
-          "Suppressor_Short"
+          "Compensator",
+          "Flash_Hider",
+          "DGN-308",
+          "Tactical",
+          "VAMB-762",
+          "NT-4_556",
+          "SDN-6_762",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A"
-        ]
+        "Attachments": ["Quick-A"]
       }
     ]
   },
@@ -1329,21 +1394,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
+          "FYou_Sight",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1351,27 +1418,34 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
-        ]
+        "Attachments": ["Extended-A"]
       }
     ]
   },
@@ -1382,109 +1456,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
-          "Prisma",
-          "Acog",
-          "Echo",
-          "BurrisAR332",
-          "Slip",
-          "M_125",
-          "TRI4X32",
-          "Flir"
-        ]
-      },
-      {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "Holo_Dot",
-          "FYou_Canted"
-        ]
-      },
-      {
-        "AttachmentType": "UnderRail",
-        "Attachments": [
-          "Stubby_Grip",
-          "B-25URK",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
-          "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
-          "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
-          "BCM-Gun_Fighter",
-          "Stabil_Grip"
-        ]
-      },
-      {
-        "AttachmentType": "SideRail",
-        "Attachments": [
-          "Flashlight",
-          "Searchlight",
-          "RedLaser",
-          "Rangefinder",
-          "GreenLaser",
-          "Tactical_Flashlight"
-        ]
-      },
-      {
-        "AttachmentType": "Barrel",
-        "Attachments": [
-          "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
-          "Compensator",
-          "NT-4_556",
-          "Flash_Hider",
-          "SDN-6_762",
-          "Muzzle_Break",
-          "Suppressor_Short"
-        ]
-      },
-      {
-        "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A"
-        ]
-      }
-    ]
-  },
-  {
-    "WeaponName": "PP2000",
-    "WeaponType": "SubmachineGun_SMG",
-    "Attachments": [
-      {
-        "AttachmentType": "MainSight",
-        "Attachments": [
+          "Holo_PK-120",
           "Kobra",
-          "Red_Dot",
+          "Strikefire",
+          "Aim_Comp",
           "FYou_Sight",
-          "Reflex",
-          "Holo_PK-120",
-          "Holographic",
-          "Razor",
-          "HS401G5",
-          "Strikefire",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1492,54 +1480,71 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Stubby_Grip",
-          "B-25URK",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
+          "VTAC_UVG_TacticalGrip",
           "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
+          "B-25URK",
+          "Angled_Grip",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "Stabil_Grip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Muzzle_Break",
+          "Compensator",
+          "Flash_Hider",
+          "DGN-308",
+          "Tactical",
+          "VAMB-762",
+          "NT-4_556",
+          "SDN-6_762",
+          "Heavy",
+          "Long_Barrel",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A"]
       }
     ]
   },
@@ -1550,22 +1555,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
           "FYou_Sight",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1573,63 +1579,70 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Stubby_Grip",
-          "B-25URK",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
+          "VTAC_UVG_TacticalGrip",
           "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
+          "B-25URK",
+          "Angled_Grip",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "Stabil_Grip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
-          "Compensator",
-          "NT-4_556",
-          "Flash_Hider",
-          "SDN-6_762",
           "Muzzle_Break",
-          "Osprey_9",
-          "Suppressor_Short"
+          "Compensator",
+          "Flash_Hider",
+          "DGN-308",
+          "Tactical",
+          "VAMB-762",
+          "NT-4_556",
+          "SDN-6_762",
+          "Suppressor_Short",
+          "Suppressor_Long",
+          "Osprey_9"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Drum-A"
-        ]
+        "Attachments": ["Quick-A", "Drum-A"]
       }
     ]
   },
@@ -1640,21 +1653,23 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
-          "Holo_PK-120",
-          "Holographic",
           "Razor",
+          "Holographic",
           "HS401G5",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
+          "FYou_Sight",
+          "TRI4X32",
+          "M_125",
           "Prisma",
           "Acog",
           "Echo",
           "BurrisAR332",
           "Slip",
-          "M_125",
-          "TRI4X32",
           "Flir"
         ]
       },
@@ -1662,62 +1677,69 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
+          "Canted_Red_Dot",
           "Holo_Dot",
           "FYou_Canted"
+        ]
+      },
+      {
+        "AttachmentType": "TopSight",
+        "Attachments": [
+          "Red_Dot_Top",
+          "Delta_Sight_Top",
+          "C_Red_Dot_Top",
+          "FYou_Top"
         ]
       },
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Stubby_Grip",
-          "B-25URK",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
-          "FAB-DTFG",
-          "Angled_Grip",
-          "Vertical_Grip",
+          "VTAC_UVG_TacticalGrip",
           "SE-5_Grip",
-          "VTAC_Grip",
-          "Magpul_Angled",
+          "FAB-DTFG",
+          "B-25URK",
+          "Angled_Grip",
           "Shift_Short_Angled_Grip",
-          "Vertical_Skeleton_Grip",
+          "Stabil_Grip",
           "BCM-Gun_Fighter",
-          "Stabil_Grip"
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Searchlight",
+          "Tactical_Flashlight",
           "RedLaser",
-          "Rangefinder",
           "GreenLaser",
-          "Tactical_Flashlight"
+          "Rangefinder",
+          "Searchlight"
         ]
       },
       {
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "VAMB-762",
-          "Tactical",
-          "DGN-308",
-          "Compensator",
-          "NT-4_556",
-          "Flash_Hider",
-          "SDN-6_762",
           "Muzzle_Break",
-          "Suppressor_Short"
+          "Compensator",
+          "Flash_Hider",
+          "DGN-308",
+          "Tactical",
+          "VAMB-762",
+          "NT-4_556",
+          "SDN-6_762",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Short-A"
-        ]
+        "Attachments": ["Quick-A", "Short-A"]
       }
     ]
   },
@@ -1726,60 +1748,48 @@
     "WeaponType": "PersonalDefenseWeapon_PDW",
     "Attachments": [
       {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
-        ]
-      },
-      {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
           "Razor",
-          "FYou_Sight",
-          "Holo_PK-120",
+          "Holographic",
           "HS401G5",
-          "Acog",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
+          "FYou_Sight",
+          "TRI4X32",
           "M_125",
           "Prisma",
-          "Slip",
-          "Flir",
+          "Acog",
           "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Slip",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -1787,20 +1797,20 @@
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
-          "Angled_Grip",
-          "Vertical_Grip",
           "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
-          "Shift_Short_Angled_Grip",
-          "SE-5_Grip",
           "RK-6_Foregrip",
-          "HeraCQR_Front",
+          "VTAC_UVG_TacticalGrip",
+          "SE-5_Grip",
+          "FAB-DTFG",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "Angled_Grip",
+          "Shift_Short_Angled_Grip",
+          "Stabil_Grip",
+          "BCM-Gun_Fighter",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "HeraCQR_Front",
+          "Magpul_Angled"
         ]
       }
     ]
@@ -1813,68 +1823,56 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
           "Muzzle_Break",
-          "Tactical",
+          "Compensator",
           "Flash_Hider",
           "DGN-308",
+          "Tactical",
           "VAMB-762",
-          "SDN-6_762",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
-        ]
-      },
-      {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "SDN-6_762",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
           "Razor",
-          "FYou_Sight",
-          "Holo_PK-120",
+          "Holographic",
           "HS401G5",
-          "Acog",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
+          "TRI4X32",
           "M_125",
           "Prisma",
-          "Slip",
-          "Flir",
+          "Acog",
           "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Slip",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -1889,74 +1887,60 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
           "Muzzle_Break",
-          "Tactical",
+          "Compensator",
           "Flash_Hider",
           "DGN-308",
+          "Tactical",
           "VAMB-762",
-          "SDN-6_762",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
-        ]
-      },
-      {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "SDN-6_762",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A"
-        ]
+        "Attachments": ["Quick-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
           "Red_Dot",
           "Reflex",
-          "Strikefire",
           "Razor",
-          "FYou_Sight",
-          "Holo_PK-120",
+          "Holographic",
           "HS401G5",
-          "Acog",
+          "Holo_PK-120",
+          "Kobra",
+          "Strikefire",
+          "Aim_Comp",
+          "TRI4X32",
           "M_125",
           "Prisma",
-          "Slip",
-          "Flir",
+          "Acog",
           "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Slip",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -1968,60 +1952,48 @@
     "WeaponType": "Carbine",
     "Attachments": [
       {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
-        ]
-      },
-      {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2029,20 +2001,20 @@
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
-          "Angled_Grip",
-          "Vertical_Grip",
           "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
-          "Shift_Short_Angled_Grip",
-          "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_TacticalGrip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       }
     ]
@@ -2052,53 +2024,44 @@
     "WeaponType": "Carbine",
     "Attachments": [
       {
-        "AttachmentType": "CantedSight",
-        "Attachments": [
-          "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
-        ]
-      },
-      {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2106,20 +2069,20 @@
       {
         "AttachmentType": "UnderRail",
         "Attachments": [
-          "Angled_Grip",
-          "Vertical_Grip",
           "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
-          "Shift_Short_Angled_Grip",
-          "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "Angled_Grip",
+          "FAB-DTFG",
+          "Shift_Short_Angled_Grip",
+          "VTAC_UVG_TacticalGrip",
+          "BCM-Gun_Fighter",
+          "SE-5_Grip",
+          "Stabil_Grip",
+          "HeraCQR_Front",
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "Magpul_Angled"
         ]
       }
     ]
@@ -2150,57 +2113,54 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Drum-A"
-        ]
+        "Attachments": ["Quick-A", "Drum-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2252,56 +2212,54 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Drum-A"
-        ]
+        "Attachments": ["Drum-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2353,50 +2311,50 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2448,42 +2406,42 @@
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "Aim_Comp",
-          "Holographic",
-          "Kobra",
-          "Red_Dot",
           "Reflex",
+          "Red_Dot",
+          "Kobra",
           "Strikefire",
           "Razor",
-          "FYou_Sight",
+          "Holographic",
           "Holo_PK-120",
+          "Aim_Comp",
           "HS401G5",
-          "Acog",
+          "FYou_Sight",
           "M_125",
+          "Acog",
+          "TRI4X32",
+          "Echo",
           "Prisma",
           "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
-          "BurrisAR332"
+          "BurrisAR332",
+          "Flir"
         ]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2518,56 +2476,51 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Muzzle_Break",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
+          "Muzzle_Break",
           "VAMB-762",
+          "Tactical",
           "SDN-6_762",
+          "Heavy",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Long_Barrel",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A",
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Short-A", "Quick-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Holographic",
           "Kobra",
           "Red_Dot",
           "Reflex",
+          "Holo_PK-120",
+          "Holographic",
           "Razor",
           "FYou_Sight",
-          "Holo_PK-120",
           "Acog",
-          "M_125",
-          "Prisma",
-          "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "M_125",
+          "Echo",
+          "Slip",
+          "Prisma",
+          "TRI4X32",
+          "Flir",
           "6x_Scope"
         ]
       },
@@ -2575,18 +2528,18 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2595,20 +2548,20 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
           "Shift_Short_Angled_Grip",
+          "Stubby_Grip",
+          "Magpul_Angled",
+          "VTAC_UVG_Tactical_Grip",
           "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Stabil_Grip",
+          "Bipod",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -2621,55 +2574,51 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Muzzle_Break",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
+          "Muzzle_Break",
           "VAMB-762",
+          "Tactical",
           "SDN-6_762",
+          "Heavy",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Long_Barrel",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Short-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Holographic",
           "Kobra",
           "Red_Dot",
           "Reflex",
+          "Holo_PK-120",
+          "Holographic",
           "Razor",
           "FYou_Sight",
-          "Holo_PK-120",
           "Acog",
-          "M_125",
-          "Prisma",
-          "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "M_125",
+          "Echo",
+          "Slip",
+          "Prisma",
+          "TRI4X32",
+          "Flir",
           "6x_Scope"
         ]
       },
@@ -2677,18 +2626,18 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2697,20 +2646,20 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
           "Shift_Short_Angled_Grip",
+          "Stubby_Grip",
+          "Magpul_Angled",
+          "VTAC_UVG_Tactical_Grip",
           "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Stabil_Grip",
+          "Bipod",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -2723,55 +2672,51 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Muzzle_Break",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
+          "Muzzle_Break",
           "VAMB-762",
+          "Tactical",
           "SDN-6_762",
+          "Heavy",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Long_Barrel",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Quick-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Quick-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Holographic",
           "Kobra",
           "Red_Dot",
           "Reflex",
+          "Holo_PK-120",
+          "Holographic",
           "Razor",
           "FYou_Sight",
-          "Holo_PK-120",
           "Acog",
-          "M_125",
-          "Prisma",
-          "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "M_125",
+          "Echo",
+          "Slip",
+          "Prisma",
+          "TRI4X32",
+          "Flir",
           "6x_Scope"
         ]
       },
@@ -2779,18 +2724,18 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2799,20 +2744,20 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
           "Shift_Short_Angled_Grip",
+          "Stubby_Grip",
+          "Magpul_Angled",
+          "VTAC_UVG_Tactical_Grip",
           "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Stabil_Grip",
+          "Bipod",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -2825,48 +2770,47 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Muzzle_Break",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
+          "Muzzle_Break",
           "VAMB-762",
+          "Tactical",
           "SDN-6_762",
+          "Heavy",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Long_Barrel",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Holographic",
           "Kobra",
           "Red_Dot",
           "Reflex",
+          "Holo_PK-120",
+          "Holographic",
           "Razor",
           "FYou_Sight",
-          "Holo_PK-120",
           "Acog",
-          "M_125",
-          "Prisma",
-          "Slip",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "M_125",
+          "Echo",
+          "Slip",
+          "Prisma",
+          "TRI4X32",
+          "Flir",
           "6x_Scope"
         ]
       },
@@ -2874,18 +2818,18 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
-          "Delta_Sight_Top",
           "Red_Dot_Top",
+          "Delta_Sight_Top",
           "C_Red_Dot_Top",
           "FYou_Top"
         ]
@@ -2894,20 +2838,20 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Stabil_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
-          "Magpul_Angled",
-          "BCM-Gun_Fighter",
           "Shift_Short_Angled_Grip",
+          "Stubby_Grip",
+          "Magpul_Angled",
+          "VTAC_UVG_Tactical_Grip",
           "SE-5_Grip",
-          "RK-6_Foregrip",
-          "HeraCQR_Front",
+          "FAB-DTFG",
+          "Stabil_Grip",
+          "Bipod",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "RK-6_Foregrip",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "BCM-Gun_Fighter",
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -2920,18 +2864,16 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -2948,28 +2890,25 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
-        ]
+        "Attachments": ["Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -2981,19 +2920,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3001,16 +2940,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3023,18 +2962,18 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -3051,22 +2990,21 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -3078,19 +3016,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3098,16 +3036,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3120,18 +3058,18 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -3148,29 +3086,25 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A",
-          "Extended-A"
-        ]
+        "Attachments": ["Short-A", "Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -3182,19 +3116,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3202,16 +3136,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3224,18 +3158,18 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -3252,28 +3186,21 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
-        ]
-      },
-      {
-        "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -3285,19 +3212,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3305,16 +3232,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3327,18 +3254,18 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -3355,28 +3282,25 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Short-A"
-        ]
+        "Attachments": ["Short-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -3388,19 +3312,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3408,16 +3332,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3430,18 +3354,18 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Basic",
-          "Compensator",
-          "Heavy",
-          "Long_Barrel",
-          "Ranger",
-          "Tactical",
-          "Flash_Hider",
           "DGN-308",
+          "Compensator",
+          "Flash_Hider",
           "VAMB-762",
           "SDN-6_762",
+          "Ranger",
           "NT-4_556",
-          "Suppressor_Long",
-          "Suppressor_Short"
+          "Tactical",
+          "Long_Barrel",
+          "Heavy",
+          "Suppressor_Short",
+          "Suppressor_Long"
         ]
       },
       {
@@ -3458,28 +3382,25 @@
         "AttachmentType": "CantedSight",
         "Attachments": [
           "Ironsight",
-          "Red_Dot",
-          "FYou_Canted",
-          "Holo_Dot"
+          "Canted_Red_Dot",
+          "Holo_Dot",
+          "FYou_Canted"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
-        ]
+        "Attachments": ["Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
         "Attachments": [
-          "None",
-          "Acog",
-          "M_125",
-          "Prisma",
-          "Flir",
-          "Echo",
-          "TRI4X32",
           "BurrisAR332",
+          "Prisma",
+          "M_125",
+          "Acog",
+          "Flir",
+          "TRI4X32",
+          "Echo",
           "6x_Scope",
           "8x_Scope",
           "15x_Scope",
@@ -3491,19 +3412,19 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "Rangefinder",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser",
+          "Rangefinder",
           "Searchlight"
         ]
       },
       {
         "AttachmentType": "TopSight",
         "Attachments": [
+          "Red_Dot_Top",
           "Delta_Sight_Top",
-          "Red_Dot",
-          "C_Red_Dot",
+          "C_Red_Dot_Top",
           "FYou_Top"
         ]
       },
@@ -3511,16 +3432,16 @@
         "AttachmentType": "UnderRail",
         "Attachments": [
           "Angled_Grip",
-          "Bipod",
-          "Vertical_Grip",
-          "Stubby_Grip",
-          "Vertical_Skeleton_Grip",
-          "FAB-DTFG",
           "Magpul_Angled",
+          "Stubby_Grip",
+          "FAB-DTFG",
+          "Bipod",
           "Shift_Short_Angled_Grip",
-          "HeraCQR_Front",
+          "Vertical_Grip",
+          "Vertical_Skeleton_Grip",
+          "VTAC_UVG_Tactical_Grip",
           "B-25URK",
-          "VTAC_UVG_Tactical_Grip"
+          "HeraCQR_Front"
         ]
       }
     ]
@@ -3533,27 +3454,24 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Compensator",
-          "Tactical",
           "Flash_Hider",
           "DGN-308",
-          "Suppressor_Long",
+          "Tactical",
           "Suppressor_Short",
+          "Suppressor_Long",
           "Osprey_9"
         ]
       },
       {
         "AttachmentType": "MainSight",
-        "Attachments": [
-          "Pistol_Red_Dot",
-          "Pistol_Delta_Sight"
-        ]
+        "Attachments": ["Pistol_Red_Dot", "Pistol_Delta_Sight"]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3567,27 +3485,24 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Compensator",
-          "Tactical",
           "Flash_Hider",
           "DGN-308",
-          "Suppressor_Long",
+          "Tactical",
           "Suppressor_Short",
+          "Suppressor_Long",
           "Osprey_9"
         ]
       },
       {
         "AttachmentType": "MainSight",
-        "Attachments": [
-          "Pistol_Red_Dot",
-          "Pistol_Delta_Sight"
-        ]
+        "Attachments": ["Pistol_Red_Dot", "Pistol_Delta_Sight"]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3601,27 +3516,24 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Compensator",
-          "Tactical",
           "Flash_Hider",
           "DGN-308",
-          "Suppressor_Long",
+          "Tactical",
           "Suppressor_Short",
+          "Suppressor_Long",
           "Osprey_9"
         ]
       },
       {
         "AttachmentType": "MainSight",
-        "Attachments": [
-          "Pistol_Red_Dot",
-          "Pistol_Delta_Sight"
-        ]
+        "Attachments": ["Pistol_Red_Dot", "Pistol_Delta_Sight"]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3635,33 +3547,28 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Compensator",
-          "Tactical",
           "Flash_Hider",
           "DGN-308",
-          "Suppressor_Long",
+          "Tactical",
           "Suppressor_Short",
+          "Suppressor_Long",
           "Osprey_9"
         ]
       },
       {
         "AttachmentType": "Magazine",
-        "Attachments": [
-          "Extended-A"
-        ]
+        "Attachments": ["Extended-A"]
       },
       {
         "AttachmentType": "MainSight",
-        "Attachments": [
-          "Pistol_Red_Dot",
-          "Pistol_Delta_Sight"
-        ]
+        "Attachments": ["Pistol_Red_Dot", "Pistol_Delta_Sight"]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3673,9 +3580,7 @@
     "Attachments": [
       {
         "AttachmentType": "Barrel",
-        "Attachments": [
-          "Suppressor_Long"
-        ]
+        "Attachments": ["Suppressor_Long"]
       },
       {
         "AttachmentType": "MainSight",
@@ -3689,8 +3594,8 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3704,26 +3609,23 @@
         "AttachmentType": "Barrel",
         "Attachments": [
           "Compensator",
-          "Tactical",
           "Flash_Hider",
           "DGN-308",
+          "Tactical",
           "Suppressor_Long",
           "Suppressor_Short"
         ]
       },
       {
         "AttachmentType": "MainSight",
-        "Attachments": [
-          "Pistol_Red_Dot",
-          "Pistol_Delta_Sight"
-        ]
+        "Attachments": ["Pistol_Red_Dot", "Pistol_Delta_Sight"]
       },
       {
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }
@@ -3735,9 +3637,7 @@
     "Attachments": [
       {
         "AttachmentType": "Barrel",
-        "Attachments": [
-          "Suppressor_Long"
-        ]
+        "Attachments": ["Suppressor_Long"]
       },
       {
         "AttachmentType": "MainSight",
@@ -3751,8 +3651,8 @@
         "AttachmentType": "SideRail",
         "Attachments": [
           "Flashlight",
-          "RedLaser",
           "Tactical_Flashlight",
+          "RedLaser",
           "GreenLaser"
         ]
       }

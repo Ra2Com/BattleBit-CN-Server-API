@@ -1,4 +1,4 @@
-namespace CommunityServerAPI;
+namespace CommunityServerAPI.Tools;
 
 public static class RichText
 {
@@ -46,7 +46,7 @@ public static class RichText
     public const string Misc4 = "<sprite index=13>";
     public const string Misc5 = "<sprite index=14>";
     public const string Misc6 = "<sprite index=15>";
-    
+
     //emojis
     public const string Blush = "<sprite=\"EmojiOne\" index=0>";
     public const string Yum = "<sprite=\"EmojiOne\" index=1>";
@@ -92,7 +92,7 @@ public static class RichText
     {
         return $"<sup>{text}</sup>";
     }
-    
+
     public static string SubScript(string text)
     {
         return $"<sub>{text}</sub>";
@@ -102,52 +102,52 @@ public static class RichText
     {
         return $"<style=\"H1\">{text}</style>";
     }
-    
+
     public static string StyleH2(string text)
     {
         return $"<style=\"H2\">{text}</style>";
     }
-    
+
     public static string StyleH3(string text)
     {
         return $"<style=\"H3\">{text}</style>";
     }
-    
+
     public static string StyleC1(string text)
     {
         return $"<style=\"C1\">{text}</style>";
     }
-    
+
     public static string StyleC2(string text)
     {
         return $"<style=\"C2\">{text}</style>";
     }
-    
+
     public static string StyleC3(string text)
     {
         return $"<style=\"C3\">{text}</style>";
     }
-    
+
     public static string StyleNormal(string text)
     {
         return $"<style=\"Normal\">{text}</style>";
     }
-    
+
     public static string StyleTitle(string text)
     {
         return $"<style=\"Title\">{text}</style>";
     }
-    
+
     public static string StyleQuote(string text)
     {
         return $"<style=\"Quote\">{text}</style>";
     }
-    
+
     public static string StyleLink(string text)
     {
         return $"<style=\"Link\">{text}</style>";
     }
-    
+
     public static string Highlight(string text, string color)
     {
         return $"<mark={color}>{text}</mark>";
@@ -161,5 +161,5 @@ public static class RichText
     {
         return $"<size={sizeValue}>{text}</size>";
     }
- 
+
 }
