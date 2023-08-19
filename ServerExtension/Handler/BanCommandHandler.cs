@@ -4,13 +4,13 @@ using CommunityServerAPI.ServerExtension.Enums;
 
 namespace CommunityServerAPI.ServerExtension.Handler
 {
-    public class KillCommandHandler : CommandHandlerBase
+    public class BanCommandHandler : CommandHandlerBase
     {
-        public KillCommandHandler()
+        public BanCommandHandler()
         {
-            commandMessage = "/kill";
-            helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
-            Aliases = new string[] { "/k" };
+            commandMessage = "/ban";
+            helpMessage = "封禁指定的玩家昵称或者 SteamID";
+            Aliases = new string[] { "/b" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
         }
 
@@ -18,7 +18,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypes.Kill,
+                CommandType = CommandTypes.Ban,
                 Executor = player.Name,
                 Error = false,
             };
@@ -27,17 +27,18 @@ namespace CommunityServerAPI.ServerExtension.Handler
         public override void Execute(MyPlayer player, string cmdMsg)
         {
             var target = cmdMsg.Split(" ")[1..].Aggregate((a, b) => a + " " + b);
-            var targetPlayer = player.GameServer.AllPlayers.ToList().FirstOrDefault(p => p.Name.ToLower().Contains(target.ToLower()) || p.SteamID.ToString().Contains(target));
+            var targetPlayer = player.GameServer.AllPlayers.ToList().FirstOrDefault(p =>
+                p.Name.ToLower().Contains(target.ToLower()) || p.SteamID.ToString().Contains(target));
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要杀死的玩家");
+                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要封禁的玩家");
                 return;
             }
 
-            targetPlayer?.Kill();
-            player.GameServer.SayToChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
+            targetPlayer.Ban();
+            player.GameServer.AnnounceShort($"{targetPlayer?.Name} 被管理员 {player.Name} 封禁了");
             return;
         }
     }
-}
+}    

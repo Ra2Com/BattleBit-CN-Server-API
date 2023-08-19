@@ -24,14 +24,23 @@ public class CommandComponent
 
     private CommandComponent()
     {
-
-        commandHandlers.Add(new EndCommandHandler());
+    
+        // VIP 等高级角色命令
         commandHandlers.Add(new HealCommandHandler());
-        commandHandlers.Add(new HelpCommandHandler());
-        commandHandlers.Add(new KillCommandHandler());
         commandHandlers.Add(new SpeedCommandHandler());
-        commandHandlers.Add(new StartCommandHandler());
+        
+        // 普通玩家命令
         commandHandlers.Add(new StatsCommandHandler());
+        commandHandlers.Add(new HelpCommandHandler());
+        
+        // 仅管理员可用的命令 
+        commandHandlers.Add(new KillCommandHandler());
+        commandHandlers.Add(new MuteCommandHandler());
+        commandHandlers.Add(new KickCommandHandler());
+        commandHandlers.Add(new BanCommandHandler());
+        commandHandlers.Add(new EndCommandHandler());
+        commandHandlers.Add(new StartCommandHandler());
+        
     }
    
 
@@ -40,8 +49,11 @@ public class CommandComponent
         var splits = msg.Split(" ");
         var cmd = splits[0].ToLower();
         var playerRole = player.stats.Roles;
+        
+        // DEVELOP TODO: 使用新的 Privilege 权限检查来做这个判断
         if (playerRole != Roles.Admin || playerRole != Roles.Moderator || !msg.StartsWith("/"))
             return ;
+        
         var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd) || a.Aliases.Contains(cmd));
         if (null == commandHandler)
         {
@@ -51,14 +63,14 @@ public class CommandComponent
         // 检查执行的 Roles 是什么
         if (commandHandler.roles is not null && !commandHandler.roles.Contains(Roles.None) && !commandHandler.roles.Contains(playerRole))
         {
-
+            
             return ;
         }
        
         var getCommand = commandHandler.BuildCommand(player, channel);
         if (null == getCommand) 
         {
-
+            
             return ;
         }
         if (!string.IsNullOrEmpty(getCommand.Message))
@@ -66,21 +78,15 @@ public class CommandComponent
             player.Message(getCommand.Message, 5f);
         }
         
-        // 额外的处理
+        // 针对 Help 指令的处理
         switch (getCommand.CommandType)
         {
-            case CommandTypeEnum.Help:
+            case CommandTypes.Help:
                 {
                     player.Message("可用聊天命令:", 2f);
                     var showCommands = new List<CommandHandlerBase>();
-                    if (playerRole == Roles.Admin)
-                    {
-                        showCommands = commandHandlers;
-                    }
-                    else
-                    {
-                        showCommands = commandHandlers.Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(Roles.Admin)).ToList();
-                    }                   
+                        showCommands = commandHandlers.Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
+
                     StringBuilder messageBuilder = new StringBuilder();
                     foreach (var command in showCommands)
                     {
@@ -93,7 +99,8 @@ public class CommandComponent
                 }
                        
         }
-        // 执行这条命令
+        // 执行这条命令并打印日志
+        await Console.Out.WriteLineAsync(($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - [{player.Role}] - {player.Name} 执行命令 -" + msg));
         commandHandler.Execute(player, msg);
     }
 }

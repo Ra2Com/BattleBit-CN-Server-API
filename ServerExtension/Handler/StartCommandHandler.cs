@@ -18,7 +18,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             return new CommandDTO
             {
-                CommandType = CommandTypeEnum.Start,
+                CommandType = CommandTypes.Start,
                 Executor = player.Name,
                 Error = false,
             };

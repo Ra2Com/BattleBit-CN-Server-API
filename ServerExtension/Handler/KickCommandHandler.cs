@@ -4,21 +4,21 @@ using CommunityServerAPI.ServerExtension.Enums;
 
 namespace CommunityServerAPI.ServerExtension.Handler
 {
-    public class KillCommandHandler : CommandHandlerBase
+    public class KickCommandHandler : CommandHandlerBase
     {
-        public KillCommandHandler()
+        public KickCommandHandler()
         {
-            commandMessage = "/kill";
-            helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
+            commandMessage = "/kick";
+            helpMessage = "指定玩家昵称或者 SteamID 踢出玩家";
             Aliases = new string[] { "/k" };
-            roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            roles = new List<Roles>() { Roles.Admin, Roles.Moderator};
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {
             return new CommandDTO
             {
-                CommandType = CommandTypes.Kill,
+                CommandType = CommandTypes.Kick,
                 Executor = player.Name,
                 Error = false,
             };
@@ -31,12 +31,11 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要杀死的玩家");
+                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要踢出的玩家");
                 return;
             }
-
-            targetPlayer?.Kill();
-            player.GameServer.SayToChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
+            targetPlayer.Kick();
+            player.GameServer.SayToChat($"{targetPlayer?.Name} 被管理员 {player.Name} 踢出");
             return;
         }
     }

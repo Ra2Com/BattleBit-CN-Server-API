@@ -11,7 +11,7 @@ namespace CommunityServerAPI.ServerExtension.Model
 {
     public class CommandDTO
     {
-        public CommandTypeEnum CommandType { get; set; }
+        public CommandTypes CommandType { get; set; }
         public ulong SteamId { get; set; }
         public string Executor { get; set; }
         public Player<MyPlayer> Target { get; set; }
