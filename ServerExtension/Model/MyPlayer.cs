@@ -30,30 +30,6 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             Console.Out.WriteLineAsync($"MyPlayer OnConnected");
 
-            // 娱乐服，咱不玩流血那套
-            Modifications.DisableBleeding();
-
-            // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 0.7f;
-
-            // 白天，用个鬼的夜视仪
-            Modifications.CanUseNightVision = false;
-
-            // 倒地后马上就死
-            Modifications.DownTimeGiveUpTime = 1f;
-
-            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
-            Modifications.AirStrafe = false;
-
-            // 死了马上就能活
-            Modifications.RespawnTime = 1f;
-
-            // 开启击杀通知
-            Modifications.KillFeed = true;
-
-            // 刚枪服务器，所有武器伤害值都降低到 75%
-            Modifications.GiveDamageMultiplier = 0.75f;
-
             // 特殊角色登录日志
             if (stats?.Roles == Roles.Admin)
             {
@@ -169,7 +145,29 @@ namespace CommunityServerAPI.ServerExtension.Model
 
         public override async Task OnSpawned()
         {
+            // 娱乐服，咱不玩流血那套
+            Modifications.DisableBleeding();
 
+            // 娱乐服，换弹速度降低到 70%
+            Modifications.ReloadSpeedMultiplier = 0.7f;
+
+            // 白天，用个鬼的夜视仪
+            Modifications.CanUseNightVision = false;
+
+            // 倒地后马上就死
+            Modifications.DownTimeGiveUpTime = 0.1f;
+
+            // 更拟真一点，学学 CSGO 跳跃转向丢失速度
+            Modifications.AirStrafe = false;
+
+            // 死了马上就能活
+            Modifications.RespawnTime = 1f;
+
+            // 开启击杀通知
+            Modifications.KillFeed = true;
+
+            // 刚枪服务器，所有武器伤害值都降低到 75%
+            Modifications.GiveDamageMultiplier = 0.75f;
         }
 
         // Time calculation stuff
