@@ -32,7 +32,7 @@ namespace CommunityServerAPI.ServerExtension.Model
 
         public override async Task OnConnected()
         {
-            Console.Out.WriteLineAsync($"MyPlayer OnConnected");
+            Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
 
             // 特殊角色登录日志
             if (stats?.Roles == Roles.Admin)
@@ -46,7 +46,7 @@ namespace CommunityServerAPI.ServerExtension.Model
 
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服");
-            Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            await Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
             Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
 
             _ = Task.Run(async () =>
@@ -58,7 +58,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                         if (Position.X != 0 && Position.Y != 0)
                         {
                             positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });
-                            Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
+                            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
                         }
 
                         // When a player joined the game, send a Message to announce its Community Server data.
