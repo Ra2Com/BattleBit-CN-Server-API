@@ -9,7 +9,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         public MuteCommandHandler()
         {
             commandMessage = "/mute";
-            helpMessage = "禁言某个玩家";
+            helpMessage = "禁言指定的玩家昵称或者 SteamID";
             Aliases = new string[] { "/m" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
         }
@@ -33,11 +33,13 @@ namespace CommunityServerAPI.ServerExtension.Handler
                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要禁言的玩家");
                return;
            }
-           else
+           else if (targetPlayer.Modifications.IsTextChatMuted)
            {
-               targetPlayer.Modifications.IsTextChatMuted = true;
+               player.GameServer.SayToChat($"管理员 {player.Name} - 玩家 {targetPlayer.Name} 已被禁言");
+               return;
            }
-           player.GameServer.SayToChat($"管理员 {player.Name} 使用命令禁言 {targetPlayer?.Name}");
+           targetPlayer.Modifications.IsTextChatMuted = true;
+           player.GameServer.SayToChat($"管理员 {player.Name} 禁言了 {targetPlayer?.Name}");
            return;
         }
     }

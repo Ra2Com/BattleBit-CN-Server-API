@@ -36,6 +36,8 @@ public class CommandComponent
         // 仅管理员可用的命令 
         commandHandlers.Add(new KillCommandHandler());
         commandHandlers.Add(new MuteCommandHandler());
+        //commandHandlers.Add(new KickCommandHandler());
+        commandHandlers.Add(new BanCommandHandler());
         commandHandlers.Add(new EndCommandHandler());
         commandHandlers.Add(new StartCommandHandler());
         

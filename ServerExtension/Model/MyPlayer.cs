@@ -1,5 +1,4 @@
-﻿using System.Runtime.Intrinsics.X86;
-using BattleBitAPI;
+﻿using BattleBitAPI;
 using BattleBitAPI.Common;
 using CommunityServerAPI.Tools;
 using System;
