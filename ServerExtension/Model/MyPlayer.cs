@@ -25,7 +25,8 @@ namespace CommunityServerAPI.ServerExtension.Model
         public float maxHP { get; set; }
         
         public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
-        public long LastSpeedTime { get; set; }
+        public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
+
         public PlayerStats stats { get; set; }
         public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
 
@@ -92,57 +93,8 @@ namespace CommunityServerAPI.ServerExtension.Model
 
         public override async Task OnDied()
         {
-            // Spawn a player when died and give him a new set(example).
-            //_ = Task.Run(async () =>
-            // {
-            //     await Task.Delay(3100);
 
-
-            //     try
-            //     {
-            //         int beforePosTime = 15;
-            //         var sp = new Vector3() { };
-            //         while (true)
-            //         {
-            //             if (positionBef.TryDequeue(out PositionBef pb))
-            //             {
-            //                 Console.Out.WriteLineAsync($"{pb.position}");
-
-            //                 if (MyPlayer.GetUtcTimeMs() - (pb.time) > 1000 * beforePosTime)
-            //                 {
-            //                     if (GameServer.AllPlayers.FirstOrDefault(o => (Vector3.Distance(o.Position, pb.position) < 20f) && o.Team != Team) == null)
-            //                     {
-            //                         sp = pb.position;
-            //                         Console.WriteLine($"{Name}即将复活在{pb.position}");
-            //                         break;
-            //                     }
-            //                 }
-            //                 beforePosTime = beforePosTime + 15;
-            //             }
-            //             else
-            //             {
-            //                 //request.SpawnPosition = new Vector3();
-            //                 Console.WriteLine($"{Name}复活在选择点");
-            //                 break;
-
-            //             }
-            //         }
-            //         SpawnPlayer(SpawnManager.GetRandom(), CurrentWearings, sp, new Vector3() { X = 0, Y = 0, Z = 1 }, PlayerStand.Standing, 5f);
-
-
-            //         // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
-            //         // 当前随机出生方案，记录玩家 15、30、40、60 秒前的坐标和面朝方位，判断出生坐标的 XYZ <= 20f 内是否有敌人，依次刷新，如果到 60 秒前的坐标仍然不可以刷新，则强制刷新到 60 秒前的坐标，如果依次拉取时取到不存在的值，则强制刷新在 null。无论玩家是选择出生在(重生点、队友、载具还是指定的ABCD点等别的地方）
-            //         //request.SpawnPosition = new System.Numerics.Vector3();
-            //         //request.LookDirection = new System.Numerics.Vector3();
-            //         //Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
-            //     }
-            //     catch (Exception ee)
-            //     {
-            //         Console.Out.WriteLineAsync(ee.StackTrace);
-
-            //     }
-
-            // });
+            
         }
 
 
@@ -172,9 +124,6 @@ namespace CommunityServerAPI.ServerExtension.Model
             // 刚枪服务器，所有武器伤害值都降低到 75%
             Modifications.GiveDamageMultiplier = 0.75f;
         }
-
-        // Time calculation stuff
-       
     }
 
     public class PositionBef
