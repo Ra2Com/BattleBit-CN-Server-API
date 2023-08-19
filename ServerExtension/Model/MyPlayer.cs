@@ -45,8 +45,13 @@ namespace CommunityServerAPI.ServerExtension.Model
 
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服");
-            await Console.Out.WriteLineAsync($"欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Message($"{RichText.Cyan}{Name}{RichText.EndColor} 你好，游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor}", 3f);
+            await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+            Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
+                    $"{RichText.LineBreak}你的游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}" +
+                    $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
+                    $"{RichText.LineBreak}" +
+                    $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
+                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据。玩家 QQ群：887245025", 5f);
 
             _ = Task.Run(async () =>
             {

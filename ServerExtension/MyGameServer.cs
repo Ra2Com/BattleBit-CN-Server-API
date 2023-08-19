@@ -87,7 +87,7 @@ namespace CommunityServerAPI.ServerExtension
 
                 // Announce the victim your killer. And the killer will be tracked.
                 MessageToPlayer(args.Victim,
-                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒，凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
+                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
                 // 等到消息发布之后再给凶手补充血量
                 args.Killer.Heal(20);
             }
