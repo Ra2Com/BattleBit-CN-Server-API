@@ -39,7 +39,7 @@ namespace CommunityServerAPI.ServerExtension
         }
 
 
-        List<IPlayerInfo> rankPlayers = new List<IPlayerInfo>();
+        List<IPlayerInfo> _rankPlayers = new List<IPlayerInfo>();
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
@@ -80,15 +80,16 @@ namespace CommunityServerAPI.ServerExtension
                 //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
                 args.Victim.markId = args.Killer.SteamID;
                 // 获取双方距离
-                float killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition);
+                var killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition).ToString("#0.0");
 
                 await Console.Out.WriteLineAsync(
                     $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                 // Announce the victim your killer. And the killer will be tracked.
                 MessageToPlayer(args.Victim,
-                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
-                // 等到消息发布之后再给凶手补充血量
+                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒" +
+                    $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
+                // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                 args.Killer.Heal(20);
             }
         }
@@ -114,16 +115,16 @@ namespace CommunityServerAPI.ServerExtension
             // DEVELOP TODO: 每 2 分钟发布一条 AnnounceShort 让玩家加群反馈
             // DEVELOP TODO: 每 3 分钟发布一条 全服聊天信息 让玩家加群反馈
             // Calculate current ranking.
-            rankPlayers.Clear();
+            _rankPlayers.Clear();
             foreach (var item in AllPlayers)
             {
-                rankPlayers.Add(item);
+                _rankPlayers.Add(item);
             }
 
-            rankPlayers = rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
-            for (int i = 0; i < rankPlayers.Count; i++)
+            _rankPlayers = _rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
+            for (int i = 0; i < _rankPlayers.Count; i++)
             {
-                rankPlayers[i].rank = i + 1;
+                _rankPlayers[i].rank = i + 1;
             }
         }
 
@@ -214,8 +215,7 @@ namespace CommunityServerAPI.ServerExtension
             // TODO: 聊天记录建议单独保存
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
-
-
+            
             await CommandComponent.Initialize().HandleCommand(player, channel, msg);
 
             return true;
@@ -223,7 +223,7 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
-            var player = rankPlayers.Find(o => o.SteamID == steamID);
+            var player = _rankPlayers.Find(o => o.SteamID == steamID);
 
             player.stats = stats;
         }
