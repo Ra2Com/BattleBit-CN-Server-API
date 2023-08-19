@@ -17,6 +17,4 @@ public enum CommandTypeEnum
     Help,
     Start,
     End,
-    Addop,
-    Delopp,
 }

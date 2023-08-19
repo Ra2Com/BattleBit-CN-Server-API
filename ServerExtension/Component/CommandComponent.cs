@@ -24,14 +24,21 @@ public class CommandComponent
 
     private CommandComponent()
     {
-
-        commandHandlers.Add(new EndCommandHandler());
+    
+        // VIP 等高级角色命令
         commandHandlers.Add(new HealCommandHandler());
-        commandHandlers.Add(new HelpCommandHandler());
-        commandHandlers.Add(new KillCommandHandler());
         commandHandlers.Add(new SpeedCommandHandler());
-        commandHandlers.Add(new StartCommandHandler());
+        
+        // 普通玩家命令
         commandHandlers.Add(new StatsCommandHandler());
+        commandHandlers.Add(new HelpCommandHandler());
+        
+        // 仅管理员可用的命令 
+        commandHandlers.Add(new KillCommandHandler());
+        commandHandlers.Add(new MuteCommandHandler());
+        commandHandlers.Add(new EndCommandHandler());
+        commandHandlers.Add(new StartCommandHandler());
+        
     }
    
 
