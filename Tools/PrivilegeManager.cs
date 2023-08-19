@@ -13,7 +13,7 @@ namespace CommunityServerAPI.Tools
 {
     internal static class PrivilegeManager
     {
-        public static List<Steam64ID> UserSteam64 = new List<Steam64ID>();
+        public static List<long> UserSteam64 = new List<long>();
         public static PrivilegeJson privJson = new PrivilegeJson();
 
         public static void Init()
@@ -31,17 +31,17 @@ namespace CommunityServerAPI.Tools
             }
         }
 
-        public static PlayerPrivilege GetServerPrivilege()
-        {
-            PlayerPrivilege prevConfig = new PlayerPrivilege();
-            // Admin 配置
+        //public static PlayerPrivilege GetServerPrivilege()
+        //{
+        //    PlayerPrivilege prevConfig = new PlayerPrivilege();
+        //    // Admin 配置
 
-            // Moderator 配置
+        //    // Moderator 配置
 
-            // VIP 配置
+        //    // VIP 配置
 
-            return prevConfig;
-        }
+        //    return prevConfig;
+        //}
     }
 
     public class PrivilegeJson
