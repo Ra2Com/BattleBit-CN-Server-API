@@ -64,10 +64,13 @@ namespace BattleBitAPI
                 }
             }
         }
+        // 玩家是否在小队中
         public bool InSquad => mInternal.SquadName != Squads.NoSquad;
+        // 玩家的延迟 MS
         public int PingMs => mInternal.PingMs;
 
-        public float HP // 玩家的 HP值
+        // 玩家的 HP值
+        public float HP
         {
             get => mInternal.HP;
             set
@@ -84,24 +87,37 @@ namespace BattleBitAPI
                 }
             }
         }
-        public bool IsAlive => mInternal.HP >= 0f; // 玩家是否还活着
-        public bool IsUp => mInternal.HP > 0f; // 玩家 HP是否大于0
-        public bool IsDown => mInternal.HP == 0f; // 玩家是否被击倒
-        public bool IsDead => mInternal.HP == -1f; // 玩家是否已死亡
+        public bool IsAlive => mInternal.HP >= 0f;
+        // 玩家是否还活着
+        public bool IsUp => mInternal.HP > 0f;
+        // 玩家 HP是否大于0
+        public bool IsDown => mInternal.HP == 0f;
+        // 玩家是否被击倒
+        public bool IsDead => mInternal.HP == -1f;
+        // 玩家是否已死亡
 
-        public Vector3 Position // 玩家的坐标
+        public Vector3 Position
+        // 玩家的坐标
         {
             get => mInternal.Position;
             set => Teleport(value);
         }
-        public PlayerStand StandingState => mInternal.Standing; // 玩家的站立状态
-        public LeaningSide LeaningState => mInternal.Leaning; // 玩家的歪头状态
-        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex; // 玩家的武器装备配置数据
-        public bool InVehicle => mInternal.InVehicle; // 玩家是否在载具中
-        public bool IsBleeding => mInternal.IsBleeding; // 玩家是否在流血
-        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout; // 玩家当前的武器装备配置
-        public PlayerWearings CurrentWearings => mInternal.CurrentWearings; // 玩家当前的角色穿着配置
-        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications; // 玩家的数值修改调整
+        public PlayerStand StandingState => mInternal.Standing;
+        // 玩家的站立状态
+        public LeaningSide LeaningState => mInternal.Leaning;
+        // 玩家的歪头状态
+        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex;
+        // 玩家的武器装备配置数据
+        public bool InVehicle => mInternal.InVehicle;
+        // 玩家是否在载具中
+        public bool IsBleeding => mInternal.IsBleeding;
+        // 玩家是否在流血
+        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout;
+        // 玩家当前的武器装备配置
+        public PlayerWearings CurrentWearings => mInternal.CurrentWearings;
+        // 玩家当前的角色穿着配置
+        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications;
+        // 玩家的数值修改调整
 
         // ---- 虚函数 ----
 

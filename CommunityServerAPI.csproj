@@ -9,15 +9,15 @@
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>BattleBitRemastered.CommunityAPI.Core</Title>
-    <Authors>SgtOkiDoki</Authors>
-    <Company>OkigamesLimited</Company>
-    <Product>BattleBit Remastered</Product>
-    <Description>API to customize game servers for BattleBit Remastered.
+    <Authors>RamboArena</Authors>
+    <Company>RamboArena</Company>
+    <Product>BattleBit Remastered RamboArena Server</Product>
+    <Description>API to customize RamboArena Server for BattleBit Remastered.
     </Description>
     <Copyright>MIT</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/MrOkiDoki/BattleBit-Community-Server-API</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MrOkiDoki/BattleBit-Community-Server-API</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</RepositoryUrl>
     <PackageTags>BattleBit</PackageTags>
   </PropertyGroup>
 
@@ -36,9 +36,6 @@
     <None Update="Config/Privilege.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

@@ -864,6 +864,7 @@ namespace BattleBitAPI.Server
         {
             Heal(player.SteamID, heal);
         }
+        // 设置团队阵营中某小队的分数
         public void SetSquadPointsOf(Team team, Squads squad, int points)
         {
             ExecuteCommand("setsquadpoints " + ((int)(team)) + " " + ((int)squad) + " " + points);

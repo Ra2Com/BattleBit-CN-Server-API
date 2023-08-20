@@ -753,8 +753,8 @@ namespace BattleBitAPI.Server
         // --- 执行逻辑 ---
         private async Task mExecutePackage(GameServer<TPlayer> server, GameServer<TPlayer>.Internal resources, Common.Serialization.Stream stream)
         {
-            var communcation = (NetworkCommunication)stream.ReadInt8();
-            switch (communcation)
+            var communication = (NetworkCommunication)stream.ReadInt8();
+            switch (communication)
             {
                 case NetworkCommunication.PlayerConnected:
                     {
@@ -1318,7 +1318,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.OnSquadPointsChanged:
+                case NetworkCommunication.OnSquadPointsChanged:
                     {
                         if (stream.CanRead(1 + 1 + 4))
                         {
