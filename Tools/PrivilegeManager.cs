@@ -45,8 +45,8 @@ namespace CommunityServerAPI.Tools
                 if (PlayerJson.Role.Contains(playerJson.Role))
                 {
                     int index = Array.IndexOf(serverRoles, playerJson.Role);
-                    // 有权限，直接返回
-                    args.Stats.Roles = Roles.None.playerJson.Role;
+                    // TODO: 有权限，直接返回
+                    args.Stats.Roles = Roles.None;
                     return;
                 }
                 else

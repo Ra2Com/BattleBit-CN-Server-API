@@ -128,7 +128,7 @@ namespace CommunityServerAPI.ServerExtension
             }
         }
 
-        public override async Task<OnPlayerSpawnArguments> OnPlayerSpawning(MyPlayer player,
+        public override async Task<OnPlayerSpawnArguments?> OnPlayerSpawning(MyPlayer player,
             OnPlayerSpawnArguments request)
         {
             try
