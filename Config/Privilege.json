@@ -1,23 +1,32 @@
 {
-  "ListAdmin": [
+  "ListPlayer": [
     {
       "UID": "3524815",
       "Nickname": "Maple Gao",
+      "Role":"Admin",
       "Steam64": "76561198090800555"
-    }
-  ],
-  "ListModerator": [
-    {
-      "UID": "1",
-      "Nickname": "Moderator",
-      "Steam64": "1234567890"
-    }
-  ],
-  "ListVIP": [
+    },
     {
       "UID": "22",
       "Nickname": "VIP",
+      "Role":"VIP",
       "Steam64": "1234567890"
+    },
+    {
+      "UID": "33",
+      "Nickname": "Hi!",
+      "Role":"Moderator",
+      "Steam64": "654321"
+    },
+    {
+      "UID": "44",
+      "Nickname": "Love!@！",
+      "Steam64": "987654"
     }
   ]
 }
+
+// C# 中读取上述 json 文件配置的方法
+
+
+

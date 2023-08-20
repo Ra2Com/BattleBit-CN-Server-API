@@ -12,7 +12,6 @@ namespace CommunityServerAPI.Tools
 {
     internal static class SpawnManager
     {
-        public static List<WeaponItem> PrimaryWeapons = new List<WeaponItem>();
         public static LoadoutJson loadoutJson = new LoadoutJson();
 
         public static void Init()
@@ -28,7 +27,6 @@ namespace CommunityServerAPI.Tools
                 Console.WriteLine("解析 RandomLoadouts.json 出错，请检查" + ee.Message); // Error when JSON file is wrong
                 return;
             }
-            //var x = JsonConvert.SerializeObject(loadoutJson);
         }
 
         public static PlayerLoadout GetRandom()

@@ -6,16 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CommunityServerAPI.Tools
 {
-    internal static class PrivilegeManager
+    internal class PrivilegeManager
     {
-        public static List<long> UserSteam64 = new List<long>();
         public static PrivilegeJson privJson = new PrivilegeJson();
-
+        string[] gameRoles = new string[] { "None", "Admin", "Moderator", "Special", "Vip" };
         public static void Init()
         {
             try
@@ -31,44 +29,47 @@ namespace CommunityServerAPI.Tools
             }
         }
 
-        //public static PlayerPrivilege GetServerPrivilege()
-        //{
-        //    PlayerPrivilege prevConfig = new PlayerPrivilege();
-        //    // Admin 配置
-
-        //    // Moderator 配置
-
-        //    // VIP 配置
-
-        //    return prevConfig;
-        //}
+        public void GetPlayerPrivilege(ulong steamid, PlayerJoiningArguments args)
+        {
+            // 判断玩家是否在列表中
+            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == steamid.ToString());
+            if (playerJson == null)
+            {
+                // 不在列表中，给予默认权限
+                args.Stats.Roles = Roles.None;
+                return;
+            }
+            else
+            {
+                // 在列表中，判断是否有权限
+                if (privJson.Roles.Contains(playerJson.Role))
+                {
+                    int index = Array.IndexOf(gameRoles, playerJson.Role);
+                    // 有权限，直接返回
+                    args.Stats.Roles = Roles.None.playerJson.Role;
+                    return;
+                }
+                else
+                {
+                    // 没有权限，给予默认权限
+                    args.Stats.Roles = Roles.None;
+                    return;
+                }
+            }
+        }
     }
 
     public class PrivilegeJson
     {
-        public List<AdminJson> ListAdmin { get; set; } = new List<AdminJson>();
-        public List<ModeratorJson> ListModerator { get; set; } = new List<ModeratorJson>();
-        public List<VIPJson> ListVIP { get; set; } = new List<VIPJson>();
+        public List<PlayerJson> ListPlayer { get; set; } = new List<PlayerJson>();
+        public string[] Roles { get; set; } = new string[0];
     }
 
-    public class AdminJson
+    public class PlayerJson
     {
         public string UID { get; set; }
         public string Nickname { get; set; }
-        public string Steam64 { get; set; }
-    }
-
-    public class ModeratorJson
-    {
-        public string UID { get; set; }
-        public string Nickname { get; set; }
-        public string Steam64 { get; set; }
-    }
-
-    public class VIPJson
-    {
-        public string UID { get; set; }
-        public string Nickname { get; set; }
+        public string Role { get; set; }
         public string Steam64 { get; set; }
     }
 }
