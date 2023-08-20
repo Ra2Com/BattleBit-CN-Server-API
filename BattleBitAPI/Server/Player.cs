@@ -33,7 +33,7 @@ namespace BattleBitAPI
                     ChangeTeam(value);
             }
         }
-        public Squads SquadName // 玩家在服务器内的小队Name
+        public Squads SquadName // 玩家在服务器内的小队名
         {
             get => mInternal.SquadName;
             set
@@ -64,13 +64,14 @@ namespace BattleBitAPI
                 }
             }
         }
-        public bool InSquad => mInternal.SquadName != Squads.NoSquad;
         // 玩家是否在小队中
-        public int PingMs => mInternal.PingMs;
+        public bool InSquad => mInternal.SquadName != Squads.NoSquad;
         // 玩家的延迟 MS
+        public int PingMs => mInternal.PingMs;
 
-        public float HP
         // 玩家的 HP值
+        public float HP
+       
         {
             get => mInternal.HP;
             set

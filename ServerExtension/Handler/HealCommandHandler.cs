@@ -11,10 +11,10 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             commandMessage = "/heal";
             helpMessage = "治疗自己 100 生命值，每 2 分钟只能使用一次";
-            Aliases = new string[] { "/jx","/hp" };
+            Aliases = new string[] { "/jx", "/hp" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator, Roles.Vip };
         }
-        
+
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {
             return new CommandDTO
@@ -24,10 +24,11 @@ namespace CommunityServerAPI.ServerExtension.Handler
                 Error = false
             };
         }
+
         public override void Execute(MyPlayer player, string cmdMsg)
         {
             var timeDiff = TimeUtil.GetUtcTime(DateTime.Now) - player.LastHealTime;
-            
+
             if (timeDiff < 120)
             {
                 player.GameServer.MessageToPlayer(player, "你还不能使用治疗技能，剩余时间：" + (120 - timeDiff) + " 秒", 3f);
@@ -38,6 +39,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
                 player.Heal(100);
                 player.LastHealTime = TimeUtil.GetUtcTime(DateTime.Now);
             }
+
             return;
         }
     }

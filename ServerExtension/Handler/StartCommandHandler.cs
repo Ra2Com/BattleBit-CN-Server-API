@@ -26,7 +26,8 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
         public override void Execute(MyPlayer player, string cmdMsg)
         {
-            if (player.GameServer.RoundSettings.State != GameState.WaitingForPlayers && player.GameServer.RoundSettings.State != GameState.CountingDown)
+            if (player.GameServer.RoundSettings.State != GameState.WaitingForPlayers &&
+                player.GameServer.RoundSettings.State != GameState.CountingDown)
             {
                 player.GameServer.SayToChat($"管理员 {player.Name} - 本局游戏已经开始了！");
                 return;

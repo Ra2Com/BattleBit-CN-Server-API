@@ -1,23 +1,36 @@
 {
-  "ListAdmin": [
+  "ListPlayer": [
     {
       "UID": "3524815",
       "Nickname": "Maple Gao",
+      "Role": 1,
       "Steam64": "76561198090800555"
-    }
-  ],
-  "ListModerator": [
-    {
-      "UID": "1",
-      "Nickname": "Moderator",
-      "Steam64": "1234567890"
-    }
-  ],
-  "ListVIP": [
+    },
     {
       "UID": "22",
       "Nickname": "VIP",
+      "Role": 8,
       "Steam64": "1234567890"
+    },
+    {
+      "UID": "33",
+      "Nickname": "Hi!",
+      "Role": 2,
+      "Steam64": "654321"
+    },
+    {
+      "UID": "33",
+      "Nickname": "Special",
+      "Role": 4,
+      "Steam64": "654321"
+    },
+    {
+      "UID": "44",
+      "Nickname": "Love!@！",
+      "Steam64": "987654"
     }
   ]
 }
+
+
+

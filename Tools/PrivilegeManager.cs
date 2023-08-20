@@ -6,14 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using CommunityServerAPI.ServerExtension.Model;
 
 namespace CommunityServerAPI.Tools
 {
-    internal static class PrivilegeManager
+    internal class PrivilegeManager
     {
-        public static List<long> UserSteam64 = new List<long>();
         public static PrivilegeJson privJson = new PrivilegeJson();
 
         public static void Init()
@@ -31,44 +30,35 @@ namespace CommunityServerAPI.Tools
             }
         }
 
-        //public static PlayerPrivilege GetServerPrivilege()
-        //{
-        //    PlayerPrivilege prevConfig = new PlayerPrivilege();
-        //    // Admin 配置
-
-        //    // Moderator 配置
-
-        //    // VIP 配置
-
-        //    return prevConfig;
-        //}
+        public static async Task GetPlayerPrivilege(MyPlayer player)
+        {
+            // 判断玩家是否在列表中
+            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == player.SteamID.ToString());
+            if (playerJson.Role != 0)
+            {
+                // 0-无权限，1-管理员，2-超级管理员, 4-Special, 8-VIP
+                player.stats.Roles = (Roles)playerJson.Role;
+                return;
+            }
+            else
+            {
+                // 没有权限，给予默认权限
+                player.stats.Roles = Roles.None;
+                return;
+            }
+        }
     }
 
     public class PrivilegeJson
     {
-        public List<AdminJson> ListAdmin { get; set; } = new List<AdminJson>();
-        public List<ModeratorJson> ListModerator { get; set; } = new List<ModeratorJson>();
-        public List<VIPJson> ListVIP { get; set; } = new List<VIPJson>();
+        public List<PlayerJson> ListPlayer { get; set; } = new List<PlayerJson>();
     }
 
-    public class AdminJson
+    public class PlayerJson
     {
         public string UID { get; set; }
         public string Nickname { get; set; }
-        public string Steam64 { get; set; }
-    }
-
-    public class ModeratorJson
-    {
-        public string UID { get; set; }
-        public string Nickname { get; set; }
-        public string Steam64 { get; set; }
-    }
-
-    public class VIPJson
-    {
-        public string UID { get; set; }
-        public string Nickname { get; set; }
+        public ulong Role { get; set; }
         public string Steam64 { get; set; }
     }
 }

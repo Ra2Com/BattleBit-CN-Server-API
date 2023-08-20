@@ -32,6 +32,8 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnConnected()
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
+            
+            await PrivilegeManager.GetPlayerPrivilege(this);
 
             // 特殊角色登录日志
             if (stats?.Roles == Roles.Admin)
