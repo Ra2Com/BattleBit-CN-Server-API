@@ -19,7 +19,8 @@ namespace CommunityServerAPI.ServerExtension
             // 固定 Random Revenge 的游戏模式和游戏地图
             MapRotation.ClearRotation();
             // MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
-            MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis", "TensaTown");
+            MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
+                "TensaTown");
             GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
             GamemodeRotation.SetRotation("TDM");
@@ -174,7 +175,8 @@ namespace CommunityServerAPI.ServerExtension
 
                 // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
                 // 由于 Oki 在 Discord 中提及了地图边界的问题以及 SpawnPosition 的不可写问题，所以暂时使用 TDM 模式的固定出生点
-                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+                Console.Out.WriteLineAsync(
+                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             }
             catch (Exception ee)
             {
@@ -189,22 +191,6 @@ namespace CommunityServerAPI.ServerExtension
         {
             args.Stats.Progress.Rank = 200;
             args.Stats.Progress.Prestige = 6;
-
-            // DEVELOP TODO: 此处的角色权限设置最好走 Json 配置，后续再升级成 API 读取
-            if (steamID == 76561198090800555)
-            {
-                args.Stats.Roles = Roles.Admin;
-            }
-
-            if (steamID == 765611980908011)
-            {
-                args.Stats.Roles = Roles.Moderator;
-            }
-
-            if (steamID == 765611980908022)
-            {
-                args.Stats.Roles = Roles.Vip;
-            }
         }
 
         // 聊天监控和命令
@@ -215,7 +201,7 @@ namespace CommunityServerAPI.ServerExtension
             // TODO: 聊天记录建议单独保存
             // TODO: 屏蔽词告警
             // TODO: 屏蔽词系统
-            
+
             await CommandComponent.Initialize().HandleCommand(player, channel, msg);
 
             return true;

@@ -5,16 +5,16 @@ using CommunityServerAPI.Tools;
 
 namespace CommunityServerAPI.ServerExtension.Handler
 {
-    public class SpeedCommandHandler:CommandHandlerBase
+    public class SpeedCommandHandler : CommandHandlerBase
     {
         public SpeedCommandHandler()
         {
             commandMessage = "/speed";
             helpMessage = "增加自己 10% 的移动速度，每 2 分钟只能使用一次";
-            Aliases = new string[] { "/sp","/js" };
+            Aliases = new string[] { "/sp", "/js" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator, Roles.Vip };
         }
-        
+
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {
             return new CommandDTO
@@ -39,6 +39,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
                 player.Modifications.RunningSpeedMultiplier = 1.1f;
                 player.LastSpeedTime = TimeUtil.GetUtcTime(DateTime.Now);
             }
+
             return;
         }
     }

@@ -3,19 +3,25 @@
     {
       "UID": "3524815",
       "Nickname": "Maple Gao",
-      "Role":"Admin",
+      "Role": 1,
       "Steam64": "76561198090800555"
     },
     {
       "UID": "22",
       "Nickname": "VIP",
-      "Role":"VIP",
+      "Role": 8,
       "Steam64": "1234567890"
     },
     {
       "UID": "33",
       "Nickname": "Hi!",
-      "Role":"Moderator",
+      "Role": 2,
+      "Steam64": "654321"
+    },
+    {
+      "UID": "33",
+      "Nickname": "Special",
+      "Role": 4,
       "Steam64": "654321"
     },
     {

@@ -7,13 +7,14 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityServerAPI.ServerExtension.Model;
 
 namespace CommunityServerAPI.Tools
 {
     internal class PrivilegeManager
     {
         public static PrivilegeJson privJson = new PrivilegeJson();
-        string[] serverRoles = new string[] { "None", "Admin", "Moderator", "Special", "Vip" };
+
         public static void Init()
         {
             try
@@ -29,32 +30,21 @@ namespace CommunityServerAPI.Tools
             }
         }
 
-        public void GetPlayerPrivilege(ulong steamid, PlayerJoiningArguments args)
+        public static async Task GetPlayerPrivilege(MyPlayer player)
         {
             // 判断玩家是否在列表中
-            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == steamid.ToString());
-            if (playerJson == null)
+            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == player.SteamID.ToString());
+            if (playerJson.Role != 0)
             {
-                // 不在列表中，给予默认权限
-                args.Stats.Roles = Roles.None;
+                // 0-无权限，1-管理员，2-超级管理员, 4-Special, 8-VIP
+                player.stats.Roles = (Roles)playerJson.Role;
                 return;
             }
             else
             {
-                // 在列表中，判断是否有权限
-                if (PlayerJson.Role.Contains(playerJson.Role))
-                {
-                    int index = Array.IndexOf(serverRoles, playerJson.Role);
-                    // TODO: 有权限，直接返回
-                    args.Stats.Roles = Roles.None;
-                    return;
-                }
-                else
-                {
-                    // 没有权限，给予默认权限
-                    args.Stats.Roles = Roles.None;
-                    return;
-                }
+                // 没有权限，给予默认权限
+                player.stats.Roles = Roles.None;
+                return;
             }
         }
     }
@@ -68,7 +58,7 @@ namespace CommunityServerAPI.Tools
     {
         public string UID { get; set; }
         public string Nickname { get; set; }
-        public string Role { get; set; }
+        public ulong Role { get; set; }
         public string Steam64 { get; set; }
     }
 }

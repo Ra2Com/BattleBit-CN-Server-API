@@ -33,7 +33,7 @@ namespace BattleBitAPI
                     ChangeTeam(value);
             }
         }
-        public Squads SquadName // 玩家在服务器内的小队Name
+        public Squads SquadName // 玩家在服务器内的小队名
         {
             get => mInternal.SquadName;
             set

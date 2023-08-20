@@ -41,4 +41,4 @@ namespace CommunityServerAPI.ServerExtension.Handler
             return;
         }
     }
-}    
+}

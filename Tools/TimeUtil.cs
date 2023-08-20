@@ -7,6 +7,7 @@
             var dif = GetUtcTimeMs() - oldtime;
             return (dif / 1000 / 60).ToString();
         }
+
         public static long GetUtcTimeMs()
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
@@ -16,6 +17,5 @@
         {
             return new DateTimeOffset(dateTime).ToUnixTimeSeconds();
         }
-
     }
 }

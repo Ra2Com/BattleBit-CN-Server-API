@@ -18,7 +18,9 @@ namespace CommunityServerAPI.Tools
         {
             try
             {
-                string filePath = $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
+                string
+                    filePath =
+                        $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
                 string content = File.ReadAllText(filePath);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
             }
@@ -57,32 +59,39 @@ namespace CommunityServerAPI.Tools
             sWI.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
             sWI.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
             //sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
-            sWI.MagazineIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
+            sWI.MagazineIndex =
+                (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
             playerLoadout.SecondaryWeapon = sWI;
 
             // 绷带配置
             int ListFirstAidIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListFirstAid.Count);
             playerLoadout.FirstAidName = loadoutJson.ListFirstAid[ListFirstAidIndex].Name ?? "none";
-            playerLoadout.FirstAidExtra = (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
+            playerLoadout.FirstAidExtra =
+                (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
 
             // 轻型道具配置
             int ListLightGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListLightGadget.Count);
             playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
-            playerLoadout.LightGadgetExtra = (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
+            playerLoadout.LightGadgetExtra =
+                (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
 
             // 重型道具配置
             int ListHeavyGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListHeavyGadget.Count);
             playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
-            playerLoadout.HeavyGadgetExtra = (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
+            playerLoadout.HeavyGadgetExtra =
+                (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
 
             // 投掷物配置
             int ListThrowableIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListThrowable.Count);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
-            playerLoadout.ThrowableExtra = (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "1"));
+            playerLoadout.ThrowableExtra =
+                (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "1"));
 
             // 处理主副武器的额外弹夹设置（不考虑着装）
-            playerLoadout.PrimaryExtraMagazines = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "2"));
-            playerLoadout.SecondaryExtraMagazines = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "3"));
+            playerLoadout.PrimaryExtraMagazines =
+                (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "2"));
+            playerLoadout.SecondaryExtraMagazines =
+                (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "3"));
 
             return playerLoadout;
         }
