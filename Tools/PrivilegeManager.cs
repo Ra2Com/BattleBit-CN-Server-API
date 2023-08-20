@@ -13,7 +13,7 @@ namespace CommunityServerAPI.Tools
     internal class PrivilegeManager
     {
         public static PrivilegeJson privJson = new PrivilegeJson();
-        string[] gameRoles = new string[] { "None", "Admin", "Moderator", "Special", "Vip" };
+        string[] serverRoles = new string[] { "None", "Admin", "Moderator", "Special", "Vip" };
         public static void Init()
         {
             try
@@ -42,9 +42,9 @@ namespace CommunityServerAPI.Tools
             else
             {
                 // 在列表中，判断是否有权限
-                if (privJson.Roles.Contains(playerJson.Role))
+                if (PlayerJson.Role.Contains(playerJson.Role))
                 {
-                    int index = Array.IndexOf(gameRoles, playerJson.Role);
+                    int index = Array.IndexOf(serverRoles, playerJson.Role);
                     // 有权限，直接返回
                     args.Stats.Roles = Roles.None.playerJson.Role;
                     return;
@@ -62,7 +62,6 @@ namespace CommunityServerAPI.Tools
     public class PrivilegeJson
     {
         public List<PlayerJson> ListPlayer { get; set; } = new List<PlayerJson>();
-        public string[] Roles { get; set; } = new string[0];
     }
 
     public class PlayerJson
