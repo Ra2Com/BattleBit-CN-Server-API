@@ -19,6 +19,7 @@
     <PackageProjectUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</RepositoryUrl>
     <PackageTags>BattleBit</PackageTags>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

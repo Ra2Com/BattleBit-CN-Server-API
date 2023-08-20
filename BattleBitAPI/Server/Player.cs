@@ -58,7 +58,7 @@ namespace BattleBitAPI
                     KickFromSquad();
                 else
                 {
-                    if(value.Team != this.Team)
+                    if (value.Team != this.Team)
                         ChangeTeam(value.Team);
                     JoinSquad(value.Name);
                 }
@@ -68,6 +68,8 @@ namespace BattleBitAPI
         public bool InSquad => mInternal.SquadName != Squads.NoSquad;
         // 玩家的延迟 MS
         public int PingMs => mInternal.PingMs;
+        public long CurrentSessionID => mInternal.SessionID;
+        public bool IsConnected => mInternal.SessionID != 0;
 
         // 玩家的 HP值
         public float HP
@@ -187,12 +189,17 @@ namespace BattleBitAPI
         {
 
         }
+        public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
+        {
+
+        }
 
         // ---- 功能方法 ----
         // 踢出游戏，理由
         public void Kick(string reason = "")
         {
-            GameServer.Kick(this, reason);
+            if (IsConnected)
+                GameServer.Kick(this, reason);
         }
         // 封禁，理由
         public void Ban(string reason = "")
@@ -202,57 +209,75 @@ namespace BattleBitAPI
         // 立刻杀死
         public void Kill()
         {
-            GameServer.Kill(this);
+            if (IsConnected)
+                GameServer.Kill(this);
         }
         // 更换到对立团队阵营
         public void ChangeTeam()
         {
-            GameServer.ChangeTeam(this);
+            if (IsConnected)
+                GameServer.ChangeTeam(this);
         }
         // 更换到指定团队阵营
         public void ChangeTeam(Team team)
         {
-            GameServer.ChangeTeam(this, team);
+            if (IsConnected)
+                GameServer.ChangeTeam(this, team);
         }
         // 踢出当前小队
         public void KickFromSquad()
         {
-            GameServer.KickFromSquad(this);
+            if (IsConnected)
+                GameServer.KickFromSquad(this);
         }
         // 加入指定小队
         public void JoinSquad(Squads targetSquad)
         {
-            GameServer.JoinSquad(this, targetSquad);
+            if (IsConnected)
+                GameServer.JoinSquad(this, targetSquad);
         }
         // 解散所在小队
         public void DisbandTheSquad()
         {
-            GameServer.DisbandPlayerCurrentSquad(this);
+            if (IsConnected)
+                GameServer.DisbandPlayerCurrentSquad(this);
         }
         // 晋升为小队长
         public void PromoteToSquadLeader()
         {
-            GameServer.PromoteSquadLeader(this);
+            if (IsConnected)
+                GameServer.PromoteSquadLeader(this);
         }
         // 发送警告信息
         public void WarnPlayer(string msg)
         {
-            GameServer.WarnPlayer(this, msg);
+            if (IsConnected)
+                GameServer.WarnPlayer(this, msg);
         }
         // 发送普通信息
         public void Message(string msg)
         {
-            GameServer.MessageToPlayer(this, msg);
+            if (IsConnected)
+                GameServer.MessageToPlayer(this, msg);
         }
+        // 发送聊天栏信息
+        public void SayToChat(string msg)
+        {
+            if (IsConnected)
+                GameServer.SayToChat(msg, this);
+        }
+
         // 发送普通信息,一定时间后关闭
         public void Message(string msg, float fadeoutTime)
         {
-            GameServer.MessageToPlayer(this, msg, fadeoutTime);
+            if (IsConnected)
+                GameServer.MessageToPlayer(this, msg, fadeoutTime);
         }
         // 设置新的游戏内角色
         public void SetNewRole(GameRole role)
         {
-            GameServer.SetRoleTo(this, role);
+            if (IsConnected)
+                GameServer.SetRoleTo(this, role);
         }
         // 传送到坐标
         public void Teleport(Vector3 target)
@@ -262,56 +287,66 @@ namespace BattleBitAPI
         // 复活玩家
         public void SpawnPlayer(PlayerLoadout loadout, PlayerWearings wearings, Vector3 position, Vector3 lookDirection, PlayerStand stand, float spawnProtection)
         {
-            GameServer.SpawnPlayer(this, loadout, wearings, position, lookDirection, stand, spawnProtection);
+            if (IsConnected)
+                GameServer.SpawnPlayer(this, loadout, wearings, position, lookDirection, stand, spawnProtection);
         }
         // 设置 HP
         public void SetHP(float newHP)
         {
-            GameServer.SetHP(this, newHP);
+            if (IsConnected)
+                GameServer.SetHP(this, newHP);
         }
         // 给予伤害
         public void GiveDamage(float damage)
         {
-            GameServer.GiveDamage(this, damage);
+            if (IsConnected)
+                GameServer.GiveDamage(this, damage);
         }
         // 治疗玩家
         public void Heal(float hp)
         {
-            GameServer.Heal(this, hp);
+            if (IsConnected)
+                GameServer.Heal(this, hp);
         }
         // 设置主要武器
         public void SetPrimaryWeapon(WeaponItem item, int extraMagazines, bool clear = false)
         {
-            GameServer.SetPrimaryWeapon(this, item, extraMagazines, clear);
+            if (IsConnected)
+                GameServer.SetPrimaryWeapon(this, item, extraMagazines, clear);
         }
         // 设置次要武器
         public void SetSecondaryWeapon(WeaponItem item, int extraMagazines, bool clear = false)
         {
-            GameServer.SetSecondaryWeapon(this, item, extraMagazines, clear);
+            if (IsConnected)
+                GameServer.SetSecondaryWeapon(this, item, extraMagazines, clear);
         }
         // 设置绷带
         public void SetFirstAidGadget(string item, int extra, bool clear = false)
         {
-            GameServer.SetFirstAid(this, item, extra, clear);
+            if (IsConnected)
+                GameServer.SetFirstAid(this, item, extra, clear);
         }
         // 设置轻型道具
         public void SetLightGadget(string item, int extra, bool clear = false)
         {
-            GameServer.SetLightGadget(this, item, extra, clear);
+            if (IsConnected)
+                GameServer.SetLightGadget(this, item, extra, clear);
         }
         // 设置重型道具
         public void SetHeavyGadget(string item, int extra, bool clear = false)
         {
-            GameServer.SetHeavyGadget(this, item, extra, clear);
+            if (IsConnected)
+                GameServer.SetHeavyGadget(this, item, extra, clear);
         }
         // 设置投掷物
         public void SetThrowable(string item, int extra, bool clear = false)
         {
-            GameServer.SetThrowable(this, item, extra, clear);
+            if (IsConnected)
+                GameServer.SetThrowable(this, item, extra, clear);
         }
 
         // ---- Static ----
-        public static void SetInstance(TPlayer player, Player<TPlayer>.Internal @internal)
+        internal static void SetInstance(TPlayer player, Player<TPlayer>.Internal @internal)
         {
             player.mInternal = @internal;
         }
@@ -333,6 +368,8 @@ namespace BattleBitAPI
             public Team Team;
             public Squads SquadName;
             public int PingMs = 999;
+            public long PreviousSessionID = 0;
+            public long SessionID = 0;
 
             public bool IsAlive;
             public float HP;

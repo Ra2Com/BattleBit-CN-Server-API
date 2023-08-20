@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
@@ -9,7 +6,6 @@ using BattleBitAPI.Common;
 using BattleBitAPI.Common.Extentions;
 using BattleBitAPI.Networking;
 using BattleBitAPI.Pooling;
-using CommunityServerAPI.BattleBitAPI;
 
 namespace BattleBitAPI.Server
 {
@@ -25,8 +21,6 @@ namespace BattleBitAPI.Server
         public int GamePort => mInternal.GamePort;
         // 服务器端口
 
-        public TcpClient Socket => mInternal.Socket;
-        // TCP端口
         public bool IsPasswordProtected => mInternal.IsPasswordProtected;
         // 服务器是否有密码
         public string ServerName => mInternal.ServerName;
@@ -49,6 +43,8 @@ namespace BattleBitAPI.Server
         // 加载页面文本
         public string ServerRulesText => mInternal.ServerRulesText;
         // 服务器规则文本
+        public uint RoundIndex => mInternal.RoundIndex;
+        public long SessionID => mInternal.SessionID;
         public ServerSettings<TPlayer> ServerSettings => mInternal.ServerSettings;
         // 服务器设置
         public MapRotation<TPlayer> MapRotation => mInternal.MapRotation;
@@ -184,7 +180,7 @@ namespace BattleBitAPI.Server
             try
             {
                 //Are we still connected on socket level?
-                if (!Socket.Connected)
+                if (mInternal.Socket == null || !mInternal.Socket.Connected)
                 {
                     mClose("Connection was terminated.");
                     return;
@@ -197,10 +193,10 @@ namespace BattleBitAPI.Server
                     return;
                 }
 
-                var networkStream = Socket.GetStream();
+                var networkStream = mInternal.Socket.GetStream();
 
                 //Read network packages.
-                while (Socket.Available > 0)
+                while (mInternal.Socket.Available > 0)
                 {
                     this.mInternal.mLastPackageReceived = Extentions.TickCount;
 
@@ -434,11 +430,6 @@ namespace BattleBitAPI.Server
         {
 
         }
-        // 服务器重连时
-        public virtual async Task OnReconnected() 
-        {
-
-        }
         // 服务器离线时
         public virtual async Task OnDisconnected() 
         {
@@ -553,6 +544,10 @@ namespace BattleBitAPI.Server
         {
 
         }
+        public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
+        {
+
+        }
 
         // ---- 功能方法 ----
         public void WriteToSocket(Common.Serialization.Stream pck)
@@ -619,10 +614,20 @@ namespace BattleBitAPI.Server
             ExecuteCommand("endgame");
         }
 
-         // 发布聊天栏内容
-        public void SayToChat(string msg)
+        // 发布全体聊天栏内容
+        public void SayToAllChat(string msg)
         {
             ExecuteCommand("say " + msg);
+        }
+        // 发给对应玩家 Steam64 聊天栏内容
+        public void SayToChat(string msg, ulong steamID)
+        {
+            ExecuteCommand("sayto " + steamID + " " + msg);
+        }
+        // 发给对应玩家 昵称 聊天栏内容
+        public void SayToChat(string msg, Player<TPlayer> player)
+        {
+            SayToChat(msg, player.SteamID);
         }
 
         // 夭寿，服务器药丸
@@ -1065,7 +1070,7 @@ namespace BattleBitAPI.Server
         }
 
         // ---- Static ----
-        public static void SetInstance(GameServer<TPlayer> server, Internal @internal)
+        internal static void SetInstance(GameServer<TPlayer> server, Internal @internal)
         {
             server.mInternal = @internal;
         }
@@ -1076,6 +1081,7 @@ namespace BattleBitAPI.Server
             // ---- Variables ---- 
             public ulong ServerHash;
             public bool IsConnected;
+            public bool HasActiveConnectionSession;
             public IPAddress GameIP;
             public int GamePort;
             public TcpClient Socket;
@@ -1092,6 +1098,8 @@ namespace BattleBitAPI.Server
             public int MaxPlayerCount;
             public string LoadingScreenText;
             public string ServerRulesText;
+            public uint RoundIndex;
+            public long SessionID;
             public ServerSettings<TPlayer> ServerSettings;
             public MapRotation<TPlayer> MapRotation;
             public GamemodeRotation<TPlayer> GamemodeRotation;
@@ -1112,6 +1120,7 @@ namespace BattleBitAPI.Server
             public long mLastPackageReceived;
             public long mLastPackageSent;
             public bool mWantsToCloseConnection;
+            public long mPreviousSessionID;
             public StringBuilder mBuilder;
             public Queue<(ulong steamID, PlayerModifications<TPlayer>.mPlayerModifications)> mChangedModifications;
 
@@ -1458,7 +1467,9 @@ namespace BattleBitAPI.Server
                 int inQueuePlayers,
                 int maxPlayers,
                 string loadingScreenText,
-                string serverRulesText
+                string serverRulesText,
+                uint roundIndex,
+                long sessionID
                 )
             {
                 this.ServerHash = ((ulong)port << 32) | (ulong)iP.ToUInt();
@@ -1479,6 +1490,8 @@ namespace BattleBitAPI.Server
                 this.MaxPlayerCount = maxPlayers;
                 this.LoadingScreenText = loadingScreenText;
                 this.ServerRulesText = serverRulesText;
+                this.RoundIndex = roundIndex;
+                this.SessionID = sessionID;
 
                 this.ServerSettings.Reset();
                 this._RoomSettings.Reset();
