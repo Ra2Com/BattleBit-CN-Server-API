@@ -1230,7 +1230,7 @@ namespace BattleBitAPI.Server
                                         if (responseSpawn != null)
                                         {
                                             response.Write(true);
-                                            request.Write(response);
+                                            responseSpawn.Value.Write(response);
                                             response.Write(vehicleID);
                                         }
                                         else
