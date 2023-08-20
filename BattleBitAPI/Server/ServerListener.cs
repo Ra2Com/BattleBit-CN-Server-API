@@ -1533,7 +1533,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.NotifyNewRoundID:
+                case NetworkCommunication.NotifyNewRoundID:
                     {
                         if (stream.CanRead(4 + 8))
                         {
@@ -1566,7 +1566,7 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-                case NetworkCommuncation.Log:
+                case NetworkCommunication.Log:
                     {
                         if (this.LogLevel.HasFlag(LogLevel.GameServerErrors))
                         {
