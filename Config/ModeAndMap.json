@@ -1,0 +1,1554 @@
+﻿{
+  "FFA":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 8
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 8
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 8
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "TDM":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 16
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": "8\n16"
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": "8\n16"
+    }
+  ],
+  "DOMI":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": "16\n32\n64"
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": "32\n64\n90"
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": "16\n32\n64\n90"
+    }
+  ],
+  "RUSH":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "FRONTLINE":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "GunGameFFA":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "GunGameTeam":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "ELIMI":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "INFECTED":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "CONQ":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "INFCONQ":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "CATCH":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "CTF":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "AAS":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "CashRun":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ],
+  "SuicideRush":[
+    {
+      "MapName": "Azagor",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Barsa",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Construction",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "District",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Dustydew",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Eduardovo",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Frugis",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Isle",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Lonovo",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "MultuIslands",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Namak",
+      "WorldSize": 500,
+      "MapSize": 0
+    },
+    {
+      "MapName": "OilDunes",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "River",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Salhan",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "SandySunset",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "TensaTown",
+      "WorldSize": 1000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Valley",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "Wakistan",
+      "WorldSize": 2000,
+      "MapSize": 0
+    },
+    {
+      "MapName": "WineParadise",
+      "WorldSize": 2000,
+      "MapSize": 0
+    }
+  ]
+}
