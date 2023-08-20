@@ -60,6 +60,7 @@ namespace BattleBitAPI.Server
         public string TerminationReason => mInternal.TerminationReason;
         // 服务器关闭原因
         public bool ReconnectFlag => mInternal.ReconnectFlag;
+        // 重连标志
         public IEnumerable<Squad<TPlayer>> TeamASquads
         {
             get
@@ -1533,7 +1534,7 @@ namespace BattleBitAPI.Server
                 if (team == Team.TeamB)
                     return this.TeamBSquadInternals[(int)squad];
                 return null;
-            }
+            } 
             public Squad<TPlayer>.Internal GetSquadInternal(Squad<TPlayer> squad)
             {
                 return GetSquadInternal(squad.Team, squad.Name);

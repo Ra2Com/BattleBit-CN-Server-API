@@ -406,7 +406,7 @@ namespace BattleBitAPI.Server
                                 serverRulesText = string.Empty;
                             }
                             // TODO: 自定义 serverRulesText 目前没用
-                            serverRulesText = RichText.Bold("Welcome");
+                            // serverRulesText = RichText.Bold("Welcome");
                         }
 
                         var hash = ((ulong)gamePort << 32) | (ulong)ip.ToUInt();
