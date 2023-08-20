@@ -12,6 +12,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
             helpMessage = "禁言指定的玩家昵称或者 SteamID";
             Aliases = new string[] { "/m" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = true;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

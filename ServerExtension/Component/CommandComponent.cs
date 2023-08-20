@@ -42,6 +42,7 @@ public class CommandComponent
         commandHandlers.Add(new StartCommandHandler());
         commandHandlers.Add(new AnnCommandHandler());
         commandHandlers.Add(new AnnLongCommandHandler());
+        commandHandlers.Add(new RefreshCommandHandler());
     }
 
 

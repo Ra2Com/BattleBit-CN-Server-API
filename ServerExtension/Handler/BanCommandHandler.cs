@@ -12,6 +12,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
             helpMessage = "封禁指定的玩家昵称或者 SteamID";
             Aliases = new string[] { "/b" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = true;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
@@ -20,7 +21,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
             {
                 CommandType = CommandTypes.Ban,
                 Executor = player.Name,
-                Error = false,
+                Error = false
             };
         }
 

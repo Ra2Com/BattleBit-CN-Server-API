@@ -22,8 +22,8 @@ class Program
         int apiPort = 29294;
         SpawnManager.Init();
         PrivilegeManager.Init();
-        listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
-        listener.OnCreatingPlayerInstance += OnCreatingPlayerInstance;
+        //listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
+        //listener.OnCreatingPlayerInstance += OnCreatingPlayerInstance;
         listener.Start(apiPort);
 
         if (listener.IsListening)
@@ -48,4 +48,3 @@ class Program
     {
         return new MyGameServer();
     }
-}

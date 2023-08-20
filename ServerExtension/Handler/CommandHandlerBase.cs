@@ -9,6 +9,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
         public string helpMessage;
         public string[] Aliases { get; set; } = new string[0];
         public List<Roles> roles { get; set; } = new List<Roles>() { Roles.None };
+        public bool isPrivate { get; set; } = false;
 
         public virtual CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {

@@ -32,6 +32,7 @@ namespace CommunityServerAPI.Tools
 
         public static async Task GetPlayerPrivilege(MyPlayer player)
         {
+            // TODO: 这个代码需要review
             // 判断玩家是否在列表中
             var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == player.SteamID.ToString());
             if (playerJson.Role != 0)
