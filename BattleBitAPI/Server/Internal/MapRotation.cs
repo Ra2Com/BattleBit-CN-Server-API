@@ -1,4 +1,4 @@
-
+﻿
 namespace BattleBitAPI.Server
 {
     public class MapRotation<TPlayer> where TPlayer : Player<TPlayer>
@@ -14,6 +14,7 @@ namespace BattleBitAPI.Server
             lock (mResources._MapRotation)
                 return new List<string>(mResources._MapRotation);
         }
+        // 是否在地图池中
         public bool InRotation(string map)
         {
             map = map.ToUpperInvariant();
@@ -21,6 +22,7 @@ namespace BattleBitAPI.Server
             lock (mResources._MapRotation)
                 return mResources._MapRotation.Contains(map);
         }
+        // 从地图池移除
         public bool RemoveFromRotation(string map)
         {
             map = map.ToUpperInvariant();
@@ -31,6 +33,7 @@ namespace BattleBitAPI.Server
             mResources.IsDirtyMapRotation = true;
             return true;
         }
+        // 加入地图池
         public bool AddToRotation(string map)
         {
             map = map.ToUpperInvariant();
@@ -41,6 +44,7 @@ namespace BattleBitAPI.Server
             mResources.IsDirtyMapRotation = true;
             return true;
         }
+        // 设置地图池
         public void SetRotation(params string[] maps)
         {
             lock (mResources._MapRotation)
@@ -51,6 +55,7 @@ namespace BattleBitAPI.Server
             }
             mResources.IsDirtyMapRotation = true;
         }
+        // 清除地图池
         public void ClearRotation()
         {
             lock (mResources._MapRotation)

@@ -30,6 +30,6 @@ public class RefreshCommandHandler : CommandHandlerBase
     {
         SpawnManager.Init();
         PrivilegeManager.Init();
-        player.GameServer.SayToChat($"管理员 {player.Name} - 配置文件已刷新");
+        player.GameServer.SayToAllChat($"管理员 {player.Name} - 配置文件已刷新");
     }
 }

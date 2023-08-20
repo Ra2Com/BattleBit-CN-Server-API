@@ -59,7 +59,7 @@ public class CommandComponent
         var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd) || a.Aliases.Contains(cmd));
         if (null == commandHandler)
         {
-            player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查询帮助");
+            player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查看帮助", player.SteamID);
             return;
         }
 

@@ -31,7 +31,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (timeDiff < 120)
             {
-                player.GameServer.MessageToPlayer(player, "你还不能使用加速技能，剩余时间：" + (120 - timeDiff) + " 秒", 3f);
+                player.GameServer.SayToChat("你还不能使用加速技能，剩余时间：" + (120 - timeDiff) + " 秒", player.SteamID);
                 return;
             }
             else

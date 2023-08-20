@@ -33,7 +33,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要封禁的玩家");
+                player.GameServer.SayToChat($"未找到要封禁的玩家", player.SteamID);
                 return;
             }
 

@@ -28,11 +28,11 @@ namespace CommunityServerAPI.ServerExtension.Handler
         {
             if (player.GameServer.RoundSettings.State != GameState.EndingGame)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 本局游戏已结束！");
+                player.GameServer.SayToChat($"本局游戏已结束！", player.SteamID);
                 return;
             }
 
-            player.GameServer.SayToChat($"管理员 {player.Name} - 使用命令结束了本局!");
+            player.GameServer.SayToAllChat($"管理员 {player.Name} - 使用命令结束了本局!");
             player.GameServer.ForceEndGame();
             player.GameServer.RoundSettings.SecondsLeft = 3;
             return;

@@ -32,12 +32,12 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要杀死的玩家");
+                player.GameServer.SayToChat($"未找到要杀死的玩家", player.SteamID);
                 return;
             }
 
             targetPlayer?.Kill();
-            player.GameServer.SayToChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
+            player.GameServer.SayToAllChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
             return;
         }
     }

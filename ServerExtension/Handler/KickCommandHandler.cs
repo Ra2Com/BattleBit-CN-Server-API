@@ -33,12 +33,12 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要踢出的玩家");
+                player.GameServer.SayToChat($"未找到要踢出的玩家", player.SteamID);
                 return;
             }
 
             targetPlayer.Kick();
-            player.GameServer.SayToChat($"{targetPlayer?.Name} 被管理员 {player.Name} 踢出");
+            player.GameServer.SayToAllChat($"{targetPlayer?.Name} 被管理员 {player.Name} 踢出");
             return;
         }
     }

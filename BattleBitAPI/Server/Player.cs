@@ -10,11 +10,15 @@ namespace BattleBitAPI
         private Internal mInternal;
 
         // ---- 变量 ----
-        public ulong SteamID => mInternal.SteamID; // 玩家的 Steam64
-        public string Name => mInternal.Name; // 玩家的昵称
-        public IPAddress IP => mInternal.IP; // 玩家的IP地址
+        public ulong SteamID => mInternal.SteamID;
+        // 玩家的 Steam64
+        public string Name => mInternal.Name;
+        // 玩家的昵称
+        public IPAddress IP => mInternal.IP;
+        // 玩家的IP地址
         public GameServer<TPlayer> GameServer => mInternal.GameServer;
-        public GameRole Role // 玩家在服务器内的权限
+        // 玩家在游戏内玩的角色
+        public GameRole Role
         {
             get => mInternal.Role;
             set
@@ -24,7 +28,8 @@ namespace BattleBitAPI
                 SetNewRole(value);
             }
         }
-        public Team Team // 玩家在服务器内的团队阵营
+        // 玩家在服务器内的团队阵营
+        public Team Team
         {
             get => mInternal.Team;
             set
@@ -33,7 +38,8 @@ namespace BattleBitAPI
                     ChangeTeam(value);
             }
         }
-        public Squads SquadName // 玩家在服务器内的小队名
+        // 玩家在服务器内的小队名
+        public Squads SquadName
         {
             get => mInternal.SquadName;
             set
@@ -46,6 +52,7 @@ namespace BattleBitAPI
                     JoinSquad(value);
             }
         }
+        // 玩家团队阵营和小队
         public Squad<TPlayer> Squad
         {
             get => GameServer.GetSquad(mInternal.Team, mInternal.SquadName);
@@ -68,7 +75,9 @@ namespace BattleBitAPI
         public bool InSquad => mInternal.SquadName != Squads.NoSquad;
         // 玩家的延迟 MS
         public int PingMs => mInternal.PingMs;
+        // 玩家当前链接编号
         public long CurrentSessionID => mInternal.SessionID;
+        // 玩家是否已链接
         public bool IsConnected => mInternal.SessionID != 0;
 
         // 玩家的 HP值
@@ -124,6 +133,7 @@ namespace BattleBitAPI
 
         // ---- 虚函数 ----
 
+        // 玩家实例化时
         public virtual void OnCreated()
         {
 
@@ -189,6 +199,7 @@ namespace BattleBitAPI
         {
 
         }
+        // 玩家的连接编号状态改变时
         public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
 

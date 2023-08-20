@@ -29,11 +29,11 @@ namespace CommunityServerAPI.ServerExtension.Handler
             if (player.GameServer.RoundSettings.State != GameState.WaitingForPlayers &&
                 player.GameServer.RoundSettings.State != GameState.CountingDown)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 本局游戏已经开始了！");
+                player.GameServer.SayToChat($"本局游戏已经开始了！", player.SteamID);
                 return;
             }
 
-            player.GameServer.SayToChat($"管理员 {player.Name} - 使用命令开始了本局!");
+            player.GameServer.SayToAllChat($"管理员 {player.Name} - 使用命令开始了本局!");
             player.GameServer.ForceStartGame();
             player.GameServer.RoundSettings.SecondsLeft = 3;
             return;

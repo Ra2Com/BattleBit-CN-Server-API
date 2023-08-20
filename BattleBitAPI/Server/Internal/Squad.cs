@@ -4,12 +4,19 @@ namespace BattleBitAPI.Server
 {
     public class Squad<TPlayer> where TPlayer : Player<TPlayer>
     {
+        // 团队阵营
         public Team Team => @internal.Team;
+        // 小队
         public Squads Name => @internal.Name;
+        // 服务器
         public GameServer<TPlayer> Server => @internal.Server;
+        // 人数
         public int NumberOfMembers => @internal.Members.Count;
+        // 是否是空的
         public bool IsEmpty => NumberOfMembers == 0;
+        // 迭代成员
         public IEnumerable<TPlayer> Members => @internal.Server.IterateMembersOf(this);
+        // 小队分数
         public int SquadPoints
         {
             get => @internal.SquadPoints;

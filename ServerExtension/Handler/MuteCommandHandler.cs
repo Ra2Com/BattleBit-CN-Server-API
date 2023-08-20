@@ -33,17 +33,17 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 未找到要禁言的玩家");
+                player.GameServer.SayToChat($"未找到要禁言的玩家", player.SteamID);
                 return;
             }
             else if (targetPlayer.Modifications.IsTextChatMuted)
             {
-                player.GameServer.SayToChat($"管理员 {player.Name} - 玩家 {targetPlayer.Name} 已被禁言");
+                player.GameServer.SayToChat($"玩家 {targetPlayer?.Name} 已经被禁言过了", player.SteamID);
                 return;
             }
 
             targetPlayer.Modifications.IsTextChatMuted = true;
-            player.GameServer.SayToChat($"管理员 {player.Name} 禁言了 {targetPlayer?.Name}");
+            player.GameServer.SayToAllChat($"管理员 {player.Name} 禁言了 {targetPlayer?.Name}");
             return;
         }
     }

@@ -44,7 +44,9 @@ namespace BattleBitAPI.Server
         public string ServerRulesText => mInternal.ServerRulesText;
         // 服务器规则文本
         public uint RoundIndex => mInternal.RoundIndex;
+        // 本局游戏的编号
         public long SessionID => mInternal.SessionID;
+        // 本次链接的编号
         public ServerSettings<TPlayer> ServerSettings => mInternal.ServerSettings;
         // 服务器设置
         public MapRotation<TPlayer> MapRotation => mInternal.MapRotation;
@@ -139,7 +141,7 @@ namespace BattleBitAPI.Server
             {
                 this.mInternal.IsDirtyRoundSettings = false;
 
-                //发送新的本局设置
+                // 发送新的本局设置
                 using (var pck = Common.Serialization.Stream.Get())
                 {
                     pck.Write((byte)NetworkCommunication.SetNewRoundState);
@@ -648,7 +650,7 @@ namespace BattleBitAPI.Server
             ExecuteCommand("kick all");
         }
 
-        // 通过 steamID 踢出某个玩家，需要填写原因
+        // 通过 Steam64 踢出某个玩家，需要填写原因
         public void Ban(ulong steamID, string reason)
         {
             ExecuteCommand("ban " + steamID + " " + reason);
@@ -660,7 +662,7 @@ namespace BattleBitAPI.Server
             Ban(player.SteamID, reason);
         }
 
-        // 通过 steamID 踢出某个玩家，需要填写原因
+        // 通过 Steam64 踢出某个玩家，需要填写原因
         public void Kick(ulong steamID, string reason)
         {
             ExecuteCommand("kick " + steamID + " " + reason);
@@ -672,7 +674,7 @@ namespace BattleBitAPI.Server
             Kick(player.SteamID, reason);
         }
 
-        // 通过 steamID 杀死某个玩家
+        // 通过 Steam64 杀死某个玩家
         public void Kill(ulong steamID)
         {
             ExecuteCommand("kill " + steamID);
@@ -684,7 +686,7 @@ namespace BattleBitAPI.Server
             Kill(player.SteamID);
         }
 
-        // 通过 steamID 给某个玩家换边
+        // 通过 Steam64 给某个玩家换边
         public void ChangeTeam(ulong steamID)
         {
             ExecuteCommand("changeteam " + steamID);
@@ -696,7 +698,7 @@ namespace BattleBitAPI.Server
             ChangeTeam(player.SteamID);
         }
 
-        // 通过 steamID 给某个玩家指定团队
+        // 通过 Steam64 给某个玩家指定团队
         public void ChangeTeam(ulong steamID, Team team)
         {
             if (team == Team.TeamA)
@@ -711,7 +713,7 @@ namespace BattleBitAPI.Server
             ChangeTeam(player.SteamID, team);
         }
 
-        // 通过 steamID 给某个玩家踢出小队
+        // 通过 Steam64 给某个玩家踢出小队
         public void KickFromSquad(ulong steamID)
         {
             ExecuteCommand("squadkick " + steamID);
@@ -723,7 +725,7 @@ namespace BattleBitAPI.Server
             KickFromSquad(player.SteamID);
         }
 
-        // 通过 steamID 给某个玩家加入小队
+        // 通过 Steam64 给某个玩家加入小队
         public void JoinSquad(ulong steamID, Squads targetSquad)
         {
             ExecuteCommand("setsquad " + steamID + " " + ((int)targetSquad));
@@ -735,7 +737,7 @@ namespace BattleBitAPI.Server
             JoinSquad(player.SteamID, targetSquad);
         }
 
-        // 通过 steamID 解散某个玩家所在小队
+        // 通过 Steam64 解散某个玩家所在小队
         public void DisbandPlayerSquad(ulong steamID)
         {
             ExecuteCommand("squaddisband " + steamID);
@@ -747,7 +749,7 @@ namespace BattleBitAPI.Server
             DisbandPlayerSquad(player.SteamID);
         }
 
-        // 通过 steamID 晋升某个玩家为队长
+        // 通过 Steam64 晋升某个玩家为队长
         public void PromoteSquadLeader(ulong steamID)
         {
             ExecuteCommand("squadpromote " + steamID);
@@ -759,7 +761,7 @@ namespace BattleBitAPI.Server
             PromoteSquadLeader(player.SteamID);
         }
 
-        // 通过 steamID 给某个玩家发送警告 Warn 弹窗，需要手动关闭
+        // 通过 Steam64 给某个玩家发送警告 Warn 弹窗，需要手动关闭
         public void WarnPlayer(ulong steamID, string msg)
         {
             ExecuteCommand("warn " + steamID + " " + msg);
@@ -771,7 +773,7 @@ namespace BattleBitAPI.Server
             WarnPlayer(player.SteamID, msg);
         }
 
-        // 通过 steamID 给某个玩家发送消息 Message 弹窗，需要手动关闭
+        // 通过 Steam64 给某个玩家发送消息 Message 弹窗，需要手动关闭
         public void MessageToPlayer(ulong steamID, string msg)
         {
             ExecuteCommand("msg " + steamID + " " + msg);
@@ -783,7 +785,7 @@ namespace BattleBitAPI.Server
             MessageToPlayer(player.SteamID, msg);
         }
 
-        // 通过 steamID 给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
+        // 通过 Steam64 给某个玩家发送消息 Message 弹窗，并带有自动消失秒数
         public void MessageToPlayer(ulong steamID, string msg, float fadeOutTime)
         {
             ExecuteCommand("msgf " + steamID + " " + fadeOutTime + " " + msg);
@@ -795,7 +797,7 @@ namespace BattleBitAPI.Server
             MessageToPlayer(player.SteamID, msg, fadeOutTime);
         }
 
-        // 通过 steamID 给某个玩家指定服务器内角色
+        // 通过 Steam64 给某个玩家指定服务器内角色
         public void SetRoleTo(ulong steamID, GameRole role)
         {
             ExecuteCommand("setrole " + steamID + " " + role);
