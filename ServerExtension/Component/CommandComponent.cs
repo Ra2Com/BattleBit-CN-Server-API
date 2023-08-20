@@ -40,6 +40,8 @@ public class CommandComponent
         commandHandlers.Add(new BanCommandHandler());
         commandHandlers.Add(new EndCommandHandler());
         commandHandlers.Add(new StartCommandHandler());
+        commandHandlers.Add(new AnnCommandHandler());
+        commandHandlers.Add(new AnnLongCommandHandler());
         
     }
    
@@ -90,7 +92,7 @@ public class CommandComponent
                     StringBuilder messageBuilder = new StringBuilder();
                     foreach (var command in showCommands)
                     {
-                        messageBuilder.Append($"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}\n");
+                        messageBuilder.Append($"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.LineBreak}");
                     }
                     string message = messageBuilder.ToString();
 
