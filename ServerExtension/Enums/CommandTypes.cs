@@ -18,6 +18,7 @@ namespace CommunityServerAPI.ServerExtension.Enums
         Start,
         End,
         Announce,
-        AnnounceLong
+        AnnounceLong,
+        Refresh
     }
 }

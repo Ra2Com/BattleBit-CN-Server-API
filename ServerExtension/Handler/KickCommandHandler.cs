@@ -12,6 +12,7 @@ namespace CommunityServerAPI.ServerExtension.Handler
             helpMessage = "指定玩家昵称或者 SteamID 踢出玩家";
             Aliases = new string[] { "/k" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = true;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
