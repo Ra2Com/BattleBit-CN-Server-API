@@ -1,12 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>BattleBitRemastered.CommunityAPI.Core</Title>
+    <Authors>RamboArena</Authors>
+    <Company>RamboArena</Company>
+    <Product>BattleBit Remastered RamboArena Server</Product>
+    <Description>API to customize RamboArena Server for BattleBit Remastered.
+    </Description>
+    <Copyright>MIT</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Ra2Com/BattleBit-CN-Server-API</RepositoryUrl>
+    <PackageTags>BattleBit</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +35,10 @@
     </None>
     <None Update="Config/Privilege.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

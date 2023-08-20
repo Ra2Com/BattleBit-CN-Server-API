@@ -33,12 +33,12 @@ namespace BattleBitAPI
                     ChangeTeam(value);
             }
         }
-        public Squads Squad // 玩家在服务器内的小队
+        public Squads SquadName // 玩家在服务器内的小队Name
         {
-            get => mInternal.Squad;
+            get => mInternal.SquadName;
             set
             {
-                if (value == mInternal.Squad)
+                if (value == mInternal.SquadName)
                     return;
                 if (value == Squads.NoSquad)
                     KickFromSquad();
@@ -46,10 +46,31 @@ namespace BattleBitAPI
                     JoinSquad(value);
             }
         }
-        public bool InSquad => mInternal.Squad != Squads.NoSquad; // 玩家是否在小队中
-        public int PingMs => mInternal.PingMs; // 玩家的网络连接延迟 Ping
+        public Squad<TPlayer> Squad
+        {
+            get => GameServer.GetSquad(mInternal.Team, mInternal.SquadName);
+            set
+            {
+                if (value == Squad)
+                    return;
 
-        public float HP // 玩家的 HP值
+                if (value == null)
+                    KickFromSquad();
+                else
+                {
+                    if(value.Team != this.Team)
+                        ChangeTeam(value.Team);
+                    JoinSquad(value.Name);
+                }
+            }
+        }
+        public bool InSquad => mInternal.SquadName != Squads.NoSquad;
+        // 玩家是否在小队中
+        public int PingMs => mInternal.PingMs;
+        // 玩家的延迟 MS
+
+        public float HP
+        // 玩家的 HP值
         {
             get => mInternal.HP;
             set
@@ -66,24 +87,37 @@ namespace BattleBitAPI
                 }
             }
         }
-        public bool IsAlive => mInternal.HP >= 0f; // 玩家是否还活着
-        public bool IsUp => mInternal.HP > 0f; // 玩家 HP是否大于0
-        public bool IsDown => mInternal.HP == 0f; // 玩家是否被击倒
-        public bool IsDead => mInternal.HP == -1f; // 玩家是否已死亡
+        public bool IsAlive => mInternal.HP >= 0f;
+        // 玩家是否还活着
+        public bool IsUp => mInternal.HP > 0f;
+        // 玩家 HP是否大于0
+        public bool IsDown => mInternal.HP == 0f;
+        // 玩家是否被击倒
+        public bool IsDead => mInternal.HP == -1f;
+        // 玩家是否已死亡
 
-        public Vector3 Position // 玩家的坐标
+        public Vector3 Position
+        // 玩家的坐标
         {
             get => mInternal.Position;
             set => Teleport(value);
         }
-        public PlayerStand StandingState => mInternal.Standing; // 玩家的站立状态
-        public LeaningSide LeaningState => mInternal.Leaning; // 玩家的歪头状态
-        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex; // 玩家的武器装备配置数据
-        public bool InVehicle => mInternal.InVehicle; // 玩家是否在载具中
-        public bool IsBleeding => mInternal.IsBleeding; // 玩家是否在流血
-        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout; // 玩家当前的武器装备配置
-        public PlayerWearings CurrentWearings => mInternal.CurrentWearings; // 玩家当前的角色穿着配置
-        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications; // 玩家的数值修改调整
+        public PlayerStand StandingState => mInternal.Standing;
+        // 玩家的站立状态
+        public LeaningSide LeaningState => mInternal.Leaning;
+        // 玩家的歪头状态
+        public LoadoutIndex CurrentLoadoutIndex => mInternal.CurrentLoadoutIndex;
+        // 玩家的武器装备配置数据
+        public bool InVehicle => mInternal.InVehicle;
+        // 玩家是否在载具中
+        public bool IsBleeding => mInternal.IsBleeding;
+        // 玩家是否在流血
+        public PlayerLoadout CurrentLoadout => mInternal.CurrentLoadout;
+        // 玩家当前的武器装备配置
+        public PlayerWearings CurrentWearings => mInternal.CurrentWearings;
+        // 玩家当前的角色穿着配置
+        public PlayerModifications<TPlayer> Modifications => mInternal.Modifications;
+        // 玩家的数值修改调整
 
         // ---- 虚函数 ----
 
@@ -138,12 +172,12 @@ namespace BattleBitAPI
 
         }
         // 玩家加入小队时
-        public virtual async Task OnJoinedSquad(Squads newSquad)
+        public virtual async Task OnJoinedSquad(Squad<TPlayer> newSquad)
         {
 
         }
         // 玩家离开小队时
-        public virtual async Task OnLeftSquad(Squads oldSquad)
+        public virtual async Task OnLeftSquad(Squad<TPlayer> oldSquad)
         {
 
         }
@@ -296,7 +330,7 @@ namespace BattleBitAPI
             public GameServer<TPlayer> GameServer;
             public GameRole Role;
             public Team Team;
-            public Squads Squad;
+            public Squads SquadName;
             public int PingMs = 999;
 
             public bool IsAlive;
