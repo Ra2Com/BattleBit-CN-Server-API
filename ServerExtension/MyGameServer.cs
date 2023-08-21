@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
 using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Handler;
+using BattleBitAPI;
 
 namespace CommunityServerAPI.ServerExtension
 {
@@ -37,6 +38,8 @@ namespace CommunityServerAPI.ServerExtension
 
             // 测试用途 For development test ONLY
             ForceStartGame();
+
+
         }
 
 
@@ -140,36 +143,34 @@ namespace CommunityServerAPI.ServerExtension
 
                 int beforePosTime = 15;
 
-                while (true)
-                {
-                    if (player.positionBef.Count > 0)
-                    {
-                        var pb = player.positionBef.Last();
-                        player.positionBef.Remove(pb);
-                        Console.Out.WriteLineAsync($"{pb.position}");
+                //while (true)
+                //{
+                //    if (player.positionBef.Count > 0)
+                //    {
+                //        var pb = player.positionBef.Last();
+                //        player.positionBef.Remove(pb);
+                //        Console.Out.WriteLineAsync($"{pb.position}");
 
-                        if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
-                        {
-                            if (AllPlayers.FirstOrDefault(o =>
-                                    Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
-                            {
-                                request.SpawnPosition = new Vector3
-                                { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
-                                request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
-                                Console.WriteLine(
-                                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
-                                break;
-                            }
-                        }
-
-                        beforePosTime = beforePosTime + 15;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活在选择点");
-                        break;
-                    }
-                }
+                //        if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
+                //        {
+                //            //if (AllPlayers.FirstOrDefault(o =>
+                //            //        Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team).SteamID==0)
+                //            //{
+                //            request.SpawnPosition = new Vector3
+                //            { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
+                //            request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
+                //            Console.WriteLine(
+                //                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
+                //            break;
+                //            //}
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活在选择点");
+                //        break;
+                //    }
+                //}
 
                 player.positionBef.Clear();
 
@@ -180,7 +181,7 @@ namespace CommunityServerAPI.ServerExtension
             }
             catch (Exception ee)
             {
-                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}");
+                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}--{ee.Message}");
             }
 
             return request;

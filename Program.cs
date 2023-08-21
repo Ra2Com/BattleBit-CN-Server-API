@@ -3,6 +3,8 @@ using BattleBitAPI.Common;
 using CommunityServerAPI.Tools;
 using CommunityServerAPI.ServerExtension;
 using CommunityServerAPI.ServerExtension.Model;
+using System.Numerics;
+using BattleBitAPI;
 
 class Program
 {
