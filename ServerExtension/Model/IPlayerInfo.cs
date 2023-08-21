@@ -1,4 +1,4 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+﻿using BattleBitAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +20,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         public ulong SteamID { get; }
         public int K { get; set; }
         public int D { get; set; }
+        public int HSKill { get; set; }
 
         public int rank { get; set; }
 

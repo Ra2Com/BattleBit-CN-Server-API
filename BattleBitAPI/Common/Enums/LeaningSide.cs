@@ -1,4 +1,4 @@
-﻿namespace CommunityServerAPI.BattleBitAPI.Common.Enums
+﻿namespace BattleBitAPI.Common
 {
     public enum LeaningSide
     {

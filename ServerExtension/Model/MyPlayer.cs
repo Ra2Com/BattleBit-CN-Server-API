@@ -1,7 +1,5 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Server;
-using CommunityServerAPI.Player;
+﻿using BattleBitAPI;
+using BattleBitAPI.Common;
 using CommunityServerAPI.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,15 +14,18 @@ namespace CommunityServerAPI.ServerExtension.Model
     {
         // DEVELOP TODO: 玩家离线、没有复活时要停止计时
         public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
+        public long LeaveTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
+        public int HSKill { get; set; }
+        public float HSRate { get; set; }
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
-        
+
         public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
         public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
@@ -34,18 +35,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnConnected()
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
-            
-            await PrivilegeManager.GetPlayerPrivilege(this);
 
-            // 特殊角色登录日志
-            if (stats?.Roles == Roles.Admin)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
-            }
-            if (stats?.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
-            }
 
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
@@ -58,7 +48,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                     $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
                     $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
                     $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}玩家 QQ群：887245025", 5f);
+                    $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
 
             _ = Task.Run(async () =>
             {
@@ -68,11 +58,11 @@ namespace CommunityServerAPI.ServerExtension.Model
                     {
                         if (Position.X != 0 && Position.Y != 0)
                         {
-                            positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });
-                            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
+                            //positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });
+                            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
                         }
 
-                        if (markId != 0)
+                        if (markId != 0 && markId != SteamID)
                         {
                             var markPlayer = GameServer.AllPlayers.FirstOrDefault(o => o.SteamID == markId);
                             if (markPlayer == null)
@@ -81,7 +71,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                             {
                                 var dis = Vector3.Distance(markPlayer.Position, Position).ToString("#0.0");
                                 // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
-                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
+                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Red}{dis}{RichText.EndColor} 米");
                                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");
 
                             }
@@ -103,7 +93,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnDied()
         {
 
-            
+
         }
 
 

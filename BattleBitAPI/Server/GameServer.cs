@@ -1,17 +1,13 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common;
-using CommunityServerAPI.BattleBitAPI.Common.Arguments;
-using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Common.Extentions;
-using CommunityServerAPI.BattleBitAPI.Networking;
-using CommunityServerAPI.BattleBitAPI.Pooling;
-using CommunityServerAPI.BattleBitAPI.Server.Internal;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 using System.Text;
+using BattleBitAPI.Common;
+using BattleBitAPI.Common.Extentions;
+using BattleBitAPI.Networking;
+using BattleBitAPI.Pooling;
 
-namespace CommunityServerAPI.BattleBitAPI.Server
+namespace BattleBitAPI.Server
 {
     public class GameServer<TPlayer> : System.IDisposable where TPlayer : Player<TPlayer>
     {
@@ -550,6 +546,7 @@ namespace CommunityServerAPI.BattleBitAPI.Server
         {
 
         }
+        // 当 SessionID 发生变化时
         public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
 

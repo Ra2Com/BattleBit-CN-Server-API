@@ -1,6 +1,6 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+﻿using BattleBitAPI.Common;
 
-namespace CommunityServerAPI.BattleBitAPI.Storage
+namespace BattleBitAPI.Storage
 {
 	public interface IPlayerStatsDatabase
 	{

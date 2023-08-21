@@ -1,2286 +1,2288 @@
 {
   "_comment": "This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
-  "Eye": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Blue_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Blue_01_VIP"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Blue_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Blue_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Brown_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Brown_01_VIP"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Brown_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Brown_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Eye_Dev_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Eye_Evrika_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Green_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Green_01_VIP"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Green_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_Green_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Eye_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Zombie",
-      "Privilege": "Any",
-      "Name": "Eye_Zombie_01"
-    }
-  ],
-  "Face": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_04"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_05"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Face_DEV_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Face_Evrika_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_SuppPack1_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Face_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Zombie",
-      "Privilege": "Any",
-      "Name": "Face_Zombie_01"
-    }
-  ],
-  "Hair": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Brown_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Brown_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Brown_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Hair_Brown_DEV_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Brown_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Brown_VIP_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Hair_Evrika_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Red_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Red_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Red_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Red_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Red_VIP_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_White_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_White_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_White_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_White_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_White_VIP_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Gray_SuppPack1_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Gray_SuppPack1_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Gray_SuppPack1_03"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Gray_SuppPack1_04"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Hair_Gray_SuppPack1_05"
-    },
-    {
-      "Team": "Any",
-      "Class": "Zombie",
-      "Privilege": "Any",
-      "Name": "Hair_Zombie_01"
-    }
-  ],
-  "Skin": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Afro_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Afro_01_Camo"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Afro_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Euro_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Euro_01_Camo"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Euro_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Euro_Evrika_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "Euro_VIP_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "White_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "White_01_Camo"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "White_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Mulat_01"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Mulat_01_Camo"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "Mulat_02"
-    },
-    {
-      "Team": "Any",
-      "Class": "Zombie",
-      "Privilege": "Any",
-      "Name": "Zombie_01"
-    }
-  ],
-  "Uniform": [
-    {
-      "Team": "Any",
-      "Class": "Zombie",
-      "Privilege": "Any",
-      "Name": "ANY_NU_Uniform_Zombie_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Engineer_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Medic_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Medic_02"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Sniper_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Support_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Engineer_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_01"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUS_NU_Uniform_Uni_01_DEV"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_01_SuppPack1"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_01_VIP"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_01_YT"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_02"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUS_NU_Uniform_Uni_02_DEV"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_02_SuppPack1"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUS_NU_Uniform_Uni_03_SuppPack1"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Engineer_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Medic_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Medic_02"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Sniper_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Support_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Engineer_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_01"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USA_NU_Uniform_Uni_01_Dev"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_01_SuppPack1"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_01_VIP"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_01_YT"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_02"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USA_NU_Uniform_Uni_02_Dev"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_02_SuppPack1"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USA_NU_Uniform_Uni_03_SuppPack1"
-    }
-  ],
-  "Helmet": [
-    {
-      "Team": "Any",
-      "Class": "Event",
-      "Privilege": "Any",
-      "Name": "Santa_Hat"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "ANV2_Universal_All_Helmet_Null"
-    },
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "ANV2_Universal_Zombie_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_00_B_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_01_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Helmet_01_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_SuppPack1_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_VIP_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Helmet_02_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUV2_Sniper_DEV_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_SuppPack1_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_A_E"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_B_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_00_C_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Helmet_01_A_E"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_SuppPack1_Helmet_00_A_E"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_SuppPack1_Helmet_01_A_E"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_D_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_00_E_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Helmet_02_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUV2_Universal_DEV_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUV2_Universal_DEV_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Helmet_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Helmet_01_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Helmet_02_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_VIP_Helmet_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "VIP",
-      "Name": "RUV2_Universal_YT_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Helmet_01_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Helmet_01_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Helmet_02_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Sniper_DEV_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_SuppPack1_Helmet_0_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_A_E"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_B_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_00_C_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Helmet_01_A_E"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_SuppPack1_Helmet_00_A_E"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_SuppPack1_Helmet_01_A_E"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_AB_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_D_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_00_E_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_01_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Helmet_01_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Universal_DEV_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Universal_DEV_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_SuppPack1_Helmet_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_SuppPack1_Helmet_01_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_SuppPack1_Helmet_02_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_VIP_Helmet_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Universal_YT_Helmet_00_A_N"
-    }
-  ],
-  "Armor": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "ANV2_Universal_All_Armor_Null"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_00_A_Z"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_01_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Armor_01_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_00_A_R"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_01_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Armor_01_A_R"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_00_A_R"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_00_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_01_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Armor_02_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_SuppPack1_Armor_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_SuppPack1_Armor_00_B_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_00_A_E"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_00_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_01_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Armor_01_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Armor_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Armor_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Armor_01_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Armor_01_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Armor_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUV2_Universal_YT_Armor_00_A"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_00_A_Z"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_01_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Armor_01_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_00_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_00_A_R"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_01_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Armor_01_A_R"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_00_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_00_A_R"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_00_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_01_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Armor_02_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_00_A_E"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_00_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_01_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Armor_01_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Armor_00_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Armor_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Armor_01_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Armor_01_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_SuppPack1_Armor_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Universal_YT_Armor_00_A_N"
-    }
-  ],
-  "Backpack": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "ANV2_Universal_All_Backpack_Null"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_03_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "RUV2_Engineer_All_Backpack_03_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_01_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_02_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "RUV2_Medic_All_Backpack_02_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_01_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "RUV2_Sniper_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_01_A_B"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_01_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "RUV2_Support_All_Backpack_02_A_H"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_00_A_L"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_02_B_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_02_C_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_03_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_04_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_All_Backpack_05_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Backpack_00_A_N"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "RUV2_Universal_YT_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_03_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Privilege": "Any",
-      "Name": "USV2_Engineer_All_Backpack_03_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_01_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_02_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Privilege": "Any",
-      "Name": "USV2_Medic_All_Backpack_02_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_00_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_01_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Privilege": "Any",
-      "Name": "USV2_Sniper_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_00_A_B"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_00_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_01_A_B 1"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_01_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Privilege": "Any",
-      "Name": "USV2_Support_All_Backpack_02_A_H"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_00_A_L"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_01_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_02_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_02_B_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_02_C_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_03_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_04_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_All_Backpack_05_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Any",
-      "Name": "USV2_Universal_SuppPack1_Backpack_00_A_N"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Privilege": "Admin",
-      "Name": "USV2_Universal_YT_Backpack_00_A_N"
-    }
-  ],
-  "Belt": [
-    {
-      "Team": "Any",
-      "Class": "Any",
-      "Name": "ANV2_Universal_All_Belt_Null"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_00_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_00_A_T"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_01_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_01_A_T"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_01_B_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Engineer",
-      "Name": "RUV2_Engineer_All_Belt_01_C_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_00_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_01_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_02_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_03_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_04_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Medic",
-      "Name": "RUV2_Medic_All_Belt_05_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_00_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_01_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_02_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_03_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_03_B_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Sniper",
-      "Name": "RUV2_Sniper_All_Belt_03_C_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_00_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_01_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_02_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_03_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_03_B_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Support",
-      "Name": "RUV2_Support_All_Belt_04_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_00_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_01_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_02_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_03_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_04_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_All_Belt_05_A_S"
-    },
-    {
-      "Team": "RUS",
-      "Class": "Any",
-      "Name": "RUV2_Universal_SuppPack1_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_00_A_T"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_01_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_01_A_T"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_01_B_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Engineer",
-      "Name": "USV2_Engineer_All_Belt_01_C_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_01_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_02_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_03_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_04_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Medic",
-      "Name": "USV2_Medic_All_Belt_05_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_01_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_02_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_03_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_03_B_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Sniper",
-      "Name": "USV2_Sniper_All_Belt_03_C_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_01_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_02_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_03_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_03_B_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Support",
-      "Name": "USV2_Support_All_Belt_04_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_00_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_01_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_02_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_03_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_04_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_All_Belt_05_A_S"
-    },
-    {
-      "Team": "USA",
-      "Class": "Any",
-      "Name": "USV2_Universal_SuppPack1_Belt_00_A_S"
-    }
-  ]
+  "PlayerWearing": {
+    "Eye": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Blue_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Blue_01_VIP"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Blue_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Blue_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Brown_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Brown_01_VIP"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Brown_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Brown_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Eye_Dev_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Eye_Evrika_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Green_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Green_01_VIP"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Green_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_Green_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Eye_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Zombie",
+        "Privilege": "Any",
+        "Name": "Eye_Zombie_01"
+      }
+    ],
+    "Face": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_04"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_05"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Face_DEV_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Face_Evrika_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_SuppPack1_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Face_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Zombie",
+        "Privilege": "Any",
+        "Name": "Face_Zombie_01"
+      }
+    ],
+    "Hair": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Brown_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Brown_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Brown_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Hair_Brown_DEV_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Brown_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Brown_VIP_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Hair_Evrika_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Red_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Red_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Red_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Red_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Red_VIP_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_White_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_White_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_White_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_White_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_White_VIP_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Gray_SuppPack1_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Gray_SuppPack1_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Gray_SuppPack1_03"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Gray_SuppPack1_04"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Hair_Gray_SuppPack1_05"
+      },
+      {
+        "Team": "Any",
+        "Class": "Zombie",
+        "Privilege": "Any",
+        "Name": "Hair_Zombie_01"
+      }
+    ],
+    "Skin": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Afro_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Afro_01_Camo"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Afro_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Euro_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Euro_01_Camo"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Euro_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Euro_Evrika_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "Euro_VIP_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "White_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "White_01_Camo"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "White_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Mulat_01"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Mulat_01_Camo"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "Mulat_02"
+      },
+      {
+        "Team": "Any",
+        "Class": "Zombie",
+        "Privilege": "Any",
+        "Name": "Zombie_01"
+      }
+    ],
+    "Uniform": [
+      {
+        "Team": "Any",
+        "Class": "Zombie",
+        "Privilege": "Any",
+        "Name": "ANY_NU_Uniform_Zombie_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Engineer_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Medic_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Medic_02"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Sniper_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Support_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Engineer_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_01"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUS_NU_Uniform_Uni_01_DEV"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_01_SuppPack1"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_01_VIP"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_01_YT"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_02"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUS_NU_Uniform_Uni_02_DEV"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_02_SuppPack1"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUS_NU_Uniform_Uni_03_SuppPack1"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Engineer_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Medic_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Medic_02"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Sniper_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Support_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Engineer_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_01"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USA_NU_Uniform_Uni_01_Dev"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_01_SuppPack1"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_01_VIP"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_01_YT"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_02"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USA_NU_Uniform_Uni_02_Dev"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_02_SuppPack1"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USA_NU_Uniform_Uni_03_SuppPack1"
+      }
+    ],
+    "Helmet": [
+      {
+        "Team": "Any",
+        "Class": "Event",
+        "Privilege": "Any",
+        "Name": "Santa_Hat"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "ANV2_Universal_All_Helmet_Null"
+      },
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "ANV2_Universal_Zombie_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_00_B_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_01_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Helmet_01_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_SuppPack1_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_VIP_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Helmet_02_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUV2_Sniper_DEV_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_SuppPack1_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_A_E"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_B_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_00_C_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Helmet_01_A_E"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_SuppPack1_Helmet_00_A_E"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_SuppPack1_Helmet_01_A_E"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_D_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_00_E_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Helmet_02_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUV2_Universal_DEV_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUV2_Universal_DEV_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Helmet_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Helmet_01_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Helmet_02_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_VIP_Helmet_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "VIP",
+        "Name": "RUV2_Universal_YT_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Helmet_01_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Helmet_01_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Helmet_02_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Sniper_DEV_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_SuppPack1_Helmet_0_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_A_E"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_B_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_00_C_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Helmet_01_A_E"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_SuppPack1_Helmet_00_A_E"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_SuppPack1_Helmet_01_A_E"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_AB_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_D_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_00_E_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_01_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Helmet_01_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Universal_DEV_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Universal_DEV_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_SuppPack1_Helmet_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_SuppPack1_Helmet_01_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_SuppPack1_Helmet_02_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_VIP_Helmet_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Universal_YT_Helmet_00_A_N"
+      }
+    ],
+    "Armor": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "ANV2_Universal_All_Armor_Null"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_00_A_Z"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_01_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Armor_01_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_00_A_R"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_01_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Armor_01_A_R"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_00_A_R"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_00_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_01_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Armor_02_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_SuppPack1_Armor_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_SuppPack1_Armor_00_B_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_00_A_E"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_00_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_01_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Armor_01_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Armor_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Armor_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Armor_01_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Armor_01_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Armor_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUV2_Universal_YT_Armor_00_A"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_00_A_Z"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_01_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Armor_01_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_00_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_00_A_R"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_01_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Armor_01_A_R"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_00_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_00_A_R"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_00_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_01_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Armor_02_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_00_A_E"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_00_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_01_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Armor_01_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Armor_00_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Armor_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Armor_01_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Armor_01_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_SuppPack1_Armor_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Universal_YT_Armor_00_A_N"
+      }
+    ],
+    "Backpack": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "ANV2_Universal_All_Backpack_Null"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_03_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "RUV2_Engineer_All_Backpack_03_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_01_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_02_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "RUV2_Medic_All_Backpack_02_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_01_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "RUV2_Sniper_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_01_A_B"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_01_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "RUV2_Support_All_Backpack_02_A_H"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_00_A_L"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_02_B_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_02_C_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_03_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_04_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_All_Backpack_05_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Backpack_00_A_N"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "RUV2_Universal_YT_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_03_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Privilege": "Any",
+        "Name": "USV2_Engineer_All_Backpack_03_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_01_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_02_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Privilege": "Any",
+        "Name": "USV2_Medic_All_Backpack_02_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_00_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_01_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Privilege": "Any",
+        "Name": "USV2_Sniper_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_00_A_B"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_00_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_01_A_B 1"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_01_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Privilege": "Any",
+        "Name": "USV2_Support_All_Backpack_02_A_H"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_00_A_L"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_01_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_02_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_02_B_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_02_C_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_03_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_04_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_All_Backpack_05_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Any",
+        "Name": "USV2_Universal_SuppPack1_Backpack_00_A_N"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Privilege": "Admin",
+        "Name": "USV2_Universal_YT_Backpack_00_A_N"
+      }
+    ],
+    "Belt": [
+      {
+        "Team": "Any",
+        "Class": "Any",
+        "Name": "ANV2_Universal_All_Belt_Null"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_00_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_00_A_T"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_01_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_01_A_T"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_01_B_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Engineer",
+        "Name": "RUV2_Engineer_All_Belt_01_C_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_00_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_01_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_02_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_03_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_04_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Medic",
+        "Name": "RUV2_Medic_All_Belt_05_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_00_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_01_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_02_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_03_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_03_B_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Sniper",
+        "Name": "RUV2_Sniper_All_Belt_03_C_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_00_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_01_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_02_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_03_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_03_B_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Support",
+        "Name": "RUV2_Support_All_Belt_04_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_00_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_01_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_02_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_03_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_04_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_All_Belt_05_A_S"
+      },
+      {
+        "Team": "RUS",
+        "Class": "Any",
+        "Name": "RUV2_Universal_SuppPack1_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_00_A_T"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_01_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_01_A_T"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_01_B_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Engineer",
+        "Name": "USV2_Engineer_All_Belt_01_C_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_01_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_02_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_03_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_04_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Medic",
+        "Name": "USV2_Medic_All_Belt_05_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_01_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_02_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_03_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_03_B_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Sniper",
+        "Name": "USV2_Sniper_All_Belt_03_C_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_01_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_02_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_03_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_03_B_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Support",
+        "Name": "USV2_Support_All_Belt_04_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_00_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_01_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_02_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_03_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_04_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_All_Belt_05_A_S"
+      },
+      {
+        "Team": "USA",
+        "Class": "Any",
+        "Name": "USV2_Universal_SuppPack1_Belt_00_A_S"
+      }
+    ]
+  }
 }

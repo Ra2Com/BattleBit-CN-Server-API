@@ -1,7 +1,5 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Arguments;
-using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Server;
+﻿using BattleBitAPI.Common;
+using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
 using System.Numerics;
@@ -9,10 +7,11 @@ using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
 using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Handler;
+using BattleBitAPI;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    internal class MyGameServer : GameServer<MyPlayer>
+    public class MyGameServer : GameServer<MyPlayer>
     {
         public override async Task OnConnected()
         {
@@ -40,6 +39,8 @@ namespace CommunityServerAPI.ServerExtension
 
             // 测试用途 For development test ONLY
             ForceStartGame();
+
+
         }
 
 
@@ -66,7 +67,8 @@ namespace CommunityServerAPI.ServerExtension
         {
             if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
             {
-                // DEVELOP TODO: 记录玩家爆头击杀数
+                // 爆头击杀数据
+                args.Killer.HSKill++;
             }
 
             if (args.Killer != null)
@@ -143,36 +145,34 @@ namespace CommunityServerAPI.ServerExtension
 
                 int beforePosTime = 15;
 
-                while (true)
-                {
-                    if (player.positionBef.Count > 0)
-                    {
-                        var pb = player.positionBef.Last();
-                        player.positionBef.Remove(pb);
-                        Console.Out.WriteLineAsync($"{pb.position}");
+                //while (true)
+                //{
+                //    if (player.positionBef.Count > 0)
+                //    {
+                //        var pb = player.positionBef.Last();
+                //        player.positionBef.Remove(pb);
+                //        Console.Out.WriteLineAsync($"{pb.position}");
 
-                        if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
-                        {
-                            if (AllPlayers.FirstOrDefault(o =>
-                                    Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
-                            {
-                                request.SpawnPosition = new Vector3
-                                    { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
-                                request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
-                                Console.WriteLine(
-                                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
-                                break;
-                            }
-                        }
-
-                        beforePosTime = beforePosTime + 15;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活在选择点");
-                        break;
-                    }
-                }
+                //        if (TimeUtil.GetUtcTimeMs() - pb.time > 1000 * beforePosTime)
+                //        {
+                //            //if (AllPlayers.FirstOrDefault(o =>
+                //            //        Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team).SteamID==0)
+                //            //{
+                //            request.SpawnPosition = new Vector3
+                //            { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
+                //            request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
+                //            Console.WriteLine(
+                //                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
+                //            break;
+                //            //}
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活在选择点");
+                //        break;
+                //    }
+                //}
 
                 player.positionBef.Clear();
 
@@ -183,7 +183,7 @@ namespace CommunityServerAPI.ServerExtension
             }
             catch (Exception ee)
             {
-                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}");
+                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}--{ee.Message}");
             }
 
             return request;
@@ -212,10 +212,48 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
+            Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+
             var player = _rankPlayers.Find(o => o.SteamID == steamID);
 
             player.stats = stats;
+
+            ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+            player.stats.Roles = (Roles)role;
+
+            // 特殊角色登录日志
+            if (stats?.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+            }
+            if (stats?.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+            }
+
         }
+        // public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        // {
+        //     Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
+        //
+        //     var player = _rankPlayers.Find(o => o.SteamID == steamID);
+        //
+        //     player.stats = args.Stats;
+        //
+        //     ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+        //     player.stats.Roles = (Roles)role;
+        //
+        //     // 特殊角色登录日志
+        //     if (args.Stats?.Roles == Roles.Admin)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+        //     }
+        //     if (args.Stats?.Roles == Roles.Moderator)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+        //     }
+        //
+        // }
 
         public override async Task OnRoundEnded()
         {
