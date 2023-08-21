@@ -1,6 +1,7 @@
-﻿using System.Reflection;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+using System.Reflection;
 
-namespace BattleBitAPI.Common
+namespace CommunityServerAPI.BattleBitAPI.Common.Datasets
 {
 	public static class Gadgets
 	{

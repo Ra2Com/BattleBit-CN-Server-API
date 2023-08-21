@@ -1,13 +1,13 @@
-﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.ServerExtension.Model;
+using CommunityServerAPI.Utils;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class HealCommandHandler : CommandHandlerBase
+    public class Heal : CommandHandlerBase
     {
-        public HealCommandHandler()
+        public Heal()
         {
             commandMessage = "/heal";
             helpMessage = "治疗自己 100 生命值，每 2 分钟只能使用一次";

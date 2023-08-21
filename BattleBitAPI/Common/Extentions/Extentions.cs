@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace BattleBitAPI.Common.Extentions
+namespace CommunityServerAPI.BattleBitAPI.Common.Extentions
 {
 	public static class Extentions
 	{

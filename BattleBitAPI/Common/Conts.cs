@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI
+﻿namespace CommunityServerAPI.BattleBitAPI.Common
 {
     public static class Const
     {

@@ -1,12 +1,12 @@
-﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class StartCommandHandler : CommandHandlerBase
+    public class StartGame : CommandHandlerBase
     {
-        public StartCommandHandler()
+        public StartGame()
         {
             commandMessage = "/start";
             helpMessage = "立刻开始本轮对局";

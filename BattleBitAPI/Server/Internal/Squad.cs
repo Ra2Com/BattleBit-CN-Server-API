@@ -1,6 +1,6 @@
-﻿using BattleBitAPI.Common;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 
-namespace BattleBitAPI.Server
+namespace CommunityServerAPI.BattleBitAPI.Server.Internal
 {
     public class Squad<TPlayer> where TPlayer : Player<TPlayer>
     {

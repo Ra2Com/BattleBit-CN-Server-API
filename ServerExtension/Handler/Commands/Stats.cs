@@ -1,13 +1,13 @@
-﻿using BattleBitAPI.Common;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
 using CommunityServerAPI.ServerExtension.Model;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.Utils;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class StatsCommandHandler : CommandHandlerBase
+    public class Stats : CommandHandlerBase
     {
-        public StatsCommandHandler()
+        public Stats()
         {
             commandMessage = "/stats";
             helpMessage = "展示你的对局数据";

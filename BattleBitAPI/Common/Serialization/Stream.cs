@@ -1,7 +1,7 @@
-using BattleBitAPI.Common.Extentions;
+using CommunityServerAPI.BattleBitAPI.Common.Extentions;
 using System.Net;
 
-namespace BattleBitAPI.Common.Serialization
+namespace CommunityServerAPI.BattleBitAPI.Common.Serialization
 {
     public class Stream : IDisposable
     {

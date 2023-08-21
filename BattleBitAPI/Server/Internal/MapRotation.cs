@@ -1,5 +1,5 @@
 ﻿
-namespace BattleBitAPI.Server
+namespace CommunityServerAPI.BattleBitAPI.Server.Internal
 {
     public class MapRotation<TPlayer> where TPlayer : Player<TPlayer>
     {

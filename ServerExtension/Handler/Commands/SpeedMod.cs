@@ -1,13 +1,13 @@
-﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.ServerExtension.Model;
+using CommunityServerAPI.Utils;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class SpeedCommandHandler : CommandHandlerBase
+    public class SpeedMod : CommandHandlerBase
     {
-        public SpeedCommandHandler()
+        public SpeedMod()
         {
             commandMessage = "/speed";
             helpMessage = "增加自己 10% 的移动速度，每 2 分钟只能使用一次";

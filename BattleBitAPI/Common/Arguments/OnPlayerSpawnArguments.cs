@@ -1,6 +1,8 @@
-﻿using System.Numerics;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+using CommunityServerAPI.BattleBitAPI.Common.Enums;
+using System.Numerics;
 
-namespace BattleBitAPI.Common
+namespace CommunityServerAPI.BattleBitAPI.Common.Arguments
 {
     public struct OnPlayerSpawnArguments
     {
