@@ -32,9 +32,8 @@ namespace CommunityServerAPI.Player
 
         public static async Task<ulong> GetPlayerPrivilege(ulong steamID)
         {
-            // TODO: 这个代码需要review
             // 判断玩家是否在列表中
-            var playerJson = privJson.ListPlayer.FirstOrDefault(x => x.Steam64 == steamID.ToString());
+            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == steamID.ToString());
 
             return playerJson.Role;
 

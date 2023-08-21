@@ -67,7 +67,8 @@ namespace CommunityServerAPI.ServerExtension
         {
             if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
             {
-                // DEVELOP TODO: 记录玩家爆头击杀数
+                // 爆头击杀数据
+                args.Killer.HSKill++;
             }
 
             if (args.Killer != null)
@@ -231,6 +232,28 @@ namespace CommunityServerAPI.ServerExtension
             }
 
         }
+        // public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        // {
+        //     Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
+        //
+        //     var player = _rankPlayers.Find(o => o.SteamID == steamID);
+        //
+        //     player.stats = args.Stats;
+        //
+        //     ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+        //     player.stats.Roles = (Roles)role;
+        //
+        //     // 特殊角色登录日志
+        //     if (args.Stats?.Roles == Roles.Admin)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+        //     }
+        //     if (args.Stats?.Roles == Roles.Moderator)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+        //     }
+        //
+        // }
 
         public override async Task OnRoundEnded()
         {

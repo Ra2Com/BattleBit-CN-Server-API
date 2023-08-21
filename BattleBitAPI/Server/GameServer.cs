@@ -546,6 +546,7 @@ namespace BattleBitAPI.Server
         {
 
         }
+        // 当 SessionID 发生变化时
         public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
 
