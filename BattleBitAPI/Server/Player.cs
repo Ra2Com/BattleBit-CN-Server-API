@@ -1,10 +1,9 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Server.Internal;
+﻿using BattleBitAPI.Common;
+using BattleBitAPI.Server;
 using System.Net;
 using System.Numerics;
 
-namespace CommunityServerAPI.BattleBitAPI.Server
+namespace BattleBitAPI
 {
     public class Player<TPlayer> where TPlayer : Player<TPlayer>
     {

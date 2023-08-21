@@ -1,6 +1,4 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
-
-namespace CommunityServerAPI.BattleBitAPI.Common.Data
+﻿namespace BattleBitAPI.Common
 {
 	public class Weapon : IEquatable<string>, IEquatable<Weapon>
 	{

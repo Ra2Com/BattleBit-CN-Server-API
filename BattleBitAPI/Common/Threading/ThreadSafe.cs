@@ -1,4 +1,4 @@
-namespace CommunityServerAPI.BattleBitAPI.Common.Threading
+namespace BattleBitAPI.Common.Threading
 {
 	public class ThreadSafe<T>
 	{

@@ -1,4 +1,4 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+﻿using BattleBitAPI.Common;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 
@@ -7,9 +7,15 @@ namespace CommunityServerAPI.Player
     internal static class LoadoutManager
     {
         public static LoadoutJson loadoutJson = new LoadoutJson();
-        public static SkinIndexJson weaponnameJson = new SkinIndexJson();
-
+        public static WeaponSkinJson weaponnameJson = new WeaponSkinJson();
+        
         public static void Init()
+        {
+            LoadoutInit();
+            WeaponSkinInit();
+        }
+
+        public static void LoadoutInit()
         {
             try
             {
@@ -18,27 +24,66 @@ namespace CommunityServerAPI.Player
                         $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
                 string content = File.ReadAllText(loadoutsPath);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
+            }
+            catch (Exception ee)
+            {
+                Console.WriteLine("解析武器 RandomLoadouts 配置出错，请检查 " + ee.Message); // Error when JSON file is wrong
+                return;
+            }
+        }
+        
+        public static void WeaponSkinInit()
+        {
+            try
+            {
                 string
                     skinPath =
                         $"{Environment.CurrentDirectory}\\Config\\WeaponSkinIndex.json";
                 string skincontent = File.ReadAllText(skinPath);
-                // 序列化 WeaponSkinIndex 第一层是武器名，第二层是武器配置，并且根据武器名序列化武器的配置
-                weaponnameJson = JsonConvert.DeserializeObject<SkinIndexJson>(skincontent);
-                //List<weaponskinJson> = JsonConvert.DeserializeObject<SkinIndexJson>(weaponnameJson);
+                weaponnameJson = JsonConvert.DeserializeObject<WeaponSkinJson>(skincontent);
             }
             catch (Exception ee)
             {
-                Console.WriteLine("解析武器和皮肤配置出错，请检查 " + ee.Message); // Error when JSON file is wrong
+                Console.WriteLine("解析武器皮肤 WeaponSkinIndex 配置出错，请检查 " + ee.Message); // Error when JSON file is wrong
                 return;
             }
         }
-        public static byte GetSkinIndex(string weaponName)
+        // 获取传入武器的最大皮肤索引
+        public static byte GetMaxSkinIndex(string weaponName)
         {
-            if (string.IsNullOrEmpty(weaponName))
+            var selectedName = weaponnameJson.WeaponSkinIndex.Find(x => x.Weapon == weaponName);
+            if (selectedName != null)
             {
-                return 0;
+                var maxIndex = selectedName.Skins.Max(x => x.SkinIndex);
+                return maxIndex;
             }
-            
+            return 0;
+        }
+        // 获取传入武器的随机皮肤索引
+        public static byte RandomSkinIndex(string weaponName)
+        {
+            var selectedName = weaponnameJson.WeaponSkinIndex.Find(x => x.Weapon == weaponName);
+            if (selectedName != null)
+            {
+                var maxIndex = selectedName.Skins.Max(x => x.SkinIndex);
+                var randomskin = RandomNumberGenerator.GetInt32(0, maxIndex);
+                return (byte)randomskin;
+            }
+            return 0;
+        }
+        
+        // 获取传入武器和皮肤名称的皮肤索引
+        public static byte SeletedSkinIndex(string weaponName, string skinName)
+        {
+            var selectedName = weaponnameJson.WeaponSkinIndex.Find(x => x.Weapon == weaponName);
+            if (selectedName != null)
+            {
+                var selectedSkin = selectedName.Skins.Find(x => x.DisplayName == skinName);
+                if (selectedSkin != null)
+                {
+                    return selectedSkin.SkinIndex;
+                }
+            }
             return 0;
         }
 
@@ -46,7 +91,6 @@ namespace CommunityServerAPI.Player
         {
             PlayerLoadout playerLoadout = new PlayerLoadout();
 
-            // RNG https://learn.microsoft.com/zh-cn/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-6.0
             // 主武器配置
             int PrimaryWeaponIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListPrimaryWeapon.Count);
             var pWI = new WeaponItem();
@@ -58,12 +102,11 @@ namespace CommunityServerAPI.Player
             pWI.SideRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SideRail ?? "none";
             pWI.UnderRailName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].UnderRail ?? "none";
             pWI.BoltActionName = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].Bolt ?? "none";
-            //pWI.SkinIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].SkinIndex ?? "1"));
-            pWI.MagazineIndex = (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex ?? "0"));
+            pWI.SkinIndex = RandomSkinIndex(pWI.ToolName); //随机皮肤
+            pWI.MagazineIndex = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].MagazineIndex;
             playerLoadout.PrimaryWeapon = pWI;
             // 主武器附加弹夹
-            playerLoadout.PrimaryExtraMagazines =
-                (byte.Parse(loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines ?? "2"));
+            playerLoadout.PrimaryExtraMagazines = loadoutJson.ListPrimaryWeapon[PrimaryWeaponIndex].PrimaryExtraMagazines;
 
             // 手枪配置
             int SecondaryWeaponIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListSecondaryWeapon.Count);
@@ -72,37 +115,31 @@ namespace CommunityServerAPI.Player
             sWI.BarrelName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].Barrel ?? "none";
             sWI.MainSightName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MainSight ?? "none";
             sWI.SideRailName = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SideRail ?? "none";
-            //sWI.SkinIndex = (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SkinIndex ?? "0"));
-            sWI.MagazineIndex =
-                (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex ?? "0"));
+            sWI.SkinIndex = RandomSkinIndex(sWI.ToolName);//随机皮肤
+            sWI.MagazineIndex = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].MagazineIndex;
             playerLoadout.SecondaryWeapon = sWI;
             // 副武器附加弹夹
-            playerLoadout.SecondaryExtraMagazines =
-                (byte.Parse(loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines ?? "3"));
+            playerLoadout.SecondaryExtraMagazines = loadoutJson.ListSecondaryWeapon[SecondaryWeaponIndex].SecondaryExtraMagazines;
 
             // 绷带配置
             int ListFirstAidIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListFirstAid.Count);
             playerLoadout.FirstAidName = loadoutJson.ListFirstAid[ListFirstAidIndex].Name ?? "none";
-            playerLoadout.FirstAidExtra =
-                (byte.Parse(loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra ?? "0"));
+            playerLoadout.FirstAidExtra = loadoutJson.ListFirstAid[ListFirstAidIndex].FirstAidExtra;
 
             // 轻型道具配置
             int ListLightGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListLightGadget.Count);
             playerLoadout.LightGadgetName = loadoutJson.ListLightGadget[ListLightGadgetIndex].Name ?? "none";
-            playerLoadout.LightGadgetExtra =
-                (byte.Parse(loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra ?? "0"));
+            playerLoadout.LightGadgetExtra = loadoutJson.ListLightGadget[ListLightGadgetIndex].LightGadgetExtra;
 
             // 重型道具配置
             int ListHeavyGadgetIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListHeavyGadget.Count);
             playerLoadout.HeavyGadgetName = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].Name ?? "none";
-            playerLoadout.HeavyGadgetExtra =
-                (byte.Parse(loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra ?? "0"));
+            playerLoadout.HeavyGadgetExtra = loadoutJson.ListHeavyGadget[ListHeavyGadgetIndex].HeavyGadgetExtra;
 
             // 投掷物配置
             int ListThrowableIndex = RandomNumberGenerator.GetInt32(0, loadoutJson.ListThrowable.Count);
             playerLoadout.ThrowableName = loadoutJson.ListThrowable[ListThrowableIndex].Name ?? "none";
-            playerLoadout.ThrowableExtra =
-                (byte.Parse(loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra ?? "1"));
+            playerLoadout.ThrowableExtra = loadoutJson.ListThrowable[ListThrowableIndex].ThrowableExtra;
 
             return playerLoadout;
         }
@@ -130,9 +167,9 @@ namespace CommunityServerAPI.Player
         public string UnderRail { get; set; }
         public string SideRail { get; set; }
         public string Bolt { get; set; }
-        public string SkinIndex { get; set; }
-        public string MagazineIndex { get; set; }
-        public string PrimaryExtraMagazines { get; set; }
+        public byte SkinIndex { get; set; }
+        public byte MagazineIndex { get; set; }
+        public byte PrimaryExtraMagazines { get; set; } = 4;
     }
 
     public class SecondaryWeaponJson
@@ -141,50 +178,49 @@ namespace CommunityServerAPI.Player
         public string Barrel { get; set; }
         public string MainSight { get; set; }
         public string SideRail { get; set; }
-        public string SkinIndex { get; set; }
-        public string MagazineIndex { get; set; }
-        public string SecondaryExtraMagazines { get; set; }
+        public byte SkinIndex { get; set; }
+        public byte MagazineIndex { get; set; }
+        public byte SecondaryExtraMagazines { get; set; } = 2;
     }
 
     public class FirstAidJson
     {
         public string Name { get; set; }
-        public string FirstAidExtra { get; set; }
+        public byte FirstAidExtra { get; set; }
     }
 
     public class LightGadgetJson
     {
         public string Name { get; set; }
-        public string LightGadgetExtra { get; set; }
+        public byte LightGadgetExtra { get; set; } = 1;
     }
 
     public class HeavyGadgetJson
     {
         public string Name { get; set; }
-        public string HeavyGadgetExtra { get; set; }
+        public byte HeavyGadgetExtra { get; set; } = 1;
     }
 
     public class ThrowableJson
     {
         public string Name { get; set; }
-        public string ThrowableExtra { get; set; }
+        public byte ThrowableExtra { get; set; } = 1;
     }
     
-    public class SkinIndexJson
+    public class WeaponSkinJson
     {
-        public List<ListWeaponName> ListWeaponNames { get; set; } = new List<ListWeaponName>();
-        public List<ListWeaponSkin> ListWeaponSkin { get; set; } = new List<ListWeaponSkin>();
+        public List <WeaponSkinIndexItem> WeaponSkinIndex { get; set; } = new List<WeaponSkinIndexItem>();
     }
-    
-    public class ListWeaponName
+
+    public class WeaponSkinIndexItem
+    {
+        public string Weapon { get; set; }
+        public List <ListSkinIndex > Skins { get; set; }
+    }
+    public class ListSkinIndex
     {
         public byte SkinIndex { get; set; }
         public string DisplayName { get; set; }
         public bool Available { get; set; } = true;
-    }
-    
-    public class ListWeaponSkin
-    {
-        public string DisplayName { get; set; }
     }
 }
