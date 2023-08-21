@@ -22,7 +22,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
         public float maxHP { get; set; }
-        
+
         public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
         public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
@@ -32,8 +32,8 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnConnected()
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
-            
-           
+
+
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
@@ -59,7 +59,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
                         }
 
-                        if (markId != 0)
+                        if (markId != 0 && markId != SteamID)
                         {
                             var markPlayer = GameServer.AllPlayers.FirstOrDefault(o => o.SteamID == markId);
                             if (markPlayer == null)
@@ -68,7 +68,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                             {
                                 var dis = Vector3.Distance(markPlayer.Position, Position).ToString("#0.0");
                                 // DEVELOP TODO: 如果他在成为你的仇人之后死亡了（包括自杀、退出服务器），都要清除此消息
-                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Navy}{dis}{RichText.EndColor} 米");
+                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Red}{dis}{RichText.EndColor} 米");
                                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");
 
                             }
@@ -90,7 +90,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnDied()
         {
 
-            
+
         }
 
 
