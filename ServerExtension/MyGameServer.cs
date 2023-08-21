@@ -1,6 +1,9 @@
-﻿using BattleBitAPI.Common;
-using BattleBitAPI.Server;
-using CommunityServerAPI.Tools;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Arguments;
+using CommunityServerAPI.BattleBitAPI.Common.Data;
+using CommunityServerAPI.BattleBitAPI.Common.Enums;
+using CommunityServerAPI.BattleBitAPI.Server;
+using CommunityServerAPI.Player;
+using CommunityServerAPI.Utils;
 using System.Numerics;
 using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
@@ -134,7 +137,7 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
+                request.Loadout = LoadoutManager.GetRandom(); // 出生后随机装备
                 request.SpawnStand = PlayerStand.Standing; // 站着出生
                 request.SpawnProtection = 5f; // 出生不动保护 5 秒
 

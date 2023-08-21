@@ -1,12 +1,12 @@
-﻿using BattleBitAPI.Common;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
 using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class HelpCommandHandler : CommandHandlerBase
+    public class Help : CommandHandlerBase
     {
-        public HelpCommandHandler()
+        public Help()
         {
             commandMessage = "/help";
             helpMessage = "展示本帮助信息";

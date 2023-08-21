@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI.Common.Serialization
+﻿namespace CommunityServerAPI.BattleBitAPI.Common.Serialization
 {
 	public interface IStreamSerializable
 	{

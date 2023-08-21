@@ -1,26 +1,27 @@
-﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class KillCommandHandler : CommandHandlerBase
+    public class Ban : CommandHandlerBase
     {
-        public KillCommandHandler()
+        public Ban()
         {
-            commandMessage = "/slay";
-            helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
-            Aliases = new string[] { };
+            commandMessage = "/ban";
+            helpMessage = "封禁指定的玩家昵称或者 SteamID";
+            Aliases = new string[] { "/b" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = true;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {
             return new CommandDTO
             {
-                CommandType = CommandTypes.Kill,
+                CommandType = CommandTypes.Ban,
                 Executor = player.Name,
-                Error = false,
+                Error = false
             };
         }
 
@@ -32,12 +33,12 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"未找到要杀死的玩家", player.SteamID);
+                player.GameServer.SayToChat($"未找到要封禁的玩家", player.SteamID);
                 return;
             }
 
-            targetPlayer?.Kill();
-            player.GameServer.SayToAllChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
+            targetPlayer.Ban();
+            player.GameServer.AnnounceShort($"{targetPlayer?.Name} 被管理员 {player.Name} 封禁了");
             return;
         }
     }

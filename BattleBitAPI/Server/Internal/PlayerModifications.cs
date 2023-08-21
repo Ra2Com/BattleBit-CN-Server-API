@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI.Server
+﻿namespace CommunityServerAPI.BattleBitAPI.Server.Internal
 {
     public class PlayerModifications<TPlayer> where TPlayer : Player<TPlayer>
     {

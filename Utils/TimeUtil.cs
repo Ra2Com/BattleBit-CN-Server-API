@@ -1,4 +1,4 @@
-﻿namespace CommunityServerAPI.Tools
+﻿namespace CommunityServerAPI.Utils
 {
     public class TimeUtil
     {

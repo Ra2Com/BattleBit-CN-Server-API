@@ -1,15 +1,8 @@
-﻿using System.Net;
-using BattleBitAPI.Common;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Model;
+using Newtonsoft.Json;
 
-namespace CommunityServerAPI.Tools
+namespace CommunityServerAPI.Player
 {
     internal class PrivilegeManager
     {
@@ -25,14 +18,13 @@ namespace CommunityServerAPI.Tools
             }
             catch (Exception ee)
             {
-                Console.WriteLine("解析 Privilege.json 出错，请检查" + ee.Message); // Error when JSON file is wrong
+                Console.WriteLine("解析 Privilege.json 出错，请检查 " + ee.Message); // Error when JSON file is wrong
                 return;
             }
         }
 
         public static async Task GetPlayerPrivilege(MyPlayer player)
         {
-            // TODO: 这个代码需要review
             // 判断玩家是否在列表中
             var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == player.SteamID.ToString());
             if (playerJson.Role != 0)
@@ -41,12 +33,9 @@ namespace CommunityServerAPI.Tools
                 player.stats.Roles = (Roles)playerJson.Role;
                 return;
             }
-            else
-            {
-                // 没有权限，给予默认权限
-                player.stats.Roles = Roles.None;
-                return;
-            }
+            // 没有权限，给予默认权限
+            player.stats.Roles = Roles.None;
+            return;
         }
     }
 

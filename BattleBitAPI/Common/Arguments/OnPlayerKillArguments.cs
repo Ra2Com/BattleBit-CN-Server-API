@@ -1,6 +1,8 @@
-﻿using System.Numerics;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
+using CommunityServerAPI.BattleBitAPI.Server;
+using System.Numerics;
 
-namespace BattleBitAPI.Common
+namespace CommunityServerAPI.BattleBitAPI.Common.Arguments
 {
     /// <summary>
     /// 当玩家被击杀时的参数

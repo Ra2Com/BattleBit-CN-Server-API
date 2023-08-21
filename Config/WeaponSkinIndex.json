@@ -1,5 +1,6 @@
 {
   "_comment": "This BBR 2.0.2 json file is collected by Maple Gao at https://github.com/Ra2Com/BattleBit-CN-Server-API",
+  "_originSource": "from https://github.com/muji2498/BBR-JSON/blob/main/weapon_skins.json",
   "AK74": [
     {
       "SkinIndex": 1,
@@ -20689,3 +20690,5 @@
     }
   ]
 }
+
+// C# 序列化上面的 json 第一层是武器名，第二层是武器配置，并且根据武器名序列化武器的配置

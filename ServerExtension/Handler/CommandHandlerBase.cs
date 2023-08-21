@@ -1,4 +1,4 @@
-﻿using BattleBitAPI.Common;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Model;
 
 namespace CommunityServerAPI.ServerExtension.Handler

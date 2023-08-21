@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI.Pooling
+﻿namespace CommunityServerAPI.BattleBitAPI.Pooling
 {
     public class ItemPooling<TItem>
     {

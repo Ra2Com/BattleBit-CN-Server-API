@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI.Networking
+﻿namespace CommunityServerAPI.BattleBitAPI.Networking
 {
     public enum NetworkCommunication : byte
     {

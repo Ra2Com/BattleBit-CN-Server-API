@@ -1,6 +1,6 @@
-﻿using BattleBitAPI.Common;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 
-namespace BattleBitAPI.Server
+namespace CommunityServerAPI.BattleBitAPI.Server.Internal
 {
     public class RoundSettings<TPlayer> where TPlayer : Player<TPlayer>
     {

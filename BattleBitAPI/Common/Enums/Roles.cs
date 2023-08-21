@@ -1,4 +1,4 @@
-﻿namespace BattleBitAPI.Common
+﻿namespace CommunityServerAPI.BattleBitAPI.Common.Enums
 {
 	public enum Roles : ulong
 	{

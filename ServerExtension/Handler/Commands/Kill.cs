@@ -1,25 +1,24 @@
-﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
+﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class KickCommandHandler : CommandHandlerBase
+    public class Kill : CommandHandlerBase
     {
-        public KickCommandHandler()
+        public Kill()
         {
-            commandMessage = "/kick";
-            helpMessage = "指定玩家昵称或者 SteamID 踢出玩家";
-            Aliases = new string[] { "/k" };
+            commandMessage = "/slay";
+            helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
+            Aliases = new string[] { };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
-            isPrivate = true;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
         {
             return new CommandDTO
             {
-                CommandType = CommandTypes.Kick,
+                CommandType = CommandTypes.Kill,
                 Executor = player.Name,
                 Error = false,
             };
@@ -33,12 +32,12 @@ namespace CommunityServerAPI.ServerExtension.Handler
 
             if (target == null)
             {
-                player.GameServer.SayToChat($"未找到要踢出的玩家", player.SteamID);
+                player.GameServer.SayToChat($"未找到要杀死的玩家", player.SteamID);
                 return;
             }
 
-            targetPlayer.Kick();
-            player.GameServer.SayToAllChat($"{targetPlayer?.Name} 被管理员 {player.Name} 踢出");
+            targetPlayer?.Kill();
+            player.GameServer.SayToAllChat($"管理员 {player.Name} 使用命令杀死 {targetPlayer?.Name}");
             return;
         }
     }
