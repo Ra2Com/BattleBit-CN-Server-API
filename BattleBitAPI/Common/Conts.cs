@@ -1,6 +1,6 @@
-﻿namespace CommunityServerAPI.BattleBitAPI
+﻿namespace BattleBitAPI
 {
-    public static class Const
+	public static class Const
     {
         public static string Version = "1.0.2v";
 

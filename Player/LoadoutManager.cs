@@ -1,4 +1,4 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
+﻿using BattleBitAPI.Common;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace CommunityServerAPI.BattleBitAPI.Common
+namespace BattleBitAPI.Common
 {
 	public struct PlayerWearings
 	{

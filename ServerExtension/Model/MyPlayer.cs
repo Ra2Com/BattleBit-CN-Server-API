@@ -1,7 +1,5 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Server;
-using CommunityServerAPI.Player;
+﻿using BattleBitAPI;
+using BattleBitAPI.Common;
 using CommunityServerAPI.Utils;
 using System;
 using System.Collections.Generic;

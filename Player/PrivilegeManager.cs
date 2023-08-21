@@ -1,4 +1,4 @@
-﻿﻿using System.Net;
+﻿using System.Net;
 using BattleBitAPI.Common;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.Tools
+namespace CommunityServerAPI.Player
 {
     public class PrivilegeManager
     {

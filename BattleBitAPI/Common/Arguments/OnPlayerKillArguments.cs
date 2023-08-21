@@ -1,6 +1,4 @@
-﻿using BattleBitAPI.Common.Enums;
-using BattleBitAPI.Server;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace BattleBitAPI.Common
 {

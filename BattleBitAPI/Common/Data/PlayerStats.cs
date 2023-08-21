@@ -1,6 +1,4 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
-
-namespace CommunityServerAPI.BattleBitAPI.Common
+﻿namespace BattleBitAPI.Common
 {
 	public class PlayerStats
 	{

@@ -1,4 +1,4 @@
-﻿namespace CommunityServerAPI.BattleBitAPI.Common
+﻿namespace BattleBitAPI.Common
 {
 	public enum AttachmentType
 	{

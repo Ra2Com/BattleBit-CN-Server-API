@@ -1,4 +1,4 @@
-namespace CommunityServerAPI.BattleBitAPI.Server.Internal
+namespace BattleBitAPI.Server
 {
     public class ServerSettings<TPlayer> where TPlayer : Player<TPlayer>
     {

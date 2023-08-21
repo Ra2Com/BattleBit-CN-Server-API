@@ -1,7 +1,5 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Arguments;
-using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using CommunityServerAPI.BattleBitAPI.Server;
+﻿using BattleBitAPI.Common;
+using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
 using System.Numerics;

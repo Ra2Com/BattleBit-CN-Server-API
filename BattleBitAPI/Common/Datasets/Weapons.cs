@@ -1,8 +1,6 @@
-﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
-using CommunityServerAPI.BattleBitAPI.Common.Enums;
-using System.Reflection;
+﻿using System.Reflection;
 
-namespace CommunityServerAPI.BattleBitAPI.Common
+namespace BattleBitAPI.Common
 {
 	public static class Weapons
 	{
