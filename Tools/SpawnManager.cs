@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 
 namespace CommunityServerAPI.Tools
 {
-    internal static class SpawnManager
+    public static class SpawnManager
     {
         public static LoadoutJson loadoutJson = new LoadoutJson();
 

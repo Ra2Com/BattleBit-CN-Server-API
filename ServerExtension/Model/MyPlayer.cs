@@ -33,18 +33,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
             
-            await PrivilegeManager.GetPlayerPrivilege(this);
-
-            // 特殊角色登录日志
-            if (stats?.Roles == Roles.Admin)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接, IP: {IP}");
-            }
-            if (stats?.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接, IP: {IP}");
-            }
-
+           
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
@@ -64,6 +53,8 @@ namespace CommunityServerAPI.ServerExtension.Model
                 {
                     while (true)
                     {
+                        await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {Name} 加入坐标点: {Position}");
+
                         if (Position.X != 0 && Position.Y != 0)
                         {
                             positionBef.Add(new PositionBef { position = new Vector3() { X = Position.X, Y = Position.Y, Z = Position.Z }, time = TimeUtil.GetUtcTimeMs() });

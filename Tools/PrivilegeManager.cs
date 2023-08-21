@@ -11,7 +11,7 @@ using CommunityServerAPI.ServerExtension.Model;
 
 namespace CommunityServerAPI.Tools
 {
-    internal class PrivilegeManager
+    public class PrivilegeManager
     {
         public static PrivilegeJson privJson = new PrivilegeJson();
 
@@ -30,23 +30,14 @@ namespace CommunityServerAPI.Tools
             }
         }
 
-        public static async Task GetPlayerPrivilege(MyPlayer player)
+        public static async Task<ulong> GetPlayerPrivilege(ulong steamID)
         {
             // TODO: 这个代码需要review
             // 判断玩家是否在列表中
-            var playerJson = privJson.ListPlayer.Find(x => x.Steam64 == player.SteamID.ToString());
-            if (playerJson.Role != 0)
-            {
-                // 0-无权限，1-管理员，2-超级管理员, 4-Special, 8-VIP
-                player.stats.Roles = (Roles)playerJson.Role;
-                return;
-            }
-            else
-            {
-                // 没有权限，给予默认权限
-                player.stats.Roles = Roles.None;
-                return;
-            }
+            var playerJson = privJson.ListPlayer.FirstOrDefault(x => x.Steam64 == steamID.ToString());
+
+            return playerJson.Role;
+
         }
     }
 

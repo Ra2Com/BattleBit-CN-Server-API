@@ -9,7 +9,7 @@ using CommunityServerAPI.ServerExtension.Handler;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    internal class MyGameServer : GameServer<MyPlayer>
+    public class MyGameServer : GameServer<MyPlayer>
     {
         public override async Task OnConnected()
         {
@@ -154,7 +154,7 @@ namespace CommunityServerAPI.ServerExtension
                                     Vector3.Distance(o.Position, pb.position) < 20f && o.Team != player.Team) == null)
                             {
                                 request.SpawnPosition = new Vector3
-                                    { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
+                                { X = pb.position.X - 500, Y = pb.position.Y - 250, Z = pb.position.Z - 500 };
                                 request.RequestedPoint = PlayerSpawningPosition.SpawnAtPoint;
                                 Console.WriteLine(
                                     $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 即将复活在 {request.SpawnPosition}");
@@ -209,9 +209,25 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
+            Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+
             var player = _rankPlayers.Find(o => o.SteamID == steamID);
 
             player.stats = stats;
+
+            ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+            player.stats.Roles = (Roles)role;
+
+            // 特殊角色登录日志
+            if (stats?.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+            }
+            if (stats?.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+            }
+
         }
 
         public override async Task OnRoundEnded()
