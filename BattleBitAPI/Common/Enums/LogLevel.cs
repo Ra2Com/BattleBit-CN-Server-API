@@ -1,4 +1,4 @@
-﻿namespace CommunityServerAPI.BattleBitAPI.Common.Enums
+﻿namespace CommunityServerAPI.BattleBitAPI.Common
 {
     [System.Flags]
     public enum LogLevel : ulong

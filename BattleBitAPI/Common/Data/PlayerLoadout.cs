@@ -1,7 +1,7 @@
 ﻿using CommunityServerAPI.BattleBitAPI.Common.Datasets;
 using CommunityServerAPI.BattleBitAPI.Common.Enums;
 
-namespace CommunityServerAPI.BattleBitAPI.Common.Data
+namespace CommunityServerAPI.BattleBitAPI.Common
 {
     public struct PlayerLoadout
     {

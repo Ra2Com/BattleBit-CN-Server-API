@@ -1,7 +1,7 @@
 ﻿using CommunityServerAPI.BattleBitAPI.Common.Data;
 using CommunityServerAPI.BattleBitAPI.Common.Enums;
 
-namespace CommunityServerAPI.BattleBitAPI.Common.Arguments
+namespace CommunityServerAPI.BattleBitAPI.Common
 {
     public class PlayerJoiningArguments
     {

@@ -1,6 +1,6 @@
 ﻿using CommunityServerAPI.BattleBitAPI.Common.Enums;
 
-namespace CommunityServerAPI.BattleBitAPI.Common.Data
+namespace CommunityServerAPI.BattleBitAPI.Common
 {
 	public class Attachment : IEquatable<string>, IEquatable<Attachment>
 	{

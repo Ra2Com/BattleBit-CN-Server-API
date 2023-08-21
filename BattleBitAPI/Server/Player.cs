@@ -4,7 +4,7 @@ using CommunityServerAPI.BattleBitAPI.Server.Internal;
 using System.Net;
 using System.Numerics;
 
-namespace CommunityServerAPI.BattleBitAPI.Server
+namespace CommunityServerAPI.BattleBitAPI
 {
     public class Player<TPlayer> where TPlayer : Player<TPlayer>
     {

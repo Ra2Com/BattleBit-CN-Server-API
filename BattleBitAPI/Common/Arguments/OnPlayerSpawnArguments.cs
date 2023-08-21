@@ -2,7 +2,7 @@
 using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using System.Numerics;
 
-namespace CommunityServerAPI.BattleBitAPI.Common.Arguments
+namespace CommunityServerAPI.BattleBitAPI.Common
 {
     public struct OnPlayerSpawnArguments
     {

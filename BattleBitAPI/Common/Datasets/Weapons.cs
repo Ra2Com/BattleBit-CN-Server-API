@@ -2,7 +2,7 @@
 using CommunityServerAPI.BattleBitAPI.Common.Enums;
 using System.Reflection;
 
-namespace CommunityServerAPI.BattleBitAPI.Common.Datasets
+namespace CommunityServerAPI.BattleBitAPI.Common
 {
 	public static class Weapons
 	{
