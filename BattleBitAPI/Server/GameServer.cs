@@ -60,6 +60,7 @@ namespace BattleBitAPI.Server
         public bool ReconnectFlag => mInternal.ReconnectFlag;
         // 重连标志
         public IEnumerable<Squad<TPlayer>> TeamASquads
+        // A 阵营的小队
         {
             get
             {
@@ -68,6 +69,7 @@ namespace BattleBitAPI.Server
             }
         }
         public IEnumerable<Squad<TPlayer>> TeamBSquads
+        // B 阵营的小队
         {
             get
             {
@@ -76,6 +78,7 @@ namespace BattleBitAPI.Server
             }
         }
         public IEnumerable<Squad<TPlayer>> AllSquads
+        // 所有小队
         {
             get
             {
@@ -285,6 +288,7 @@ namespace BattleBitAPI.Server
         }
 
         // ---- 团队 ----
+        // 所有的玩家枚举
         public IEnumerable<TPlayer> AllPlayers
         {
             get
@@ -301,6 +305,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的 A 阵营玩家枚举
         public IEnumerable<TPlayer> AllTeamAPlayers
         {
             get
@@ -321,6 +326,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的 B 阵营玩家枚举
         public IEnumerable<TPlayer> AllTeamBPlayers
         {
             get
@@ -341,6 +347,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的传入阵营玩家枚举
         public IEnumerable<TPlayer> PlayersOf(Team team)
         {
             using (var list = this.mInternal.PlayerPool.Get())
@@ -358,6 +365,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 从枚举中通过关键字查询一个玩家
         public IEnumerable<TPlayer> SearchPlayerByName(string keyword)
         {
             keyword = keyword.ToLower().Replace(" ", "");
@@ -377,6 +385,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 从枚举中通过数组查询一个玩家
         public IEnumerable<TPlayer> SearchPlayerByName(params string[] keywords)
         {
             for (int i = 0; i < keywords.Length; i++)
@@ -405,6 +414,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 是否存在这个玩家
 
         public bool TryGetPlayer(ulong steamID, out TPlayer player)
         {
@@ -466,7 +476,7 @@ namespace BattleBitAPI.Server
         {
             return true;
         }
-        // 当玩家请求更换游戏内阵营（团队）时
+        // 当玩家请求更换游戏内团队阵营时
         public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam) 
         {
             return true;
@@ -486,7 +496,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        // 当玩家成功更换游戏内团队阵营时
+        // 当玩家成功更换团队阵营时
         public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team) 
         {
 
@@ -546,7 +556,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        // 当 SessionID 发生变化时
+        // 当服务器的连接 SessionID 发生变化时
         public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
 
@@ -627,7 +637,7 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("sayto " + steamID + " " + msg);
         }
-        // 发给对应玩家 昵称 聊天栏内容
+        // 发给对应昵称玩家的聊天栏内容
         public void SayToChat(string msg, Player<TPlayer> player)
         {
             SayToChat(msg, player.SteamID);
@@ -687,19 +697,19 @@ namespace BattleBitAPI.Server
             Kill(player.SteamID);
         }
 
-        // 通过 Steam64 给某个玩家换边
+        // 通过 Steam64 给某个玩家换边团队阵营
         public void ChangeTeam(ulong steamID)
         {
             ExecuteCommand("changeteam " + steamID);
         }
 
-        // 通过昵称给某个玩家换边
+        // 通过昵称给某个玩家换边团队阵营
         public void ChangeTeam(Player<TPlayer> player)
         {
             ChangeTeam(player.SteamID);
         }
 
-        // 通过 Steam64 给某个玩家指定团队
+        // 通过 Steam64 给某个玩家指定团队阵营
         public void ChangeTeam(ulong steamID, Team team)
         {
             if (team == Team.TeamA)
@@ -708,7 +718,7 @@ namespace BattleBitAPI.Server
                 ExecuteCommand("changeteam " + steamID + " b");
         }
 
-        // 通过昵称给某个玩家指定团队
+        // 通过昵称给某个玩家指定团队阵营
         public void ChangeTeam(Player<TPlayer> player, Team team)
         {
             ChangeTeam(player.SteamID, team);
@@ -798,13 +808,13 @@ namespace BattleBitAPI.Server
             MessageToPlayer(player.SteamID, msg, fadeOutTime);
         }
 
-        // 通过 Steam64 给某个玩家指定服务器内角色
+        // 通过 Steam64 给某个玩家指定游戏角色
         public void SetRoleTo(ulong steamID, GameRole role)
         {
             ExecuteCommand("setrole " + steamID + " " + role);
         }
 
-        // 通过昵称给某个玩家指定服务器内角色
+        // 通过昵称给某个玩家指定游戏角色
         public void SetRoleTo(Player<TPlayer> player, GameRole role)
         {
             SetRoleTo(player.SteamID, role);

@@ -10,7 +10,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
         {
             commandMessage = "/ban";
             helpMessage = "封禁指定的玩家昵称或者 SteamID";
-            Aliases = new string[] { "/b" };
+            Aliases = new string[] { };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
             isPrivate = true;
         }

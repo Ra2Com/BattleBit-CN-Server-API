@@ -3,7 +3,7 @@ using BattleBitAPI.Storage;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
-using System.Numerics;
+using CommunityServerAPI.Content;
 using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
 using CommunityServerAPI.ServerExtension.Model;
@@ -15,9 +15,9 @@ using System.Net;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    public class MyGameServer : GameServer<MyPlayer>
+    public class MyGameServer : GameServer<MyPlayer> , IServerSetting
     {
-        DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\data");
+        DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\PlayerData");
 
         public override async Task OnConnected()
         {
@@ -26,19 +26,10 @@ namespace CommunityServerAPI.ServerExtension
 
             // 固定 Random Revenge 的游戏模式和游戏地图
             this.MapRotation.ClearRotation();
-            // MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
-            this.MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
-                "TensaTown");
+            this.MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
             this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
-            this.GamemodeRotation.SetRotation("TDM");
-
-            // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
-            // RoundSettings.MaxTickets = 1500;
-
-            // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-            this.RoundSettings.PlayersToStart = 1;
-            this.RoundSettings.SecondsLeft = 10;
+            this.GamemodeRotation.SetRotation(Gamemode);
 
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
@@ -54,8 +45,7 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync(
-                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
 
         public override async Task OnPlayerDisconnected(MyPlayer player)
@@ -67,13 +57,12 @@ namespace CommunityServerAPI.ServerExtension
                     item.markId = 0;
                 }
             }
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} 已离线");
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} 已离线");
         }
 
         public override async Task OnPlayerSpawned(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync(
-                $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 已复活，坐标 {player.Position}");
         }
 
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
@@ -94,14 +83,16 @@ namespace CommunityServerAPI.ServerExtension
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
                     args.Killer.markId = 0;
-                    MessageToPlayer(args.Killer.SteamID, $"恭喜复仇成功",5f);
+                    MessageToPlayer(args.Killer.SteamID, 
+                        $"恭喜你杀掉了你的仇人 {RichText.Red}{args.Victim.Name}{RichText.EndColor} 并缴获他的武器" +
+                        $"现在你成为了他的仇人",5f);
                 }
 
                 if (args.Killer != null)
                 {
                     args.Killer.K++;
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
-                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 1);
+                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 0);
                     args.Killer.SetThrowable(victimLoadout.ThrowableName, victimLoadout.ThrowableExtra);
                     args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, victimLoadout.HeavyGadgetExtra);
                     args.Killer.SetLightGadget(victimLoadout.LightGadgetName, victimLoadout.LightGadgetExtra);
@@ -109,13 +100,12 @@ namespace CommunityServerAPI.ServerExtension
                     args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, victimLoadout.PrimaryExtraMagazines);
                     args.Victim.markId = args.Killer.SteamID;
 
-                    await Console.Out.WriteLineAsync(
-                        $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+                    //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                     // Announce the victim your killer. And the killer will be tracked.
-                    MessageToPlayer(args.Victim,
-                        $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor}击倒" +
-                        $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}",5f);
+                    MessageToPlayer(args.Victim.SteamID,
+                        $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
+                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}",10f);
                     // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                     args.Killer.Heal(20);
                 }
@@ -126,18 +116,17 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerGivenUp(MyPlayer player)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已放弃: " + player);
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家已放弃: " + player);
         }
 
         public override async Task OnPlayerDied(MyPlayer player)
         {
             player.D++;
-            //await Console.Out.WriteLineAsync("Died: " + player);
         }
 
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
         {
-            await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - " + from + " 复活了 " + to);
         }
 
         public override async Task OnTick()
@@ -204,8 +193,7 @@ namespace CommunityServerAPI.ServerExtension
 
                 // TODO 在 Oki 部署了真正的地图边界且地面以上随机出生点后，再使用真正的随机出生点，做 RandomSpawn Points 需要适配地图太多且有任何改动都要重新写数值
                 // 由于 Oki 在 Discord 中提及了地图边界的问题以及 SpawnPosition 的不可写问题，所以暂时使用 TDM 模式的固定出生点
-                Console.Out.WriteLineAsync(
-                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
+                // Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {player.Name} 复活，MagazineIndex：{request.Loadout.PrimaryWeapon.MagazineIndex}，SkinIndex：{request.Loadout.PrimaryWeapon.SkinIndex}，requestPosition：{request.SpawnPosition.X}，{request.SpawnPosition.Y}，{request.SpawnPosition.Z}。。LookDirection：{request.LookDirection.X}，{request.LookDirection.Y}，{request.LookDirection.Z}");
             }
             catch (Exception ee)
             {
@@ -281,14 +269,37 @@ namespace CommunityServerAPI.ServerExtension
         
         public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
         {
-            if (newState== GameState.WaitingForPlayers)
+            if (newState == GameState.WaitingForPlayers)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
+                Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
                 // 全局对局设置 - 2个玩家,10 秒后就可以开干了
                 this.RoundSettings.PlayersToStart = 1;
-                this.RoundSettings.SecondsLeft = 10;
-                // DEVELOP: 测试时立马开始下一句游戏
+                // DEVELOP: 测试时立马开始下一局游戏
                 ForceStartGame();
+            }
+            if (newState == GameState.EndingGame)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
+            }
+            if (newState == GameState.CountingDown)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
+                this.RoundSettings.SecondsLeft = 1800;
+                var playerNum = AllPlayers.Count();
+                this.RoundSettings.MaxTickets = playerNum switch
+                {
+                    <= 4 => 200,
+                    <= 10 => playerNum * 40,
+                    <= 20 => playerNum * 30,
+                    <= 36 => 80,
+                    _ => this.RoundSettings.MaxTickets
+                };
+                
+
+            }
+            if (newState == GameState.Playing)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
             }
         }
     }

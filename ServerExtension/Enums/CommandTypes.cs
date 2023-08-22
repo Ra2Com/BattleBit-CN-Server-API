@@ -19,6 +19,10 @@ namespace CommunityServerAPI.ServerExtension.Enums
         End,
         Announce,
         AnnounceLong,
-        Refresh
+        Refresh,
+        AddBot,
+        RemoveBot,
+        BotFire,
+        ServerCommands
     }
 }
