@@ -291,7 +291,12 @@ namespace CommunityServerAPI.ServerExtension
                     <= 4 => 200,
                     <= 10 => playerNum * 40,
                     <= 20 => playerNum * 30,
-                    <= 36 => 80,
+                    <= 36 => 800,
+                    <= 48 => 1000,
+                    <= 64 => 1200,
+                    <= 80 => 1400,
+                    <= 96 => 1600,
+                    <= 128 => 2000,
                     _ => this.RoundSettings.MaxTickets
                 };
                 
