@@ -276,7 +276,7 @@ namespace CommunityServerAPI.ServerExtension
         
         public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
         {
-            if (newState== GameState.WaitingForPlayers)
+            if (newState == GameState.WaitingForPlayers)
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
                 // 全局对局设置 - 2个玩家,10 秒后就可以开干了
@@ -285,6 +285,8 @@ namespace CommunityServerAPI.ServerExtension
                 // DEVELOP: 测试时立马开始下一句游戏
                 ForceStartGame();
             }
+            
+            
         }
     }
 }

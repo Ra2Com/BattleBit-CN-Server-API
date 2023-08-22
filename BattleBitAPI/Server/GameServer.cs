@@ -466,7 +466,7 @@ namespace BattleBitAPI.Server
         {
             return true;
         }
-        // 当玩家请求更换游戏内阵营（团队）时
+        // 当玩家请求更换游戏内团队阵营时
         public virtual async Task<bool> OnPlayerRequestingToChangeTeam(TPlayer player, Team requestedTeam) 
         {
             return true;
@@ -486,7 +486,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        // 当玩家成功更换游戏内团队阵营时
+        // 当玩家成功更换团队阵营时
         public virtual async Task OnPlayerChangeTeam(TPlayer player, Team team) 
         {
 
@@ -546,7 +546,7 @@ namespace BattleBitAPI.Server
         {
 
         }
-        // 当 SessionID 发生变化时
+        // 当服务器的连接 SessionID 发生变化时
         public virtual async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
 
@@ -627,7 +627,7 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("sayto " + steamID + " " + msg);
         }
-        // 发给对应玩家 昵称 聊天栏内容
+        // 发给对应昵称玩家的聊天栏内容
         public void SayToChat(string msg, Player<TPlayer> player)
         {
             SayToChat(msg, player.SteamID);
@@ -687,19 +687,19 @@ namespace BattleBitAPI.Server
             Kill(player.SteamID);
         }
 
-        // 通过 Steam64 给某个玩家换边
+        // 通过 Steam64 给某个玩家换边团队阵营
         public void ChangeTeam(ulong steamID)
         {
             ExecuteCommand("changeteam " + steamID);
         }
 
-        // 通过昵称给某个玩家换边
+        // 通过昵称给某个玩家换边团队阵营
         public void ChangeTeam(Player<TPlayer> player)
         {
             ChangeTeam(player.SteamID);
         }
 
-        // 通过 Steam64 给某个玩家指定团队
+        // 通过 Steam64 给某个玩家指定团队阵营
         public void ChangeTeam(ulong steamID, Team team)
         {
             if (team == Team.TeamA)
@@ -708,7 +708,7 @@ namespace BattleBitAPI.Server
                 ExecuteCommand("changeteam " + steamID + " b");
         }
 
-        // 通过昵称给某个玩家指定团队
+        // 通过昵称给某个玩家指定团队阵营
         public void ChangeTeam(Player<TPlayer> player, Team team)
         {
             ChangeTeam(player.SteamID, team);
@@ -798,13 +798,13 @@ namespace BattleBitAPI.Server
             MessageToPlayer(player.SteamID, msg, fadeOutTime);
         }
 
-        // 通过 Steam64 给某个玩家指定服务器内角色
+        // 通过 Steam64 给某个玩家指定游戏角色
         public void SetRoleTo(ulong steamID, GameRole role)
         {
             ExecuteCommand("setrole " + steamID + " " + role);
         }
 
-        // 通过昵称给某个玩家指定服务器内角色
+        // 通过昵称给某个玩家指定游戏角色
         public void SetRoleTo(Player<TPlayer> player, GameRole role)
         {
             SetRoleTo(player.SteamID, role);
