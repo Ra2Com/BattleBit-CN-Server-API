@@ -18,11 +18,12 @@ namespace CommunityServerAPI.Tools
         {
             try
             {
-                string
-                    filePath =
-                        $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
+                string filePath =$"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
+                string filePath2 =$"{Environment.CurrentDirectory}\\Config\\WeaponSkinIndex.json"; 
                 string content = File.ReadAllText(filePath);
+                string content2 = File.ReadAllText(filePath2);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
+                var wsi= JsonConvert.DeserializeObject<WeaponSkinIndex>(content2);
             }
             catch (Exception ee)
             {
@@ -157,5 +158,16 @@ namespace CommunityServerAPI.Tools
     {
         public string Name { get; set; }
         public string ThrowableExtra { get; set; }
+    }
+
+    public class WeaponSkinIndex
+    {
+        public WeaponSkinIndexInfo name { get; set; }
+    }
+
+    public class WeaponSkinIndexInfo
+    {
+        public int SkinIndex { get; set; }
+        public string DisplayName { get; set; }
     }
 }

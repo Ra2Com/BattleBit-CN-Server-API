@@ -26,13 +26,25 @@ namespace CommunityServerAPI.ServerExtension.Model
         public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
         public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
-        public PlayerStats stats { get; set; }
+        public PlayerStats stats { get; set; } = new PlayerStats();
         public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
 
         public override async Task OnConnected()
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
 
+            ulong role = await PrivilegeManager.GetPlayerPrivilege(SteamID);
+            stats.Roles = (Roles)role;
+
+            // 特殊角色登录日志
+            if (stats?.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接");
+            }
+            if (stats?.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接");
+            }
 
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息

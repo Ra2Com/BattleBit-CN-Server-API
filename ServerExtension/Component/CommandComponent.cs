@@ -56,7 +56,7 @@ public class CommandComponent
         if (playerRole != Roles.Admin || playerRole != Roles.Moderator || !msg.StartsWith("/"))
             return;
 
-        var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd) || a.Aliases.Contains(cmd));
+        var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd));
         if (null == commandHandler)
         {
             player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查看帮助", player.SteamID);
@@ -85,24 +85,24 @@ public class CommandComponent
         switch (getCommand.CommandType)
         {
             case CommandTypes.Help:
-            {
-                player.Message("可用聊天命令:", 2f);
-                var showCommands = new List<CommandHandlerBase>();
-                showCommands = commandHandlers
-                    .Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
-
-                StringBuilder messageBuilder = new StringBuilder();
-                foreach (var command in showCommands)
                 {
-                    messageBuilder.Append(
-                        $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.LineBreak}");
+                    player.Message("可用聊天命令:", 2f);
+                    var showCommands = new List<CommandHandlerBase>();
+                    showCommands = commandHandlers
+                        .Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
+
+                    StringBuilder messageBuilder = new StringBuilder();
+                    foreach (var command in showCommands)
+                    {
+                        messageBuilder.Append(
+                            $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.LineBreak}");
+                    }
+
+                    string message = messageBuilder.ToString();
+
+                    player.Message(message, 5f);
+                    break;
                 }
-
-                string message = messageBuilder.ToString();
-
-                player.Message(message, 5f);
-                break;
-            }
         }
 
         // 执行这条命令并打印日志
