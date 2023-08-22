@@ -193,7 +193,26 @@ namespace CommunityServerAPI.ServerExtension
         // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
         public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
         {
-            args.Stats = DiskStorage.GetPlayerStatsOf(steamID);
+            Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
+        
+            var player = _rankPlayers.Find(o => o.SteamID == steamID);
+        
+            player.stats = args.Stats;
+        
+            ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+            player.stats.Roles = (Roles)role;
+        
+            // 特殊角色登录日志
+            if (args.Stats?.Roles == Roles.Admin)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+            }
+            if (args.Stats?.Roles == Roles.Moderator)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+            }
+            
+            //args.Stats = DiskStorage.GetPlayerStatsOf(steamID);
             args.Stats.Progress.Rank = 200;
             args.Stats.Progress.Prestige = 6;
         }
@@ -215,30 +234,8 @@ namespace CommunityServerAPI.ServerExtension
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
             Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
-            DiskStorage.SavePlayerStatsOf(steamID, stats);
+            //DiskStorage.SavePlayerStatsOf(steamID, stats);
 
-        }
-        public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
-        {
-            Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
-        
-            var player = _rankPlayers.Find(o => o.SteamID == steamID);
-        
-            player.stats = args.Stats;
-        
-            ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-            player.stats.Roles = (Roles)role;
-        
-            // 特殊角色登录日志
-            if (args.Stats?.Roles == Roles.Admin)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
-            }
-            if (args.Stats?.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
-            }
-        
         }
 
         public override async Task OnRoundEnded()
