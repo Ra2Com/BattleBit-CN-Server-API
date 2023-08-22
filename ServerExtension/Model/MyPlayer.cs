@@ -5,6 +5,7 @@ using CommunityServerAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
 
-           
+
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
@@ -123,6 +124,13 @@ namespace CommunityServerAPI.ServerExtension.Model
 
             // 刚枪服务器，所有武器伤害值都降低到 75%
             Modifications.GiveDamageMultiplier = 0.75f;
+        }
+
+        public override async Task OnSessionChanged(long oldSessionID, long newSessionID)
+        {
+            markId = 0;
+            Message($"{Name}，欢迎!");
+
         }
     }
 

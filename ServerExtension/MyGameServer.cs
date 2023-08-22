@@ -11,6 +11,7 @@ using CommunityServerAPI.ServerExtension.Handler;
 using BattleBitAPI;
 using BattleBitAPI.Storage;
 using CommunityServerAPI.ServerExtension.Handler.Commands;
+using System.Net;
 
 namespace CommunityServerAPI.ServerExtension
 {
@@ -93,6 +94,7 @@ namespace CommunityServerAPI.ServerExtension
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
                     args.Killer.markId = 0;
+                    MessageToPlayer(args.Killer.SteamID, $"恭喜复仇成功");
                 }
 
                 if (args.Killer != null)
