@@ -72,7 +72,18 @@ namespace CommunityServerAPI.ServerExtension
                     // 爆头击杀数据
                     args.Killer.HSKill++;
                 }
-            
+                await Console.Out.WriteLineAsync($"击杀者仇人ID：{args.Killer.markId} ，被杀者ID{args.Victim.SteamID}");
+
+                if (args.Killer.markId.ToString() == args.Victim.SteamID.ToString())
+                {
+                    if (args.Victim.Team == Team.TeamA)
+                        this.RoundSettings.TeamATickets -= 10;
+                    else if (args.Victim.Team == Team.TeamB)
+                        this.RoundSettings.TeamBTickets -= 10;
+                    await Console.Out.WriteLineAsync($"击杀者仇人ID：{args.Killer.markId} ，被杀者ID{args.Victim.SteamID}，被杀者队伍{JsonConvert.SerializeObject(this.RoundSettings)}");
+
+                }
+
                 if (args.Killer != null)
                 {
                     // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
