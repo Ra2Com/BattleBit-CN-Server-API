@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BattleBitAPI.Common
+﻿namespace BattleBitAPI.Common
 {
 	public class Weapon : IEquatable<string>, IEquatable<Weapon>
 	{

@@ -1,6 +1,6 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,13 @@ namespace CommunityServerAPI.ServerExtension.Model
     {
         // DEVELOP TODO: 玩家离线、没有复活时要停止计时
         public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
+        public long LeaveTime { get; set; } = TimeUtil.GetUtcTimeMs();
 
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
+        public int HSKill { get; set; }
+        public float HSRate { get; set; }
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
@@ -57,7 +60,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                     $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
                     $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
                     $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}玩家 QQ群：887245025", 5f);
+                    $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
 
             _ = Task.Run(async () =>
             {

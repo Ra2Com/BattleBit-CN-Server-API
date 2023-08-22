@@ -1,10 +1,11 @@
 ﻿using BattleBitAPI.Server;
 using BattleBitAPI.Common;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.Player;
 using CommunityServerAPI.ServerExtension;
 using CommunityServerAPI.ServerExtension.Model;
 using System.Numerics;
 using BattleBitAPI;
+using System.Net;
 
 class Program
 {
@@ -13,13 +14,12 @@ class Program
         var listener = new ServerListener<MyPlayer, MyGameServer>();
 
         int apiPort = 29294;
-        SpawnManager.Init();
+        LoadoutManager.Init();
         PrivilegeManager.Init();
         listener.LogLevel = LogLevel.Sockets | LogLevel.HealtChanges | LogLevel.GameServerErrors | LogLevel.KillsAndSpawns;
         listener.OnLog += OnLog;
-        // DEVELOPER TODO: 这玩意不注释会报错
-        // listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
-        // listener.OnCreatingPlayerInstance += OnCreatingPlayerInstance;
+        listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
+        listener.OnCreatingPlayerInstance += OnCreatingPlayerInstance;
         listener.Start(apiPort);
 
         if (listener.IsListening)
@@ -38,13 +38,13 @@ class Program
     // await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ip}，{gameport} 验证Token: {sentToken}");
     //     return sentToken == "RamboArenaExamp1e@888";
     // }
-    // private static MyPlayer OnCreatingPlayerInstance()
-    // {
-    //     return new MyPlayer();
-    // }
-    //
-    // private static MyGameServer OnCreatingGameServerInstance()
-    // {
-    //     return new MyGameServer();
-    // }
+    private static MyPlayer OnCreatingPlayerInstance(ulong steam64)
+    {
+        return new MyPlayer();
+    }
+    
+    private static MyGameServer OnCreatingGameServerInstance(IPAddress ip, ushort port)
+    {
+        return new MyGameServer();
+    }
 }

@@ -1,12 +1,12 @@
 ﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class KickCommandHandler : CommandHandlerBase
+    public class Kick : CommandHandlerBase
     {
-        public KickCommandHandler()
+        public Kick()
         {
             commandMessage = "/kick";
             helpMessage = "指定玩家昵称或者 SteamID 踢出玩家";

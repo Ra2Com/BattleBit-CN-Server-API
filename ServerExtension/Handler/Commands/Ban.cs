@@ -1,12 +1,12 @@
 ﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class BanCommandHandler : CommandHandlerBase
+    public class Ban : CommandHandlerBase
     {
-        public BanCommandHandler()
+        public Ban()
         {
             commandMessage = "/ban";
             helpMessage = "封禁指定的玩家昵称或者 SteamID";

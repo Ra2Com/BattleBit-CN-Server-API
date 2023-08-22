@@ -1,12 +1,12 @@
 ﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class KillCommandHandler : CommandHandlerBase
+    public class Kill : CommandHandlerBase
     {
-        public KillCommandHandler()
+        public Kill()
         {
             commandMessage = "/slay";
             helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";

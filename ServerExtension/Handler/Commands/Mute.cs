@@ -1,12 +1,12 @@
 ﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class MuteCommandHandler : CommandHandlerBase
+    public class Mute : CommandHandlerBase
     {
-        public MuteCommandHandler()
+        public Mute()
         {
             commandMessage = "/mute";
             helpMessage = "禁言指定的玩家昵称或者 SteamID";

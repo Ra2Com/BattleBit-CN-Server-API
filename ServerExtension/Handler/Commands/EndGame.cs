@@ -1,12 +1,12 @@
 ﻿using BattleBitAPI.Common;
-using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Enums;
+using CommunityServerAPI.ServerExtension.Model;
 
-namespace CommunityServerAPI.ServerExtension.Handler
+namespace CommunityServerAPI.ServerExtension.Handler.Commands
 {
-    public class EndCommandHandler : CommandHandlerBase
+    public class EndGame : CommandHandlerBase
     {
-        public EndCommandHandler()
+        public EndGame()
         {
             commandMessage = "/end";
             helpMessage = "立刻结束本轮对局";

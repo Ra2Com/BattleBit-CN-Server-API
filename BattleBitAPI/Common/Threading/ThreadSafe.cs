@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace BattleBitAPI.Common.Threading
 {
 	public class ThreadSafe<T>

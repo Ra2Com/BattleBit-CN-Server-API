@@ -1,6 +1,7 @@
 ﻿using BattleBitAPI.Common;
 using BattleBitAPI.Server;
-using CommunityServerAPI.Tools;
+using CommunityServerAPI.Player;
+using CommunityServerAPI.Utils;
 using System.Numerics;
 using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
@@ -66,7 +67,8 @@ namespace CommunityServerAPI.ServerExtension
         {
             if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
             {
-                // DEVELOP TODO: 记录玩家爆头击杀数
+                // 爆头击杀数据
+                args.Killer.HSKill++;
             }
 
             if (args.Killer != null)
@@ -137,7 +139,7 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                request.Loadout = SpawnManager.GetRandom(); // 出生后随机装备
+                request.Loadout = LoadoutManager.GetRandom(); // 出生后随机装备
                 request.SpawnStand = PlayerStand.Standing; // 站着出生
                 request.SpawnProtection = 5f; // 出生不动保护 5 秒
 
@@ -230,6 +232,28 @@ namespace CommunityServerAPI.ServerExtension
             }
 
         }
+        // public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        // {
+        //     Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
+        //
+        //     var player = _rankPlayers.Find(o => o.SteamID == steamID);
+        //
+        //     player.stats = args.Stats;
+        //
+        //     ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+        //     player.stats.Roles = (Roles)role;
+        //
+        //     // 特殊角色登录日志
+        //     if (args.Stats?.Roles == Roles.Admin)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+        //     }
+        //     if (args.Stats?.Roles == Roles.Moderator)
+        //     {
+        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+        //     }
+        //
+        // }
 
         public override async Task OnRoundEnded()
         {
