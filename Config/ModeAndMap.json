@@ -1,5 +1,5 @@
 ﻿{
-  "_用法": "修改 Available 来达到游戏模式调整",
+  "_用法": "修改 Available 来达到游戏模式中地图的调整",
   "ModeAvailableMapSize": [
     {
       "FFA": [
@@ -1607,7 +1607,7 @@
           "Available": 0
         }
       ],
-      "CATCH": [
+      "TheCatch": [
         {
           "MapName": "Azagor",
           "WorldSize": 1000,

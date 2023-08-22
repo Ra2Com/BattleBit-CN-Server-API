@@ -10,7 +10,7 @@ namespace CommunityServerAPI.ServerExtension.Component
 {
     public class CommandComponent
     {
-        private List<CommandHandlerBase> commandHandlers = new List<CommandHandlerBase>();
+        private List<CommandHandlerBase> mCommandHandlers = new List<CommandHandlerBase>();
         private static CommandComponent _instance;
 
         public static CommandComponent Initialize()
@@ -27,29 +27,29 @@ namespace CommunityServerAPI.ServerExtension.Component
         private CommandComponent()
         {
             // VIP 等高级角色命令
-            commandHandlers.Add(new Heal());
-            commandHandlers.Add(new SpeedMod());
+            mCommandHandlers.Add(new Heal());
+            mCommandHandlers.Add(new SpeedMod());
 
             // 普通玩家命令
-            commandHandlers.Add(new Stats());
-            commandHandlers.Add(new Help());
+            mCommandHandlers.Add(new Stats());
+            mCommandHandlers.Add(new Help());
 
             // 管理员都可用的命令 
-            commandHandlers.Add(new Kill());
-            commandHandlers.Add(new Mute());
-            commandHandlers.Add(new Kick());
-            commandHandlers.Add(new Ban());
-            commandHandlers.Add(new EndGame());
-            commandHandlers.Add(new StartGame());
-            commandHandlers.Add(new Announce());
-            commandHandlers.Add(new AnnounceLong());
-            commandHandlers.Add(new RefreshConfig());
-            commandHandlers.Add(new AddBot());
-            commandHandlers.Add(new RemoveBot());
-            commandHandlers.Add(new BotFire());
+            mCommandHandlers.Add(new Kill());
+            mCommandHandlers.Add(new Mute());
+            mCommandHandlers.Add(new Kick());
+            mCommandHandlers.Add(new Ban());
+            mCommandHandlers.Add(new EndGame());
+            mCommandHandlers.Add(new StartGame());
+            mCommandHandlers.Add(new Announce());
+            mCommandHandlers.Add(new AnnounceLong());
+            mCommandHandlers.Add(new RefreshConfig());
+            mCommandHandlers.Add(new AddBot());
+            mCommandHandlers.Add(new RemoveBot());
+            mCommandHandlers.Add(new BotFire());
             
             // 超级管理员可用的命令
-            commandHandlers.Add(new ServerCommands());
+            mCommandHandlers.Add(new ServerCommands());
         }
 
 
@@ -58,7 +58,7 @@ namespace CommunityServerAPI.ServerExtension.Component
             var splits = msg.Split(" ");
             var cmd = splits[0].ToLower();
             var playerRole = player.stats.Roles;
-            var commandHandler = commandHandlers.Find(a => a.commandMessage.Equals(cmd));
+            var commandHandler = mCommandHandlers.Find(a => a.commandMessage.Equals(cmd));
             if (null == commandHandler)
             {
                 player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查看帮助", player.SteamID);
@@ -89,7 +89,7 @@ namespace CommunityServerAPI.ServerExtension.Component
                     {
                         player.Message("可用聊天命令:", 2f);
                         var showCommands = new List<CommandHandlerBase>();
-                        showCommands = commandHandlers
+                        showCommands = mCommandHandlers
                             .Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
 
                         StringBuilder messageBuilder = new StringBuilder();
