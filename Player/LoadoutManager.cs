@@ -86,6 +86,21 @@ namespace CommunityServerAPI.Player
             }
             return 0;
         }
+        
+        // 通过传入skinIndex获取皮肤名称
+        public static string GetSkinName(string weaponName, byte skinIndex)
+        {
+            var selectedName = weaponnameJson.WeaponSkinIndex.Find(x => x.Weapon == weaponName);
+            if (selectedName != null)
+            {
+                var selectedSkin = selectedName.Skins.Find(x => x.SkinIndex == skinIndex);
+                if (selectedSkin != null)
+                {
+                    return selectedSkin.DisplayName;
+                }
+            }
+            return "none";
+        }
 
         public static PlayerLoadout GetRandom()
         {

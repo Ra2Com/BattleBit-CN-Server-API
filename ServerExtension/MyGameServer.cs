@@ -1,4 +1,5 @@
 ﻿using BattleBitAPI.Common;
+using BattleBitAPI.Storage;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
@@ -23,23 +24,23 @@ namespace CommunityServerAPI.ServerExtension
                 $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
             // 固定 Random Revenge 的游戏模式和游戏地图
-            MapRotation.ClearRotation();
+            this.MapRotation.ClearRotation();
             // MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
-            MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
+            this.MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
                 "TensaTown");
-            GamemodeRotation.ClearRotation();
+            this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
-            GamemodeRotation.SetRotation("TDM");
+            this.GamemodeRotation.SetRotation("TDM");
 
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
-            RoundSettings.MaxTickets = 1500;
+            // RoundSettings.MaxTickets = 1500;
 
             // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-            RoundSettings.PlayersToStart = 2;
-            RoundSettings.SecondsLeft = 10;
+            this.RoundSettings.PlayersToStart = 1;
+            this.RoundSettings.SecondsLeft = 10;
 
             // 开启玩家体积碰撞
-            ServerSettings.PlayerCollision = true;
+            this.ServerSettings.PlayerCollision = true;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
@@ -98,12 +99,12 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     args.Killer.K++;
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
-                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 10);
-                    args.Killer.SetThrowable(victimLoadout.ThrowableName, 10);
-                    args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 10);
-                    args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 10);
-                    args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 10);
-                    args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 10);
+                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 1);
+                    args.Killer.SetThrowable(victimLoadout.ThrowableName, victimLoadout.ThrowableExtra);
+                    args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, victimLoadout.HeavyGadgetExtra);
+                    args.Killer.SetLightGadget(victimLoadout.LightGadgetName, victimLoadout.LightGadgetExtra);
+                    args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, victimLoadout.SecondaryExtraMagazines);
+                    args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, victimLoadout.PrimaryExtraMagazines);
                     args.Victim.markId = args.Killer.SteamID;
 
                     await Console.Out.WriteLineAsync(
@@ -262,34 +263,18 @@ namespace CommunityServerAPI.ServerExtension
             }
 
         }
-        // public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
-        // {
-        //     Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
-        //
-        //     var player = _rankPlayers.Find(o => o.SteamID == steamID);
-        //
-        //     player.stats = args.Stats;
-        //
-        //     ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-        //     player.stats.Roles = (Roles)role;
-        //
-        //     // 特殊角色登录日志
-        //     if (args.Stats?.Roles == Roles.Admin)
-        //     {
-        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
-        //     }
-        //     if (args.Stats?.Roles == Roles.Moderator)
-        //     {
-        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
-        //     }
-        //
-        // }
-
-        public override async Task OnRoundEnded()
+        
+        public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
         {
-            Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 本局游戏结束 ----------");
-            // DEVELOP: 测试时立马开始下一句游戏
-            ForceStartGame();
+            if (newState== GameState.WaitingForPlayers)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
+                // 全局对局设置 - 2个玩家,10 秒后就可以开干了
+                this.RoundSettings.PlayersToStart = 1;
+                this.RoundSettings.SecondsLeft = 10;
+                // DEVELOP: 测试时立马开始下一句游戏
+                ForceStartGame();
+            }
         }
     }
 }
