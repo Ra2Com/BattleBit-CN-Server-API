@@ -221,6 +221,19 @@ namespace CommunityServerAPI.ServerExtension
                 var stFromData = await ds.GetPlayerStatsOf(steamID);
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - stFromData：{JsonConvert.SerializeObject(stFromData)}");
 
+                ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+                stFromData.Roles = (Roles)role;
+
+                // 特殊角色登录日志
+                if ((Roles)role == Roles.Admin)
+                {
+                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+                }
+                if ((Roles)role == Roles.Moderator)
+                {
+                    Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+                }
+
                 if (stFromData != null)
                     args.Stats = stFromData;
 

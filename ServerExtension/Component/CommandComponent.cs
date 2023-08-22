@@ -52,10 +52,6 @@ namespace CommunityServerAPI.ServerExtension.Component
             var splits = msg.Split(" ");
             var cmd = splits[0].ToLower();
             var playerRole = player.stats.Roles;
-
-            if (playerRole != Roles.Admin && playerRole != Roles.Moderator && !msg.StartsWith("/"))
-                return;
-
             var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd));
             if (null == commandHandler)
             {
@@ -64,8 +60,7 @@ namespace CommunityServerAPI.ServerExtension.Component
             }
 
             // 检查执行的 Roles 是什么
-            if (commandHandler.roles is not null && !commandHandler.roles.Contains(Roles.None) &&
-                !commandHandler.roles.Contains(playerRole))
+            if (commandHandler.roles is not null && !commandHandler.roles.Contains(playerRole))
             {
                 return;
             }

@@ -37,19 +37,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
 
-            ulong role = await PrivilegeManager.GetPlayerPrivilege(SteamID);
-            stats.Roles = (Roles)role;
-
-            // 特殊角色登录日志
-            if (stats?.Roles == Roles.Admin)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {SteamID} 已连接");
-            }
-            if (stats?.Roles == Roles.Moderator)
-            {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {SteamID} 已连接");
-            }
-
+           
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
             GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
