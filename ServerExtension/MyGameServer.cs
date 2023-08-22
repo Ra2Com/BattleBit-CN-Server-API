@@ -20,23 +20,23 @@ namespace CommunityServerAPI.ServerExtension
                 $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
             // 固定 Random Revenge 的游戏模式和游戏地图
-            MapRotation.ClearRotation();
+            this.MapRotation.ClearRotation();
             // MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
-            MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
+            this.MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
                 "TensaTown");
-            GamemodeRotation.ClearRotation();
+            this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
-            GamemodeRotation.SetRotation("TDM");
+            this.GamemodeRotation.SetRotation("TDM");
 
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
             // RoundSettings.MaxTickets = 1500;
 
             // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-            RoundSettings.PlayersToStart = 1;
-            RoundSettings.SecondsLeft = 10;
+            this.RoundSettings.PlayersToStart = 1;
+            this.RoundSettings.SecondsLeft = 10;
 
             // 开启玩家体积碰撞
-            ServerSettings.PlayerCollision = true;
+            this.ServerSettings.PlayerCollision = true;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
@@ -89,15 +89,13 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
                     args.Killer.K++;
-                    // DEVELOP TODO: 如果击杀的是仇人，且仇人在复活后没有死亡，仇人队伍的 Tickets 要扣除 10
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
-                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 10);
-                    args.Killer.SetThrowable(victimLoadout.ThrowableName, 10);
-                    args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 10);
-                    args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 10);
-                    //DEVELOP TODO: 需要在别的地方更换死者武器，放到 OnPlayerSpawned 那边的方法
-                    args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 10);
-                    args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 10);
+                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 1);
+                    args.Killer.SetThrowable(victimLoadout.ThrowableName, victimLoadout.ThrowableExtra);
+                    args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, victimLoadout.HeavyGadgetExtra);
+                    args.Killer.SetLightGadget(victimLoadout.LightGadgetName, victimLoadout.LightGadgetExtra);
+                    args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, victimLoadout.SecondaryExtraMagazines);
+                    args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, victimLoadout.PrimaryExtraMagazines);
                     args.Victim.markId = args.Killer.SteamID;
                     // 获取双方距离
 
@@ -265,8 +263,8 @@ namespace CommunityServerAPI.ServerExtension
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
                 // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-                RoundSettings.PlayersToStart = 1;
-                RoundSettings.SecondsLeft = 10;
+                this.RoundSettings.PlayersToStart = 1;
+                this.RoundSettings.SecondsLeft = 10;
                 // DEVELOP: 测试时立马开始下一句游戏
                 ForceStartGame();
             }
