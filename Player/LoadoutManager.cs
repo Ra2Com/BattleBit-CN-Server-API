@@ -24,7 +24,6 @@ namespace CommunityServerAPI.Player
                         $"{Environment.CurrentDirectory}\\Config\\RandomLoadouts.json"; // PRODUCTION WARNING: You must customize your own RandomLoadouts, Open-soured one is an test example.
                 string content = File.ReadAllText(loadoutsPath);
                 loadoutJson = JsonConvert.DeserializeObject<LoadoutJson>(content);
-                var wsi= JsonConvert.DeserializeObject<WeaponSkinIndex>(content2);
             }
             catch (Exception ee)
             {
