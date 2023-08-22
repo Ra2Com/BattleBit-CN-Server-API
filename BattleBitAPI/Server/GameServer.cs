@@ -60,6 +60,7 @@ namespace BattleBitAPI.Server
         public bool ReconnectFlag => mInternal.ReconnectFlag;
         // 重连标志
         public IEnumerable<Squad<TPlayer>> TeamASquads
+        // A 阵营的小队
         {
             get
             {
@@ -68,6 +69,7 @@ namespace BattleBitAPI.Server
             }
         }
         public IEnumerable<Squad<TPlayer>> TeamBSquads
+        // B 阵营的小队
         {
             get
             {
@@ -76,6 +78,7 @@ namespace BattleBitAPI.Server
             }
         }
         public IEnumerable<Squad<TPlayer>> AllSquads
+        // 所有小队
         {
             get
             {
@@ -285,6 +288,7 @@ namespace BattleBitAPI.Server
         }
 
         // ---- 团队 ----
+        // 所有的玩家枚举
         public IEnumerable<TPlayer> AllPlayers
         {
             get
@@ -301,6 +305,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的 A 阵营玩家枚举
         public IEnumerable<TPlayer> AllTeamAPlayers
         {
             get
@@ -321,6 +326,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的 B 阵营玩家枚举
         public IEnumerable<TPlayer> AllTeamBPlayers
         {
             get
@@ -341,6 +347,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 所有的传入阵营玩家枚举
         public IEnumerable<TPlayer> PlayersOf(Team team)
         {
             using (var list = this.mInternal.PlayerPool.Get())
@@ -358,6 +365,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 从枚举中通过关键字查询一个玩家
         public IEnumerable<TPlayer> SearchPlayerByName(string keyword)
         {
             keyword = keyword.ToLower().Replace(" ", "");
@@ -377,6 +385,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 从枚举中通过数组查询一个玩家
         public IEnumerable<TPlayer> SearchPlayerByName(params string[] keywords)
         {
             for (int i = 0; i < keywords.Length; i++)
@@ -405,6 +414,7 @@ namespace BattleBitAPI.Server
                 }
             }
         }
+        // 是否存在这个玩家
 
         public bool TryGetPlayer(ulong steamID, out TPlayer player)
         {

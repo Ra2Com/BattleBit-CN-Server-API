@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace CommunityServerAPI.ServerExtension.Model
 {
-    public class IServerSetting
+    internal interface IServerSetting
     {
         
     }

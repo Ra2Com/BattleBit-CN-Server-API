@@ -15,9 +15,9 @@ using System.Net;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    public class MyGameServer : GameServer<MyPlayer>
+    public class MyGameServer : GameServer<MyPlayer> , IServerSetting
     {
-        DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\data");
+        DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\PlayerData");
 
         public override async Task OnConnected()
         {
@@ -32,13 +32,6 @@ namespace CommunityServerAPI.ServerExtension
             this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
             this.GamemodeRotation.SetRotation("TDM");
-
-            // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
-            // RoundSettings.MaxTickets = 1500;
-
-            // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-            this.RoundSettings.PlayersToStart = 1;
-            this.RoundSettings.SecondsLeft = 10;
 
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
@@ -92,7 +85,9 @@ namespace CommunityServerAPI.ServerExtension
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
                     args.Killer.markId = 0;
-                    MessageToPlayer(args.Killer.SteamID, $"恭喜复仇成功",5f);
+                    MessageToPlayer(args.Killer.SteamID, 
+                        $"恭喜你杀掉了你的仇人 {RichText.Red}{args.Victim.Name}{RichText.EndColor} 并缴获他的武器" +
+                        $"现在你成为了他的仇人",5f);
                 }
 
                 if (args.Killer != null)
@@ -110,7 +105,7 @@ namespace CommunityServerAPI.ServerExtension
                     //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                     // Announce the victim your killer. And the killer will be tracked.
-                    MessageToPlayer(args.Victim,
+                    MessageToPlayer(args.Victim.SteamID,
                         $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
                         $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}",10f);
                     // 等到消息发布之后再给凶手补充血量，否则血量展示不对
@@ -278,15 +273,36 @@ namespace CommunityServerAPI.ServerExtension
         {
             if (newState == GameState.WaitingForPlayers)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
+                Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
                 // 全局对局设置 - 2个玩家,10 秒后就可以开干了
                 this.RoundSettings.PlayersToStart = 1;
-                this.RoundSettings.SecondsLeft = 10;
-                // DEVELOP: 测试时立马开始下一句游戏
+                // DEVELOP: 测试时立马开始下一局游戏
                 ForceStartGame();
             }
-            
-            
+            if (newState == GameState.EndingGame)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
+            }
+            if (newState == GameState.CountingDown)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
+                this.RoundSettings.SecondsLeft = 1800;
+                var playerNum = AllPlayers.Count();
+                this.RoundSettings.MaxTickets = playerNum switch
+                {
+                    <= 4 => 200,
+                    <= 10 => playerNum * 40,
+                    <= 20 => playerNum * 30,
+                    <= 36 => 80,
+                    _ => this.RoundSettings.MaxTickets
+                };
+                
+
+            }
+            if (newState == GameState.Playing)
+            {
+                await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
+            }
         }
     }
 }
