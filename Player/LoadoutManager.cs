@@ -238,4 +238,15 @@ namespace CommunityServerAPI.Player
         public string DisplayName { get; set; }
         public bool Available { get; set; } = true;
     }
+
+    public class WeaponSkinIndex
+    {
+        public WeaponSkinIndexInfo name { get; set; }
+    }
+
+    public class WeaponSkinIndexInfo
+    {
+        public int SkinIndex { get; set; }
+        public string DisplayName { get; set; }
+    }
 }

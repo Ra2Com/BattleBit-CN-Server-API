@@ -16,6 +16,8 @@ class Program
         int apiPort = 29294;
         LoadoutManager.Init();
         PrivilegeManager.Init();
+        var x = LoadoutManager.GetRandom();
+
         listener.LogLevel = LogLevel.Sockets | LogLevel.HealtChanges | LogLevel.GameServerErrors | LogLevel.KillsAndSpawns;
         listener.OnLog += OnLog;
         listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
