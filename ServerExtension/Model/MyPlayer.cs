@@ -41,13 +41,13 @@ namespace CommunityServerAPI.ServerExtension.Model
 
             // When a player joined the game, send a Message to announce its Community Server data.
             // 同时添加 Say 聊天消息
-            GameServer.SayToChat($"{RichText.Teal}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Teal}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
+            GameServer.SayToChat($"{RichText.Cyan}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
             await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
             Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
                     $"{RichText.LineBreak}你的游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}" +
                     $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
                     $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
+                    $"{RichText.LineBreak}{RichText.LightBlue}{RichText.Red}===请注意==={RichText.EndColor}" +
                     $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
                     $"{RichText.LineBreak}" +
                     $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
@@ -105,7 +105,7 @@ namespace CommunityServerAPI.ServerExtension.Model
             Modifications.DisableBleeding();
 
             // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 0.7f;
+            Modifications.ReloadSpeedMultiplier = 1.5f;
 
             // 白天，用个鬼的夜视仪
             Modifications.CanUseNightVision = false;
@@ -129,7 +129,14 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
             markId = 0;
-            Message($"{Name}，欢迎!");
+            Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
+                    $"{RichText.LineBreak}你的游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}" +
+                    $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
+                    $"{RichText.LineBreak}" +
+                    $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
+                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
+                    $"{RichText.LineBreak}" +
+                    $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
 
         }
     }

@@ -101,7 +101,7 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     args.Killer.K++;
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
-                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 1);
+                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 0);
                     args.Killer.SetThrowable(victimLoadout.ThrowableName, victimLoadout.ThrowableExtra);
                     args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, victimLoadout.HeavyGadgetExtra);
                     args.Killer.SetLightGadget(victimLoadout.LightGadgetName, victimLoadout.LightGadgetExtra);
@@ -109,13 +109,12 @@ namespace CommunityServerAPI.ServerExtension
                     args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, victimLoadout.PrimaryExtraMagazines);
                     args.Victim.markId = args.Killer.SteamID;
 
-                    await Console.Out.WriteLineAsync(
-                        $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+                    //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
 
                     // Announce the victim your killer. And the killer will be tracked.
                     MessageToPlayer(args.Victim,
-                        $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor}击倒" +
-                        $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}",5f);
+                        $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
+                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}",10f);
                     // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                     args.Killer.Heal(20);
                 }
@@ -132,7 +131,6 @@ namespace CommunityServerAPI.ServerExtension
         public override async Task OnPlayerDied(MyPlayer player)
         {
             player.D++;
-            //await Console.Out.WriteLineAsync("Died: " + player);
         }
 
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)

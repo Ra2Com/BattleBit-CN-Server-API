@@ -34,7 +34,7 @@ namespace CommunityServerAPI.ServerExtension.Component
             commandHandlers.Add(new Stats());
             commandHandlers.Add(new Help());
 
-            // 仅管理员可用的命令 
+            // 管理员都可用的命令 
             commandHandlers.Add(new Kill());
             commandHandlers.Add(new Mute());
             commandHandlers.Add(new Kick());
@@ -44,6 +44,12 @@ namespace CommunityServerAPI.ServerExtension.Component
             commandHandlers.Add(new Announce());
             commandHandlers.Add(new AnnounceLong());
             commandHandlers.Add(new RefreshConfig());
+            commandHandlers.Add(new AddBot());
+            commandHandlers.Add(new RemoveBot());
+            commandHandlers.Add(new BotFire());
+            
+            // 超级管理员可用的命令
+            commandHandlers.Add(new ServerCommands());
         }
 
 
@@ -52,7 +58,7 @@ namespace CommunityServerAPI.ServerExtension.Component
             var splits = msg.Split(" ");
             var cmd = splits[0].ToLower();
             var playerRole = player.stats.Roles;
-            var commandHandler = commandHandlers.Find(a => a.commandMessage.Contains(cmd));
+            var commandHandler = commandHandlers.Find(a => a.commandMessage.Equals(cmd));
             if (null == commandHandler)
             {
                 player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查看帮助", player.SteamID);
@@ -97,6 +103,7 @@ namespace CommunityServerAPI.ServerExtension.Component
 
                         player.Message(message, 5f);
                         break;
+                        return;
                     }
             }
 
