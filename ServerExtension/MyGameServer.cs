@@ -3,7 +3,7 @@ using BattleBitAPI.Storage;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
-using System.Numerics;
+using CommunityServerAPI.Content;
 using Newtonsoft.Json;
 using CommunityServerAPI.ServerExtension.Component;
 using CommunityServerAPI.ServerExtension.Model;
@@ -26,12 +26,10 @@ namespace CommunityServerAPI.ServerExtension
 
             // 固定 Random Revenge 的游戏模式和游戏地图
             this.MapRotation.ClearRotation();
-            // MapRotation.SetRotation("Salhan", "Wakistan", "Construction", "District");
-            this.MapRotation.SetRotation("Salhan", "Azagor", "Dustydew", "SandySunset", "WineParadise", "Frugis",
-                "TensaTown");
+            this.MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
             this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
-            this.GamemodeRotation.SetRotation("TDM");
+            this.GamemodeRotation.SetRotation(Gamemode);
 
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
