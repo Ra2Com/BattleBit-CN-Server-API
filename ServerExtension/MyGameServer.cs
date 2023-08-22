@@ -65,39 +65,43 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnAPlayerDownedAnotherPlayer(OnPlayerKillArguments<MyPlayer> args)
         {
-            if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
+            try
             {
-                // 爆头击杀数据
-                args.Killer.HSKill++;
+                if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
+                {
+                    // 爆头击杀数据
+                    args.Killer.HSKill++;
+                }
+            
+                if (args.Killer != null)
+                {
+                    // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
+                    args.Killer.K++;
+                    // DEVELOP TODO: 如果击杀的是仇人，且仇人在复活后没有死亡，仇人队伍的 Tickets 要扣除 10
+                    PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
+                    args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 10);
+                    args.Killer.SetThrowable(victimLoadout.ThrowableName, 10);
+                    args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 10);
+                    args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 10);
+                    //DEVELOP TODO: 需要在别的地方更换死者武器，放到 OnPlayerSpawned 那边的方法
+                    args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 10);
+                    args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 10);
+                    args.Victim.markId = args.Killer.SteamID;
+                    // 获取双方距离
+
+                    await Console.Out.WriteLineAsync(
+                        $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
+
+                    // Announce the victim your killer. And the killer will be tracked.
+                    MessageToPlayer(args.Victim,
+                        $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor}击倒" +
+                        $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
+                    // 等到消息发布之后再给凶手补充血量，否则血量展示不对
+                    args.Killer.Heal(20);
+                }
             }
+            catch (Exception ee) { Console.Out.WriteLineAsync($"OnAPlayerDownedAnotherPlayerError:{ee.StackTrace}+{ee.Message}"); }
 
-            if (args.Killer != null)
-            {
-                // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
-                args.Killer.K++;
-                // DEVELOP TODO: 如果击杀的是仇人，且仇人在复活后没有死亡，仇人队伍的 Tickets 要扣除 10
-                PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
-                args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 0, true);
-                args.Killer.SetThrowable(victimLoadout.ThrowableName, 0, true);
-                args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 0, true);
-                args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 0, true);
-                // DEVELOP TODO: 需要在别的地方更换死者武器，放到 OnPlayerSpawned 那边的方法
-                //args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 0, true);
-                //args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 0, true);
-                args.Victim.markId = args.Killer.SteamID;
-                // 获取双方距离
-                var killDistance = Vector3.Distance(args.VictimPosition, args.KillerPosition).ToString("#0.0");
-
-                await Console.Out.WriteLineAsync(
-                    $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} - {killDistance}M, 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
-
-                // Announce the victim your killer. And the killer will be tracked.
-                MessageToPlayer(args.Victim,
-                    $"你被 {RichText.Red}{args.Killer.Name}{RichText.EndColor} 在 {RichText.Navy}{killDistance} 米{RichText.EndColor}击倒" +
-                    $"{RichText.LineBreak}凶手剩余 {RichText.Maroon}{args.Killer.HP} HP{RichText.EndColor}");
-                // 等到消息发布之后再给凶手补充血量，否则血量展示不对
-                args.Killer.Heal(20);
-            }
         }
 
         public override async Task OnPlayerGivenUp(MyPlayer player)
