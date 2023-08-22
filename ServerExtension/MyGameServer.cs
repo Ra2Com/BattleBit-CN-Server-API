@@ -8,11 +8,15 @@ using CommunityServerAPI.ServerExtension.Component;
 using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.ServerExtension.Handler;
 using BattleBitAPI;
+using BattleBitAPI.Storage;
+using CommunityServerAPI.ServerExtension.Handler.Commands;
 
 namespace CommunityServerAPI.ServerExtension
 {
     public class MyGameServer : GameServer<MyPlayer>
     {
+        DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\data");
+
         public override async Task OnConnected()
         {
             Console.WriteLine(
@@ -54,6 +58,13 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerDisconnected(MyPlayer player)
         {
+            foreach (var item in AllPlayers)
+            {
+                if (item.markId == player.SteamID)
+                {
+                    item.markId = 0;
+                }
+            }
             await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} 已离线");
         }
 
@@ -80,25 +91,20 @@ namespace CommunityServerAPI.ServerExtension
                         this.RoundSettings.TeamATickets -= 10;
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
-                    await Console.Out.WriteLineAsync($"击杀者仇人ID：{args.Killer.markId} ，被杀者ID{args.Victim.SteamID}，被杀者队伍{JsonConvert.SerializeObject(this.RoundSettings)}");
-
+                    args.Killer.markId = 0;
                 }
 
                 if (args.Killer != null)
                 {
-                    // Basic Revenger mode function, kills victim if it's down, add Killer's data, do Random Mode's work. etc.
                     args.Killer.K++;
-                    // DEVELOP TODO: 如果击杀的是仇人，且仇人在复活后没有死亡，仇人队伍的 Tickets 要扣除 10
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
                     args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 10);
                     args.Killer.SetThrowable(victimLoadout.ThrowableName, 10);
                     args.Killer.SetHeavyGadget(victimLoadout.HeavyGadgetName, 10);
                     args.Killer.SetLightGadget(victimLoadout.LightGadgetName, 10);
-                    //DEVELOP TODO: 需要在别的地方更换死者武器，放到 OnPlayerSpawned 那边的方法
                     args.Killer.SetSecondaryWeapon(victimLoadout.SecondaryWeapon, 10);
                     args.Killer.SetPrimaryWeapon(victimLoadout.PrimaryWeapon, 10);
                     args.Victim.markId = args.Killer.SteamID;
-                    // 获取双方距离
 
                     await Console.Out.WriteLineAsync(
                         $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {args.Killer.Name} 击杀了 {args.Victim.Name} , 缴获武器{JsonConvert.SerializeObject(victimLoadout.PrimaryWeapon)} ");
@@ -147,6 +153,8 @@ namespace CommunityServerAPI.ServerExtension
             {
                 _rankPlayers[i].rank = i + 1;
             }
+            //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - OnTick:{_rankPlayers.Count}人上榜");
+
         }
 
         public override async Task<OnPlayerSpawnArguments?> OnPlayerSpawning(MyPlayer player,
@@ -207,8 +215,23 @@ namespace CommunityServerAPI.ServerExtension
         // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
         public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
         {
-            args.Stats.Progress.Rank = 200;
-            args.Stats.Progress.Prestige = 6;
+            try
+            {
+                var stFromData = await ds.GetPlayerStatsOf(steamID);
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - stFromData：{JsonConvert.SerializeObject(stFromData)}");
+
+                if (stFromData != null)
+                    args.Stats = stFromData;
+
+                args.Stats.Progress.Rank = 200;
+                args.Stats.Progress.Prestige = 6;
+            }
+            catch (Exception ee)
+            {
+                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}--{ee.Message}");
+            }
+
+
         }
 
         // 聊天监控和命令
@@ -227,23 +250,15 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
-            Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
-
-            var player = _rankPlayers.Find(o => o.SteamID == steamID);
-
-            player.stats = stats;
-
-            ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-            player.stats.Roles = (Roles)role;
-
-            // 特殊角色登录日志
-            if (stats?.Roles == Roles.Admin)
+            try
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
+                Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+                await ds.SavePlayerStatsOf(steamID, stats);
             }
-            if (stats?.Roles == Roles.Moderator)
+            catch (Exception ee)
             {
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
+                Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - {ee.StackTrace}--{ee.Message}");
+
             }
 
         }
