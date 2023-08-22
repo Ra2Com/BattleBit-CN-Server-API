@@ -1,4 +1,5 @@
 ﻿using BattleBitAPI.Common;
+using BattleBitAPI.Storage;
 using BattleBitAPI.Server;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
@@ -28,10 +29,10 @@ namespace CommunityServerAPI.ServerExtension
             GamemodeRotation.SetRotation("TDM");
 
             // TODO: 这些数值配置最好都到一个 Json 解析配置类里面去
-            RoundSettings.MaxTickets = 1500;
+            // RoundSettings.MaxTickets = 1500;
 
             // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-            RoundSettings.PlayersToStart = 2;
+            RoundSettings.PlayersToStart = 1;
             RoundSettings.SecondsLeft = 10;
 
             // 开启玩家体积碰撞
@@ -192,6 +193,7 @@ namespace CommunityServerAPI.ServerExtension
         // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
         public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
         {
+            args.Stats = DiskStorage.GetPlayerStatsOf(steamID);
             args.Stats.Progress.Rank = 200;
             args.Stats.Progress.Prestige = 6;
         }
@@ -213,53 +215,49 @@ namespace CommunityServerAPI.ServerExtension
         public override async Task OnSavePlayerStats(ulong steamID, PlayerStats stats) // 当储存玩家进度信息时
         {
             Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+            DiskStorage.SavePlayerStatsOf(steamID, stats);
 
+        }
+        public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
+        {
+            Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
+        
             var player = _rankPlayers.Find(o => o.SteamID == steamID);
-
-            player.stats = stats;
-
+        
+            player.stats = args.Stats;
+        
             ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
             player.stats.Roles = (Roles)role;
-
+        
             // 特殊角色登录日志
-            if (stats?.Roles == Roles.Admin)
+            if (args.Stats?.Roles == Roles.Admin)
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
             }
-            if (stats?.Roles == Roles.Moderator)
+            if (args.Stats?.Roles == Roles.Moderator)
             {
                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
             }
-
+        
         }
-        // public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
-        // {
-        //     Console.WriteLine($"OnPlayerJoiningToServer:{steamID},PlayerJoiningArguments:{args.Stats.Roles}");
-        //
-        //     var player = _rankPlayers.Find(o => o.SteamID == steamID);
-        //
-        //     player.stats = args.Stats;
-        //
-        //     ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-        //     player.stats.Roles = (Roles)role;
-        //
-        //     // 特殊角色登录日志
-        //     if (args.Stats?.Roles == Roles.Admin)
-        //     {
-        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 超级管理员 {steamID} 已连接");
-        //     }
-        //     if (args.Stats?.Roles == Roles.Moderator)
-        //     {
-        //         Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
-        //     }
-        //
-        // }
 
         public override async Task OnRoundEnded()
         {
             Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 本局游戏结束 ----------");
-            // DEVELOP: 测试时立马开始下一句游戏
-            ForceStartGame();
+            
+        }
+        
+        public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
+        {
+            if (newState== GameState.WaitingForPlayers)
+            {
+                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} ---------- 等待玩家 ----------");
+                // 全局对局设置 - 2个玩家,10 秒后就可以开干了
+                RoundSettings.PlayersToStart = 1;
+                RoundSettings.SecondsLeft = 10;
+                // DEVELOP: 测试时立马开始下一句游戏
+                ForceStartGame();
+            }
         }
     }
 }
