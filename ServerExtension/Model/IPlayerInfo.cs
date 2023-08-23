@@ -18,14 +18,10 @@ namespace CommunityServerAPI.ServerExtension.Model
     internal interface IPlayerInfo
     {
         public ulong SteamID { get; }
-        public int K { get; set; }
-        public int D { get; set; }
-        public int HSKill { get; set; }
 
         public int rank { get; set; }
 
         public ulong markId { get; set; }
-        public float maxHP { get; set; }
 
         public List<PositionBef> positionBef { get; set; }
 
