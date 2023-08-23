@@ -8,10 +8,11 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public EndGame()
         {
-            commandMessage = "/end";
+            commandMessage = "/opend";
             helpMessage = "立刻结束本轮对局";
-            Aliases = new string[] { "/ed" };
+            Aliases = new string[] { "/oped" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

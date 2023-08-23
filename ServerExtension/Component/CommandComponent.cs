@@ -61,9 +61,9 @@ namespace CommunityServerAPI.ServerExtension.Component
             var cmd = splits[0].ToLower();
             var playerRole = player.stats.Roles;
             var commandHandler = mCommandHandlers.Find(a => a.commandMessage==cmd || a.Aliases.Contains(cmd));
-            if (null == commandHandler)
+            if (null == commandHandler && msg.StartsWith("/"))
             {
-                player.GameServer.MessageToPlayer(player.SteamID, $"{player.Name} - 未知聊天命令，输入 /h 查看帮助");
+                player.GameServer.MessageToPlayer(player.SteamID, $"{player.Name} - 未知聊天命令，输入 /help 查看帮助");
                 return;
             }
             Console.WriteLine($"{JsonConvert.SerializeObject(commandHandler)}");
@@ -95,17 +95,18 @@ namespace CommunityServerAPI.ServerExtension.Component
                         var showCommands = new List<CommandHandlerBase>();
                         showCommands = mCommandHandlers
                             .Where(a => a.roles is null || a.roles.Count == 0 || !a.roles.Contains(playerRole)).ToList();
+                        // TODO 排除掉 mCommandHandlers 中 isPrivate 为 true 的命令
 
                         StringBuilder messageBuilder = new StringBuilder();
                         foreach (var command in showCommands)
                         {
                             messageBuilder.Append(
-                                $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.LineBreak}");
+                                $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.BR}");
                         }
 
                         string message = messageBuilder.ToString();
 
-                        player.Message(message, 5f);
+                        player.Message(message, 8f);
                         break;
                         return;
                     }

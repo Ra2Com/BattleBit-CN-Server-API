@@ -8,9 +8,9 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public RemoveBot()
         {
-            commandMessage = "/removebot";
+            commandMessage = "/opremovebot";
             helpMessage = "删除所有机器人";
-            Aliases = new string[] { "/rb" };
+            Aliases = new string[] { "/oprb" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
             isPrivate = true;
         }

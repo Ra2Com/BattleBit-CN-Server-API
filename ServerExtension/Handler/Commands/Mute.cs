@@ -8,9 +8,9 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public Mute()
         {
-            commandMessage = "/mute";
+            commandMessage = "/opmute";
             helpMessage = "禁言指定的玩家昵称或者 SteamID";
-            Aliases = new string[] { "/m" };
+            Aliases = new string[] { "/opm" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
             isPrivate = true;
         }
