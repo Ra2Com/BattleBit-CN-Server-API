@@ -49,7 +49,9 @@ namespace CommunityServerAPI.ServerExtension
             if (TryGetPlayer(player.SteamID, out MyPlayer op))
             {
                 var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
+                ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
                 op.stats = stFromData;
+                op.stats.Roles = (Roles)role;
                 Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID}");
             }
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
@@ -258,7 +260,7 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+                Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{JsonConvert.SerializeObject(stats)}");
                 await ds.SavePlayerStatsOf(steamID, stats);
             }
             catch (Exception ee)
@@ -286,7 +288,6 @@ namespace CommunityServerAPI.ServerExtension
             if (newState == GameState.CountingDown)
             {
                 await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
-                this.RoundSettings.SecondsLeft = 1800;
                 var playerNum = AllPlayers.Count();
                 this.RoundSettings.MaxTickets = playerNum switch
                 {
