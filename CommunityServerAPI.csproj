@@ -40,7 +40,7 @@
     <None Update="Config/PlayerWearing.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Config/ModeAndMap.json">
+    <None Update="Config\MapManager.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Config/WeaponData.json">
