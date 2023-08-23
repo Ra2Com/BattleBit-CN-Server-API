@@ -32,9 +32,6 @@ namespace CommunityServerAPI.ServerExtension
             // GamemodeRotation.SetRotation("Domination");
             this.GamemodeRotation.SetRotation(Gamemode);
 
-            // WARNING: 初始化一个默认值
-            this.RoundSettings.MaxTickets = 200;
-
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
 
@@ -271,14 +268,15 @@ namespace CommunityServerAPI.ServerExtension
             {
                 case GameState.WaitingForPlayers:
                     Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
-                    // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-                    this.RoundSettings.PlayersToStart = 1;
+                    // 全局对局设置 - 1个玩家可以开干了
+                    RoundSettings.SecondsLeft = 10;
+                    RoundSettings.PlayersToStart = 1;
                     // DEVELOP: 测试时立马开始下一局游戏
                     ForceStartGame();
                     break;
                 case GameState.EndingGame:
                     await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
-                    RoundSettings.SecondsLeft = 15;
+                    
                     break;
                 case GameState.CountingDown:
                     {
@@ -296,21 +294,9 @@ namespace CommunityServerAPI.ServerExtension
                         this.MapRotation.SetRotation(nextMap.ToArray());
                         await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
                         SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
+                        // TODO: 把对局配置设置项都移动到单一配置文件中
                         this.RoundSettings.SecondsLeft = 1800;
-                        var playerNum = AllPlayers.Count();
-                        this.RoundSettings.MaxTickets = playerNum switch
-                        {
-                            <= 4 => 200,
-                            <= 10 => playerNum * 40,
-                            <= 20 => playerNum * 30,
-                            <= 36 => 800,
-                            <= 48 => 1000,
-                            <= 64 => 1200,
-                            <= 80 => 1400,
-                            <= 96 => 1600,
-                            <= 128 => 2000,
-                            _ => this.RoundSettings.MaxTickets
-                        };
+                        SetRoundTickets();
 
                     }
                     catch (Exception ee) { Console.Out.WriteLineAsync($"PlayingError:{ee.StackTrace}+{ee.Message}"); }
@@ -334,6 +320,27 @@ namespace CommunityServerAPI.ServerExtension
                     op.rank = i + 1;
                 }
             }
+        }
+
+        private void SetRoundTickets()
+        {
+            var playerNum = AllPlayers.Count();
+            double addroundTickets = playerNum switch
+            {
+                <= 4 => 100,
+                <= 10 => playerNum * 2,
+                <= 20 => playerNum * 3,
+                <= 36 => playerNum * 5,
+                <= 48 => playerNum * 7,
+                <= 64 => playerNum * 11,
+                <= 80 => playerNum * 13,
+                <= 96 => playerNum * 17,
+                <= 128 => playerNum * 20,
+                _ => RoundSettings.MaxTickets
+            };
+            RoundSettings.MaxTickets += addroundTickets;
+            RoundSettings.TeamATickets += addroundTickets;
+            RoundSettings.TeamBTickets += addroundTickets;
         }
     }
 }

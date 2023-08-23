@@ -83,7 +83,7 @@ namespace BattleBitAPI.Server
             public double MaxTickets = 1;
             // 需要多少玩家才能开始对局
             public int PlayersToStart = 16;
-            // 对局开始前的倒计时时间
+            // 对局剩余时间
             public int SecondsLeft = 60;
 
             public void Write(Common.Serialization.Stream ser)
