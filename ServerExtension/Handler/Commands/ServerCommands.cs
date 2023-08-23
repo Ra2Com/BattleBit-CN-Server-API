@@ -7,9 +7,9 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public ServerCommands()
         {
-            commandMessage = "/sv";
+            commandMessage = "/opsv";
             helpMessage = "发送任意超管服务器指令";
-            Aliases = new string[] { "/op" };
+            Aliases = new string[] { "/sv" };
             roles = new List<Roles>() { Roles.Admin };
             isPrivate = true;
         }

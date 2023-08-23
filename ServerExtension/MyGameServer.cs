@@ -57,7 +57,7 @@ namespace CommunityServerAPI.ServerExtension
                     op.stats.Roles = (Roles)role;
                     Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
                 }
-                RankDeil();
+                await CalculateRanking();
             }
             catch (Exception ee) { Console.Out.WriteLineAsync($"OnPlayerConnected:{ee.StackTrace}+{ee.Message}"); }
 
@@ -263,7 +263,7 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnGameStateChanged(GameState oldState, GameState newState)
         {
-            RankDeil();
+            await CalculateRanking();
             switch (newState)
             {
                 case GameState.WaitingForPlayers:
@@ -276,7 +276,8 @@ namespace CommunityServerAPI.ServerExtension
                     break;
                 case GameState.EndingGame:
                     await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
-                    
+                    await Console.Out.WriteLineAsync($" ---------- 存储 {AllPlayers.Count()} 个玩家数据 ----------");
+                    await EndingSaveAllPlayerStats();
                     break;
                 case GameState.CountingDown:
                     {
@@ -303,8 +304,7 @@ namespace CommunityServerAPI.ServerExtension
                     break;
             }
         }
-
-        public void RankDeil()
+        public async Task CalculateRanking()
         {
             _rankPlayers.Clear();
             foreach (var item in AllPlayers)
@@ -322,6 +322,14 @@ namespace CommunityServerAPI.ServerExtension
             }
         }
 
+        // 调用 SavePlayerStatsOf 存储所有当前玩家的数据
+        private async Task EndingSaveAllPlayerStats()
+        {
+            foreach (var item in AllPlayers)
+            {
+                await OnSavePlayerStats(item.SteamID, item.stats);
+            }
+        }
         private void SetRoundTickets()
         {
             var playerNum = AllPlayers.Count();

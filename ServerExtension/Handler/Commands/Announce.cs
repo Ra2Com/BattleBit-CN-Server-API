@@ -8,10 +8,11 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public Announce()
         {
-            commandMessage = "/announce";
+            commandMessage = "/opan";
             helpMessage = "发送短公告";
             Aliases = new[] { "/an" };
             roles = new List<Roles> { Roles.Admin, Roles.Moderator };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

@@ -13,6 +13,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
             helpMessage = "增加自己 10% 的移动速度，每 2 分钟只能使用一次";
             Aliases = new string[] { "/sp", "/js" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator, Roles.Vip };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

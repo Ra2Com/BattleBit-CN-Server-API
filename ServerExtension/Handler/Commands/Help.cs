@@ -12,6 +12,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
             helpMessage = "展示本帮助信息";
             Aliases = new string[] { "/h" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator, Roles.Vip, Roles.Special, Roles.None };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

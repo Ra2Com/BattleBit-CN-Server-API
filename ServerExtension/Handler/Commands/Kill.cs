@@ -8,10 +8,11 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public Kill()
         {
-            commandMessage = "/slay";
+            commandMessage = "/opslay";
             helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
             Aliases = new string[] { "/sha" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
