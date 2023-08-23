@@ -14,10 +14,6 @@ namespace CommunityServerAPI.ServerExtension.Model
 {
     public class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        // DEVELOP TODO: 玩家离线、没有复活时要停止计时
-        public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
-        public long LeaveTime { get; set; } = TimeUtil.GetUtcTimeMs();
-
         public int K { get; set; } = 0;
         public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
@@ -44,7 +40,7 @@ namespace CommunityServerAPI.ServerExtension.Model
             GameServer.SayToChat($"{RichText.Cyan}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
             await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
             Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                    $"{RichText.LineBreak}游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D} , 爆头 {HSKill} 次" +
+                    $"{RichText.LineBreak}游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {K}/{D} , 爆头 {HSKill} 次" +
                     $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
                     $"{RichText.LineBreak}" +
                     $"{RichText.LineBreak}{RichText.LightBlue}{RichText.Red}===请注意==={RichText.EndColor}" +
@@ -129,7 +125,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             markId = 0;
             Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                    $"{RichText.LineBreak}你的游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}" +
+                    $"{RichText.LineBreak}你的游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {K}/{D}" +
                     $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
                     $"{RichText.LineBreak}" +
                     $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
