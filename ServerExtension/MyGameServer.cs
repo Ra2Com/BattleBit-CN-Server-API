@@ -26,21 +26,14 @@ namespace CommunityServerAPI.ServerExtension
                 $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
             // 按照服务端的游戏模式初始化游戏地图池
-            this.MapRotation.ClearRotation();
-            this.MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
-            this.GamemodeRotation.ClearRotation();
-            // GamemodeRotation.SetRotation("Domination");
-            this.GamemodeRotation.SetRotation(Gamemode);
+            SetServerDefaultSettings();
 
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
 
             // 测试用途 For development test ONLY
             ForceStartGame();
-
-
         }
-
 
         List<IPlayerInfo> _rankPlayers = new List<IPlayerInfo>();
 
@@ -96,7 +89,7 @@ namespace CommunityServerAPI.ServerExtension
                     args.Killer.markId = 0;
                     MessageToPlayer(args.Killer.SteamID,
                         $"恭喜你杀掉了你的仇人 {RichText.Red}{args.Victim.Name}{RichText.EndColor} 并缴获他的武器" +
-                        $"现在你成为了他的仇人", 5f);
+                        $"{RichText.BR}现在你成为了他的仇人", 5f);
                 }
                 if (args.Killer != null)
                 {
@@ -113,9 +106,9 @@ namespace CommunityServerAPI.ServerExtension
 
                     // Announce the victim your killer. And the killer will be tracked.
                     MessageToPlayer(args.Victim.SteamID,
-                        $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
-                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}", 10f);
-                    // 等到消息发布之后再给凶手补充血量，否则血量展示不对
+                        $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor} 击倒" +
+                        $"{RichText.BR}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}", 10f);
+                    // 等到消息发布之后再给凶手补充血量，否则击杀血量展示不对
                     args.Killer.Heal(20);
                 }
             }
@@ -139,9 +132,9 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnTick()
         {
-            // DEVELOP TODO: 每 2 分钟发布一条 AnnounceShort 让玩家加群反馈
-            // DEVELOP TODO: 每 3 分钟发布一条 全服聊天信息 让玩家加群反馈
-            // Calculate current ranking.
+            // DEVELOP TODO: 每 4 分钟发布一条 AnnounceShort 让玩家加群反馈
+            // TODO: 每 7 分钟发布一条 全服聊天信息 让玩家加群反馈
+
 
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - OnTick:{_rankPlayers.Count}人上榜");
 
@@ -200,8 +193,6 @@ namespace CommunityServerAPI.ServerExtension
 
             return request;
         }
-
-        // DEVELOP: 在玩家登录时，给玩家定义不同于官方的数据
         public override async Task OnPlayerJoiningToServer(ulong steamID, PlayerJoiningArguments args)
         {
             try
@@ -231,7 +222,6 @@ namespace CommunityServerAPI.ServerExtension
 
 
         }
-
         // 聊天监控和命令
         public override async Task<bool> OnPlayerTypedMessage(MyPlayer player, ChatChannel channel, string msg)
         {
@@ -277,7 +267,14 @@ namespace CommunityServerAPI.ServerExtension
                 case GameState.EndingGame:
                     await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
                     await Console.Out.WriteLineAsync($" ---------- 存储 {AllPlayers.Count()} 个玩家数据 ----------");
-                    await EndingSaveAllPlayerStats();
+                    await this.EndingSaveAllPlayerStats();
+                                            
+                    // 给 AllPlayer 中所有的玩家名称执行 ServerMOTD
+                    foreach (var player in AllPlayers)
+                    {
+                        await ServerMOTD(player);
+                    }
+
                     break;
                 case GameState.CountingDown:
                     {
@@ -294,10 +291,10 @@ namespace CommunityServerAPI.ServerExtension
                         var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
                         this.MapRotation.SetRotation(nextMap.ToArray());
                         await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
-                        SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
+                        SayToAllChat($"随机地图结果 — 下张地图是 — {nextMap[0]}");
                         // TODO: 把对局配置设置项都移动到单一配置文件中
                         this.RoundSettings.SecondsLeft = 1800;
-                        SetRoundTickets();
+                        this.SetRoundTickets();
 
                     }
                     catch (Exception ee) { Console.Out.WriteLineAsync($"PlayingError:{ee.StackTrace}+{ee.Message}"); }
@@ -321,14 +318,33 @@ namespace CommunityServerAPI.ServerExtension
                 }
             }
         }
-
-        // 调用 SavePlayerStatsOf 存储所有当前玩家的数据
+        // 存储所有当前玩家的数据
         private async Task EndingSaveAllPlayerStats()
         {
-            foreach (var item in AllPlayers)
+            foreach (var player in AllPlayers)
             {
-                await OnSavePlayerStats(item.SteamID, item.stats);
+                await OnSavePlayerStats(player.SteamID, player.stats);
             }
+        }
+        private void SetServerDefaultSettings()
+        {
+            MapRotation.ClearRotation();
+            MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
+            GamemodeRotation.ClearRotation();
+            GamemodeRotation.SetRotation(Gamemode);
+        }
+        private async Task ServerMOTD(MyPlayer player)
+        {
+                var JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
+                var MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
+                MessageToPlayer(player.SteamID, $"{RichText.Vip}{RichText.Cyan}{player.Name}{RichText.EndColor} 你好" +
+                        $"{RichText.BR}游戏时长 {player.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {player.stats.Progress.KillCount}/{player.stats.Progress.DeathCount} , 爆头 {player.stats.Progress.Headshots} 次" +
+                        $"{RichText.BR}当前排名 {RichText.Orange}{player.rank}{RichText.EndColor}" +
+                        $"{RichText.BR}" +
+                        $"{RichText.BR}{RichText.LightBlue}===请注意==={RichText.EndColor}" +
+                        $"{RichText.BR}{MOTD}" +
+                        $"{RichText.BR}" +
+                        $"{RichText.BR}{JIAQUN}", 15f);
         }
         private void SetRoundTickets()
         {

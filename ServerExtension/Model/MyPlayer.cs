@@ -1,5 +1,6 @@
 ﻿using BattleBitAPI;
 using BattleBitAPI.Common;
+using CommunityServerAPI.Content;
 using CommunityServerAPI.Player;
 using CommunityServerAPI.Utils;
 using System;
@@ -32,22 +33,9 @@ namespace CommunityServerAPI.ServerExtension.Model
             markId = 0;
             _ = Task.Run(async () =>
             {
-                await Task.Delay(2000);
-                // When a player joined the game, send a Message to announce its Community Server data.
-                // 同时添加 Say 聊天消息
-                GameServer.SayToChat($"{RichText.Cyan}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
-                await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-                Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                        $"{RichText.LineBreak}游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount} , 爆头 {stats.Progress.Headshots} 次" +
-                        $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
-                        $"{RichText.LineBreak}" +
-                        $"{RichText.LineBreak}{RichText.LightBlue}{RichText.Red}===请注意==={RichText.EndColor}" +
-                        $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
-                        $"{RichText.LineBreak}" +
-                        $"{RichText.LineBreak}QQ群：887245025", 30f);
+                await Task.Delay(5000);
+                PlayerMOTD();
             });
-
-
 
             _ = Task.Run(async () =>
             {
@@ -125,15 +113,24 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnSessionChanged(long oldSessionID, long newSessionID)
         {
             markId = 0;
-            Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                    $"{RichText.LineBreak}你的游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount}" +
-                    $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
-                    $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
-                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
-                    $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
+            await PlayerMOTD();
 
+        }
+
+        private async Task PlayerMOTD()
+        {
+            // When a player joined the game, send a Message to announce its Community Server data.
+            var JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
+            var MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
+            GameServer.SayToChat($"{RichText.Cyan}{JIAQUN}{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
+            Message($"{RichText.Vip}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
+                    $"{RichText.BR}游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount} , 爆头 {stats.Progress.Headshots} 次" +
+                    $"{RichText.BR}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
+                    $"{RichText.BR}" +
+                    $"{RichText.BR}{RichText.LightBlue}===请注意==={RichText.EndColor}" +
+                    $"{RichText.BR}{MOTD}" +
+                    $"{RichText.BR}" +
+                    $"{RichText.BR}{JIAQUN}", 30f);
         }
 
     }

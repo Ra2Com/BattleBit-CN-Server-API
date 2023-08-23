@@ -1,5 +1,4 @@
-﻿using BattleBitAPI.Common;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Security.Cryptography;
 
 namespace CommunityServerAPI.Content
@@ -202,7 +201,7 @@ namespace CommunityServerAPI.Content
 
         public class MapManagerJson
         {
-            public string _用法 { get; set; }
+            public string _Usage { get; set; }
             public List<ModeAvailableMapSize> ModeAvailableMapSize { get; set; }
         }
         public class ModeAvailableMapSize

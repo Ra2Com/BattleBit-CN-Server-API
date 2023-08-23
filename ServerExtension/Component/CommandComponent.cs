@@ -101,7 +101,7 @@ namespace CommunityServerAPI.ServerExtension.Component
                         foreach (var command in showCommands)
                         {
                             messageBuilder.Append(
-                                $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.LineBreak}");
+                                $"{RichText.Yellow}{command.commandMessage}{RichText.EndColor} - {command.helpMessage}{RichText.BR}");
                         }
 
                         string message = messageBuilder.ToString();
