@@ -128,7 +128,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": 1
         },
         {
           "MapName": "District",
@@ -157,7 +157,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": 0
         },
         {
           "MapName": "Isle",
@@ -171,7 +171,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": 1
         },
         {
           "MapName": "MultuIslands",
@@ -195,7 +195,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": 1
         },
         {
           "MapName": "Salhan",
@@ -204,7 +204,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": 1
         },
         {
           "MapName": "SandySunset",
@@ -231,7 +231,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": 1
         },
         {
           "MapName": "Wakistan",
