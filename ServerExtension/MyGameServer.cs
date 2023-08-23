@@ -15,7 +15,7 @@ using System.Net;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    public class MyGameServer : GameServer<MyPlayer> , IServerSetting
+    public class MyGameServer : GameServer<MyPlayer>, IServerSetting
     {
         DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\PlayerData");
 
@@ -83,11 +83,11 @@ namespace CommunityServerAPI.ServerExtension
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
                     args.Killer.markId = 0;
-                    MessageToPlayer(args.Killer.SteamID, 
+                    MessageToPlayer(args.Killer.SteamID,
                         $"恭喜你杀掉了你的仇人 {RichText.Red}{args.Victim.Name}{RichText.EndColor} 并缴获他的武器" +
-                        $"现在你成为了他的仇人",5f);
+                        $"现在你成为了他的仇人", 5f);
                 }
-
+                args.Victim.D++;
                 if (args.Killer != null)
                 {
                     args.Killer.K++;
@@ -105,7 +105,7 @@ namespace CommunityServerAPI.ServerExtension
                     // Announce the victim your killer. And the killer will be tracked.
                     MessageToPlayer(args.Victim.SteamID,
                         $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
-                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}",10f);
+                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}", 10f);
                     // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                     args.Killer.Heal(20);
                 }
@@ -121,7 +121,6 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerDied(MyPlayer player)
         {
-            player.D++;
         }
 
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
@@ -208,12 +207,12 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                var stFromData = await ds.GetPlayerStatsOf(steamID);
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - stFromData：{JsonConvert.SerializeObject(stFromData)}");
-
+                var stFromData = await ds.GetPlayerStatsOf(steamID) ?? new PlayerStats();
                 ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-                stFromData.Roles = (Roles)role;
-
+                args.Stats.Roles = stFromData.Roles = (Roles)role;
+                args.Stats.Progress.Rank = 200;
+                args.Stats.Progress.Prestige = 6;
+                AllPlayers.First(o => o.SteamID == steamID).stats = args.Stats = stFromData;
                 // 特殊角色登录日志
                 if ((Roles)role == Roles.Admin)
                 {
@@ -224,11 +223,7 @@ namespace CommunityServerAPI.ServerExtension
                     Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
                 }
 
-                if (stFromData != null)
-                    args.Stats = stFromData;
 
-                args.Stats.Progress.Rank = 200;
-                args.Stats.Progress.Prestige = 6;
             }
             catch (Exception ee)
             {
@@ -266,8 +261,8 @@ namespace CommunityServerAPI.ServerExtension
             }
 
         }
-        
-        public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
+
+        public override async Task OnGameStateChanged(GameState oldState, GameState newState)
         {
             if (newState == GameState.WaitingForPlayers)
             {
@@ -299,7 +294,7 @@ namespace CommunityServerAPI.ServerExtension
                     <= 128 => 2000,
                     _ => this.RoundSettings.MaxTickets
                 };
-                
+
 
             }
             if (newState == GameState.Playing)
