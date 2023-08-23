@@ -24,7 +24,7 @@ namespace CommunityServerAPI.ServerExtension
             Console.WriteLine(
                 $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
-            // 固定 Random Revenge 的游戏模式和游戏地图
+            // 按照服务端的游戏模式初始化游戏地图池
             this.MapRotation.ClearRotation();
             this.MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
             this.GamemodeRotation.ClearRotation();
@@ -273,41 +273,45 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnGameStateChanged(GameState oldState, GameState newState)
         {
-            if (newState == GameState.WaitingForPlayers)
+            switch (newState)
             {
-                Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
-                // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-                this.RoundSettings.PlayersToStart = 1;
-                // DEVELOP: 测试时立马开始下一局游戏
-                ForceStartGame();
-            }
-            if (newState == GameState.EndingGame)
-            {
-                await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
-            }
-            if (newState == GameState.CountingDown)
-            {
-                await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
-                var playerNum = AllPlayers.Count();
-                this.RoundSettings.MaxTickets = playerNum switch
-                {
-                    <= 4 => 200,
-                    <= 10 => playerNum * 40,
-                    <= 20 => playerNum * 30,
-                    <= 36 => 800,
-                    <= 48 => 1000,
-                    <= 64 => 1200,
-                    <= 80 => 1400,
-                    <= 96 => 1600,
-                    <= 128 => 2000,
-                    _ => this.RoundSettings.MaxTickets
-                };
-
-
-            }
-            if (newState == GameState.Playing)
-            {
-                await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
+                case GameState.WaitingForPlayers:
+                    Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
+                    // 全局对局设置 - 2个玩家,10 秒后就可以开干了
+                    this.RoundSettings.PlayersToStart = 1;
+                    // DEVELOP: 测试时立马开始下一局游戏
+                    ForceStartGame();
+                    break;
+                case GameState.EndingGame:
+                    await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
+                    break;
+                case GameState.CountingDown:
+                    {
+                        await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
+                        this.RoundSettings.SecondsLeft = 1800;
+                        var playerNum = AllPlayers.Count();
+                        this.RoundSettings.MaxTickets = playerNum switch
+                        {
+                            <= 4 => 200,
+                            <= 10 => playerNum * 40,
+                            <= 20 => playerNum * 30,
+                            <= 36 => 800,
+                            <= 48 => 1000,
+                            <= 64 => 1200,
+                            <= 80 => 1400,
+                            <= 96 => 1600,
+                            <= 128 => 2000,
+                            _ => this.RoundSettings.MaxTickets
+                        };
+        break;
+                    }
+                case GameState.Playing:
+                    await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
+                    this.MapRotation.ClearRotation();
+                    var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
+                    this.MapRotation.SetRotation(nextMap.ToArray());
+                    await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为{nextMap[0]}  ----------");
+                    break;
             }
         }
     }
