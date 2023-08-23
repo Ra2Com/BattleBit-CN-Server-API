@@ -45,6 +45,13 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
+            Console.WriteLine($"OnPlayerConnected");
+            if (TryGetPlayer(player.SteamID, out MyPlayer op))
+            {
+                var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
+                op.stats = stFromData;
+                Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID}");
+            }
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
 
@@ -209,10 +216,10 @@ namespace CommunityServerAPI.ServerExtension
             {
                 var stFromData = await ds.GetPlayerStatsOf(steamID) ?? new PlayerStats();
                 ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
+                args.Stats = stFromData;
                 args.Stats.Roles = stFromData.Roles = (Roles)role;
                 args.Stats.Progress.Rank = 200;
                 args.Stats.Progress.Prestige = 6;
-                AllPlayers.First(o => o.SteamID == steamID).stats = args.Stats = stFromData;
                 // 特殊角色登录日志
                 if ((Roles)role == Roles.Admin)
                 {
