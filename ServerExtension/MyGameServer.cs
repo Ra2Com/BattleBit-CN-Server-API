@@ -46,16 +46,21 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
-            Console.WriteLine($"OnPlayerConnected");
-            RankDeil();
-            if (TryGetPlayer(player.SteamID, out MyPlayer op))
+            try
             {
-                var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
-                ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
-                op.stats = stFromData;
-                op.stats.Roles = (Roles)role;
-                Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID}");
+                Console.WriteLine($"OnPlayerConnected");
+                if (TryGetPlayer(player.SteamID, out MyPlayer op))
+                {
+                    var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
+                    ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
+                    op.stats = stFromData;
+                    op.stats.Roles = (Roles)role;
+                    Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
+                }
+                RankDeil();
             }
+            catch (Exception ee) { Console.Out.WriteLineAsync($"OnPlayerConnected:{ee.StackTrace}+{ee.Message}"); }
+
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
 
@@ -311,7 +316,7 @@ namespace CommunityServerAPI.ServerExtension
                 _rankPlayers.Add(item);
             }
 
-            _rankPlayers = _rankPlayers.OrderByDescending(x => x.stats.Progress.KillCount / x.stats.Progress.DeathCount).ToList();
+            _rankPlayers = _rankPlayers.OrderByDescending(x => x.stats.Progress.KillCount / (x.stats.Progress.DeathCount + 1)).ToList();
             for (int i = 0; i < _rankPlayers.Count; i++)
             {
                 if (TryGetPlayer(_rankPlayers[i].SteamID, out MyPlayer op))

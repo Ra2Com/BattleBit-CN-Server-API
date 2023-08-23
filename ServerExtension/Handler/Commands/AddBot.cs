@@ -27,7 +27,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
         public override void Execute(MyPlayer player, string cmdMsg)
         {
             var splits = cmdMsg.Split(" ");
-            player.GameServer.ExecuteCommand("join bot" + splits[1]);
+            player.GameServer.ExecuteCommand("join bot " + splits[1]);
         }
     }
 }
