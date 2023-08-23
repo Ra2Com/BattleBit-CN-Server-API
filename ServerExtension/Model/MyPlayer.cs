@@ -20,8 +20,8 @@ namespace CommunityServerAPI.ServerExtension.Model
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
 
-        public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
-        public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
+        public long LastHealTime { get; set; } = TimeUtil.GetUtcTime(DateTime.Now);
+        public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTime(DateTime.Now);
 
         public PlayerStats stats { get; set; } = new PlayerStats();
         public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
