@@ -10,7 +10,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
         {
             commandMessage = "/slay";
             helpMessage = "通过玩家昵称或者 SteamID 杀死玩家";
-            Aliases = new string[] { };
+            Aliases = new string[] { "/sha" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
         }
 
