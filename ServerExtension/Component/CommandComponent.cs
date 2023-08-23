@@ -5,6 +5,7 @@ using CommunityServerAPI.ServerExtension.Handler;
 using CommunityServerAPI.ServerExtension.Handler.Commands;
 using CommunityServerAPI.ServerExtension.Model;
 using CommunityServerAPI.Utils;
+using Newtonsoft.Json;
 
 namespace CommunityServerAPI.ServerExtension.Component
 {
@@ -47,7 +48,7 @@ namespace CommunityServerAPI.ServerExtension.Component
             mCommandHandlers.Add(new AddBot());
             mCommandHandlers.Add(new RemoveBot());
             mCommandHandlers.Add(new BotFire());
-            
+
             // 超级管理员可用的命令
             mCommandHandlers.Add(new ServerCommands());
         }
@@ -55,15 +56,18 @@ namespace CommunityServerAPI.ServerExtension.Component
 
         public async Task HandleCommand(MyPlayer player, ChatChannel channel, string msg)
         {
+            Console.WriteLine($"{player.Name}发送命令:{msg}");
             var splits = msg.Split(" ");
             var cmd = splits[0].ToLower();
             var playerRole = player.stats.Roles;
-            var commandHandler = mCommandHandlers.Find(a => a.commandMessage.Equals(cmd));
+            var commandHandler = mCommandHandlers.Find(a => a.commandMessage==cmd || a.Aliases.Contains(cmd));
             if (null == commandHandler)
             {
-                player.GameServer.SayToChat($"{player.Name} - 未知聊天命令，输入 /h 查看帮助", player.SteamID);
+                player.GameServer.MessageToPlayer(player.SteamID, $"{player.Name} - 未知聊天命令，输入 /h 查看帮助");
                 return;
             }
+            Console.WriteLine($"{JsonConvert.SerializeObject(commandHandler)}");
+            Console.WriteLine($"{JsonConvert.SerializeObject(playerRole)}");
 
             // 检查执行的 Roles 是什么
             if (commandHandler.roles is not null && !commandHandler.roles.Contains(playerRole))

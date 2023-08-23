@@ -6,14 +6,14 @@ namespace CommunityServerAPI.Content
 {
     internal static class MapManager
     {
-        public static MapManagerJsonItem mapmanagerJson = new MapManagerJsonItem();
+        public static MapManagerJson mapmanagerJson = new MapManagerJson();
         public static void Init()
         {
             try
             {
                 string mapmanagePath = $"{Environment.CurrentDirectory}\\Config\\MapManager.json";
                 string content = File.ReadAllText(mapmanagePath);
-                mapmanagerJson = JsonConvert.DeserializeObject<MapManagerJsonItem>(content);
+                mapmanagerJson = JsonConvert.DeserializeObject<MapManagerJson>(content);
             }
             catch (Exception ee)
             {
@@ -21,61 +21,60 @@ namespace CommunityServerAPI.Content
                 return;
             }
         }
-        // 通过传入的 gameMode 得到当前 gameMode 下所有可以使用的地图列表
+        // TODO: 通过传入的 gameMode 得到当前 gameMode 下所有可以使用的地图列表
+        // 使用场景: 手动扩容服务器时指定服务器容量，则需要进行多重判断 
         // 再通过这个地图列表返回当前 gameMode 下所有可以使用的 MapName 和List<byte> MapSize
         public static Dictionary<string, List<byte>> GetAvailableMapAndSize(string curMode)
         {
             Dictionary<string, List<byte>> mapList = new Dictionary<string, List<byte>>();
             return null;
         }
-        
-        // 通过传入的 curMode 得到当前可用的地图列表
+
+        // 通过传入的 curMode 配置中当前可用的地图列表
+        // WARNING: 在极端情况下如果某个模式所有地图不可用，传出来的默认值是 Salhan，但是如果这个地图在此模式也不可用，那么就会出现问题
         public static List<string> GetAvailableMapList(string curMode)
         {
-            switch (curMode)
+            return curMode switch
             {
-                case "FFA":
-                    return mapmanagerJson.FFA.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "TDM":
-                    return mapmanagerJson.TDM.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "DOMI":
-                    return mapmanagerJson.DOMI.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "RUSH":
-                    return mapmanagerJson.RUSH.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "FRONTLINE":
-                    return mapmanagerJson.FRONTLINE.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "GunGameFFA":
-                    return mapmanagerJson.GunGameFFA.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "GunGameTeam":
-                    return mapmanagerJson.GunGameTeam.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "ELIMI":
-                    return mapmanagerJson.ELIMI.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "INFECTED":
-                    return mapmanagerJson.INFECTED.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "CONQ":
-                    return mapmanagerJson.CONQ.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "INFCONQ":
-                    return mapmanagerJson.INFCONQ.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "TheCatch":
-                    return mapmanagerJson.TheCatch.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "CaptureTheFlag":
-                    return mapmanagerJson.CaptureTheFlag.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "AAS":
-                    return mapmanagerJson.AAS.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "CashRun":
-                    return mapmanagerJson.CashRun.Where(x => x.Available).Select(x => x.MapName).ToList();
-                case "SuicideRush":
-                    return mapmanagerJson.SuicideRush.Where(x => x.Available).Select(x => x.MapName).ToList();
-                default:
-                    return new List<string> { "Salhan" };
-            }
+                "FFA" => mapmanagerJson.ModeAvailableMapSize[0].FFA.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "TDM" => mapmanagerJson.ModeAvailableMapSize[0].TDM.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "DOMI" => mapmanagerJson.ModeAvailableMapSize[0].DOMI.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "RUSH" => mapmanagerJson.ModeAvailableMapSize[0].RUSH.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "FRONTLINE" => mapmanagerJson.ModeAvailableMapSize[0].FRONTLINE.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "GunGameFFA" => mapmanagerJson.ModeAvailableMapSize[0].GunGameFFA.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "GunGameTeam" => mapmanagerJson.ModeAvailableMapSize[0].GunGameTeam.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "ELIMI" => mapmanagerJson.ModeAvailableMapSize[0].ELIMI.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "INFECTED" => mapmanagerJson.ModeAvailableMapSize[0].INFECTED.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "CONQ" => mapmanagerJson.ModeAvailableMapSize[0].CONQ.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "INFCONQ" => mapmanagerJson.ModeAvailableMapSize[0].INFCONQ.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "TheCatch" => mapmanagerJson.ModeAvailableMapSize[0].TheCatch.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "CaptureTheFlag" => mapmanagerJson.ModeAvailableMapSize[0].CaptureTheFlag.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "AAS" => mapmanagerJson.ModeAvailableMapSize[0].AAS.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "CashRun" => mapmanagerJson.ModeAvailableMapSize[0].CashRun.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                "SuicideRush" => mapmanagerJson.ModeAvailableMapSize[0].SuicideRush.Where(x => x.Available).Select(x => x.MapName).ToList(),
+                _ => new List<string>
+                {
+                    "Salhan"
+                }
+            };
         }
-        
+
+        // 通过传入 curMode 获取一张随机的可用地图
+        public static List<string> GetARandomAvailableMap(string curMode)
+        {
+            List<string> mapList = GetAvailableMapList(curMode);
+            int index = RandomNumberGenerator.GetInt32(0, mapList.Count);
+            return new List<string>()
+            {
+                mapList[index]
+            };
+        }
 
         public class FfaItem
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -107,7 +106,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -201,7 +200,12 @@ namespace CommunityServerAPI.Content
             public bool Available { get; set; }
         }
 
-        public class MapManagerJsonItem
+        public class MapManagerJson
+        {
+            public string _用法 { get; set; }
+            public List<ModeAvailableMapSize> ModeAvailableMapSize { get; set; }
+        }
+        public class ModeAvailableMapSize
         {
             public List<FfaItem> FFA { get; set; }
             public List<TdmItem> TDM { get; set; }

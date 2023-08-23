@@ -12,10 +12,11 @@ using BattleBitAPI;
 using BattleBitAPI.Storage;
 using CommunityServerAPI.ServerExtension.Handler.Commands;
 using System.Net;
+using System.Numerics;
 
 namespace CommunityServerAPI.ServerExtension
 {
-    public class MyGameServer : GameServer<MyPlayer> , IServerSetting
+    public class MyGameServer : GameServer<MyPlayer>, IServerSetting
     {
         DiskStorage ds = new DiskStorage(Environment.CurrentDirectory + "\\PlayerData");
 
@@ -24,7 +25,7 @@ namespace CommunityServerAPI.ServerExtension
             Console.WriteLine(
                 $"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 已与游戏服务器 {ServerName} 建立通信 - {GameIP}:{GamePort}");
 
-            // 固定 Random Revenge 的游戏模式和游戏地图
+            // 按照服务端的游戏模式初始化游戏地图池
             this.MapRotation.ClearRotation();
             this.MapRotation.SetRotation(MapManager.GetAvailableMapList(Gamemode).ToArray());
             this.GamemodeRotation.ClearRotation();
@@ -45,6 +46,21 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerConnected(MyPlayer player)
         {
+            try
+            {
+                Console.WriteLine($"OnPlayerConnected");
+                if (TryGetPlayer(player.SteamID, out MyPlayer op))
+                {
+                    var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
+                    ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
+                    op.stats = stFromData;
+                    op.stats.Roles = (Roles)role;
+                    Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
+                }
+                RankDeil();
+            }
+            catch (Exception ee) { Console.Out.WriteLineAsync($"OnPlayerConnected:{ee.StackTrace}+{ee.Message}"); }
+
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家 {player.Name} - {player.SteamID} 已连接, IP: {player.IP}");
         }
 
@@ -69,11 +85,6 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                if (args.BodyPart > 0 && args.BodyPart < PlayerBody.Shoulder)
-                {
-                    // 爆头击杀数据
-                    args.Killer.HSKill++;
-                }
                 await Console.Out.WriteLineAsync($"击杀者仇人ID：{args.Killer.markId} ，被杀者ID{args.Victim.SteamID}");
 
                 if (args.Killer.markId.ToString() == args.Victim.SteamID.ToString())
@@ -83,14 +94,12 @@ namespace CommunityServerAPI.ServerExtension
                     else if (args.Victim.Team == Team.TeamB)
                         this.RoundSettings.TeamBTickets -= 10;
                     args.Killer.markId = 0;
-                    MessageToPlayer(args.Killer.SteamID, 
+                    MessageToPlayer(args.Killer.SteamID,
                         $"恭喜你杀掉了你的仇人 {RichText.Red}{args.Victim.Name}{RichText.EndColor} 并缴获他的武器" +
-                        $"现在你成为了他的仇人",5f);
+                        $"现在你成为了他的仇人", 5f);
                 }
-
                 if (args.Killer != null)
                 {
-                    args.Killer.K++;
                     PlayerLoadout victimLoadout = args.Victim.CurrentLoadout;
                     args.Killer.SetFirstAidGadget(victimLoadout.FirstAidName, 0);
                     args.Killer.SetThrowable(victimLoadout.ThrowableName, victimLoadout.ThrowableExtra);
@@ -105,7 +114,7 @@ namespace CommunityServerAPI.ServerExtension
                     // Announce the victim your killer. And the killer will be tracked.
                     MessageToPlayer(args.Victim.SteamID,
                         $"你被 {RichText.LightBlue}{args.Killer.Name}{RichText.EndColor}击倒" +
-                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}",10f);
+                        $"{RichText.LineBreak}凶手剩余 {RichText.LightBlue}{args.Killer.HP} HP{RichText.EndColor}", 10f);
                     // 等到消息发布之后再给凶手补充血量，否则血量展示不对
                     args.Killer.Heal(20);
                 }
@@ -121,7 +130,6 @@ namespace CommunityServerAPI.ServerExtension
 
         public override async Task OnPlayerDied(MyPlayer player)
         {
-            player.D++;
         }
 
         public override async Task OnAPlayerRevivedAnotherPlayer(MyPlayer from, MyPlayer to)
@@ -134,17 +142,7 @@ namespace CommunityServerAPI.ServerExtension
             // DEVELOP TODO: 每 2 分钟发布一条 AnnounceShort 让玩家加群反馈
             // DEVELOP TODO: 每 3 分钟发布一条 全服聊天信息 让玩家加群反馈
             // Calculate current ranking.
-            _rankPlayers.Clear();
-            foreach (var item in AllPlayers)
-            {
-                _rankPlayers.Add(item);
-            }
 
-            _rankPlayers = _rankPlayers.OrderByDescending(x => x.K / x.D).ToList();
-            for (int i = 0; i < _rankPlayers.Count; i++)
-            {
-                _rankPlayers[i].rank = i + 1;
-            }
             //await Console.Out.WriteLineAsync($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - OnTick:{_rankPlayers.Count}人上榜");
 
         }
@@ -208,12 +206,12 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                var stFromData = await ds.GetPlayerStatsOf(steamID);
-                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - stFromData：{JsonConvert.SerializeObject(stFromData)}");
-
+                var stFromData = await ds.GetPlayerStatsOf(steamID) ?? new PlayerStats();
                 ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-                stFromData.Roles = (Roles)role;
-
+                args.Stats = stFromData;
+                args.Stats.Roles = stFromData.Roles = (Roles)role;
+                args.Stats.Progress.Rank = 200;
+                args.Stats.Progress.Prestige = 6;
                 // 特殊角色登录日志
                 if ((Roles)role == Roles.Admin)
                 {
@@ -224,11 +222,7 @@ namespace CommunityServerAPI.ServerExtension
                     Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
                 }
 
-                if (stFromData != null)
-                    args.Stats = stFromData;
 
-                args.Stats.Progress.Rank = 200;
-                args.Stats.Progress.Prestige = 6;
             }
             catch (Exception ee)
             {
@@ -256,7 +250,7 @@ namespace CommunityServerAPI.ServerExtension
         {
             try
             {
-                Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{stats.Roles}");
+                Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{JsonConvert.SerializeObject(stats)}  服务器数据");
                 await ds.SavePlayerStatsOf(steamID, stats);
             }
             catch (Exception ee)
@@ -266,41 +260,87 @@ namespace CommunityServerAPI.ServerExtension
             }
 
         }
-        
-        public override async Task OnGameStateChanged(GameState oldState, GameState newState) 
-        {
-            if (newState == GameState.WaitingForPlayers)
-            {
-                Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
-                // 全局对局设置 - 2个玩家,10 秒后就可以开干了
-                this.RoundSettings.PlayersToStart = 1;
-                // DEVELOP: 测试时立马开始下一局游戏
-                ForceStartGame();
-            }
-            if (newState == GameState.EndingGame)
-            {
-                await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
-            }
-            if (newState == GameState.CountingDown)
-            {
-                await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
-                this.RoundSettings.SecondsLeft = 1800;
-                var playerNum = AllPlayers.Count();
-                this.RoundSettings.MaxTickets = playerNum switch
-                {
-                    <= 4 => 200,
-                    <= 10 => playerNum * 40,
-                    <= 20 => playerNum * 30,
-                    <= 36 => 80,
-                    _ => this.RoundSettings.MaxTickets
-                };
-                
 
-            }
-            if (newState == GameState.Playing)
+        public override async Task OnGameStateChanged(GameState oldState, GameState newState)
+        {
+            RankDeil();
+            switch (newState)
             {
-                await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
+                case GameState.WaitingForPlayers:
+                    Console.Out.WriteLineAsync($" ---------- 等待玩家 ----------");
+                    // 全局对局设置 - 1个玩家可以开干了
+                    RoundSettings.SecondsLeft = 10;
+                    RoundSettings.PlayersToStart = 1;
+                    // DEVELOP: 测试时立马开始下一局游戏
+                    ForceStartGame();
+                    break;
+                case GameState.EndingGame:
+                    await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
+                    
+                    break;
+                case GameState.CountingDown:
+                    {
+                        await Console.Out.WriteLineAsync($" ---------- {RoundIndex} 开始倒计时 - 会话 {SessionID} ----------");
+                        RoundSettings.SecondsLeft = 10;
+
+                        break;
+                    }
+                case GameState.Playing:
+                    try
+                    {
+                        await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 开始 - 会话 {SessionID} ----------");
+                        this.MapRotation.ClearRotation();
+                        var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
+                        this.MapRotation.SetRotation(nextMap.ToArray());
+                        await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
+                        SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
+                        // TODO: 把对局配置设置项都移动到单一配置文件中
+                        this.RoundSettings.SecondsLeft = 1800;
+                        SetRoundTickets();
+
+                    }
+                    catch (Exception ee) { Console.Out.WriteLineAsync($"PlayingError:{ee.StackTrace}+{ee.Message}"); }
+                    break;
             }
+        }
+
+        public void RankDeil()
+        {
+            _rankPlayers.Clear();
+            foreach (var item in AllPlayers)
+            {
+                _rankPlayers.Add(item);
+            }
+
+            _rankPlayers = _rankPlayers.OrderByDescending(x => x.stats.Progress.KillCount / (x.stats.Progress.DeathCount + 1)).ToList();
+            for (int i = 0; i < _rankPlayers.Count; i++)
+            {
+                if (TryGetPlayer(_rankPlayers[i].SteamID, out MyPlayer op))
+                {
+                    op.rank = i + 1;
+                }
+            }
+        }
+
+        private void SetRoundTickets()
+        {
+            var playerNum = AllPlayers.Count();
+            double addroundTickets = playerNum switch
+            {
+                <= 4 => 100,
+                <= 10 => playerNum * 2,
+                <= 20 => playerNum * 3,
+                <= 36 => playerNum * 5,
+                <= 48 => playerNum * 7,
+                <= 64 => playerNum * 11,
+                <= 80 => playerNum * 13,
+                <= 96 => playerNum * 17,
+                <= 128 => playerNum * 20,
+                _ => RoundSettings.MaxTickets
+            };
+            RoundSettings.MaxTickets += addroundTickets;
+            RoundSettings.TeamATickets += addroundTickets;
+            RoundSettings.TeamBTickets += addroundTickets;
         }
     }
 }

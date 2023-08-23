@@ -14,22 +14,14 @@ namespace CommunityServerAPI.ServerExtension.Model
 {
     public class MyPlayer : Player<MyPlayer>, IPlayerInfo
     {
-        // DEVELOP TODO: 玩家离线、没有复活时要停止计时
-        public long JoinTime { get; set; } = TimeUtil.GetUtcTimeMs();
-        public long LeaveTime { get; set; } = TimeUtil.GetUtcTimeMs();
-
-        public int K { get; set; } = 0;
-        public int D { get; set; } = 0;
         public int rank { get; set; } = 1;
-        public int HSKill { get; set; }
         public float HSRate { get; set; }
 
         public int Score { get; set; } = 0;
         public ulong markId { get; set; } = 0;
-        public float maxHP { get; set; }
 
-        public long LastHealTime { get; set; } = TimeUtil.GetUtcTimeMs();
-        public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTimeMs();
+        public long LastHealTime { get; set; } = TimeUtil.GetUtcTime(DateTime.Now);
+        public long LastSpeedTime { get; set; } = TimeUtil.GetUtcTime(DateTime.Now);
 
         public PlayerStats stats { get; set; } = new PlayerStats();
         public List<PositionBef> positionBef { get; set; } = new List<PositionBef>();
@@ -37,20 +29,25 @@ namespace CommunityServerAPI.ServerExtension.Model
         public override async Task OnConnected()
         {
             Console.Out.WriteLineAsync($"MyPlayer 进程已连接");
+            markId = 0;
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(2000);
+                // When a player joined the game, send a Message to announce its Community Server data.
+                // 同时添加 Say 聊天消息
+                GameServer.SayToChat($"{RichText.Cyan}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
+                await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
+                Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
+                        $"{RichText.LineBreak}游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount} , 爆头 {stats.Progress.Headshots} 次" +
+                        $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
+                        $"{RichText.LineBreak}" +
+                        $"{RichText.LineBreak}{RichText.LightBlue}{RichText.Red}===请注意==={RichText.EndColor}" +
+                        $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
+                        $"{RichText.LineBreak}" +
+                        $"{RichText.LineBreak}QQ群：887245025", 30f);
+            });
 
 
-            // When a player joined the game, send a Message to announce its Community Server data.
-            // 同时添加 Say 聊天消息
-            GameServer.SayToChat($"{RichText.Cyan}QQ群：887245025{RichText.EndColor}，欢迎 {RichText.Olive}{Name}{RichText.EndColor}，排名 {RichText.Orange}{rank}{RichText.EndColor} 进服", SteamID);
-            await Console.Out.WriteLineAsync($"{RichText.Joy}欢迎 {RichText.Teal}{Name}{RichText.EndColor} ，K/D: {K}/{D}，排名 {RichText.Orange}{rank}{RichText.EndColor} ");
-            Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                    $"{RichText.LineBreak}游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D} , 爆头 {HSKill} 次" +
-                    $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
-                    $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}{RichText.LightBlue}{RichText.Red}===请注意==={RichText.EndColor}" +
-                    $"{RichText.LineBreak}本服务器为社区服，你所有获得的游戏或装备进度都将只存在本服务器，不与官方服务器共享数据" +
-                    $"{RichText.LineBreak}" +
-                    $"{RichText.LineBreak}QQ群：887245025", 30f);
 
             _ = Task.Run(async () =>
             {
@@ -73,7 +70,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                             {
                                 var dis = Vector3.Distance(markPlayer.Position, Position).ToString("#0.0");
                                 Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Red}{dis}{RichText.EndColor} 米");
-                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {K}/{D},仇人 {markId}");
+                                Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount},仇人 {markId}");
 
                             }
                         }
@@ -103,8 +100,8 @@ namespace CommunityServerAPI.ServerExtension.Model
             // 娱乐服，咱不玩流血那套
             Modifications.DisableBleeding();
 
-            // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 1.5f;
+            // 娱乐服，换弹速度降低到 75%
+            Modifications.ReloadSpeedMultiplier = 1.35f;
 
             // 白天，用个鬼的夜视仪
             Modifications.CanUseNightVision = false;
@@ -129,7 +126,7 @@ namespace CommunityServerAPI.ServerExtension.Model
         {
             markId = 0;
             Message($"{RichText.Joy}{RichText.Cyan}{Name}{RichText.EndColor} 你好" +
-                    $"{RichText.LineBreak}你的游戏时长 {TimeUtil.GetPhaseDifference(JoinTime)} 分钟 , K/D: {K}/{D}" +
+                    $"{RichText.LineBreak}你的游戏时长 {this.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount}" +
                     $"{RichText.LineBreak}当前排名 {RichText.Orange}{rank}{RichText.EndColor}" +
                     $"{RichText.LineBreak}" +
                     $"{RichText.LineBreak}{RichText.Patreon}{RichText.Red}===请注意==={RichText.EndColor}" +
@@ -138,6 +135,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                     $"{RichText.LineBreak}玩家 QQ群：887245025", 30f);
 
         }
+
     }
 
     public class PositionBef

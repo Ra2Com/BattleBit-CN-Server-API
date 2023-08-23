@@ -6,6 +6,7 @@ using CommunityServerAPI.ServerExtension.Model;
 using System.Numerics;
 using BattleBitAPI;
 using System.Net;
+using CommunityServerAPI.Content;
 
 class Program
 {
@@ -16,8 +17,7 @@ class Program
         int apiPort = 29294;
         LoadoutManager.Init();
         PrivilegeManager.Init();
-        var x = LoadoutManager.GetRandom();
-
+        MapManager.Init();
         listener.LogLevel = LogLevel.Sockets | LogLevel.HealtChanges | LogLevel.GameServerErrors | LogLevel.KillsAndSpawns;
         listener.OnLog += OnLog;
         listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;
