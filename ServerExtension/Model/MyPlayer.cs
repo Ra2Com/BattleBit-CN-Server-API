@@ -100,8 +100,8 @@ namespace CommunityServerAPI.ServerExtension.Model
             // 娱乐服，咱不玩流血那套
             Modifications.DisableBleeding();
 
-            // 娱乐服，换弹速度降低到 70%
-            Modifications.ReloadSpeedMultiplier = 1.5f;
+            // 娱乐服，换弹速度降低到 75%
+            Modifications.ReloadSpeedMultiplier = 1.35f;
 
             // 白天，用个鬼的夜视仪
             Modifications.CanUseNightVision = false;
