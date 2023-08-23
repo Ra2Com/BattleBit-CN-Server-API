@@ -31,6 +31,9 @@ namespace CommunityServerAPI.ServerExtension
             this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
             this.GamemodeRotation.SetRotation(Gamemode);
+            
+            // WARNING: 初始化一个默认值
+            this.RoundSettings.MaxTickets = 200;
 
             // 开启玩家体积碰撞
             this.ServerSettings.PlayerCollision = true;
@@ -274,21 +277,23 @@ namespace CommunityServerAPI.ServerExtension
                     ForceStartGame();
                     break;
                 case GameState.EndingGame:
-                    await Console.Out.WriteLineAsync($" ---------- 对局结束 ----------");
+                    await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
+                    RoundSettings.SecondsLeft = 15;
                     break;
                 case GameState.CountingDown:
                     {
-                        await Console.Out.WriteLineAsync($" ---------- 对局倒计时 ----------");
+                        await Console.Out.WriteLineAsync($" ---------- {RoundIndex} 开始倒计时 - 会话 {SessionID} ----------");
+                        RoundSettings.SecondsLeft = 10;
 
                         break;
                     }
                 case GameState.Playing:
-                    await Console.Out.WriteLineAsync($" ---------- 对局开始 ----------");
+                    await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 开始 - 会话 {SessionID} ----------");
                     this.MapRotation.ClearRotation();
                     var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
                     this.MapRotation.SetRotation(nextMap.ToArray());
-                    await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为{nextMap[0]}  ----------");
-
+                    await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
+                    SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
                     this.RoundSettings.SecondsLeft = 1800;
                     var playerNum = AllPlayers.Count();
                     this.RoundSettings.MaxTickets = playerNum switch
