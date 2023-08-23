@@ -18,7 +18,7 @@ class Program
         LoadoutManager.Init();
         PrivilegeManager.Init();
         MapManager.Init();
-
+        MapManager.GetARandomAvailableMap("TDM");
         listener.LogLevel = LogLevel.Sockets | LogLevel.HealtChanges | LogLevel.GameServerErrors | LogLevel.KillsAndSpawns;
         listener.OnLog += OnLog;
         listener.OnCreatingGameServerInstance += OnCreatingGameServerInstance;

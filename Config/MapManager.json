@@ -6,100 +6,100 @@
         {
           "MapName": "Azagor",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         }
       ],
       "TDM": [
@@ -110,7 +110,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "Basra",
@@ -119,7 +119,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
@@ -128,12 +128,12 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -142,13 +142,16 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
-          "MapSize": 16,
-          "Available": 0
+          "MapSize": [
+            8,
+            16
+          ],
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -157,12 +160,12 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -171,22 +174,22 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -195,7 +198,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "Salhan",
@@ -204,7 +207,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "SandySunset",
@@ -213,7 +216,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "TensaTown",
@@ -222,7 +225,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "Valley",
@@ -231,12 +234,12 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -245,7 +248,7 @@
             8,
             16
           ],
-          "Available": 1
+          "Available": true
         }
       ],
       "DOMI": [
@@ -257,12 +260,12 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
@@ -272,7 +275,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -283,7 +286,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -293,7 +296,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
@@ -304,7 +307,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -314,7 +317,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
@@ -325,7 +328,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -335,7 +338,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
@@ -346,7 +349,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
@@ -356,7 +359,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
@@ -367,7 +370,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -377,7 +380,7 @@
             32,
             64
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -388,7 +391,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -399,7 +402,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -410,7 +413,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -421,7 +424,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
@@ -431,7 +434,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -442,7 +445,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         }
       ],
       "RUSH": [
@@ -453,19 +456,19 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -474,7 +477,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -483,13 +486,13 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -498,13 +501,13 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -513,7 +516,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
@@ -523,7 +526,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
@@ -532,19 +535,19 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -554,13 +557,13 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -569,7 +572,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -578,19 +581,19 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "FRONTLINE": [
@@ -602,7 +605,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
@@ -612,13 +615,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -627,13 +630,13 @@
             32,
             64
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
@@ -643,13 +646,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 32,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
@@ -659,31 +662,31 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -692,13 +695,13 @@
             32,
             64
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 32,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -708,7 +711,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -718,7 +721,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -728,7 +731,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
@@ -738,13 +741,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "GunGameFFA": [
@@ -752,37 +755,37 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 16,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -791,73 +794,73 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 8,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -866,7 +869,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         }
       ],
       "GunGameTeam": [
@@ -874,25 +877,25 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -901,13 +904,13 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -916,13 +919,13 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -931,25 +934,25 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -958,37 +961,37 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -997,7 +1000,7 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         }
       ],
       "ELIMI": [
@@ -1005,79 +1008,79 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -1086,13 +1089,13 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -1101,25 +1104,25 @@
             8,
             16
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "INFECTED": [
@@ -1127,115 +1130,115 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "CONQ": [
@@ -1247,7 +1250,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
@@ -1256,13 +1259,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 32,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -1272,7 +1275,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -1282,7 +1285,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
@@ -1292,7 +1295,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -1302,7 +1305,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
@@ -1312,7 +1315,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -1322,7 +1325,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
@@ -1332,7 +1335,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
@@ -1341,13 +1344,13 @@
             32,
             64
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 32,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -1357,7 +1360,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -1367,7 +1370,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -1377,7 +1380,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -1387,7 +1390,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -1397,7 +1400,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
@@ -1407,7 +1410,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -1417,7 +1420,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         }
       ],
       "INFCONQ": [
@@ -1428,7 +1431,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
@@ -1438,7 +1441,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
@@ -1448,7 +1451,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -1458,7 +1461,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
@@ -1469,7 +1472,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
@@ -1479,7 +1482,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -1489,7 +1492,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
@@ -1499,7 +1502,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -1509,7 +1512,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
@@ -1519,7 +1522,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
@@ -1529,7 +1532,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
@@ -1538,7 +1541,7 @@
             32,
             64
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -1548,7 +1551,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -1558,7 +1561,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -1568,7 +1571,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -1578,7 +1581,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -1588,7 +1591,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
@@ -1598,13 +1601,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 32,
-          "Available": 0
+          "Available": false
         }
       ],
       "TheCatch": [
@@ -1612,115 +1615,115 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "CaptureTheFlag": [
@@ -1728,19 +1731,19 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
@@ -1750,19 +1753,19 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -1772,7 +1775,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
@@ -1782,13 +1785,13 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
@@ -1798,31 +1801,31 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -1832,7 +1835,7 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -1842,25 +1845,25 @@
             64,
             90
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "AAS": [
@@ -1868,115 +1871,115 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ],
       "CashRun": [
@@ -1984,31 +1987,31 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 16,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
@@ -2017,7 +2020,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
@@ -2026,13 +2029,13 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
@@ -2041,19 +2044,19 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
@@ -2062,7 +2065,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
@@ -2071,7 +2074,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
@@ -2080,7 +2083,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
@@ -2089,7 +2092,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
@@ -2098,7 +2101,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
@@ -2107,13 +2110,13 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
@@ -2122,7 +2125,7 @@
             16,
             32
           ],
-          "Available": 0
+          "Available": false
         }
       ],
       "SuicideRush": [
@@ -2130,115 +2133,115 @@
           "MapName": "Azagor",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Basra",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Construction",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "District",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Dustydew",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Eduardovo",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Frugis",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Isle",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Lonovo",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "MultuIslands",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Namak",
           "WorldSize": 500,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "OilDunes",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "River",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Salhan",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "SandySunset",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "TensaTown",
           "WorldSize": 1000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Valley",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "Wakistan",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         },
         {
           "MapName": "WineParadise",
           "WorldSize": 2000,
           "MapSize": 0,
-          "Available": 0
+          "Available": false
         }
       ]
     }

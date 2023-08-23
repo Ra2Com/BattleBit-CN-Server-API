@@ -31,7 +31,7 @@ namespace CommunityServerAPI.ServerExtension
             this.GamemodeRotation.ClearRotation();
             // GamemodeRotation.SetRotation("Domination");
             this.GamemodeRotation.SetRotation(Gamemode);
-            
+
             // WARNING: 初始化一个默认值
             this.RoundSettings.MaxTickets = 200;
 
@@ -288,27 +288,32 @@ namespace CommunityServerAPI.ServerExtension
                         break;
                     }
                 case GameState.Playing:
-                    await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 开始 - 会话 {SessionID} ----------");
-                    this.MapRotation.ClearRotation();
-                    var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
-                    this.MapRotation.SetRotation(nextMap.ToArray());
-                    await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
-                    SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
-                    this.RoundSettings.SecondsLeft = 1800;
-                    var playerNum = AllPlayers.Count();
-                    this.RoundSettings.MaxTickets = playerNum switch
+                    try
                     {
-                        <= 4 => 200,
-                        <= 10 => playerNum * 40,
-                        <= 20 => playerNum * 30,
-                        <= 36 => 800,
-                        <= 48 => 1000,
-                        <= 64 => 1200,
-                        <= 80 => 1400,
-                        <= 96 => 1600,
-                        <= 128 => 2000,
-                        _ => this.RoundSettings.MaxTickets
-                    };
+                        await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 开始 - 会话 {SessionID} ----------");
+                        this.MapRotation.ClearRotation();
+                        var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
+                        this.MapRotation.SetRotation(nextMap.ToArray());
+                        await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
+                        SayToAllChat($"下张地图已随机为 - {nextMap[0]}");
+                        this.RoundSettings.SecondsLeft = 1800;
+                        var playerNum = AllPlayers.Count();
+                        this.RoundSettings.MaxTickets = playerNum switch
+                        {
+                            <= 4 => 200,
+                            <= 10 => playerNum * 40,
+                            <= 20 => playerNum * 30,
+                            <= 36 => 800,
+                            <= 48 => 1000,
+                            <= 64 => 1200,
+                            <= 80 => 1400,
+                            <= 96 => 1600,
+                            <= 128 => 2000,
+                            _ => this.RoundSettings.MaxTickets
+                        };
+
+                    }
+                    catch (Exception ee) { Console.Out.WriteLineAsync($"PlayingError:{ee.StackTrace}+{ee.Message}"); }
                     break;
             }
         }
