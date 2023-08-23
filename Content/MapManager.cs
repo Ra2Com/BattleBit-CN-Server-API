@@ -30,7 +30,8 @@ namespace CommunityServerAPI.Content
             return null;
         }
         
-        // 通过传入的 curMode 得到当前可用的地图列表
+        // 通过传入的 curMode 配置中当前可用的地图列表
+        // WARNING: 在极端情况下如果某个模式所有地图不可用，传出来的默认值是 Salhan，但是如果这个地图在此模式也不可用，那么就会出现问题
         public static List<string> GetAvailableMapList(string curMode)
         {
             return curMode switch
