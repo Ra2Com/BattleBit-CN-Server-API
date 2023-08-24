@@ -111,6 +111,9 @@ namespace CommunityServerAPI.ServerExtension
                     // 等到消息发布之后再给凶手补充血量，否则击杀血量展示不对
                     args.Killer.Heal(20);
                 }
+
+                args.Killer.stats.Progress.KillCount++;
+                args.Victim.stats.Progress.DeathCount++;
             }
             catch (Exception ee) { Console.Out.WriteLineAsync($"OnAPlayerDownedAnotherPlayerError:{ee.StackTrace}+{ee.Message}"); }
 
@@ -241,6 +244,14 @@ namespace CommunityServerAPI.ServerExtension
             try
             {
                 Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{JsonConvert.SerializeObject(stats)}  服务器数据");
+                if (TryGetPlayer(steamID, out MyPlayer op))
+                {
+                    Console.WriteLine($"OnSavePlayerStats:{steamID},PlayerStats:{JsonConvert.SerializeObject(op.stats)}  本地");
+                }
+                if (op.stats.Progress.KillCount > stats.Progress.KillCount)
+                    stats.Progress.KillCount = op.stats.Progress.KillCount;
+                if (op.stats.Progress.DeathCount > stats.Progress.DeathCount)
+                    stats.Progress.DeathCount = op.stats.Progress.DeathCount;
                 await ds.SavePlayerStatsOf(steamID, stats);
             }
             catch (Exception ee)
@@ -268,7 +279,7 @@ namespace CommunityServerAPI.ServerExtension
                     await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 结束 - 会话 {SessionID} ----------");
                     await Console.Out.WriteLineAsync($" ---------- 存储 {AllPlayers.Count()} 个玩家数据 ----------");
                     await this.EndingSaveAllPlayerStats();
-                                            
+
                     // 给 AllPlayer 中所有的玩家名称执行 ServerMOTD
                     foreach (var player in AllPlayers)
                     {
@@ -321,10 +332,11 @@ namespace CommunityServerAPI.ServerExtension
         // 存储所有当前玩家的数据
         private async Task EndingSaveAllPlayerStats()
         {
-            foreach (var player in AllPlayers)
-            {
-                await OnSavePlayerStats(player.SteamID, player.stats);
-            }
+            //todo 
+            //foreach (var player in AllPlayers)
+            //{
+            //    await OnSavePlayerStats(player.SteamID, player.stats);
+            //}
         }
         private void SetServerDefaultSettings()
         {
@@ -335,16 +347,16 @@ namespace CommunityServerAPI.ServerExtension
         }
         private async Task ServerMOTD(MyPlayer player)
         {
-                var JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
-                var MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
-                MessageToPlayer(player.SteamID, $"{RichText.Vip}{RichText.Cyan}{player.Name}{RichText.EndColor} 你好" +
-                        $"{RichText.BR}游戏时长 {player.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {player.stats.Progress.KillCount}/{player.stats.Progress.DeathCount} , 爆头 {player.stats.Progress.Headshots} 次" +
-                        $"{RichText.BR}当前排名 {RichText.Orange}{player.rank}{RichText.EndColor}" +
-                        $"{RichText.BR}" +
-                        $"{RichText.BR}{RichText.LightBlue}===请注意==={RichText.EndColor}" +
-                        $"{RichText.BR}{MOTD}" +
-                        $"{RichText.BR}" +
-                        $"{RichText.BR}{JIAQUN}", 15f);
+            var JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
+            var MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
+            MessageToPlayer(player.SteamID, $"{RichText.Vip}{RichText.Cyan}{player.Name}{RichText.EndColor} 你好" +
+                    $"{RichText.BR}游戏时长 {player.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {player.stats.Progress.KillCount}/{player.stats.Progress.DeathCount} , 爆头 {player.stats.Progress.Headshots} 次" +
+                    $"{RichText.BR}当前排名 {RichText.Orange}{player.rank}{RichText.EndColor}" +
+                    $"{RichText.BR}" +
+                    $"{RichText.BR}{RichText.LightBlue}===请注意==={RichText.EndColor}" +
+                    $"{RichText.BR}{MOTD}" +
+                    $"{RichText.BR}" +
+                    $"{RichText.BR}{JIAQUN}", 15f);
         }
         private void SetRoundTickets()
         {
