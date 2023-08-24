@@ -46,9 +46,12 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
                     ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
-                    op.stats = stFromData;
-                    op.stats.Roles = (Roles)role;
-                    Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
+                    if (stFromData.Progress.KillCount > op.stats.Progress.KillCount)
+                    {
+                        op.stats = stFromData;
+                        op.stats.Roles = (Roles)role;
+                        Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
+                    }
                 }
                 await CalculateRanking();
             }
