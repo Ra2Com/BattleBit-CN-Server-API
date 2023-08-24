@@ -54,7 +54,7 @@ namespace CommunityServerAPI.ServerExtension.Model
                             if (GameServer.TryGetPlayer(markId, out MyPlayer markPlayer))
                             {
                                 var dis = Vector3.Distance(markPlayer.Position, Position).ToString("#0.0");
-                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Red}{dis}{RichText.EndColor} 米");
+                                Message($"仇人 {RichText.Red}{markPlayer.Name}{RichText.EndColor} 距你 {RichText.Red}{dis}{RichText.EndColor} 米",5f);
                                 Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 玩家{Name}：K/D: {stats.Progress.KillCount}/{stats.Progress.DeathCount},仇人 {markId}");
                             }
                             else
