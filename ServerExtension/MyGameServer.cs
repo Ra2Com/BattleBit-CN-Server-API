@@ -46,12 +46,9 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     var stFromData = await ds.GetPlayerStatsOf(player.SteamID) ?? new PlayerStats();
                     ulong role = await PrivilegeManager.GetPlayerPrivilege(player.SteamID);
-                    if (stFromData.Progress.KillCount > op.stats.Progress.KillCount)
-                    {
-                        op.stats = stFromData;
-                        op.stats.Roles = (Roles)role;
-                        Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
-                    }
+                    op.stats = stFromData;
+                    op.stats.Roles = (Roles)role;
+                    Console.WriteLine($"OnPlayerConnected 设置个人数据成功{player.SteamID},{JsonConvert.SerializeObject(op.stats)}");
                 }
                 await CalculateRanking();
             }
@@ -209,6 +206,10 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     args.Stats = stFromData;
                 }
+                else
+                {
+                    await ds.SavePlayerStatsOf(steamID, args.Stats);
+                }
                 args.Stats.Roles = stFromData.Roles = (Roles)role;
                 args.Stats.Progress.Rank = 200;
                 args.Stats.Progress.Prestige = 6;
@@ -221,8 +222,7 @@ namespace CommunityServerAPI.ServerExtension
                 {
                     Console.WriteLine($"{DateTime.Now.ToString("MM/dd HH:mm:ss")} - 管理员 {steamID} 已连接");
                 }
-
-
+                Console.WriteLine($"OnPlayerJoiningToServer 读取服务器数据{steamID},{JsonConvert.SerializeObject(args.Stats)}");
             }
             catch (Exception ee)
             {
