@@ -202,7 +202,10 @@ namespace CommunityServerAPI.ServerExtension
             {
                 var stFromData = await ds.GetPlayerStatsOf(steamID) ?? new PlayerStats();
                 ulong role = await PrivilegeManager.GetPlayerPrivilege(steamID);
-                args.Stats = stFromData;
+                if (stFromData.Progress.KillCount > args.Stats.Progress.KillCount)
+                {
+                    args.Stats = stFromData;
+                }
                 args.Stats.Roles = stFromData.Roles = (Roles)role;
                 args.Stats.Progress.Rank = 200;
                 args.Stats.Progress.Prestige = 6;
