@@ -1,0 +1,28 @@
+﻿[
+  {
+    "RunningSpeedMultiplier" : "1",
+    "ReceiveDamageMultiplier" : "1",
+    "GiveDamageMultiplier" : "1",
+    "JumpHeightMultiplier" : "1",
+    "FallDamageMultiplier" : "1",
+    "ReloadSpeedMultiplier" : "1",
+    "CanUseNightVision" : true,
+    "DownTimeGiveUpTime" : "60",
+    "AirStrafe" : true,
+    "CanDeploy" : true,
+    "CanSpectate" : true,
+    "IsTextChatMuted" : false,
+    "IsVoiceChatMuted" : false,
+    "RespawnTime" : "10",
+    "CanSuicide" : true,
+    "MinDamageToStartBleeding" : "10",
+    "MinHpToStartBleeding" : "40",
+    "HPperBandage" : "40",
+    "StaminaEnabled" : false,
+    "HitMarkersEnabled" : true,
+    "FriendlyHUDEnabled" : true,
+    "CaptureFlagSpeedMultiplier" : "1",
+    "PointLogHudEnabled" : true,
+    "KillFeed" : false
+  }
+]

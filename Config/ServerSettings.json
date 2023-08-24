@@ -1,0 +1,13 @@
+﻿[
+  {
+    "DamageMultiplier" : "1.0",
+    "FriendlyFireEnabled" : false,
+    "HideMapVotes" : true,
+    "OnlyWinnerTeamCanVote" : false,
+    "PlayerCollision" : false,
+    "MedicLimitPerSquad" : 8,
+    "EngineerLimitPerSquad" : 8,
+    "SupportLimitPerSquad" : 8,
+    "ReconLimitPerSquad" : 8
+  }
+]

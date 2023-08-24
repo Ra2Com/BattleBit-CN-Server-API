@@ -288,14 +288,13 @@ namespace CommunityServerAPI.ServerExtension
                     {
                         await Console.Out.WriteLineAsync($" ---------- 对局 {RoundIndex} 开始 - 会话 {SessionID} ----------");
                         this.MapRotation.ClearRotation();
-                        var nextMap = MapManager.GetARandomAvailableMap(Gamemode);
-                        this.MapRotation.SetRotation(nextMap.ToArray());
+                        var nextMap = MapManager.GetARandomAvailableMap(Gamemode, Map);
+                        this.MapRotation.SetRotation(nextMap);
                         await Console.Out.WriteLineAsync($" ---------- 下张地图已随机为 {nextMap[0]}  ----------");
                         SayToAllChat($"随机地图结果 — 下张地图是 — {nextMap[0]}");
                         // TODO: 把对局配置设置项都移动到单一配置文件中
                         this.RoundSettings.SecondsLeft = 1800;
                         this.SetRoundTickets();
-
                     }
                     catch (Exception ee) { Console.Out.WriteLineAsync($"PlayingError:{ee.StackTrace}+{ee.Message}"); }
                     break;
@@ -335,8 +334,8 @@ namespace CommunityServerAPI.ServerExtension
         }
         private async Task ServerMOTD(MyPlayer player)
         {
-                var JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
-                var MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
+                string JIAQUN = MessageOfTheDayManager.GetMOTD("JoinMethodQun");
+                string MOTD = MessageOfTheDayManager.GetMOTD("WelcomeMsg");
                 MessageToPlayer(player.SteamID, $"{RichText.Vip}{RichText.Cyan}{player.Name}{RichText.EndColor} 你好" +
                         $"{RichText.BR}游戏时长 {player.stats.Progress.PlayTimeSeconds / 60} 分钟 , K/D: {player.stats.Progress.KillCount}/{player.stats.Progress.DeathCount} , 爆头 {player.stats.Progress.Headshots} 次" +
                         $"{RichText.BR}当前排名 {RichText.Orange}{player.rank}{RichText.EndColor}" +

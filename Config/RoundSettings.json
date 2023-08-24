@@ -1,0 +1,9 @@
+﻿[
+  {
+    "TeamATickets" : "0",
+    "TeamBTickets" : "0",
+    "MaxTickets" : "1",
+    "PlayersToStart" : 16,
+    "SecondsLeft" : 60
+  }
+]
