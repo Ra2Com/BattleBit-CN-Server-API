@@ -13,6 +13,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
             helpMessage = "治疗自己 100 生命值，每 2 分钟只能使用一次";
             Aliases = new string[] { "/jx", "/hp" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator, Roles.Vip };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)

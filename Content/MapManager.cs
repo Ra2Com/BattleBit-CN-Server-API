@@ -1,5 +1,4 @@
-﻿using BattleBitAPI.Common;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Security.Cryptography;
 
 namespace CommunityServerAPI.Content
@@ -74,6 +73,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -81,7 +81,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -89,7 +89,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -97,7 +97,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -105,7 +105,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -113,7 +113,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -121,7 +121,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -129,7 +129,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -137,7 +137,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -145,7 +145,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -153,7 +153,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -161,7 +161,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -169,7 +169,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -178,7 +178,7 @@ namespace CommunityServerAPI.Content
 
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -186,7 +186,7 @@ namespace CommunityServerAPI.Content
         {
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
@@ -195,13 +195,13 @@ namespace CommunityServerAPI.Content
 
             public string MapName { get; set; }
             public int WorldSize { get; set; }
-            public List<int> MapSize { get; set; }
+            public List<byte> MapSize { get; set; }
             public bool Available { get; set; }
         }
 
         public class MapManagerJson
         {
-            public string _用法 { get; set; }
+            public string _Usage { get; set; }
             public List<ModeAvailableMapSize> ModeAvailableMapSize { get; set; }
         }
         public class ModeAvailableMapSize

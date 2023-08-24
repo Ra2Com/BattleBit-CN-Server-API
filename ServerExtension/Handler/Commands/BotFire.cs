@@ -8,9 +8,9 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public BotFire()
         {
-            commandMessage = "/botfire";
+            commandMessage = "/opbotfire";
             helpMessage = "让所有机器人开火";
-            Aliases = new string[] { "/bf" };
+            Aliases = new string[] { "/opbf" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
             isPrivate = true;
         }

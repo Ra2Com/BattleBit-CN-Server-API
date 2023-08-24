@@ -184,7 +184,7 @@ namespace CommunityServerAPI.Utils
         public const string SlightSmile = "<sprite=\"EmojiOne\" index=14>";
         public const string SlightFrown = "<sprite=\"EmojiOne\" index=15>";
 
-        public const string LineBreak = "<br>";
+        public const string BR = "<br>";
         public const string EndColor = "</color>";
 
         public static string Bold(string text)

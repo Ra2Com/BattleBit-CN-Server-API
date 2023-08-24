@@ -8,10 +8,11 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public StartGame()
         {
-            commandMessage = "/start";
+            commandMessage = "/opstart";
             helpMessage = "立刻开始本轮对局";
-            Aliases = new string[] { "/s" };
+            Aliases = new string[] { "/ops" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
+            isPrivate = false;
         }
 
         public override CommandDTO BuildCommand(MyPlayer player, ChatChannel channel)
@@ -26,7 +27,7 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
 
         public override void Execute(MyPlayer player, string cmdMsg)
         {
-            if (player.GameServer.RoundSettings.State != GameState.WaitingForPlayers &&
+            if (player.GameServer.RoundSettings.State != GameState.WaitingForPlayers ||
                 player.GameServer.RoundSettings.State != GameState.CountingDown)
             {
                 player.GameServer.SayToChat($"本局游戏已经开始了！", player.SteamID);

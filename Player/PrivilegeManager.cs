@@ -25,7 +25,7 @@ namespace CommunityServerAPI.Player
             }
             catch (Exception ee)
             {
-                Console.WriteLine("解析 Privilege.json 出错，请检查" + ee.Message); // Error when JSON file is wrong
+                Console.WriteLine("解析 Privilege 配置出错，请检查" + ee.Message); // Error when JSON file is wrong
                 return;
             }
         }

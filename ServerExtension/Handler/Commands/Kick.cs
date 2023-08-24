@@ -8,9 +8,9 @@ namespace CommunityServerAPI.ServerExtension.Handler.Commands
     {
         public Kick()
         {
-            commandMessage = "/kick";
+            commandMessage = "/opkick";
             helpMessage = "指定玩家昵称或者 SteamID 踢出玩家";
-            Aliases = new string[] { "/k" };
+            Aliases = new string[] { "/opk" };
             roles = new List<Roles>() { Roles.Admin, Roles.Moderator };
             isPrivate = true;
         }
