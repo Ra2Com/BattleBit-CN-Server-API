@@ -571,9 +571,62 @@ namespace BattleBitAPI.Server
         {
             ExecuteCommand("forcestart");
         }
+        public void SetServerSizeForNextMatch(MapSize size)
+        {
+            switch (size)
+            {
+                case MapSize.None:
+                    ExecuteCommand("setsize none");
+                    break;
+
+                case MapSize._8v8:
+                    ExecuteCommand("setsize tiny");
+                    break;
+
+                case MapSize._16vs16:
+                    ExecuteCommand("setsize small");
+                    break;
+
+                case MapSize._32vs32:
+                    ExecuteCommand("setsize medium");
+                    break;
+
+                case MapSize._64vs64:
+                    ExecuteCommand("setsize big");
+                    break;
+
+                case MapSize._127vs127:
+                    ExecuteCommand("setsize ultra");
+                    break;
+            }
+        }
         public void ForceEndGame()
         {
             ExecuteCommand("endgame");
+        }
+        public void ForceEndGame(Team team)
+        {
+            if (team == Team.None)
+                ExecuteCommand("endgame draw");
+            else if (team == Team.TeamA)
+                ExecuteCommand("endgame a");
+            else if (team == Team.TeamB)
+                ExecuteCommand("endgame b");
+        }
+        public void ForceEndGame(List<EndGamePlayer<TPlayer>> players)
+        {
+            using (var packet = Common.Serialization.Stream.Get())
+            {
+                packet.Write((byte)NetworkCommuncation.EndgameWithPlayers);
+                packet.Write((uint)players.Count);
+                foreach (var item in players)
+                {
+                    packet.Write(item.Player.SteamID);
+                    packet.Write(item.Score);
+                }
+
+                WriteToSocket(packet);
+            }
         }
         public void SayToAllChat(string msg)
         {
@@ -674,6 +727,14 @@ namespace BattleBitAPI.Server
         public void PromoteSquadLeader(Player<TPlayer> player)
         {
             PromoteSquadLeader(player.SteamID);
+        }
+        public void Teleport(ulong steamID, Vector3 position)
+        {
+            ExecuteCommand("teleport " + steamID + " " + ((int)position.X) + "," + ((int)position.Y) + "," + ((int)position.Z));
+        }
+        public void Teleport(Player<TPlayer> player, Vector3 position)
+        {
+            Teleport(player.SteamID, position);
         }
         public void WarnPlayer(ulong steamID, string msg)
         {
@@ -870,6 +931,32 @@ namespace BattleBitAPI.Server
         public void SetThrowable(Player<TPlayer> player, string tool, int extra, bool clear = false)
         {
             SetThrowable(player.SteamID, tool, extra, clear);
+        }
+
+        public void PlaceVoxelBlock(Vector3 position, VoxelBlockData data)
+        {
+            using (var packet = Common.Serialization.Stream.Get())
+            {
+                packet.Write((byte)NetworkCommuncation.PlaceVoxelBlock);
+                packet.Write(position.X);
+                packet.Write(position.Y);
+                packet.Write(position.Z);
+                data.Write(packet);
+
+                WriteToSocket(packet);
+            }
+        }
+        public void DestroyVoxelBlock(Vector3 position)
+        {
+            using (var packet = Common.Serialization.Stream.Get())
+            {
+                packet.Write((byte)NetworkCommuncation.RemoveVoxelBlock);
+                packet.Write(position.X);
+                packet.Write(position.Y);
+                packet.Write(position.Z);
+
+                WriteToSocket(packet);
+            }
         }
 
         // ---- Squads ---- 
@@ -1356,6 +1443,8 @@ namespace BattleBitAPI.Server
                 this.ServerRulesText = serverRulesText;
                 this.RoundIndex = roundIndex;
                 this.SessionID = sessionID;
+
+                this.Players.Clear();
 
                 this.ServerSettings.Reset();
                 this._RoomSettings.Reset();
