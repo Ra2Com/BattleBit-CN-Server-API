@@ -882,7 +882,6 @@ namespace BattleBitAPI.Server
                         }
                         break;
                     }
-
                 case NetworkCommuncation.PlayerConnected:
                     {
                         if (stream.CanRead(8 + 2 + 4 + (1 + 1 + 1)))
@@ -962,11 +961,11 @@ namespace BattleBitAPI.Server
                                     server.OnPlayerLeftSquad((TPlayer)player, msquad);
                                 }
 
-                                @internal.SessionID = 0;
-                                @internal.GameServer = null;
-
                                 player.OnDisconnected();
                                 server.OnPlayerDisconnected((TPlayer)player);
+
+                                @internal.SessionID = 0;
+                                @internal.GameServer = null;
 
                                 if (this.LogLevel.HasFlag(LogLevel.Players))
                                     OnLog(LogLevel.Players, $"{player} has disconnected", player);
